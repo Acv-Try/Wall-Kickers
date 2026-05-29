@@ -1,16 +1,18 @@
+using System;
 using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static event Action OnGameStart;
+    public static event Action OnPouseButtonClick;
+
+    public static void RaiseOnGameStart()
     {
-        
+        OnGameStart?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void RaiseOnPouseButtonClick()
     {
-        
+        OnPouseButtonClick?.Invoke();
     }
 }
