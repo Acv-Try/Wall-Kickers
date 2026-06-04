@@ -1,7 +1,6 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System.Collections;
-using Unity.VectorGraphics;using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
   [Header("Jump Settings")]
@@ -35,6 +34,8 @@ public class Player : MonoBehaviour
  [SerializeField] private bool CanDoubleJump = false;
  [SerializeField] private sbyte LinearVelocityX;
 
+ [Header("Camera Settings")]
+ [SerializeField] CinemachineFollow cam;
 
   float JumpTimeCounter;
   Rigidbody2D rb;
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void StartJump(sbyte side) // Method to start the jump
+    void StartJump(sbyte side) //Method to start the jump
     {
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 2f;
@@ -119,12 +120,11 @@ public class Player : MonoBehaviour
     {         
         if(collision.gameObject.CompareTag("Wall"))
         {
-          if(collision.contacts[0].normal.y < 0) return; // Checks if the player landed on the wall from the top or bottom, if so it does nothing
           rb.gravityScale = 0f; 
           rb.linearVelocity = Vector2.zero;
           OnWall = true;
           OnFloor = false;
-          CurrentWall = collision.gameObject.GetComponent<Wall>();
+           CurrentWall = collision.gameObject.GetComponent<Wall>();
 
           
           float Xdiference = transform.position.x - collision.transform.position.x;
@@ -154,10 +154,11 @@ public class Player : MonoBehaviour
             if(collision.contacts[0].normal.y == 0) // Checks if player landed on floor from the side, if so it moves the player up a bit 
             {
                 CheckJumpSide();
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(transform.position.x + 0.3f * jumpSide, collision.transform.position.y + 0.3f)));
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(transform.position.x + 0.4f * jumpSide, collision.transform.position.y + 0.3f)));
             }
         }
     }
+
     void CheckJumpSide() // Method to check the direction of the jump based on the player's velocity
     {
         if(LinearVelocityX > 0)
@@ -176,11 +177,11 @@ public class Player : MonoBehaviour
         float t = 0;
             while(t < 1)
             {
-                t += Time.deltaTime * 8f;
+                t += Time.deltaTime * 4f;
                 transform.position = Vector2.Lerp(transform.position, targetPosition, t);
-                if(t > 0.7f) rb.simulated = true;
                 yield return null;
             }
+         rb.simulated = true;
     }
     void ResetJump() // Method to reset the jump when the player lands on the ground
     {
@@ -198,14 +199,6 @@ public class Player : MonoBehaviour
         else if(collision.gameObject.CompareTag("Floor") && OnFloor)
         {
             OnFloor = false;
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Dead"))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // just reloads the scene when the player enters the death zone
         }
     }
 }
