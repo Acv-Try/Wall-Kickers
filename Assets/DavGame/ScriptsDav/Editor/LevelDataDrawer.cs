@@ -1,0 +1,148 @@
+using UnityEngine;
+using UnityEditor;
+
+[CustomEditor(typeof(LevelData))]
+[CanEditMultipleObjects]
+public class LevelDataDrawer : Editor
+{
+    private LevelData Data => (LevelData)target;
+
+    private static LevelData.WallType selectedWallType;
+    private static int selectedWallRotation;
+
+    private GUIStyle cellStyle;
+
+    public override void OnInspectorGUI()
+    {
+        if (cellStyle == null)
+        {
+            cellStyle = new GUIStyle
+            {
+                alignment = TextAnchor.MiddleCenter,
+                normal = { textColor = Color.black }
+            };
+        }
+
+        serializedObject.Update();
+
+        DrawSizeFields();
+
+        EditorGUILayout.Space();
+
+        ClearBoard();
+
+        EditorGUILayout.Space();
+
+        if (IsBoardValid())
+        {
+            DrawBoard();
+        }
+
+        serializedObject.ApplyModifiedProperties();
+    }
+
+    private void DrawSizeFields()
+    {
+        SerializedProperty rowsProp = serializedObject.FindProperty("rows");
+        SerializedProperty columnsProp = serializedObject.FindProperty("columns");
+
+        EditorGUI.BeginChangeCheck();
+
+        EditorGUILayout.PropertyField(rowsProp);
+        EditorGUILayout.PropertyField(columnsProp);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            serializedObject.ApplyModifiedProperties();
+
+            Undo.RecordObject(Data, "Resize Grid");
+
+            Data.CreateNewBoard();
+
+            EditorUtility.SetDirty(Data);
+        }
+
+        EditorGUILayout.Space();
+
+        selectedWallType =
+            (LevelData.WallType)EditorGUILayout.EnumPopup(
+                "Wall Type",
+                selectedWallType);
+
+        selectedWallRotation =
+            EditorGUILayout.IntPopup(
+                "Rotation",
+                selectedWallRotation,
+                new string[] { "0", "90" },
+                new int[] { 0, 90 });
+    }
+
+    private void DrawBoard()
+    {
+        const float size = 25f;
+
+        for (int row = 0; row < Data.rows; row++)
+        {
+            EditorGUILayout.BeginHorizontal();
+
+            for (int col = 0; col < Data.columns; col++)
+            {
+
+                var cell = Data.board[row].column[col];
+
+                GUI.color = GetColor(cell.type);
+
+                if (GUILayout.Button("", GUILayout.Width(size), GUILayout.Height(size)))
+                {
+                    Undo.RecordObject(Data, "Paint Wall");
+
+                    cell.type = selectedWallType;
+                    cell.rotation = selectedWallRotation;
+
+                    EditorUtility.SetDirty(Data);
+                }
+
+                GUI.color = Color.white;
+
+                GUI.Label(GUILayoutUtility.GetLastRect(), cell.type.ToString(), cellStyle);
+            }
+
+            EditorGUILayout.EndHorizontal();
+        }
+    }
+
+    private Color GetColor(LevelData.WallType type)
+    {
+        switch (type)
+        {
+            case LevelData.WallType.E:
+                return Color.white;
+
+            case LevelData.WallType.N:
+                return new Color(0.6f, 0.3f, 0.1f);
+
+            default:
+                return Color.gray;
+        }
+    }
+
+    private void ClearBoard()
+    {
+        if (GUILayout.Button("Clear Board"))
+        {
+            Undo.RecordObject(Data, "Clear Board");
+
+            Data.Clear();
+
+            EditorUtility.SetDirty(Data);
+        }
+    }
+
+    private bool IsBoardValid()
+    {
+        return Data.board != null &&
+               Data.board.Length == Data.rows &&
+               Data.columns > 0 &&
+               Data.rows > 0;
+    }
+}
