@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af11e0dfdfd15ee4ebeeac69607aeaf7, type: 3}
   m_Name: WallsData 1
   m_EditorClassIdentifier: Assembly-CSharp::WallsData
+  startSide: 1
+  endSide: 0
+  firstCellColumn: 7
+  lastCellColumn: 1
   columns: 10
   rows: 20
   board:
@@ -28,70 +32,7 @@ MonoBehaviour:
       rotation: 0
     - type: 0
       rotation: 0
-    - type: 1
-      rotation: 0
     - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
       rotation: 0
     - type: 0
       rotation: 0
@@ -123,34 +64,13 @@ MonoBehaviour:
   - column:
     - type: 0
       rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
     - type: 1
       rotation: 0
     - type: 0
       rotation: 0
     - type: 0
       rotation: 0
-    - type: 1
-      rotation: 0
     - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
       rotation: 0
     - type: 0
       rotation: 0
@@ -165,13 +85,13 @@ MonoBehaviour:
   - column:
     - type: 0
       rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
     - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0
@@ -186,13 +106,13 @@ MonoBehaviour:
   - column:
     - type: 0
       rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
     - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0
@@ -207,13 +127,13 @@ MonoBehaviour:
   - column:
     - type: 0
       rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
     - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0
@@ -228,13 +148,34 @@ MonoBehaviour:
   - column:
     - type: 0
       rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
     - type: 0
       rotation: 0
     - type: 0
       rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
     - type: 0
       rotation: 0
     - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0
@@ -274,8 +215,6 @@ MonoBehaviour:
       rotation: 0
     - type: 0
       rotation: 0
-    - type: 1
-      rotation: 0
     - type: 0
       rotation: 0
     - type: 0
@@ -284,39 +223,18 @@ MonoBehaviour:
       rotation: 0
     - type: 0
       rotation: 0
-    - type: 1
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0
   - column:
     - type: 0
       rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
     - type: 0
       rotation: 0
     - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
       rotation: 0
     - type: 0
       rotation: 0
@@ -327,67 +245,6 @@ MonoBehaviour:
     - type: 0
       rotation: 0
     - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-  - column:
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
       rotation: 0
     - type: 1
       rotation: 0
@@ -400,15 +257,15 @@ MonoBehaviour:
       rotation: 0
     - type: 0
       rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
     - type: 1
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
-      rotation: 0
-    - type: 0
       rotation: 0
     - type: 1
       rotation: 0
@@ -421,8 +278,6 @@ MonoBehaviour:
       rotation: 0
     - type: 0
       rotation: 0
-    - type: 1
-      rotation: 0
     - type: 0
       rotation: 0
     - type: 0
@@ -432,6 +287,155 @@ MonoBehaviour:
     - type: 0
       rotation: 0
     - type: 1
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 1
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+  - column:
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
+      rotation: 0
+    - type: 0
       rotation: 0
     - type: 0
       rotation: 0

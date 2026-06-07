@@ -3,6 +3,19 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public static class ListExtensions
+{
+    public static void Shuffle<T>(this List<T> list)
+    {
+        for (int i = list.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+
+            (list[i], list[j]) = (list[j], list[i]);
+        }
+    }
+}
+
 public partial class GridGenerator : MonoBehaviour
 {
     private static GridGenerator instance;
@@ -19,6 +32,7 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] private List<Level> levels = new();
 
     private Vector3Int origin;
+    private LevelData.Side lastLevelSide = LevelData.Side.Left;
 
     private void Awake()
     {
@@ -36,16 +50,18 @@ public partial class GridGenerator : MonoBehaviour
     private void Start()
     {
         GenerateNextLevel(0);
-        GenerateNextLevel(50);
-        GenerateNextLevel(50);
-        GenerateNextLevel(50);
+        GenerateNextLevel(10);
+        GenerateNextLevel(20);
+        GenerateNextLevel(30);
+        GenerateNextLevel(40);
     }
 
     private void GenerateNextLevel(int num)
     {
-        LevelData nextLevel = GetRandomLevel(num);
-        Level level = new Level(nextLevel.rows, nextLevel.columns, origin  );
+        LevelData nextLevel = GetRandomLevel(num, lastLevelSide);
+        Level level = new Level(nextLevel.rows, nextLevel.columns, origin);
         Vector3Int lastCellRow = Vector3Int.zero;
+
         for (int i = nextLevel.rows - 1; i >= 0; i--)
         {
             for (int j = nextLevel.columns - 1; j >= 0; j--)
@@ -62,11 +78,13 @@ public partial class GridGenerator : MonoBehaviour
                 lastCellRow = pos;
             }
         }
-        origin = lastCellRow + Vector3Int.up;
+        lastLevelSide = nextLevel.endSide;
+        Debug.Log($"Generated level with start side: {nextLevel.startSide} and end side: {nextLevel.endSide}");
+        origin += lastCellRow + Vector3Int.up;
         levels.Add(level);
         GenerateBackground(level);
     }
-    
+
     private void OnDrawGizmos()
     {
         if (levels == null || levels.Count == 0) return;
@@ -112,9 +130,9 @@ public partial class GridGenerator : MonoBehaviour
         }
     }
 
-    private LevelData GetRandomLevel(int cp)
+    private LevelData GetRandomLevel(int cp, LevelData.Side endSide)
     {
-        if (cp <= 10)
+        if (cp < 10)
             return levelsDatas[0];
 
         int group = (cp - 11) / 40;
@@ -125,7 +143,20 @@ public partial class GridGenerator : MonoBehaviour
         start = Mathf.Clamp(start, 1, levelsDatas.Count - 1);
         end = Mathf.Clamp(end, start + 1, levelsDatas.Count);
 
-        return levelsDatas[Random.Range(start, end)];
+        int index = 0;
+
+        List<LevelData> rangeLevels = levelsDatas.GetRange(start, end - start);
+        rangeLevels.Shuffle();
+
+        foreach (LevelData levelData in rangeLevels)
+        {
+            if (levelData.startSide == endSide)
+            {
+                index = levelsDatas.IndexOf(levelData);
+                break;
+            }
+        }
+        return levelsDatas[index];
     }
 
     public void RemoveLevel()
@@ -158,4 +189,6 @@ public partial class GridGenerator : MonoBehaviour
             }
         }
     }
+
+   
 }

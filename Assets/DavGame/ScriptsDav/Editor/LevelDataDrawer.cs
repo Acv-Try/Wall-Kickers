@@ -80,7 +80,6 @@ public class LevelDataDrawer : Editor
     private void DrawBoard()
     {
         const float size = 25f;
-
         for (int row = 0; row < Data.rows; row++)
         {
             EditorGUILayout.BeginHorizontal();
@@ -98,6 +97,8 @@ public class LevelDataDrawer : Editor
 
                     cell.type = selectedWallType;
                     cell.rotation = selectedWallRotation;
+
+                    Data.CalculateSides();
 
                     EditorUtility.SetDirty(Data);
                 }
@@ -120,6 +121,9 @@ public class LevelDataDrawer : Editor
 
             case LevelData.WallType.N:
                 return new Color(0.6f, 0.3f, 0.1f);
+
+            case LevelData.WallType.G:
+                return new Color(0.2f, 0.8f, 0.2f);
 
             default:
                 return Color.gray;
@@ -145,4 +149,6 @@ public class LevelDataDrawer : Editor
                Data.columns > 0 &&
                Data.rows > 0;
     }
+
+    
 }

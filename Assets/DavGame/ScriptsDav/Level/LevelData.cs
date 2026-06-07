@@ -8,7 +8,15 @@ public class LevelData : ScriptableObject
     {
         E,
         N,
+        G,
     }
+
+    public enum Side
+    {
+        Left,
+        Right
+    }
+
     [System.Serializable]
     public class Cell
     {
@@ -45,6 +53,12 @@ public class LevelData : ScriptableObject
         }
     }
 
+    public Side startSide;
+    public Side endSide;
+
+    public int firstCellColumn = -1;
+    public int lastCellColumn = -1;
+
     public int columns;
     public int rows;
     public Row[] board;
@@ -73,5 +87,41 @@ public class LevelData : ScriptableObject
             board[i] = new Row(columns);
         }
         Clear();
+    }
+
+    public void CalculateSides()
+    {
+        firstCellColumn = -1;
+        lastCellColumn = -1;
+        for (int row = rows - 1; row >= 0; row--)
+        {
+            for (int col = columns - 1; col >= 0; col--)
+            {
+                var cell = board[row].column[col];
+
+                if (cell.type != LevelData.WallType.E &&
+                    cell.type != LevelData.WallType.G)
+                {
+                    if (firstCellColumn == -1)
+                        firstCellColumn = col;
+
+                    lastCellColumn = col;
+                }
+            }
+        }
+
+        startSide =
+            firstCellColumn < columns / 2
+            ? LevelData.Side.Left
+            : LevelData.Side.Right;
+
+        endSide =
+            lastCellColumn < columns / 2
+            ? LevelData.Side.Left
+            : LevelData.Side.Right;
+
+        Debug.Log($"First cell column: {firstCellColumn}, Last cell column: {lastCellColumn}");
+        Debug.Log($"Start side: {startSide}, End side: {endSide}");
+
     }
 }
