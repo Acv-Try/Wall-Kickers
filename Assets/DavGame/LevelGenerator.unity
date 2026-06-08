@@ -903,76 +903,76 @@ Tilemap:
       e00: 0
       e01: 0
       e02: 0
-      e03: 1.5389113e-30
+      e03: 2.3385334e-30
       e10: 0
       e11: 0
       e12: 0
-      e13: 5.7e-44
+      e13: 5.3e-44
       e20: 0
       e21: 0
       e22: 1e-45
-      e23: -2.2118723e-26
+      e23: -1.2946349e-31
       e30: 0
       e31: 0
       e32: 0
-      e33: 4.591e-41
+      e33: 4.5912e-41
   - m_RefCount: 0
     m_Data:
       e00: 0
       e01: 0
       e02: 0
-      e03: 1.5389534e-30
+      e03: 2.3385334e-30
       e10: 0
       e11: 0
       e12: 0
-      e13: 5.7e-44
+      e13: 5.3e-44
       e20: 0
       e21: 0
       e22: 1e-45
-      e23: -2.2118723e-26
+      e23: -1.2946349e-31
       e30: 0
       e31: 0
       e32: 0
-      e33: 4.591e-41
+      e33: 4.5912e-41
   - m_RefCount: 0
     m_Data:
       e00: 0
       e01: 0
       e02: 0
-      e03: 1.5389534e-30
+      e03: 2.3385334e-30
       e10: 0
       e11: 0
       e12: 0
-      e13: 5.7e-44
+      e13: 5.3e-44
       e20: 0
       e21: 0
       e22: 1e-45
-      e23: -2.2118723e-26
+      e23: -1.2946349e-31
       e30: 0
       e31: 0
       e32: 0
-      e33: 4.591e-41
+      e33: 4.5912e-41
   - m_RefCount: 0
     m_Data:
-      e00: -4.3345837e-31
+      e00: -3.999488e-32
       e01: 0
-      e02: 9.915353e-23
-      e03: -1.2934437e+20
-      e10: 4.591e-41
+      e02: 2.3388072e-30
+      e03: -7.004814
+      e10: 4.5912e-41
       e11: 0
-      e12: 2.02e-43
-      e13: 8.66e-43
-      e20: -1.4116495e-30
+      e12: 5.3e-44
+      e13: 5.72e-43
+      e20: -1.2946349e-31
       e21: 0
-      e22: -8.78338e+9
-      e23: 8.4275585e-16
-      e30: 4.591e-41
+      e22: -2.0343819
+      e23: 6.7418297e-18
+      e30: 4.5912e-41
       e31: 0
-      e32: 8.7e-43
-      e33: 8.67e-43
+      e32: 5.76e-43
+      e33: 5.73e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 9.9151915e-23, g: 9.9151915e-23, b: 9.9151915e-23, a: 9.9151915e-23}
+    m_Data: {r: 2.338759e-30, g: 2.338759e-30, b: 2.338759e-30, a: 2.338759e-30}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1389,13 +1389,13 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1451,7 +1451,7 @@ Camera:
   far clip plane: 1000
   field of view: 64.3
   orthographic: 1
-  orthographic size: 9.1
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1879,7 +1879,7 @@ Transform:
   m_GameObject: {fileID: 675331321}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3187,6 +3187,11 @@ MonoBehaviour:
   OnFloor: 0
   CanDoubleJump: 0
   LinearVelocityX: 0
+  rb: {fileID: 0}
+  CurrentWall: {fileID: 0}
+  WallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &1329876968
 Rigidbody2D:
   serializedVersion: 5
@@ -3328,7 +3333,7 @@ Transform:
   m_GameObject: {fileID: 1329876966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.13, y: 1.921, z: 0}
+  m_LocalPosition: {x: 2.0212495, y: 2.467306, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
