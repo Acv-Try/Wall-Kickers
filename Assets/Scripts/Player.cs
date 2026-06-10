@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
                     transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 }
 
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(hitPoint.point.x + (jumpSide * transform.lossyScale.x * 0.5f), hitPoint.point.y * transform.lossyScale.y)));
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(hitPoint.point.x + (jumpSide * transform.lossyScale.x * 0.3f), transform.position.y - 0.2f)));
                 Debug.DrawLine(hitPoint.point, hitPoint.normal * 10f, Color.red, 10f);
             }
         }
@@ -236,8 +236,6 @@ public class Player : MonoBehaviour
         CanDoubleJump = false;
         playerAnimator.SetBool("isBackFlip", false);
     }
-
-    [SerializeField] LayerMask WallLayer;
 
     void OnCollisionExit2D(Collision2D collision)
     {
