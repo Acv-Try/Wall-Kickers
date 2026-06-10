@@ -32,13 +32,14 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] private List<LevelData> levelsDatas;
     [SerializeField] private List<Level> levels = new();
 
-    private Dictionary<Vector3Int, Wall> wallsScriptsPair = new();
+    private Dictionary<Vector3Int, Wall> wallsScriptsPair;
 
     private Vector3Int origin;
     private LevelData.Side lastLevelSide = LevelData.Side.Left;
 
     private void Awake()
     {
+        wallsScriptsPair =  new();
         Application.targetFrameRate = 60;
         if (instance != null && instance != this)
         {

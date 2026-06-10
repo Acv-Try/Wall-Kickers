@@ -5,7 +5,7 @@ public enum WallType
 {
     Batut,Electro,Default,Moving,Lift
 }
-public abstract class Wall
+public abstract class Wall : MonoBehaviour
 {
     [Header("Wall Settings")]
     [Tooltip("Speed of the player friction when sliding down the wall if its negative the player will slide up the wall")]
