@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: NormalWallRuleTile
+  m_Name: DefaultWallRuleTile
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.RuleTile
-  m_DefaultSprite: {fileID: -4032309206407664817, guid: b8f21561917510c4098e19c8607490d7, type: 3}
-  m_DefaultGameObject: {fileID: 4418505482238105289, guid: d7907f14483e980408b7a94eddec7101, type: 3}
+  m_DefaultSprite: {fileID: 1323251022, guid: 93e68106b12a7bc4d96b0973cebd7334, type: 3}
+  m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
-  - m_Id: 2
+  - m_Id: 0
     m_Sprites:
-    - {fileID: -1892335655, guid: b8f21561917510c4098e19c8607490d7, type: 3}
-    m_GameObject: {fileID: 4418505482238105289, guid: d7907f14483e980408b7a94eddec7101, type: 3}
+    - {fileID: 1323251022, guid: 93e68106b12a7bc4d96b0973cebd7334, type: 3}
+    m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.5
@@ -31,10 +31,10 @@ MonoBehaviour:
     - {x: 0, y: 1, z: 0}
     - {x: 0, y: -1, z: 0}
     m_RuleTransform: 0
-  - m_Id: 0
+  - m_Id: 1
     m_Sprites:
-    - {fileID: -4032309206407664817, guid: b8f21561917510c4098e19c8607490d7, type: 3}
-    m_GameObject: {fileID: 4418505482238105289, guid: d7907f14483e980408b7a94eddec7101, type: 3}
+    - {fileID: -238433375, guid: 93e68106b12a7bc4d96b0973cebd7334, type: 3}
+    m_GameObject: {fileID: 4971459733576026970, guid: 217cde09a9dcf3842a7fa3ab504c5f77, type: 3}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.5
@@ -45,10 +45,10 @@ MonoBehaviour:
     m_NeighborPositions:
     - {x: 0, y: -1, z: 0}
     m_RuleTransform: 0
-  - m_Id: 1
+  - m_Id: 2
     m_Sprites:
-    - {fileID: 1476849727, guid: b8f21561917510c4098e19c8607490d7, type: 3}
-    m_GameObject: {fileID: 4418505482238105289, guid: d7907f14483e980408b7a94eddec7101, type: 3}
+    - {fileID: -352516770, guid: 93e68106b12a7bc4d96b0973cebd7334, type: 3}
+    m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.5

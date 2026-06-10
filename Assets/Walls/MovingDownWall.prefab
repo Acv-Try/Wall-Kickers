@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5578670382540320414}
   - component: {fileID: 4269567452575361142}
-  - component: {fileID: 1291725547750351968}
   - component: {fileID: 1041687023684593729}
   m_Layer: 7
   m_Name: MovingDownWall
@@ -93,22 +92,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &1291725547750351968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52826039914592693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df83ccdc79596b64ebb6033675a1f753, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ElevatorWall
-  SpeedOfPlayerFriction: 1
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  TypeOfWall: 2
 --- !u!61 &1041687023684593729
 BoxCollider2D:
   m_ObjectHideFlags: 0

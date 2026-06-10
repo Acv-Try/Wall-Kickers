@@ -1636,7 +1636,6 @@ MonoBehaviour:
   LinearVelocityX: 0
   rb: {fileID: 0}
   WallLayer:
-    serializedVersion: 2
     m_Bits: 0
 --- !u!50 &1329876968
 Rigidbody2D:

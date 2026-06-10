@@ -22,6 +22,7 @@ public class LevelData : ScriptableObject
     {
         public WallType type;
         public int rotation;
+        public int wallHeight;
     }
 
     [System.Serializable]
@@ -38,7 +39,8 @@ public class LevelData : ScriptableObject
                 column[i] = new Cell
                 {
                     type = WallType.E,
-                    rotation = 0
+                    rotation = 0,
+                    wallHeight = 0
                 };
             }
         }

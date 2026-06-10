@@ -1,37 +1,37 @@
-using UnityEngine;
-using System.Collections;
-using TMPro;
+//using UnityEngine;
+//using System.Collections;
+//using TMPro;
 
 
-public class DesapiaringWall : Wall
-{
-   public float TimeToRespawn = 4f;
+//public class DesapiaringWall : Wall
+//{
+//   public float TimeToRespawn = 4f;
   
-  Collider2D col;
-    SpriteRenderer sr;
+//  Collider2D col;
+//    SpriteRenderer sr;
 
-    void Start()
-    {
-         col = GetComponent<Collider2D>();
-        sr = GetComponent<SpriteRenderer>();
-    }
-    public override void Left(Player player)
-    {
-        StartCoroutine(Timer());
-    }
+//    void Start()
+//    {
+//         col = GetComponent<Collider2D>();
+//        sr = GetComponent<SpriteRenderer>();
+//    }
+//    public override void Left(Player player)
+//    {
+//        StartCoroutine(Timer());
+//    }
    
-    void ChangeState(bool state)
-    {
-        col.enabled = state;
-        sr.enabled = state;
-    }
+//    void ChangeState(bool state)
+//    {
+//        col.enabled = state;
+//        sr.enabled = state;
+//    }
 
-    IEnumerator Timer()
-    {
-        ChangeState(false);
+//    IEnumerator Timer()
+//    {
+//        ChangeState(false);
 
-        yield return new WaitForSeconds(TimeToRespawn);
+//        yield return new WaitForSeconds(TimeToRespawn);
 
-        ChangeState(true);
-    }
-}
+//        ChangeState(true);
+//    }
+//}

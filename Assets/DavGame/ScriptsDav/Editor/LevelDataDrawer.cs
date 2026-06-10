@@ -9,6 +9,7 @@ public class LevelDataDrawer : Editor
 
     private static LevelData.WallType selectedWallType;
     private static int selectedWallRotation;
+    private static int selectedWallHeight;
 
     private GUIStyle cellStyle;
 
@@ -73,8 +74,15 @@ public class LevelDataDrawer : Editor
             EditorGUILayout.IntPopup(
                 "Rotation",
                 selectedWallRotation,
-                new string[] { "0", "90" },
-                new int[] { 0, 90 });
+                new string[] { "0", "180" },
+                new int[] { 0, 180 });
+
+        selectedWallHeight =
+            EditorGUILayout.IntPopup(
+                "Wall Height",
+                selectedWallHeight,
+                new string[] { "0", "1", "2", "3", "4", "5", "6", "7" },
+                new int[] { 0, 1, 2, 3, 4, 5, 6, 7 });
     }
 
     private void DrawBoard()
@@ -97,6 +105,7 @@ public class LevelDataDrawer : Editor
 
                     cell.type = selectedWallType;
                     cell.rotation = selectedWallRotation;
+                    cell.wallHeight = selectedWallHeight;
 
                     Data.CalculateSides();
 

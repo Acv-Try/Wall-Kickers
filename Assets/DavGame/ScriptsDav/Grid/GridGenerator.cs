@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,7 +23,7 @@ public partial class GridGenerator : MonoBehaviour
     public static GridGenerator Instance => instance;
 
     [Header("Tilemaps")]
-    [SerializeField] private Tilemap walls;
+    [SerializeField] public Tilemap walls;
 
     [Header("Rule Tiles")]
     [SerializeField] private RuleTile NormalWallRuleTile;
@@ -30,6 +31,8 @@ public partial class GridGenerator : MonoBehaviour
     [Header("Lists")]
     [SerializeField] private List<LevelData> levelsDatas;
     [SerializeField] private List<Level> levels = new();
+
+    private Dictionary<Vector3Int, Wall> wallsScriptsPair = new();
 
     private Vector3Int origin;
     private LevelData.Side lastLevelSide = LevelData.Side.Left;
@@ -69,14 +72,21 @@ public partial class GridGenerator : MonoBehaviour
                 Vector3Int pos = new Vector3Int(j, nextLevel.rows - 1 - i, 0);
                 RuleTile ruleTile = GetRuleTileFromWallType(nextLevel.board[i].column[j].type);
 
-                level.CellObjects[i, j] = new CellObject(pos + origin, nextLevel.board[i].column[j].type);
+                var cell = new CellObject(pos + origin, nextLevel.board[i].column[j].type);
+                level.CellObjects[i, j] = cell;
 
-                if (ruleTile != null)
-                {
-                    walls.SetTile(pos + origin, ruleTile);
-                }
+                Vector3Int cellPos = pos + origin;
+
+                walls.SetTile(cellPos, ruleTile);
+
+                wallsScriptsPair[cellPos] = new DefaultWall();
+
                 lastCellRow = pos;
             }
+        }
+        foreach (var cell in wallsScriptsPair.Keys)
+        {
+            Debug.Log(cell + " " + wallsScriptsPair[cell]);
         }
         lastLevelSide = nextLevel.endSide;
         Debug.Log($"Generated level with start side: {nextLevel.startSide} and end side: {nextLevel.endSide}");
@@ -190,5 +200,12 @@ public partial class GridGenerator : MonoBehaviour
         }
     }
 
-   
+    public Wall GetWallScriptObjectFromWorldPosition(Vector3 worldPosition)
+    {
+        Vector3Int cell = walls.WorldToCell(worldPosition);
+
+        return wallsScriptsPair.TryGetValue(cell, out var wall)
+            ? wall
+            : null;
+    }
 }
