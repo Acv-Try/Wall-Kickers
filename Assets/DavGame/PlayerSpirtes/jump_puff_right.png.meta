@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 93e68106b12a7bc4d96b0973cebd7334
+guid: 189118dc72633574e861745c7139f394
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8084007504523068935
+    second: jump_puff_right_0
+  - first:
+      213: 4923819104021380642
+    second: jump_puff_right_1
+  - first:
+      213: 2650301694057182485
+    second: jump_puff_right_2
+  - first:
+      213: -7739037611626601976
+    second: jump_puff_right_3
+  - first:
+      213: 6934089852571623519
+    second: jump_puff_right_4
+  - first:
+      213: -8968669618515096515
+    second: jump_puff_right_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,8 +91,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -84,7 +102,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 12
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -98,9 +116,9 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -110,165 +128,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wood_regular_nodrip_0
+      name: jump_puff_right_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: 2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: 2.5}
-        - {x: 5, y: 4.5}
-        - {x: 3, y: 4.5}
-        - {x: -3, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: 2.5}
-        - {x: -5, y: -4.5}
-        - {x: 5, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52ba3272e018eaf4da73ac657915fe80
-      internalID: -238433375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 10
-        height: 32
+        width: 23
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 20b1c93f0026a214aa16e2a56d00bf61
-      internalID: 1323251022
+      spriteID: 70680b49ef9203070800000000000000
+      internalID: 8084007504523068935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_2
+      name: jump_puff_right_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 23
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: -4.5}
-        - {x: 5, y: -2.5}
-        - {x: 5, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: -2.5}
-        - {x: -5, y: -4.5}
-        - {x: -3, y: -4.5}
-        - {x: 3, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d61fcef0642b0f438d4224a4664848b
-      internalID: -352516770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_3
-      rect:
-        serializedVersion: 2
-        x: 40
+        x: 23
         y: 0
-        width: 10
-        height: 32
+        width: 23
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 5c03e8781d84f5e4f8783fd215db409d
-      internalID: 523692482
+      spriteID: 22ef979336be45440800000000000000
+      internalID: 4923819104021380642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_4
+      name: jump_puff_right_2
       rect:
         serializedVersion: 2
-        x: 50
+        x: 46
         y: 0
-        width: 10
-        height: 32
+        width: 23
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 8d2d7c7fa801982429cb63f162bdc87d
-      internalID: 1081255774
+      spriteID: 515f4ed4953c7c420800000000000000
+      internalID: 2650301694057182485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_5
+      name: jump_puff_right_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 69
         y: 0
-        width: 18
-        height: 32
-      alignment: 9
-      pivot: {x: 0.2777778, y: 0.5}
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 1, y: 16}
-        - {x: -9, y: 16}
-        - {x: -9, y: -16}
-        - {x: 1, y: -16}
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802eb9f9b4a699490800000000000000
+      internalID: -7739037611626601976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_puff_right_4
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 0
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f502c278bf5da3060800000000000000
+      internalID: 6934089852571623519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_puff_right_5
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3cc1900082e88380800000000000000
+      internalID: -8968669618515096515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jump_puff_right_6
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c92a3a168435a6459fbabccc3b8934f
-      internalID: 1201499338
+      spriteID: e15e9068c07c1174c8dadeee3daca775
+      internalID: 1380293093
       vertices: []
       indices: 
       edges: []
@@ -277,7 +285,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6929268243828ac49bde7880e6244d96
+    spriteID: 30267e54397b6f14785c569534b74f54
     internalID: 0
     vertices: []
     indices: 
@@ -287,18 +295,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":10.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":23.0,"y":26.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Wood_regular_nodrip_0: -238433375
-      Wood_regular_nodrip_1: 1323251022
-      Wood_regular_nodrip_2: -352516770
-      Wood_regular_nodrip_3: 523692482
-      Wood_regular_nodrip_4: 1081255774
-      Wood_regular_nodrip_5: 1201499338
-      Wood_regular_nodrip_6: -1413785843
-      Wood_regular_nodrip_7: -2084797030
-      Wood_regular_nodrip_8: 432869115
-      Wood_regular_nodrip_9: 2141056032
+      jump_puff_right_0: 8084007504523068935
+      jump_puff_right_1: 4923819104021380642
+      jump_puff_right_2: 2650301694057182485
+      jump_puff_right_3: -7739037611626601976
+      jump_puff_right_4: 6934089852571623519
+      jump_puff_right_5: -8968669618515096515
+      jump_puff_right_6: 1380293093
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 93e68106b12a7bc4d96b0973cebd7334
+guid: 9f9b4be3023667744a1b0db91e9a09a0
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4248794660159317440
+    second: mokey_idle_right_0
+  - first:
+      213: 8834005719823024757
+    second: mokey_idle_right_1
+  - first:
+      213: -30691124758807708
+    second: mokey_idle_right_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,8 +82,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -84,7 +93,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 12
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -98,9 +107,9 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -110,165 +119,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wood_regular_nodrip_0
+      name: mokey_idle_right_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: 2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: 2.5}
-        - {x: 5, y: 4.5}
-        - {x: 3, y: 4.5}
-        - {x: -3, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: 2.5}
-        - {x: -5, y: -4.5}
-        - {x: 5, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52ba3272e018eaf4da73ac657915fe80
-      internalID: -238433375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 10
-        height: 32
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 20b1c93f0026a214aa16e2a56d00bf61
-      internalID: 1323251022
+      spriteID: 0c56f5a7b30c6fa30800000000000000
+      internalID: 4248794660159317440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_2
+      name: mokey_idle_right_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 23
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: -4.5}
-        - {x: 5, y: -2.5}
-        - {x: 5, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: -2.5}
-        - {x: -5, y: -4.5}
-        - {x: -3, y: -4.5}
-        - {x: 3, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d61fcef0642b0f438d4224a4664848b
-      internalID: -352516770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_3
-      rect:
-        serializedVersion: 2
-        x: 40
+        x: 27
         y: 0
-        width: 10
-        height: 32
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 5c03e8781d84f5e4f8783fd215db409d
-      internalID: 523692482
+      spriteID: 57202d9c561b89a70800000000000000
+      internalID: 8834005719823024757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_4
+      name: mokey_idle_right_2
       rect:
         serializedVersion: 2
-        x: 50
+        x: 54
         y: 0
-        width: 10
-        height: 32
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
-      tessellationDetail: 0
+      physicsShape: []
+      tessellationDetail: -1
       bones: []
-      spriteID: 8d2d7c7fa801982429cb63f162bdc87d
-      internalID: 1081255774
+      spriteID: 46b7efaa596f29ff0800000000000000
+      internalID: -30691124758807708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_5
+      name: mokey_idle_right_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 81
         y: 0
-        width: 18
-        height: 32
-      alignment: 9
-      pivot: {x: 0.2777778, y: 0.5}
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 1, y: 16}
-        - {x: -9, y: 16}
-        - {x: -9, y: -16}
-        - {x: 1, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c92a3a168435a6459fbabccc3b8934f
-      internalID: 1201499338
+      spriteID: 41249e226fb64df40b6b84ee5d5ee533
+      internalID: 686295911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mokey_idle_right_4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf9ecdf71e4233428d8f9465f36ad7d
+      internalID: -1812714062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mokey_idle_right_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8ec9e5d0b885b4b883dbdc5653466a
+      internalID: -500292980
       vertices: []
       indices: 
       edges: []
@@ -277,7 +254,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6929268243828ac49bde7880e6244d96
+    spriteID: 1c2f3b287d1f9404b9d10d1bd4d0d0f5
     internalID: 0
     vertices: []
     indices: 
@@ -287,18 +264,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":10.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":27.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Wood_regular_nodrip_0: -238433375
-      Wood_regular_nodrip_1: 1323251022
-      Wood_regular_nodrip_2: -352516770
-      Wood_regular_nodrip_3: 523692482
-      Wood_regular_nodrip_4: 1081255774
-      Wood_regular_nodrip_5: 1201499338
-      Wood_regular_nodrip_6: -1413785843
-      Wood_regular_nodrip_7: -2084797030
-      Wood_regular_nodrip_8: 432869115
-      Wood_regular_nodrip_9: 2141056032
+      mokey_idle_right_0: 4248794660159317440
+      mokey_idle_right_1: 8834005719823024757
+      mokey_idle_right_2: -30691124758807708
+      mokey_idle_right_3: 686295911
+      mokey_idle_right_4: -1812714062
+      mokey_idle_right_5: -500292980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

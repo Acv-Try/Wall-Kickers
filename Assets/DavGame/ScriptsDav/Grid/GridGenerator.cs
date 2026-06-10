@@ -85,12 +85,8 @@ public partial class GridGenerator : MonoBehaviour
                 lastCellRow = pos;
             }
         }
-        foreach (var cell in wallsScriptsPair.Keys)
-        {
-            Debug.Log(cell + " " + wallsScriptsPair[cell]);
-        }
         lastLevelSide = nextLevel.endSide;
-        Debug.Log($"Generated level with start side: {nextLevel.startSide} and end side: {nextLevel.endSide}");
+        //Debug.Log($"Generated level with start side: {nextLevel.startSide} and end side: {nextLevel.endSide}");
         origin += lastCellRow + Vector3Int.up;
         levels.Add(level);
         GenerateBackground(level);
