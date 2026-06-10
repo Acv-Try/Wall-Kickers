@@ -1,0 +1,72 @@
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    [SerializeField] private GameObject MainPanel;
+    [SerializeField] private GameObject PausePanel;
+    [SerializeField] private GameObject ShopPanel;
+    [SerializeField] private GameObject FirePanel;
+    [SerializeField] private GameObject SettingsPanel;
+    [SerializeField] private GameObject LosingPanel;
+
+    public void Start()
+    {
+        Init();
+        Debug.Log("sad");
+    }
+
+    private void Init()
+    {
+        HideAll();
+        MainPanel.SetActive(true);
+    }
+    private void HideAll()
+    {
+        MainPanel.SetActive(false);
+        PausePanel.SetActive(false);
+        ShopPanel.SetActive(false);
+        FirePanel.SetActive(false);
+        SettingsPanel.SetActive(false);
+        LosingPanel.SetActive(false);
+    }
+
+    public void OnClickPlayButtonAtShop()
+    {
+        ShopPanel.SetActive(false);
+        MainPanel.SetActive(true);
+    }
+
+    public void OnClickPlayButtonAtPouse()
+    {
+        PausePanel.SetActive(false);
+        MainPanel.SetActive(true);
+    }
+
+    public void OnClickCloseButton()
+    {
+        HideAll();
+        MainPanel.SetActive(true);
+    }
+
+    public void OnClickFireButton()
+    {
+        HideAll();
+        FirePanel.SetActive(true);
+    }
+    public void OnClickShopButton()
+    {
+        HideAll() ;
+        ShopPanel.SetActive(true); 
+    }
+    public void OnClickPauseButton()
+    {
+        HideAll();
+        PausePanel.SetActive(true);
+    }
+
+    public void OnClickSettingButton()
+    {
+        HideAll();
+        SettingsPanel.SetActive(true);
+    }
+}
