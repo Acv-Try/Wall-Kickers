@@ -6,22 +6,21 @@ public partial class GridGenerator
     [Header("Tilemaps")]
     [SerializeField] private Tilemap background;
     [SerializeField] private RuleTile GrassRuleTile;
-    int columns;
-    int rows;
 
-    //private void GenerateBackground(Level level)
-    //{
-    //    columns = level.CellObjects.GetLength(1) - 1;
-    //    rows = level.CellObjects.GetLength(0) - 1;
-    //    for (int i = rows; i >= 0; i--)
-    //    {
-    //        for (int j = columns; j >= 0; j--)
-    //        {
-    //            if (level.CellObjects[i, j].CellType != LevelData.WallType.E)
-    //            {
-    //               background.SetTile(level.CellObjects[i, j].CellPosition, GrassRuleTile);
-    //            }
-    //        }
-    //    }
-    //}
+    private void GenerateBackground(LevelData level)
+    {
+        for(int i = 0; i < level.rows; i++)
+        {
+            for (int j = 0; j < level.columns; j++)
+            {
+                if (level.board[i].column[j].type == LevelData.WallType.G)
+                {
+                    var pos = new Vector3Int(j, level.rows - 1 - i, 0);
+                    background.SetTile(origin + pos, GrassRuleTile);
+                }
+            }
+        }
+        origin += new Vector3Int(0, level.rows, 0);
+        Debug.Log(origin);
+    }
 }

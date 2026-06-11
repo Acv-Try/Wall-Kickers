@@ -35,10 +35,12 @@ public partial class GridGenerator : MonoBehaviour
 
     private Dictionary<Vector3Int, Wall> wallsScriptsPair;
 
-    //private Vector3Int origin;
+    private Vector3Int origin;
     //private LevelData.Side lastLevelSide = LevelData.Side.Left;
     private Vector3Int lastLevelPos;
     [SerializeField] private GameObject grid;
+    [SerializeField] private int heigthOffset;
+    private Vector3 heigthCount;
     private void Awake()
     {
         wallsScriptsPair =  new();
@@ -57,14 +59,14 @@ public partial class GridGenerator : MonoBehaviour
     {
         GenerateNextLevel();
         GenerateNextLevel();
-
     }
 
     public void GenerateNextLevel()
     {
         var level = levels[0];
-        Instantiate(level, lastLevelPos, Quaternion.identity, grid.transform);
-        lastLevelPos = lastLevelPos + new Vector3Int(0, level.LastTileY, 0);
+        Instantiate(level, heigthCount, Quaternion.identity, grid.transform);
+        heigthCount += new Vector3(0, level.levelData.rows, 0);
+        GenerateBackground(level.levelData);
     }
 
     //private void GenerateNextLevel(int num)
