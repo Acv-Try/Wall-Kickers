@@ -139,10 +139,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        ContactPoint2D hitPoint = collision.contacts[0];
         if (collision.gameObject.CompareTag("Wall") && !OnWall)
         {
-            if (hitPoint.normal.y < 0) return; // Checks if the player landed on the wall from the  bottom, if so it does nothing
+            if (collision.transform.position.y < 0) return; // Checks if the player landed on the wall from the  bottom, if so it does nothing
 
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
@@ -152,13 +151,13 @@ public class Player : MonoBehaviour
 
             //Debug.Log(CurrentWall);
 
-            //CurrentWall = collision.gameObject.GetComponent<Wall>();
+            CurrentWall = collision.gameObject.GetComponent<Wall>();
 
-            CurrentWall = GridGenerator.Instance.GetWallScriptObjectFromWorldPosition(hitPoint.point);
+            //CurrentWall = GridGenerator.Instance.GetWallScriptObjectFromWorldPosition(hitPoint.point);
 
             //Debug.Log(collision.gameObject.name);
 
-            float Xdiference = transform.position.x - hitPoint.point.x;
+            float Xdiference = transform.position.x - collision.transform.position.x;
             jumpSide = (sbyte)(Xdiference > 0 ? 1 : -1);
             transform.localScale = new Vector3(Xdiference > 0 ? 1 : -1, transform.localScale.y, transform.localScale.z);
 
@@ -166,7 +165,7 @@ public class Player : MonoBehaviour
 
             CurrentWall.Touched(this);
 
-            if (hitPoint.normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
+            if (collision.transform.position.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
             {
                 CheckJumpSide();
                 jumpSide *= -1;
@@ -181,13 +180,12 @@ public class Player : MonoBehaviour
                     transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
                 }
 
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(hitPoint.point.x + (jumpSide * transform.lossyScale.x * 0.5f), hitPoint.point.y * transform.lossyScale.y)));
-                Debug.DrawLine(hitPoint.point, hitPoint.normal * 10f, Color.red, 10f);
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), collision.transform.position.y * 0.45f * transform.lossyScale.y)));
             }
         }
         else if (collision.gameObject.CompareTag("Floor") && (!OnWall || (OnWall && CurrentWall.TypeOfWall == WallType.Lift)))
         {
-            if (transform.position.y - hitPoint.point.y > 0) // Checks if player landed on floor from the top
+            if (transform.position.y - collision.transform.position.y > 0) // Checks if player landed on floor from the top
             {
                 OnFloor = true;
 
@@ -195,10 +193,10 @@ public class Player : MonoBehaviour
                 ResetJump();
             }
 
-            if (hitPoint.point.y == 0) // Checks if player landed on floor from the side, if so it moves the player up a bit 
+            if (collision.transform.position.y == 0) // Checks if player landed on floor from the side, if so it moves the player up a bit 
             {
                 CheckJumpSide();
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(transform.position.x + 0.3f * jumpSide, hitPoint.point.y + 0.3f)));
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(transform.position.x + 0.3f * jumpSide, collision.transform.position.y + 0.3f)));
             }
         }
     }

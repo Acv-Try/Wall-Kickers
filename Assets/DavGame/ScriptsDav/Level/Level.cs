@@ -1,17 +1,16 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
-public class Level 
+public class Level : MonoBehaviour 
 {
-    private CellObject[,] cellObjects;
-    private Vector3Int origin;
+    [SerializeField] private Tilemap tilemap;
+    public int LastTileY;
 
-    public Vector3Int Origin { get => origin; private set => origin = value; }
-    public CellObject[,] CellObjects => cellObjects;
-
-    public Level(int rows, int columns, Vector3Int origin)
+    private void Awake()
     {
-        cellObjects = new CellObject[rows, columns];
-        this.origin = origin;
+        tilemap = GetComponent<Tilemap>();
+        tilemap.CompressBounds();
+        LastTileY = tilemap.cellBounds.yMax;
     }
 }

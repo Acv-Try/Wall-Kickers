@@ -12,9 +12,9 @@ public class GridEditor : Editor
 
         GridGenerator gridGenerator = (GridGenerator)target;
 
-        if (GUILayout.Button("Remove Level"))
-        {
-            gridGenerator.RemoveLevel();
-        }
+        //if (GUILayout.Button("Remove Level"))
+        //{
+        //    gridGenerator.RemoveLevel();
+        //}
     }
 }
