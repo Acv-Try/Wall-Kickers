@@ -21,6 +21,6 @@ public partial class GridGenerator
             }
         }
         origin += new Vector3Int(0, level.rows, 0);
-        Debug.Log(origin);
+        //Debug.Log(origin);
     }
 }
