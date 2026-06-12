@@ -1,49 +1,22 @@
 fileFormatVersion: 2
-guid: b772b938adf0c9e47bd45411b9eeb4ba
+guid: eb363ccbcf07e8f43a48b60d7db7b22f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6368823425898100989
-    second: rubber_anim_mejtexner@_0
+      213: 2966952238750376935
+    second: different_wood_0
   - first:
-      213: 9055326475845331307
-    second: rubber_anim_mejtexner@_1
+      213: -4378656044190774207
+    second: different_wood_1
   - first:
-      213: 7611371321296765955
-    second: rubber_anim_mejtexner@_2
+      213: -1864500789558145486
+    second: different_wood_2
   - first:
-      213: 6233676525286933392
-    second: rubber_anim_mejtexner@_3
+      213: -3739968028202391281
+    second: different_wood_3
   - first:
-      213: -4223890334720699968
-    second: rubber_anim_mejtexner@_4
-  - first:
-      213: -2431322265118047044
-    second: rubber_anim_mejtexner@_5
-  - first:
-      213: -4343231978649909003
-    second: rubber_anim_mejtexner@_6
-  - first:
-      213: 2391430079450382006
-    second: rubber_anim_mejtexner@_7
-  - first:
-      213: -5570920555485129459
-    second: rubber_anim_mejtexner@_8
-  - first:
-      213: -4644338384553448392
-    second: rubber_anim_mejtexner@_9
-  - first:
-      213: -3799767805499695258
-    second: rubber_anim_mejtexner@_10
-  - first:
-      213: 5919994170804789384
-    second: rubber_anim_mejtexner@_11
-  - first:
-      213: -8224220392800056077
-    second: rubber_anim_mejtexner@_12
-  - first:
-      213: 2427584622725570990
-    second: rubber_anim_mejtexner@_13
+      213: 1605095012031270767
+    second: different_wood_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -87,7 +60,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -152,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_0
+      name: different_wood_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 307482e66d46d97a0800000000000000
-      internalID: -6368823425898100989
+      spriteID: 7e32440775bbc2920800000000000000
+      internalID: 2966952238750376935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_1
+      name: different_wood_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 33
         y: 0
         width: 18
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6963fdd37bfaad70800000000000000
-      internalID: 9055326475845331307
+      spriteID: 14c4464e683eb33c0800000000000000
+      internalID: -4378656044190774207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_2
+      name: different_wood_2
       rect:
         serializedVersion: 2
-        x: 44
+        x: 85
         y: 0
-        width: 22
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3044d73d3e501a960800000000000000
-      internalID: 7611371321296765955
+      spriteID: 23e83f21966ff16e0800000000000000
+      internalID: -1864500789558145486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_3
+      name: different_wood_3
       rect:
         serializedVersion: 2
-        x: 70
+        x: 119
         y: 0
-        width: 14
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -233,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0934b66b5c7728650800000000000000
-      internalID: 6233676525286933392
+      spriteID: f09adafb4e6f81cc0800000000000000
+      internalID: -3739968028202391281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_4
+      name: different_wood_4
       rect:
         serializedVersion: 2
-        x: 94
+        x: 153
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,206 +228,250 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c154c4ae1ab165c0800000000000000
-      internalID: -4223890334720699968
+      spriteID: f6f00e6c861764610800000000000000
+      internalID: 1605095012031270767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_5
+      name: different_wood_5
       rect:
         serializedVersion: 2
-        x: 116
+        x: 17
         y: 0
-        width: 10
-        height: 16
+        width: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cb404251845324ed0800000000000000
-      internalID: -2431322265118047044
+      spriteID: f498cb9c18846894d8e8d10c8e4b5085
+      internalID: 636628675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_6
+      name: different_wood_6
       rect:
         serializedVersion: 2
-        x: 138
+        x: 51
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5f8847fd68db9b3c0800000000000000
-      internalID: -4343231978649909003
+      spriteID: 7b9754fa18db28045a95a59b35b33abf
+      internalID: -1906527512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_7
+      name: different_wood_7
       rect:
         serializedVersion: 2
-        x: 159
+        x: 68
         y: 0
-        width: 12
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6bef2d6acf0103120800000000000000
-      internalID: 2391430079450382006
+      spriteID: fb348760946ac284ca569e0e384cb4b5
+      internalID: 281085061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_8
+      name: different_wood_8
       rect:
         serializedVersion: 2
-        x: 182
+        x: 102
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d051362554d10b2b0800000000000000
-      internalID: -5570920555485129459
+      spriteID: 583c2817d4f13634abb1f98202ca578a
+      internalID: -538922546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_9
+      name: different_wood_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a9ce408b9d91b74cb1a63e8594ff4b8
+      internalID: -141421914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: different_wood_10
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35af496fb9250948bc2d0dabcbe0b67
+      internalID: -1133709866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: different_wood_11
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 0
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3daea373b0261e418243712718cd49a
+      internalID: 701808666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: different_wood_12
       rect:
         serializedVersion: 2
         x: 204
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 83ceaf398defb8fb0800000000000000
-      internalID: -4644338384553448392
+      spriteID: d95c41bc06ece5c41a0b97f0c111b02a
+      internalID: -359615992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_10
+      name: different_wood_13
       rect:
         serializedVersion: 2
-        x: 226
+        x: 221
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 66f993c1053844bc0800000000000000
-      internalID: -3799767805499695258
+      spriteID: 09249796b272e4a41859ad4f8f2232f7
+      internalID: 1104699358
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_11
+      name: different_wood_14
       rect:
         serializedVersion: 2
-        x: 247
+        x: 238
         y: 0
-        width: 12
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 880e337355b082250800000000000000
-      internalID: 5919994170804789384
+      spriteID: 13b0a0e9e277ba1478cf052a0caac799
+      internalID: 2039391792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rubber_anim_mejtexner@_12
+      name: different_wood_15
       rect:
         serializedVersion: 2
-        x: 270
+        x: 255
         y: 0
-        width: 10
-        height: 16
+        width: 17
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3fc01a46023bddd80800000000000000
-      internalID: -8224220392800056077
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rubber_anim_mejtexner@_13
-      rect:
-        serializedVersion: 2
-        x: 292
-        y: 0
-        width: 10
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ea122cb3a5380b120800000000000000
-      internalID: 2427584622725570990
+      spriteID: 74362f513297c8746806b4573c689260
+      internalID: -1412498171
       vertices: []
       indices: 
       edges: []
@@ -463,7 +480,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7ba728cf00f8d5b499f7940ed8e511db
+    spriteID: 68ba743bb183f9249ae28222c77bbc26
     internalID: 0
     vertices: []
     indices: 
@@ -473,20 +490,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rubber_anim_mejtexner@_0: -6368823425898100989
-      rubber_anim_mejtexner@_1: 9055326475845331307
-      rubber_anim_mejtexner@_10: -3799767805499695258
-      rubber_anim_mejtexner@_11: 5919994170804789384
-      rubber_anim_mejtexner@_12: -8224220392800056077
-      rubber_anim_mejtexner@_13: 2427584622725570990
-      rubber_anim_mejtexner@_2: 7611371321296765955
-      rubber_anim_mejtexner@_3: 6233676525286933392
-      rubber_anim_mejtexner@_4: -4223890334720699968
-      rubber_anim_mejtexner@_5: -2431322265118047044
-      rubber_anim_mejtexner@_6: -4343231978649909003
-      rubber_anim_mejtexner@_7: 2391430079450382006
-      rubber_anim_mejtexner@_8: -5570920555485129459
-      rubber_anim_mejtexner@_9: -4644338384553448392
+      different_wood_0: 2966952238750376935
+      different_wood_1: -4378656044190774207
+      different_wood_10: -1133709866
+      different_wood_11: 701808666
+      different_wood_12: -359615992
+      different_wood_13: 1104699358
+      different_wood_14: 2039391792
+      different_wood_15: -1412498171
+      different_wood_2: -1864500789558145486
+      different_wood_3: -3739968028202391281
+      different_wood_4: 1605095012031270767
+      different_wood_5: 636628675
+      different_wood_6: -1906527512
+      different_wood_7: 281085061
+      different_wood_8: -538922546
+      different_wood_9: -141421914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

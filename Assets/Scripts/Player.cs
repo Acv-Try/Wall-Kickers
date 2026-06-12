@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
         {
             if (CanJump)
             {
-                playerAnimator.SetBool("isJump", true);
                 JumpEffect();
                 Jump();
             }
@@ -100,6 +99,7 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
+        playerAnimator.SetBool("isJump", true);
         StartJump(jumpSide);
         CanJump = false;
         if (CurrentWall.TypeOfWall == WallType.Moving)
@@ -138,71 +138,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(CoolDownTimeBetweenJumps);
         if (!OnWall) CanDoubleJump = true;
     }
-
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Wall") && !OnWall)
-    //    {
-    //        if (collision.contacts[0].normal.y < 0) return; // Checks if the player landed on the wall from the  bottom, if so it does nothing
-
-    //        rb.gravityScale = 0f;
-    //        rb.linearVelocity = Vector2.zero;
-    //        OnWall = true;
-    //        playerAnimator.SetBool("isJump", false);
-    //        OnFloor = false;
-
-    //        //Debug.Log(CurrentWall);
-
-    //        CurrentWall = collision.gameObject.GetComponent<Wall>();
-
-    //        //CurrentWall = GridGenerator.Instance.GetWallScriptObjectFromWorldPosition(hitPoint.point);
-
-    //        //Debug.Log(collision.gameObject.name);
-
-    //        float Xdiference = transform.position.x - collision.transform.position.x;
-    //        jumpSide = (sbyte)(Xdiference > 0 ? 1 : -1);
-    //        transform.localScale = new Vector3(Xdiference > 0 ? 1 : -1, transform.localScale.y, transform.localScale.z);
-
-    //        ResetJump();
-
-    //        CurrentWall.Touched(this);
-
-    //        if (collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
-    //        {
-    //            CheckJumpSide();
-    //            jumpSide *= -1;
-    //            if (CurrentWall.OnlyLeftWall)
-    //            {
-    //                jumpSide = -1;
-    //                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-    //            }
-    //            if (CurrentWall.OnlyRightWall)
-    //            {
-    //                jumpSide = 1;
-    //                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-    //            }
-
-    //            StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), collision.transform.position.y + collision.transform.lossyScale.y * 0.45f)));
-    //        }
-    //    }
-    //    else if (collision.gameObject.CompareTag("Floor") && (!OnWall || (OnWall && CurrentWall.TypeOfWall == WallType.Lift)))
-    //    {
-    //        if (transform.position.y - collision.transform.position.y > 0) // Checks if player landed on floor from the top
-    //        {
-    //            OnFloor = true;
-
-    //            CheckJumpSide();
-    //            ResetJump();
-    //        }
-
-    //        if (collision.transform.position.y == 0) // Checks if player landed on floor from the side, if so it moves the player up a bit 
-    //        {
-    //            CheckJumpSide();
-    //            StartCoroutine(BringPlayerOnPlatform(new Vector2(transform.position.x + 0.3f * jumpSide, collision.transform.position.y + 0.3f)));
-    //        }
-    //    }
-    //}
-
 
     void OnCollisionEnter2D(Collision2D collision)
     {
