@@ -232,8 +232,6 @@ public class Player : MonoBehaviour
         playerAnimator.SetBool("isBackFlip", false);
     }
 
-    [SerializeField] LayerMask WallLayer;
-
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Wall") && OnWall)
