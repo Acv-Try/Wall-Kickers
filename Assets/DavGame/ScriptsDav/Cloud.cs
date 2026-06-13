@@ -27,7 +27,7 @@ public class Cloud : MonoBehaviour
         {
             transform.localPosition = new Vector3(rightEdge, Random.Range(downEdge, upEdge), transform.localPosition.z);
         }
-        Debug.Log(downEdge + " " + upEdge + " " + leftEdge + " " + rightEdge);
+        //Debug.Log(downEdge + " " + upEdge + " " + leftEdge + " " + rightEdge);
 
     }
 }

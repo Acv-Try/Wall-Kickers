@@ -11,12 +11,6 @@ public class LevelData : ScriptableObject
         G,
     }
 
-    public enum Side
-    {
-        Left,
-        Right
-    }
-
     [System.Serializable]
     public class Cell
     {
@@ -54,9 +48,6 @@ public class LevelData : ScriptableObject
             }
         }
     }
-
-    public Side startSide;
-    public Side endSide;
 
     public int firstCellColumn = -1;
     public int lastCellColumn = -1;
@@ -111,19 +102,5 @@ public class LevelData : ScriptableObject
                 }
             }
         }
-
-        startSide =
-            firstCellColumn < columns / 2
-            ? LevelData.Side.Left
-            : LevelData.Side.Right;
-
-        endSide =
-            lastCellColumn < columns / 2
-            ? LevelData.Side.Left
-            : LevelData.Side.Right;
-
-        Debug.Log($"First cell column: {firstCellColumn}, Last cell column: {lastCellColumn}");
-        Debug.Log($"Start side: {startSide}, End side: {endSide}");
-
     }
 }

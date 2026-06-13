@@ -44,6 +44,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     private sbyte LinearVelocityX;
 
+    [SerializeField] private float stepHeight;
+    private float lastCheckpointY;
+    private int checkPoint;
+    private bool isCheckedPoints;
+
     float JumpTimeCounter;
     public Rigidbody2D rb;
 
@@ -52,6 +57,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        lastCheckpointY = transform.position.y;
     }
 
     void Update()
@@ -86,6 +92,13 @@ public class Player : MonoBehaviour
         if (OnWall) // applies friction to the player when on the wall so the player is slides down from the wall
         {
             rb.position += Vector2.down * CurrentWall.SpeedOfPlayerFriction * Time.deltaTime;
+        }
+        if (transform.position.y >= lastCheckpointY + stepHeight)
+        {
+            lastCheckpointY = transform.position.y;
+
+            checkPoint++;
+            GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, checkPoint);
         }
     }
 
@@ -152,7 +165,7 @@ public class Player : MonoBehaviour
             OnFloor = false;
 
             CurrentWall = collision.gameObject.GetComponent<Wall>();
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
 
             float Xdiference = transform.position.x - collision.transform.position.x;
             jumpSide = (sbyte)(Xdiference > 0 ? 1 : -1);
@@ -272,6 +285,6 @@ public class Player : MonoBehaviour
     public void JumpEffect()
     {
         puffEffect.SetTrigger("Jump");
-        Debug.Log("JumpEffect");
+        //Debug.Log("JumpEffect");
     }
 }
