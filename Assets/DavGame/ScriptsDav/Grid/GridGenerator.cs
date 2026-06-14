@@ -1,25 +1,12 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
-
-//public static class ListExtensions
-//{
-//    public static void Shuffle<T>(this List<T> list)
-//    {
-//        for (int i = list.Count - 1; i > 0; i--)
-//        {
-//            int j = Random.Range(0, i + 1);
-
-//            (list[i], list[j]) = (list[j], list[i]);
-//        }
-//    }
-//}
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+using TMPro;
 
 public partial class GridGenerator : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI score;
     private static GridGenerator instance;
     public static GridGenerator Instance => instance;
 
@@ -33,8 +20,10 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] private GameObject grid;
     [SerializeField] private int heigthOffset;
     private Vector3Int heigthCount;
+    private int lastLevelFailIndex;
 
     private Level currentLevel;
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -60,6 +49,7 @@ public partial class GridGenerator : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        score.text = "0";
         background.ClearAllTiles();
 
         for (int i = 0; i < levelsGenerated.Count; i++)
@@ -71,24 +61,28 @@ public partial class GridGenerator : MonoBehaviour
         heigthCount = Vector3Int.zero;
 
         GenerateNextLevel(0);
-        GenerateNextLevel(20);
+        if (lastLevelFailIndex == 0)
+            GenerateNextLevel(20);
+        else
+            GenerateLevelFromIndexOfLevel(lastLevelFailIndex);
+        GenerateNextLevel(30);
     }
 
     public void GenerateNextLevel(int checkPoint)
     {
-        int index = 0;
-        if (checkPoint < 10) index = Random.Range(0, 2);
-        else if (checkPoint >= 10 && checkPoint < 50) index = Random.Range(2, 6);
-        else if (checkPoint >= 50 && checkPoint < 90) index = Random.Range(6, 10);
-        else if (checkPoint >= 90 && checkPoint < 130) index = Random.Range(10, 14);
-        else if (checkPoint >= 130 && checkPoint < 170) index = Random.Range(14, 18);
-        else if (checkPoint >= 170 && checkPoint < 210) index = Random.Range(18, 22);
-        else index = Random.Range(3, 22);
+        var level = GetRandomLevelFromCheckPoint(checkPoint);
+        GenerateLevel(level);
 
-        index = Mathf.Clamp(index, 0, levels.Count - 1);
+    }
 
-        var level = levels[index];
+    public void GenerateLevelFromIndexOfLevel(int indexLevel)
+    {
+        var level = levels[indexLevel];
+        GenerateLevel(level);
+    }
 
+    public void GenerateLevel(Level level)
+    {
         (int minH, int maxH) edges = GenerateBackground(level);
 
         heigthCount = new Vector3Int(heigthCount.x, heigthCount.y - level.MinHeightY, 0);
@@ -101,20 +95,27 @@ public partial class GridGenerator : MonoBehaviour
 
         levelsGenerated.Add(levelInstance);
         heigthCount += new Vector3Int(0, levelInstance.MaxHeightY - levelInstance.MinHeightY, 0);
-
     }
 
-    private RuleTile GetRuleTileFromWallType(LevelData.WallType type)
+    public Level GetRandomLevelFromCheckPoint(int checkPoint)
     {
-        switch (type)
-        {
-            case LevelData.WallType.N:
-                return NormalWallRuleTile;
-            default:
-                return null;
-        }
+        int index = 0;
+        if (checkPoint < 10) index = UnityEngine.Random.Range(0, 2);
+        else if (checkPoint >= 10 && checkPoint < 50) index = UnityEngine.Random.Range(2, 6);
+        else if (checkPoint >= 50 && checkPoint < 90) index = UnityEngine.Random.Range(6, 10);
+        else if (checkPoint >= 90 && checkPoint < 130) index = UnityEngine.Random.Range(10, 14);
+        else if (checkPoint >= 130 && checkPoint < 170) index = UnityEngine.Random.Range(14, 18);
+        else if (checkPoint >= 170 && checkPoint < 210) index = UnityEngine.Random.Range(18, 22);
+        else index = UnityEngine.Random.Range(3, 22);
+
+        index = Mathf.Clamp(index, 0, levels.Count - 1);
+
+        var level = levels[index];
+        if (checkPoint < 100)
+            lastLevelFailIndex = index;
+        return level;
     }
-    
+
     public void RemoveLevel()
     {
         var level = levelsGenerated[0];
@@ -127,7 +128,7 @@ public partial class GridGenerator : MonoBehaviour
             level.MaxHeightY,
             1
         );
-        Debug.Log(bounds.x + " "  + bounds.y+ " " + bounds.z);
+        Debug.Log(bounds.x + " " + bounds.y + " " + bounds.z);
         foreach (var pos in bounds.allPositionsWithin)
         {
             background.SetTile(pos, null);
@@ -138,8 +139,13 @@ public partial class GridGenerator : MonoBehaviour
 
     public void CheckIfPlayerAboveOfMiddleLevel(Vector3 playerPosition, int currentCheckPoint)
     {
-        if (currentCheckPoint < 10) return;
-        currentLevel = levelsGenerated[1];
+        // UI 
+        AddScore(currentCheckPoint);
+
+        // Dont generate level on First Level
+        if (currentCheckPoint < 20) return;
+
+        currentLevel = levelsGenerated[2];
         Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
         float middleY = currentLevel.Origin.y +
                 (currentLevel.MaxHeightY - currentLevel.MinHeightY) / 2f;
@@ -150,5 +156,10 @@ public partial class GridGenerator : MonoBehaviour
             RemoveLevel();
             GenerateNextLevel(currentCheckPoint);
         }
+    }
+
+    public void AddScore(int checkPoint)
+    {
+        score.text = checkPoint.ToString();
     }
 }

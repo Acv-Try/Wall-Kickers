@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using System.Collections;
 
 public class Level : MonoBehaviour 
 {
@@ -18,5 +18,13 @@ public class Level : MonoBehaviour
         var check = checkPointsForCamera[0];
         checkPointsForCamera.RemoveAt(0);
         return check;
+    }
+
+    public IEnumerable<Vector3> GetNextCheckPointOfCamera()
+    {
+        foreach (var point in checkPointsForCamera)
+        {
+            yield return point.position;
+        }
     }
 }

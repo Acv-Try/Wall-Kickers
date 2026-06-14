@@ -1,8 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Player : MonoBehaviour
 {
 
@@ -31,6 +30,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator puffEffect;
+    [SerializeField] private ParticleSystem burstEffect;
 
     public sbyte jumpSide = 1; // a variable to determine the direction of the jump, 1 for right and -1 for left. It is set when the player collides with a wall.
     [SerializeField]
@@ -44,24 +44,35 @@ public class Player : MonoBehaviour
     [SerializeField]
     private sbyte LinearVelocityX;
 
+    public Transform spawnPos;
+    public Transform cameraInitPos;
     [SerializeField] private float stepHeight;
-    private float lastCheckpointY;
-    private int checkPoint;
-    private bool isCheckedPoints;
+
+    public Action<Vector3> OnCameraCheckPointChange;
+    public float lastCheckpointY { get; set; }
+    public int checkPoint;
+    public bool isCameraMoving;
+    
+    public bool isDead { get; set; }
 
     float JumpTimeCounter;
     public Rigidbody2D rb;
 
     public Wall CurrentWall;
-
+    private void Awake()
+    {
+        OnCameraCheckPointChange(cameraInitPos.position);
+    }
     void Start()
     {
+        transform.position = spawnPos.position;
         rb = GetComponent<Rigidbody2D>();
         lastCheckpointY = transform.position.y;
     }
 
     void Update()
     {
+        if (isCameraMoving) return;
         if (Input.GetMouseButtonDown(0))
         {
             if (CanJump)
@@ -74,7 +85,7 @@ public class Player : MonoBehaviour
             {
                 playerAnimator.SetBool("isBackFlip", true);
                 StartJump((sbyte)-jumpSide);
-                transform.localScale = new Vector3(transform.localScale.x*-1, transform.localScale.y, transform.localScale.z);
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 CanDoubleJump = false;
             }
         }
@@ -262,7 +273,10 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
+            Debug.Log("Dead");
+
             Die();
+            burstEffect.Play();
         }
     }
 
@@ -276,6 +290,12 @@ public class Player : MonoBehaviour
 
     public void Die() // Method to reload the scene when the player dies
     {
+        isDead = true;
+        if (checkPoint < 20)
+        {
+            OnCameraCheckPointChange?.Invoke(cameraInitPos.position);
+            return;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -283,5 +303,12 @@ public class Player : MonoBehaviour
     {
         puffEffect.SetTrigger("Jump");
         //Debug.Log("JumpEffect");
+    }
+
+    public void ResetPlayerStats()
+    {
+        checkPoint = 0;
+        lastCheckpointY = 0;
+        GridGenerator.Instance.AddScore(0);
     }
 }
