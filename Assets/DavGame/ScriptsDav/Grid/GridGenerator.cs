@@ -1,25 +1,11 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
-
-//public static class ListExtensions
-//{
-//    public static void Shuffle<T>(this List<T> list)
-//    {
-//        for (int i = list.Count - 1; i > 0; i--)
-//        {
-//            int j = Random.Range(0, i + 1);
-
-//            (list[i], list[j]) = (list[j], list[i]);
-//        }
-//    }
-//}
 
 public partial class GridGenerator : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI score;
     private static GridGenerator instance;
     public static GridGenerator Instance => instance;
 
@@ -60,6 +46,7 @@ public partial class GridGenerator : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        score.text = "0";
         background.ClearAllTiles();
 
         for (int i = 0; i < levelsGenerated.Count; i++)
@@ -104,17 +91,6 @@ public partial class GridGenerator : MonoBehaviour
 
     }
 
-    private RuleTile GetRuleTileFromWallType(LevelData.WallType type)
-    {
-        switch (type)
-        {
-            case LevelData.WallType.N:
-                return NormalWallRuleTile;
-            default:
-                return null;
-        }
-    }
-    
     public void RemoveLevel()
     {
         var level = levelsGenerated[0];
@@ -138,6 +114,7 @@ public partial class GridGenerator : MonoBehaviour
 
     public void CheckIfPlayerAboveOfMiddleLevel(Vector3 playerPosition, int currentCheckPoint)
     {
+        AddScore(currentCheckPoint);
         if (currentCheckPoint < 10) return;
         currentLevel = levelsGenerated[1];
         Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
@@ -150,5 +127,10 @@ public partial class GridGenerator : MonoBehaviour
             RemoveLevel();
             GenerateNextLevel(currentCheckPoint);
         }
+    }
+
+    public void AddScore(int checkPoint)
+    {
+        score.text = checkPoint.ToString();
     }
 }
