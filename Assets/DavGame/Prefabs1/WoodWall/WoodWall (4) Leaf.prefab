@@ -101,7 +101,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &204219654392036723
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 6885793766085514117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.109375, y: -0.000000059604645, z: 0}
+  m_LocalPosition: {x: -0.093, y: -0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

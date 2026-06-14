@@ -191,7 +191,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &810379652314787048
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &1205675241887322678
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +759,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &4093664776379162411
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +949,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &4300281673709817102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &4724235724911712528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &6076900254848667104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,6 +2142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9392ecf0c1ec8e345914aa711399a42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level
+  checkPointsForCamera: []
   levelData: {fileID: 11400000, guid: 21f18e7fe9d527c488f546356ce7c0be, type: 2}
 --- !u!1 &6384370945017564711
 GameObject:
@@ -3151,7 +3152,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &8235314208063299165
 GameObject:
   m_ObjectHideFlags: 0

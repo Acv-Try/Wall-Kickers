@@ -280,7 +280,7 @@ MonoBehaviour:
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
-  TypeOfWall: 0
+  TypeOfWall: 2
 --- !u!1 &6987013717993601377
 GameObject:
   m_ObjectHideFlags: 0
