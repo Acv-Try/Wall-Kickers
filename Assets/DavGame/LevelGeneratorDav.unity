@@ -743,7 +743,7 @@ Transform:
   m_GameObject: {fileID: 455052576}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6831901, y: -18.45671, z: 0}
+  m_LocalPosition: {x: -1.6831901, y: -18.579, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowing1
   Target: {fileID: 1329876967}
-  Xoffset: 5
+  Xoffset: 3
   YOffset: 3.2
   speed: 1.5
   deadLine: {fileID: 1946128935}
@@ -2548,7 +2548,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.4243953}
+  m_Offset: {x: 0.037197344, y: 0.4243953}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2558,7 +2558,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3124066, y: 0.15120941}
+  m_Size: {x: 0.18326868, y: 0.15120941}
   m_EdgeRadius: 0
 --- !u!1 &1441089779
 GameObject:
@@ -2862,7 +2862,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

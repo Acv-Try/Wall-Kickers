@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator puffEffect;
+    [SerializeField] private ParticleSystem burstEffect;
 
     public sbyte jumpSide = 1; // a variable to determine the direction of the jump, 1 for right and -1 for left. It is set when the player collides with a wall.
     [SerializeField]
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private sbyte LinearVelocityX;
 
-    [SerializeField] private Transform spawnPos;
+    public Transform spawnPos;
     public Transform cameraInitPos;
     [SerializeField] private float stepHeight;
 
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        transform.position = spawnPos.position;
         rb = GetComponent<Rigidbody2D>();
         lastCheckpointY = transform.position.y;
     }
@@ -275,7 +277,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Dead"))
         {
             Debug.Log("Dead");
+
             Die();
+            burstEffect.Play();
         }
     }
 
@@ -292,7 +296,6 @@ public class Player : MonoBehaviour
         isDead = true;
         if (checkPoint < 20)
         {
-            transform.position = spawnPos.position;
             OnCameraCheckPointChange?.Invoke(cameraInitPos.position);
             return;
         }

@@ -97,12 +97,12 @@ public class CameraFollowing1 : MonoBehaviour
         //Debug.Log("Wait");
         isCameraFreeze = true;
         deadLine.SetActive(false);
+        Target.isCameraMoving = true;
 
         yield return new WaitForSeconds(1f);
-
+        Target.transform.position = Target.spawnPos.position;
         isCameraFreeze = false;
         Target.isDead = false;
-        Target.isCameraMoving = true;
         Target.ResetPlayerStats();
     }
 }
