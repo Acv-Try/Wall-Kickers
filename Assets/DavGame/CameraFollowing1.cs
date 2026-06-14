@@ -25,11 +25,13 @@ public class CameraFollowing1 : MonoBehaviour
     private void Awake()
     {
         Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
+        Target.OnCamerShake += Shake;
     }
 
     private void OnDestroy()
     {
         Target.OnCameraCheckPointChange -= OnCameraCheckPointChange;
+        Target.OnCamerShake -= Shake;
     }
 
 
@@ -87,26 +89,30 @@ public class CameraFollowing1 : MonoBehaviour
     
     private IEnumerator CameraMoveToInitPos()
     {
-        //Debug.Log("Wait");
         isCameraFreeze = true;
         deadLine.SetActive(false);
         Target.isCameraMoving = true;
-        Shake();
+
         yield return new WaitForSeconds(1f);
+
         Target.transform.position = Target.spawnPos.position;
+        
         Target.playerSprite.enabled = true;
+        Target.rb.simulated = true;
+
         isCameraFreeze = false;
         Target.isDead = false;
+
         Target.ResetPlayerStats();
     }
 
     public void Shake()
     {
         transform.DOShakePosition(
-    duration,  // duration
-    strength,   // strength
-    vibrato,      // vibrato
-    randomness      // randomness
-);
+            duration,  // duration
+            strength,   // strength
+            vibrato,      // vibrato
+            randomness      // randomness
+        );
     }
 }

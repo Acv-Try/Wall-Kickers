@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSprite {get; set;}
 
     public Action<Vector3> OnCameraCheckPointChange;
+    public event Action OnCamerShake;
     public float lastCheckpointY { get; set; }
     public int checkPoint;
     public bool isCameraMoving;
@@ -276,7 +277,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Dead"))
         {
             playerSprite.enabled = false;
+            rb.simulated = false;
             burstEffect.Play();
+            OnCamerShake?.Invoke();
             Die();
         }
     }

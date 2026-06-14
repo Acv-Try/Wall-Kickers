@@ -5902,6 +5902,10 @@ MonoBehaviour:
   YOffset: 3.2
   speed: 1.5
   deadLine: {fileID: 1946128935}
+  duration: 0.4
+  strength: 0.5
+  vibrato: 50
+  randomness: 180
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
