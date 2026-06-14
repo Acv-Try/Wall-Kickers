@@ -156,7 +156,11 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall") && !OnWall)
         {
-            if (collision.contacts[0].normal.y < 0) return; // Checks if the player landed on the wall from the  bottom, if so it does nothing
+            if (collision.contacts[0].normal.y < 0) 
+            {
+            JumpTimeCounter = JumpTime; 
+            return;
+            } // Checks if the player landed on the wall from the  bottom, if so it does nothing
 
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
@@ -165,32 +169,25 @@ public class Player : MonoBehaviour
             OnFloor = false;
 
             CurrentWall = collision.gameObject.GetComponent<Wall>();
-            //Debug.Log(collision.gameObject.name);
-
             float Xdiference = transform.position.x - collision.transform.position.x;
             jumpSide = (sbyte)(Xdiference > 0 ? 1 : -1);
-            transform.localScale = new Vector3(Xdiference > 0 ? 1 : -1, transform.localScale.y, transform.localScale.z);
+
             ResetJump();
 
             CurrentWall.Touched(this);
 
-            if (collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
-            {
-                CheckJumpSide();
-                jumpSide *= -1;
+           if(collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
+           {
+               CheckJumpSide();
+               jumpSide *= -1;
 
-                if (CurrentWall.OnlyLeftWall)
-                {
-                    jumpSide = -1;
-                    transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-                }
-                if (CurrentWall.OnlyRightWall)
-                {
-                    jumpSide = 1;
-                    transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
-                }
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (transform.lossyScale.x * 0.5f), collision.contacts[0].point.y + 0.2f)));
-            }
+               if(CurrentWall.OnlyLeftWall ) jumpSide = -1;
+               if(CurrentWall.OnlyRightWall) jumpSide = 1;
+
+               StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), transform.position.y - 0.3f)));
+           }    
+
+            transform.localScale = new Vector3(jumpSide, transform.localScale.y, transform.localScale.z);
         }
         else if (collision.gameObject.CompareTag("Floor") && (!OnWall || (OnWall && CurrentWall.TypeOfWall == WallType.Lift)))
         {
@@ -216,12 +213,12 @@ public class Player : MonoBehaviour
         {
             jumpSide = 1;
 
-            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+            //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else
         {
             jumpSide = -1;
-            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+           // transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 
         }
     }
