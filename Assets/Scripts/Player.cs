@@ -1,8 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Player : MonoBehaviour
 {
 
@@ -44,16 +43,25 @@ public class Player : MonoBehaviour
     [SerializeField]
     private sbyte LinearVelocityX;
 
+    [SerializeField] private Transform spawnPos;
+    public Transform cameraInitPos;
     [SerializeField] private float stepHeight;
-    private float lastCheckpointY;
-    private int checkPoint;
-    private bool isCheckedPoints;
+
+    public Action<Vector3> OnCameraCheckPointChange;
+    public float lastCheckpointY { get; set; }
+    public int checkPoint;
+    public bool isCameraMoving;
+    
+    public bool isDead { get; set; }
 
     float JumpTimeCounter;
     public Rigidbody2D rb;
 
     public Wall CurrentWall;
-
+    private void Awake()
+    {
+        OnCameraCheckPointChange(cameraInitPos.position);
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -62,6 +70,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (isCameraMoving) return;
         if (Input.GetMouseButtonDown(0))
         {
             if (CanJump)
@@ -265,6 +274,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
+            Debug.Log("Dead");
             Die();
         }
     }
@@ -279,6 +289,13 @@ public class Player : MonoBehaviour
 
     public void Die() // Method to reload the scene when the player dies
     {
+        isDead = true;
+        if (checkPoint < 20)
+        {
+            transform.position = spawnPos.position;
+            OnCameraCheckPointChange?.Invoke(cameraInitPos.position);
+            return;
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -286,5 +303,12 @@ public class Player : MonoBehaviour
     {
         puffEffect.SetTrigger("Jump");
         //Debug.Log("JumpEffect");
+    }
+
+    public void ResetPlayerStats()
+    {
+        checkPoint = 0;
+        lastCheckpointY = 0;
+        GridGenerator.Instance.AddScore(0);
     }
 }
