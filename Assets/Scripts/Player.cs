@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public Transform spawnPos;
     public Transform cameraInitPos;
     [SerializeField] private float stepHeight;
+    public SpriteRenderer playerSprite {get; set;}
 
     public Action<Vector3> OnCameraCheckPointChange;
     public float lastCheckpointY { get; set; }
@@ -67,13 +68,14 @@ public class Player : MonoBehaviour
     {
         transform.position = spawnPos.position;
         rb = GetComponent<Rigidbody2D>();
+        playerSprite = GetComponent<SpriteRenderer>();
         lastCheckpointY = transform.position.y;
     }
 
     void Update()
     {
         if (isCameraMoving) return;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (CanJump)
             {
@@ -90,7 +92,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && !OnWall)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary && !OnWall)
         {
             VerticalJump();
         }
@@ -276,10 +278,9 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Dead"))
         {
-            Debug.Log("Dead");
-
-            Die();
+            playerSprite.enabled = false;
             burstEffect.Play();
+            Die();
         }
     }
 

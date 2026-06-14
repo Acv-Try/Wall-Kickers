@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-using Unity.Cinemachine;
+using DG.Tweening;
 
 public class CameraFollowing1 : MonoBehaviour
 {
@@ -12,6 +12,12 @@ public class CameraFollowing1 : MonoBehaviour
     [SerializeField] private float speed;
     private Vector3 center = Vector3.negativeInfinity;
     [SerializeField] private GameObject deadLine;
+
+    [SerializeField] private float duration;
+    [SerializeField] private float strength;
+    [SerializeField] private int vibrato;
+    [SerializeField] private float randomness;
+
 
     Vector3 NewPosition;
 
@@ -30,19 +36,6 @@ public class CameraFollowing1 : MonoBehaviour
     private void Start()
     {
         transform.position = new Vector3(center.x, center.y + YOffset, -10);
-        //Debug.DrawLine(
-        //    new Vector3(center.x + Xoffset, center.y - 100f, center.z),
-        //    new Vector3(center.x + Xoffset, center.y + 100f, center.z),
-        //    Color.red,
-        //    10f
-        //);
-
-        //Debug.DrawLine(
-        //    new Vector3(center.x - Xoffset, center.y - 100f, center.z),
-        //    new Vector3(center.x - Xoffset, center.y + 100f, center.z),
-        //    Color.red,
-        //    10f
-        //);
     }
 
     void Update()
@@ -98,11 +91,22 @@ public class CameraFollowing1 : MonoBehaviour
         isCameraFreeze = true;
         deadLine.SetActive(false);
         Target.isCameraMoving = true;
-
+        Shake();
         yield return new WaitForSeconds(1f);
         Target.transform.position = Target.spawnPos.position;
+        Target.playerSprite.enabled = true;
         isCameraFreeze = false;
         Target.isDead = false;
         Target.ResetPlayerStats();
+    }
+
+    public void Shake()
+    {
+        transform.DOShakePosition(
+    duration,  // duration
+    strength,   // strength
+    vibrato,      // vibrato
+    randomness      // randomness
+);
     }
 }
