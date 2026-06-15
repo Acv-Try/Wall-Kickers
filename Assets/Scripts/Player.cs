@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator puffEffect;
     [SerializeField] private ParticleSystem burstEffect;
+    [SerializeField] private Vector3 puffEffectOffset;
 
     public sbyte jumpSide = 1; // a variable to determine the direction of the jump, 1 for right and -1 for left. It is set when the player collides with a wall.
     [SerializeField]
@@ -305,7 +306,9 @@ public class Player : MonoBehaviour
 
     public void JumpEffect()
     {
-        puffEffect.SetTrigger("Jump");
+        var puffEffectInstance = Instantiate(puffEffect, transform.position + puffEffectOffset, Quaternion.identity);
+        puffEffectInstance.transform.localScale = new Vector3(1, jumpSide, 1);
+        puffEffectInstance.SetTrigger("Jump");
         //Debug.Log("JumpEffect");
     }
 

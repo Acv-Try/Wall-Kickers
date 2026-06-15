@@ -95,7 +95,8 @@ public class LevelDataDrawer : Editor
             for (int col = 0; col < Data.columns; col++)
             {
 
-                var cell = Data.board[row].column[col];
+
+                var cell = Data.board[Data.rows - 1 - row].column[col];
 
                 GUI.color = GetColor(cell.type);
 

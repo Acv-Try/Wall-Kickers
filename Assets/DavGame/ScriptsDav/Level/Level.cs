@@ -8,8 +8,8 @@ public class Level : MonoBehaviour
 
     public LevelData levelData;
     public Vector3Int Origin { get; set; }
-    public int MinHeightY {  get; set; }
-    public int MaxHeightY {  get; set; }
+    public Vector3Int MinHeight {  get; set; }
+    public Vector3Int MaxHeight {  get; set; }
     public int StartSide {  get; set; }
     public int EndSide {  get; set; }
 
