@@ -59,5 +59,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c671f16c89f28444cba4d5cd8e5bc1db, type: 3}
   - Type: 10
     Clips:
-    - {fileID: 8300000, guid: c671f16c89f28444cba4d5cd8e5bc1db, type: 3}
     - {fileID: 8300000, guid: 26f8e6dd423190a41a156f5bad3130a0, type: 3}
