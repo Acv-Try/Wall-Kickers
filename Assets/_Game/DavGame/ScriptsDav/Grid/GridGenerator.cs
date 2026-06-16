@@ -18,8 +18,8 @@ public partial class GridGenerator : MonoBehaviour
     private List<Level> levelsGenerated = new();
 
     [SerializeField] private GameObject grid;
-    [SerializeField] private int heigthOffset;
-    private Vector3Int heigthCount;
+    [SerializeField] private int heightOffset;
+    private Vector3Int heightCount;
     private int lastLevelFailIndex;
 
     private Level currentLevel;
@@ -58,7 +58,7 @@ public partial class GridGenerator : MonoBehaviour
         }
         levelsGenerated.Clear();
 
-        heigthCount = Vector3Int.zero;
+        heightCount = Vector3Int.zero;
 
         GenerateNextLevel(0);
         if (lastLevelFailIndex == 0)
@@ -85,16 +85,16 @@ public partial class GridGenerator : MonoBehaviour
     {
         (int minH, int maxH) edges = GenerateBackground(level);
 
-        heigthCount = new Vector3Int(heigthCount.x, heigthCount.y - level.MinHeightY, 0);
+        heightCount = new Vector3Int(heightCount.x, heightCount.y - level.MinHeightY, 0);
 
-        var levelInstance = Instantiate(level, heigthCount, Quaternion.identity, grid.transform);
+        var levelInstance = Instantiate(level, heightCount, Quaternion.identity, grid.transform);
 
         levelInstance.MaxHeightY = edges.Item2;
         levelInstance.MinHeightY = edges.Item1;
-        levelInstance.Origin = heigthCount;
+        levelInstance.Origin = heightCount;
 
         levelsGenerated.Add(levelInstance);
-        heigthCount += new Vector3Int(0, levelInstance.MaxHeightY - levelInstance.MinHeightY, 0);
+        heightCount += new Vector3Int(0, levelInstance.MaxHeightY - levelInstance.MinHeightY, 0);
     }
 
     public Level GetRandomLevelFromCheckPoint(int checkPoint)

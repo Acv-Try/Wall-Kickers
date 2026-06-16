@@ -796,11 +796,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 9b0d2a93-ebd2-4278-9930-b1b264c14245
+  cloudProjectId: 4c1a5e7c-cf78-4a93-855c-2b9f137e9cbc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Wall Kickers
-  organizationId: artur2009aa5
+  projectName: Wall-Kickers 2026-05-28_00-01-26
+  organizationId: khoratauser
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

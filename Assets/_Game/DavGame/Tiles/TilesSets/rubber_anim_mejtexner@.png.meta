@@ -1,7 +1,49 @@
 fileFormatVersion: 2
-guid: 1f871889c7e728848ac87e0fad589b84
+guid: b772b938adf0c9e47bd45411b9eeb4ba
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6368823425898100989
+    second: rubber_anim_mejtexner@_0
+  - first:
+      213: 9055326475845331307
+    second: rubber_anim_mejtexner@_1
+  - first:
+      213: 7611371321296765955
+    second: rubber_anim_mejtexner@_2
+  - first:
+      213: 6233676525286933392
+    second: rubber_anim_mejtexner@_3
+  - first:
+      213: -4223890334720699968
+    second: rubber_anim_mejtexner@_4
+  - first:
+      213: -2431322265118047044
+    second: rubber_anim_mejtexner@_5
+  - first:
+      213: -4343231978649909003
+    second: rubber_anim_mejtexner@_6
+  - first:
+      213: 2391430079450382006
+    second: rubber_anim_mejtexner@_7
+  - first:
+      213: -5570920555485129459
+    second: rubber_anim_mejtexner@_8
+  - first:
+      213: -4644338384553448392
+    second: rubber_anim_mejtexner@_9
+  - first:
+      213: -3799767805499695258
+    second: rubber_anim_mejtexner@_10
+  - first:
+      213: 5919994170804789384
+    second: rubber_anim_mejtexner@_11
+  - first:
+      213: -8224220392800056077
+    second: rubber_anim_mejtexner@_12
+  - first:
+      213: 2427584622725570990
+    second: rubber_anim_mejtexner@_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -45,7 +87,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -69,12 +111,12 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -98,9 +140,22 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -110,309 +165,309 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_greeeeeeeen_0
+      name: rubber_anim_mejtexner@_0
       rect:
         serializedVersion: 2
-        x: 32
+        x: 3
         y: 0
-        width: 32
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cca16783ab83e644d81dd5562a15f0ec
-      internalID: 651484389
+      spriteID: 307482e66d46d97a0800000000000000
+      internalID: -6368823425898100989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_1
+      name: rubber_anim_mejtexner@_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 24
         y: 0
-        width: 32
-        height: 32
+        width: 18
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e4ed927aef678424ca9f73d9366b8598
-      internalID: 948416151
+      spriteID: b6963fdd37bfaad70800000000000000
+      internalID: 9055326475845331307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_2
+      name: rubber_anim_mejtexner@_2
       rect:
         serializedVersion: 2
-        x: 96
+        x: 44
         y: 0
-        width: 32
-        height: 32
+        width: 22
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8fe438063b7e83e4bb0545d4646f55be
-      internalID: -535735230
+      spriteID: 3044d73d3e501a960800000000000000
+      internalID: 7611371321296765955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_3
+      name: rubber_anim_mejtexner@_3
       rect:
         serializedVersion: 2
-        x: 128
+        x: 70
         y: 0
-        width: 32
-        height: 32
+        width: 14
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7df9051510d9b8c41aa3c8db623867f7
-      internalID: -17839551
+      spriteID: 0934b66b5c7728650800000000000000
+      internalID: 6233676525286933392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_4
+      name: rubber_anim_mejtexner@_4
       rect:
         serializedVersion: 2
-        x: 160
+        x: 94
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d1ff2c38bba180244830e721813791a1
-      internalID: -1894916258
+      spriteID: 0c154c4ae1ab165c0800000000000000
+      internalID: -4223890334720699968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_5
+      name: rubber_anim_mejtexner@_5
       rect:
         serializedVersion: 2
-        x: 192
+        x: 116
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f881fba9b64e07b40a10ca92da2ec8f5
-      internalID: 1890065573
+      spriteID: cb404251845324ed0800000000000000
+      internalID: -2431322265118047044
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_6
+      name: rubber_anim_mejtexner@_6
       rect:
         serializedVersion: 2
-        x: 224
+        x: 138
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 302a67233e0e99340b9f28cf14de56e3
-      internalID: -1029873483
+      spriteID: 5f8847fd68db9b3c0800000000000000
+      internalID: -4343231978649909003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_7
+      name: rubber_anim_mejtexner@_7
       rect:
         serializedVersion: 2
-        x: 256
+        x: 159
         y: 0
-        width: 32
-        height: 32
+        width: 12
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e6a1175a404b67f47861f785538b68c2
-      internalID: 1479402428
+      spriteID: 6bef2d6acf0103120800000000000000
+      internalID: 2391430079450382006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_8
+      name: rubber_anim_mejtexner@_8
       rect:
         serializedVersion: 2
-        x: 288
+        x: 182
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 29189eed90aaf5642bd2f3be3e865017
-      internalID: -1228180014
+      spriteID: d051362554d10b2b0800000000000000
+      internalID: -5570920555485129459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_9
+      name: rubber_anim_mejtexner@_9
       rect:
         serializedVersion: 2
-        x: 320
+        x: 204
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d5bb5c8fdd9483e43bbdcd7771586aee
-      internalID: -885201556
+      spriteID: 83ceaf398defb8fb0800000000000000
+      internalID: -4644338384553448392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_10
+      name: rubber_anim_mejtexner@_10
       rect:
         serializedVersion: 2
-        x: 352
+        x: 226
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 812cfdc4c397b8b49b805a6a28b9ccd4
-      internalID: -1615291093
+      spriteID: 66f993c1053844bc0800000000000000
+      internalID: -3799767805499695258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_11
+      name: rubber_anim_mejtexner@_11
       rect:
         serializedVersion: 2
-        x: 384
+        x: 247
         y: 0
-        width: 32
-        height: 32
+        width: 12
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2ddbba38734ea3f42a54cbf6c6e62861
-      internalID: -632775181
+      spriteID: 880e337355b082250800000000000000
+      internalID: 5919994170804789384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_12
+      name: rubber_anim_mejtexner@_12
       rect:
         serializedVersion: 2
-        x: 416
+        x: 270
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4b0cd573c83cc8d4ca40b8c06c021f7a
-      internalID: -246680814
+      spriteID: 3fc01a46023bddd80800000000000000
+      internalID: -8224220392800056077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: background_greeeeeeeen_13
+      name: rubber_anim_mejtexner@_13
       rect:
         serializedVersion: 2
-        x: 448
+        x: 292
         y: 0
-        width: 32
-        height: 32
+        width: 10
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 00590c99a67dad54d86f623464530106
-      internalID: -811805723
+      spriteID: ea122cb3a5380b120800000000000000
+      internalID: 2427584622725570990
       vertices: []
       indices: 
       edges: []
@@ -421,7 +476,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0cbad0e78d105164981d739cef51a70b
+    spriteID: 7ba728cf00f8d5b499f7940ed8e511db
     internalID: 0
     vertices: []
     indices: 
@@ -429,24 +484,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      background_greeeeeeeen_0: 651484389
-      background_greeeeeeeen_1: 948416151
-      background_greeeeeeeen_10: -1615291093
-      background_greeeeeeeen_11: -632775181
-      background_greeeeeeeen_12: -246680814
-      background_greeeeeeeen_13: -811805723
-      background_greeeeeeeen_2: -535735230
-      background_greeeeeeeen_3: -17839551
-      background_greeeeeeeen_4: -1894916258
-      background_greeeeeeeen_5: 1890065573
-      background_greeeeeeeen_6: -1029873483
-      background_greeeeeeeen_7: 1479402428
-      background_greeeeeeeen_8: -1228180014
-      background_greeeeeeeen_9: -885201556
+      rubber_anim_mejtexner@_0: -6368823425898100989
+      rubber_anim_mejtexner@_1: 9055326475845331307
+      rubber_anim_mejtexner@_10: -3799767805499695258
+      rubber_anim_mejtexner@_11: 5919994170804789384
+      rubber_anim_mejtexner@_12: -8224220392800056077
+      rubber_anim_mejtexner@_13: 2427584622725570990
+      rubber_anim_mejtexner@_2: 7611371321296765955
+      rubber_anim_mejtexner@_3: 6233676525286933392
+      rubber_anim_mejtexner@_4: -4223890334720699968
+      rubber_anim_mejtexner@_5: -2431322265118047044
+      rubber_anim_mejtexner@_6: -4343231978649909003
+      rubber_anim_mejtexner@_7: 2391430079450382006
+      rubber_anim_mejtexner@_8: -5570920555485129459
+      rubber_anim_mejtexner@_9: -4644338384553448392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

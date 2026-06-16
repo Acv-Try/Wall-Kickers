@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 93e68106b12a7bc4d96b0973cebd7334
+guid: 11fc86948c42f8049afda90237822b71
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8683429641713469215
+    second: monkey_jump_right_0
+  - first:
+      213: 5454714058896067269
+    second: monkey_jump_right_1
+  - first:
+      213: 7288675948819740495
+    second: monkey_jump_right_2
+  - first:
+      213: 7205100117891738332
+    second: monkey_jump_right_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -45,7 +57,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -73,8 +85,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -84,7 +96,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 12
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -98,9 +110,22 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 0
-    compressionQuality: 0
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -110,165 +135,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wood_regular_nodrip_0
+      name: monkey_jump_right_0
       rect:
         serializedVersion: 2
-        x: 10
+        x: 0
         y: 0
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: 2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: 2.5}
-        - {x: 5, y: 4.5}
-        - {x: 3, y: 4.5}
-        - {x: -3, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: 2.5}
-        - {x: -5, y: -4.5}
-        - {x: 5, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52ba3272e018eaf4da73ac657915fe80
-      internalID: -238433375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 0
-        width: 10
-        height: 32
+        width: 31
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20b1c93f0026a214aa16e2a56d00bf61
-      internalID: 1323251022
+      spriteID: bf6be15281d42fa48b8a73e1775e4b17
+      internalID: -653023984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_2
+      name: monkey_jump_right_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 23
-        width: 10
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5, y: -1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape:
-      - - {x: 5, y: -4.5}
-        - {x: 5, y: -2.5}
-        - {x: 5, y: 4.5}
-        - {x: -5, y: 4.5}
-        - {x: -5, y: -2.5}
-        - {x: -5, y: -4.5}
-        - {x: -3, y: -4.5}
-        - {x: 3, y: -4.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d61fcef0642b0f438d4224a4664848b
-      internalID: -352516770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wood_regular_nodrip_3
-      rect:
-        serializedVersion: 2
-        x: 40
+        x: 31
         y: 0
-        width: 10
-        height: 32
+        width: 31
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c03e8781d84f5e4f8783fd215db409d
-      internalID: 523692482
+      spriteID: fb5b46f71d15d5f4b8330a3b762455d5
+      internalID: -1394629414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_4
+      name: monkey_jump_right_2
       rect:
         serializedVersion: 2
-        x: 50
+        x: 62
         y: 0
-        width: 10
-        height: 32
+        width: 31
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 5, y: 16}
-        - {x: -5, y: 16}
-        - {x: -5, y: -16}
-        - {x: 5, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d2d7c7fa801982429cb63f162bdc87d
-      internalID: 1081255774
+      spriteID: bb140ea5ff70bad428e10b4542b18da2
+      internalID: 656409534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wood_regular_nodrip_5
+      name: monkey_jump_right_3
       rect:
         serializedVersion: 2
-        x: 60
+        x: 93
         y: 0
-        width: 18
-        height: 32
-      alignment: 9
+        width: 31
+        height: 29
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: 1, y: 16}
-        - {x: -9, y: 16}
-        - {x: -9, y: -16}
-        - {x: 1, y: -16}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c92a3a168435a6459fbabccc3b8934f
-      internalID: 1201499338
+      spriteID: 066b4fe0bedc4bb45a7c1e4093e436d4
+      internalID: 1161511067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_jump_right_4
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 0
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d91dbce25896f428c819eae3380d8e
+      internalID: -1112087866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_jump_right_5
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb8e43c0ae11a6f4c897ceadb6a18608
+      internalID: -1289643106
       vertices: []
       indices: 
       edges: []
@@ -277,7 +270,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6929268243828ac49bde7880e6244d96
+    spriteID: bac6e34e294154f44a6a0e458c7d8e78
     internalID: 0
     vertices: []
     indices: 
@@ -287,18 +280,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":10.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":1,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":31.0,"y":29.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Wood_regular_nodrip_0: -238433375
-      Wood_regular_nodrip_1: 1323251022
-      Wood_regular_nodrip_2: -352516770
-      Wood_regular_nodrip_3: 523692482
-      Wood_regular_nodrip_4: 1081255774
-      Wood_regular_nodrip_5: 1201499338
-      Wood_regular_nodrip_6: -1413785843
-      Wood_regular_nodrip_7: -2084797030
-      Wood_regular_nodrip_8: 432869115
-      Wood_regular_nodrip_9: 2141056032
+      monkey_jump_right_0: -653023984
+      monkey_jump_right_1: -1394629414
+      monkey_jump_right_2: 656409534
+      monkey_jump_right_3: 1161511067
+      monkey_jump_right_4: -1112087866
+      monkey_jump_right_5: -1289643106
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

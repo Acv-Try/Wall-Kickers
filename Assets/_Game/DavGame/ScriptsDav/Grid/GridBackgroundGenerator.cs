@@ -24,7 +24,7 @@ public partial class GridGenerator
                         isFirst = false;
                     }
                     var pos = new Vector3Int(j, level.levelData.rows - 1 - i, 0);
-                    background.SetTile(heigthCount + pos, GrassRuleTile);
+                    background.SetTile(heightCount + pos, GrassRuleTile);
                     MaxHeightY = i;
                 }
             }

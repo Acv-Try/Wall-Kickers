@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: 189118dc72633574e861745c7139f394
+guid: 9f9b4be3023667744a1b0db91e9a09a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8084007504523068935
-    second: jump_puff_right_0
+      213: 4248794660159317440
+    second: mokey_idle_right_0
   - first:
-      213: 4923819104021380642
-    second: jump_puff_right_1
+      213: 8834005719823024757
+    second: mokey_idle_right_1
   - first:
-      213: 2650301694057182485
-    second: jump_puff_right_2
-  - first:
-      213: -7739037611626601976
-    second: jump_puff_right_3
-  - first:
-      213: 6934089852571623519
-    second: jump_puff_right_4
-  - first:
-      213: -8968669618515096515
-    second: jump_puff_right_5
+      213: -30691124758807708
+    second: mokey_idle_right_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -66,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -124,17 +115,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump_puff_right_0
+      name: mokey_idle_right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 23
-        height: 26
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70680b49ef9203070800000000000000
-      internalID: 8084007504523068935
+      spriteID: 0c56f5a7b30c6fa30800000000000000
+      internalID: 4248794660159317440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_puff_right_1
+      name: mokey_idle_right_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 27
         y: 0
-        width: 23
-        height: 26
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 22ef979336be45440800000000000000
-      internalID: 4923819104021380642
+      spriteID: 57202d9c561b89a70800000000000000
+      internalID: 8834005719823024757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_puff_right_2
+      name: mokey_idle_right_2
       rect:
         serializedVersion: 2
-        x: 46
+        x: 54
         y: 0
-        width: 23
-        height: 26
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,86 +191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 515f4ed4953c7c420800000000000000
-      internalID: 2650301694057182485
+      spriteID: 46b7efaa596f29ff0800000000000000
+      internalID: -30691124758807708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump_puff_right_3
+      name: mokey_idle_right_3
       rect:
         serializedVersion: 2
-        x: 69
+        x: 81
         y: 0
-        width: 23
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 802eb9f9b4a699490800000000000000
-      internalID: -7739037611626601976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_puff_right_4
-      rect:
-        serializedVersion: 2
-        x: 92
-        y: 0
-        width: 23
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f502c278bf5da3060800000000000000
-      internalID: 6934089852571623519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_puff_right_5
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 0
-        width: 23
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3cc1900082e88380800000000000000
-      internalID: -8968669618515096515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump_puff_right_6
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 0
-        width: 23
-        height: 26
+        width: 27
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,8 +213,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15e9068c07c1174c8dadeee3daca775
-      internalID: 1380293093
+      spriteID: 41249e226fb64df40b6b84ee5d5ee533
+      internalID: 686295911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mokey_idle_right_4
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf9ecdf71e4233428d8f9465f36ad7d
+      internalID: -1812714062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mokey_idle_right_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8ec9e5d0b885b4b883dbdc5653466a
+      internalID: -500292980
       vertices: []
       indices: 
       edges: []
@@ -285,7 +267,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 30267e54397b6f14785c569534b74f54
+    spriteID: 1c2f3b287d1f9404b9d10d1bd4d0d0f5
     internalID: 0
     vertices: []
     indices: 
@@ -295,15 +277,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":23.0,"y":26.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":27.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      jump_puff_right_0: 8084007504523068935
-      jump_puff_right_1: 4923819104021380642
-      jump_puff_right_2: 2650301694057182485
-      jump_puff_right_3: -7739037611626601976
-      jump_puff_right_4: 6934089852571623519
-      jump_puff_right_5: -8968669618515096515
-      jump_puff_right_6: 1380293093
+      mokey_idle_right_0: 4248794660159317440
+      mokey_idle_right_1: 8834005719823024757
+      mokey_idle_right_2: -30691124758807708
+      mokey_idle_right_3: 686295911
+      mokey_idle_right_4: -1812714062
+      mokey_idle_right_5: -500292980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
