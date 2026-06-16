@@ -193,13 +193,13 @@ public class Player : MonoBehaviour
 
            if(collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
            {
-               CheckJumpSide();
                jumpSide *= -1;
 
-               if(CurrentWall.OnlyLeftWall ) jumpSide = -1;
+                if (CurrentWall.OnlyLeftWall ) jumpSide = -1;
                if(CurrentWall.OnlyRightWall) jumpSide = 1;
 
                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), transform.position.y - 0.3f)));
+               CheckJumpSide();
            }    
 
             transform.localScale = new Vector3(jumpSide, transform.localScale.y, transform.localScale.z);
@@ -228,12 +228,10 @@ public class Player : MonoBehaviour
         {
             jumpSide = 1;
 
-            //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else
         {
             jumpSide = -1;
-           // transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 
         }
     }
