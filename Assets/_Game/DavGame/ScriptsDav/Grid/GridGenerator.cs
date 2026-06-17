@@ -146,7 +146,7 @@ public partial class GridGenerator : MonoBehaviour
         if (currentCheckPoint < 20) return;
 
         currentLevel = levelsGenerated[2];
-        Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
+        //Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
         float middleY = currentLevel.Origin.y +
                 (currentLevel.MaxHeight.y - currentLevel.MinHeight.y) / 2f;
 
