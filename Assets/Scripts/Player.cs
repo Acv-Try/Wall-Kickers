@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
             if (CanDoubleJump)
             {
                 playerAnimator.SetBool("isBackFlip", true);
+                JumpEffect(true);
                 StartJump((sbyte)-jumpSide);
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 CanDoubleJump = false;
@@ -302,10 +303,10 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void JumpEffect()
+    public void JumpEffect(bool isReversed=false)
     {
         var puffEffectInstance = Instantiate(puffEffect, transform.position + puffEffectOffset, Quaternion.identity);
-        puffEffectInstance.transform.localScale = new Vector3(1, jumpSide, 1);
+        puffEffectInstance.transform.localScale = new Vector3(1, jumpSide * (isReversed ? -1 : 1), 1);
         puffEffectInstance.SetTrigger("Jump");
         //Debug.Log("JumpEffect");
     }
