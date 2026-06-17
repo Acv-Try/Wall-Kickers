@@ -7,11 +7,11 @@ public partial class GridGenerator
     [SerializeField] private Tilemap background;
     [SerializeField] private RuleTile GrassRuleTile;
 
-    private (int, int) GenerateBackground(Level level)
+    private (Vector3Int, Vector3Int) GenerateBackground(Level level)
     {
         bool isFirst = true;
-        int MinHeightY = 0;
-        int MaxHeightY = 0;
+        Vector3Int MinHeight = Vector3Int.zero;
+        Vector3Int MaxHeight = Vector3Int.zero;
         for (int i = 0; i < level.levelData.rows; i++)
         {
             for (int j = 0; j < level.levelData.columns; j++)
@@ -20,15 +20,20 @@ public partial class GridGenerator
                 {
                     if (isFirst)
                     {
-                        MinHeightY = i;
+                        MinHeight = new Vector3Int(j, i, 0);
                         isFirst = false;
                     }
-                    var pos = new Vector3Int(j, level.levelData.rows - 1 - i, 0);
+                    var pos = new Vector3Int(j - MinHeight.x, i - MinHeight.y, 0);
                     background.SetTile(heightCount + pos, GrassRuleTile);
-                    MaxHeightY = i;
+                    
+                    
+                    if (MaxHeight.y < i)
+                    {
+                        MaxHeight = new Vector3Int(j, i, 0);
+                    }
                 }
             }
         }
-        return (MinHeightY, MaxHeightY);
+        return (MinHeight, MaxHeight);
     }
 }
