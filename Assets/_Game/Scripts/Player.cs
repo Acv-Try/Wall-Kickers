@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSprite {get; set;}
 
     public Action<Vector3> OnCameraCheckPointChange;
+    public Action OnCameraFreeze;
+
     public event Action OnCamerShake;
     public float lastCheckpointY { get; set; }
     public int checkPoint;
@@ -300,7 +302,7 @@ public class Player : MonoBehaviour
             OnCameraCheckPointChange?.Invoke(cameraInitPos.position);
             return;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadSceneAfterCoolDown(1f));
     }
 
     public void JumpEffect(bool isReversed=false)
@@ -316,5 +318,13 @@ public class Player : MonoBehaviour
         checkPoint = 0;
         lastCheckpointY = 0;
         GridGenerator.Instance.AddScore(0);
+    }
+
+    public IEnumerator LoadSceneAfterCoolDown(float duration)
+    {
+        OnCameraFreeze?.Invoke();
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }
