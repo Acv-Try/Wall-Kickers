@@ -8,10 +8,9 @@ public class CheckPoint : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             var scriptPlayer = collider.GetComponent<PlayerController>();
-            if (scriptPlayer.checkPoint >= checkPointNum) return;
-
-            scriptPlayer.checkPoint = checkPointNum;
-            GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, checkPointNum);
+            if (scriptPlayer.checkPointCount >= checkPointNum) return;
+            scriptPlayer.IncreaseCheckPoint();
+            GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, scriptPlayer.checkPoint);
         }
     }
 }

@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     public Transform spawnPos;
     public Transform cameraInitPos;
-    [SerializeField] private float stepHeight;
     public SpriteRenderer playerSprite { get; set; }
 
     public Action<Vector3> OnCameraCheckPointChange;
@@ -56,6 +55,7 @@ public class PlayerController : MonoBehaviour
     public event Action OnCamerShake;
     public float lastCheckpointY { get; set; }
     public int checkPoint;
+    public int checkPointCount;
     public bool isCameraMoving;
     public CheckPointWall currentCheckPointWall;
     
@@ -355,6 +355,7 @@ public class PlayerController : MonoBehaviour
     public void ResetPlayerStats()
     {
         checkPoint = 0;
+        checkPointCount = 0;
         lastCheckpointY = 0;
         GridGenerator.Instance.AddScore(0);
     }
@@ -370,6 +371,8 @@ public class PlayerController : MonoBehaviour
     public void IncreaseCheckPoint()
     {
         checkPoint++;
+        checkPointCount++;
+        if (checkPointCount == 10) checkPointCount = 0;
         GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, checkPoint);
     }
 }

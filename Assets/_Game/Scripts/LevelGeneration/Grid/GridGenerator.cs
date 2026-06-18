@@ -19,7 +19,8 @@ public partial class GridGenerator : MonoBehaviour
 
     [SerializeField] private GameObject grid;
     [SerializeField] private int heigthOffset;
-    [SerializeField] private Vector3Int heightCount;
+    private Vector3Int heightCount;
+    [SerializeField] private Vector3Int InitHeightCount;
     private int lastLevelFailIndex;
 
     private Level currentLevel;
@@ -49,6 +50,7 @@ public partial class GridGenerator : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        heightCount = InitHeightCount;
         score.text = "0";
         background.ClearAllTiles();
 
@@ -109,6 +111,8 @@ public partial class GridGenerator : MonoBehaviour
         var level = levels[index];
         if (checkPoint < 100)
             lastLevelFailIndex = index;
+        else
+            lastLevelFailIndex = 0;
         level.checkPointWall.SetCheckPointText(Mathf.CeilToInt((checkPoint+10) / 10f) * 10);
         return level;
     }
