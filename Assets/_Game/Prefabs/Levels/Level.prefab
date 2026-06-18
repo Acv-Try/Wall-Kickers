@@ -783,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level
   checkPointsForCamera: []
   checkPointWall: {fileID: 2766096334752190314}
-  levelData: {fileID: 11400000, guid: 21f18e7fe9d527c488f546356ce7c0be, type: 2}
+  levelData: {fileID: 11400000, guid: 1f3512c70e667b54d886396c8b9ad2b4, type: 2}
 --- !u!1 &6617370953391951230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1715,10 @@ PrefabInstance:
     - target: {fileID: 1885373553365620728, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_Name
       value: CheckPointWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435641565288659991, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
+      propertyPath: m_text
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6331773114674695388, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_IsTrigger

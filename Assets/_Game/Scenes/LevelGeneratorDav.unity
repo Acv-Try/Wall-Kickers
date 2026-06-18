@@ -952,10 +952,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.083333336
-    y: 0
-    width: 0.8333334
-    height: 1
+    x: 0.0015576323
+    y: 0.0003599712
+    width: 0.9968847
+    height: 0.99928004
   near clip plane: 1
   far clip plane: 1000
   field of view: 64.3
@@ -2084,6 +2084,7 @@ MonoBehaviour:
   - {fileID: 3489720385391476509, guid: b158ed3a308380e4a93602576d8a4b05, type: 3}
   grid: {fileID: 1085408662}
   heigthOffset: 25
+  heightCount: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1085408664
 Grid:
   m_ObjectHideFlags: 0
@@ -2441,6 +2442,7 @@ MonoBehaviour:
   stepHeight: 0
   checkPoint: 0
   isCameraMoving: 0
+  currentCheckPointWall: {fileID: 0}
   rb: {fileID: 1329876968}
   CurrentWall: {fileID: 8659695826657661541}
 --- !u!1 &1337844086
