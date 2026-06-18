@@ -13,18 +13,4 @@ public class Level : MonoBehaviour
     public Vector3Int MaxHeight {  get; set; }
     public int StartSide {  get; set; }
     public int EndSide {  get; set; }
-
-    public Transform GetCheckPointForCamera()
-    {
-        var check = checkPointsForCamera[0];
-        return check;
-    }
-
-    public IEnumerable<Vector3> GetNextCheckPointOfCamera()
-    {
-        foreach (var point in checkPointsForCamera)
-        {
-            yield return point.position;
-        }
-    }
 }
