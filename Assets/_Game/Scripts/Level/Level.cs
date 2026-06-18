@@ -17,7 +17,6 @@ public class Level : MonoBehaviour
     public Transform GetCheckPointForCamera()
     {
         var check = checkPointsForCamera[0];
-        checkPointsForCamera.RemoveAt(0);
         return check;
     }
 
