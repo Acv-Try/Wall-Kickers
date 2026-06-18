@@ -236,7 +236,7 @@ public class PlayerController : MonoBehaviour
                 if (CurrentWall.OnlyLeftWall) jumpSide = -1;
                 if (CurrentWall.OnlyRightWall) jumpSide = 1;
 
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), transform.position.y - 0.3f)));
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (-jumpSide * Math.Abs(transform.lossyScale.x) * 0.5f), transform.position.y - 0.3f)));
                 CheckJumpSide();
             }
 
