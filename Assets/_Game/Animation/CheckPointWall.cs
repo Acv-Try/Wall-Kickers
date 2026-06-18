@@ -10,7 +10,7 @@ public class CheckPointWall : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            var playerScript = collision.collider.GetComponent<Player>();
+            var playerScript = collision.collider.GetComponent<PlayerController>();
             playerScript.currentCheckPointWall = null;
             playerScript.IncreaseCheckPoint();
         }
@@ -20,7 +20,7 @@ public class CheckPointWall : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            var playerScript = collider.GetComponent<Player>();
+            var playerScript = collider.GetComponent<PlayerController>();
             playerScript.currentCheckPointWall = null;
             if (Convert.ToInt16(checkPointText.text) <= playerScript.checkPoint) return;
             playerScript.currentCheckPointWall = this;
@@ -31,7 +31,7 @@ public class CheckPointWall : MonoBehaviour
     {
         if (collider.CompareTag("Player") && collider.GetComponent<Rigidbody2D>().linearVelocityY < 0)
         {
-            var playerScript = collider.GetComponent<Player>();
+            var playerScript = collider.GetComponent<PlayerController>();
             playerScript.currentCheckPointWall = null;
         }
     }

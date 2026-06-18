@@ -6,7 +6,7 @@ public class CheckPointCamera : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            collider.GetComponent<Player>().OnCameraCheckPointChange?.Invoke(transform.position);
+            collider.GetComponent<PlayerController>().OnCameraCheckPointChange?.Invoke(transform.position);
         }
     }
 }

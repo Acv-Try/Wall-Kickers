@@ -7,7 +7,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            var scriptPlayer = collider.GetComponent<Player>();
+            var scriptPlayer = collider.GetComponent<PlayerController>();
             if (scriptPlayer.checkPoint >= checkPointNum) return;
 
             scriptPlayer.checkPoint = checkPointNum;
