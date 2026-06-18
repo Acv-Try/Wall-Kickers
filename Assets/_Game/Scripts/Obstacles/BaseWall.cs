@@ -17,6 +17,12 @@ public abstract class BaseWall : MonoBehaviour
 
     public WallType TypeOfWall;
 
+    protected SoundData soundData;
+    protected void Initialize()
+    {
+        soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Gameplay);
+    }
+
     public virtual void Touched(PlayerController player){}
     public virtual void Left(PlayerController player){}
 

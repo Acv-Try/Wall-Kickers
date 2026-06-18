@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class CameraFollowing1 : MonoBehaviour
 {
-    [SerializeField] private Player Target;
+    [SerializeField] private PlayerController Target;
 
     [SerializeField] private float Xoffset;
     [SerializeField] private float YOffset;

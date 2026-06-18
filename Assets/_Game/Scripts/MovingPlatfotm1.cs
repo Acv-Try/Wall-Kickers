@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
-public class MovingPlatform1 : Wall
+public class MovingPlatform1 : BaseWall
 {
     [SerializeField] private SplineContainer spline;
     [SerializeField] private Rigidbody2D rb_mov;
@@ -14,12 +14,12 @@ public class MovingPlatform1 : Wall
     bool isCooldown;
 
 
-    public override void Touched(Player player)
+    public override void Touched(PlayerController player)
     {
         player.transform.SetParent(transform);
     }
 
-    public override void Left(Player player)
+    public override void Left(PlayerController player)
     {
         player.transform.SetParent(null);
     }

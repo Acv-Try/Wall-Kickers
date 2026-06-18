@@ -82,7 +82,7 @@ public enum EType_Gameplay_SFX
     Coin_Collect,
     Land_Wall_Wood,
     Land_Wall_Crumble,
-    Obstacle_Rubber,
+    Land_Wall_Bounce,
     Obstacle_Electrical,
 }
 public enum EType_UI_SFX
