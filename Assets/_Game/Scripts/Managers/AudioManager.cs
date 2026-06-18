@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private SoundBank soundBank;
     [SerializeField] private SourceBank sourceBank;
-    [SerializeField] private SoundPool pool;
+    private SoundPool pool;
 
     SoundEmitter _a_emitter;
     private Dictionary<Enum, SoundEmitter> activeEmitters;
@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         soundBank.Initialize();
+        pool = GetComponent<SoundPool>();
         activeEmitters = new Dictionary<Enum, SoundEmitter>();
     }
     public SoundData GetSoundData(EType_SourceDataType type)
