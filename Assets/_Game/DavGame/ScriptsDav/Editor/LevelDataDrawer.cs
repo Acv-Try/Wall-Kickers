@@ -1,5 +1,6 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
+using static LevelData;
 
 [CustomEditor(typeof(LevelData))]
 [CanEditMultipleObjects]
@@ -12,6 +13,7 @@ public class LevelDataDrawer : Editor
     private static int selectedWallHeight;
 
     private GUIStyle cellStyle;
+    private bool isPainting;
 
     public override void OnInspectorGUI()
     {
@@ -88,38 +90,69 @@ public class LevelDataDrawer : Editor
     private void DrawBoard()
     {
         const float size = 25f;
+        Event e = Event.current;
         for (int row = 0; row < Data.rows; row++)
         {
             EditorGUILayout.BeginHorizontal();
 
             for (int col = 0; col < Data.columns; col++)
             {
-
-
                 var cell = Data.board[Data.rows - 1 - row].column[col];
 
                 GUI.color = GetColor(cell.type);
 
-                if (GUILayout.Button("", GUILayout.Width(size), GUILayout.Height(size)))
+                Rect rect = GUILayoutUtility.GetRect(size, size);
+                GUI.Box(rect, "");
+                if (rect.Contains(e.mousePosition))
                 {
-                    Undo.RecordObject(Data, "Paint Wall");
-
-                    cell.type = selectedWallType;
-                    cell.rotation = selectedWallRotation;
-                    cell.wallHeight = selectedWallHeight;
-
-                    Data.CalculateSides();
-
-                    EditorUtility.SetDirty(Data);
+                    if (e.type == EventType.MouseDown)
+                    {
+                        isPainting = true;
+                        if (e.button == 0) 
+                            SetRectOnGridInspector(cell);
+                        else if (e.button == 1) 
+                            EraseRectOnGridInspector(cell);
+                    }
+                    else if (e.type == EventType.MouseDrag && isPainting)
+                    {
+                        if (e.button == 0)
+                            SetRectOnGridInspector(cell);
+                        else if (e.button == 1)
+                            EraseRectOnGridInspector(cell);
+                    }
                 }
 
                 GUI.color = Color.white;
 
-                GUI.Label(GUILayoutUtility.GetLastRect(), cell.type.ToString(), cellStyle);
+                GUI.Label(rect, cell.type.ToString(), cellStyle);
             }
 
             EditorGUILayout.EndHorizontal();
         }
+        if (e.type == EventType.MouseUp) isPainting = false;
+    }
+
+    public void SetRectOnGridInspector(Cell cell)
+    {
+        Undo.RecordObject(Data, "Paint Wall");
+
+        cell.type = selectedWallType;
+        cell.rotation = selectedWallRotation;
+        cell.wallHeight = selectedWallHeight;
+
+        Data.CalculateSides();
+
+        EditorUtility.SetDirty(Data);
+    }
+
+    public void EraseRectOnGridInspector(Cell cell)
+    {
+        Undo.RecordObject(Data, "Erase Wall");
+        cell.type = LevelData.WallType.E;
+        cell.rotation = 0;
+        cell.wallHeight = 0;
+        Data.CalculateSides();
+        EditorUtility.SetDirty(Data);
     }
 
     private Color GetColor(LevelData.WallType type)

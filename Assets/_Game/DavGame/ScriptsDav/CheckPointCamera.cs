@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class CheckPointCamera : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collider)
     {

@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     public float lastCheckpointY { get; set; }
     public int checkPoint;
     public bool isCameraMoving;
+    public CheckPointWall currentCheckPointWall;
     
     public bool isDead { get; set; }
 
@@ -110,13 +111,6 @@ public class Player : MonoBehaviour
         if (OnWall) // applies friction to the player when on the wall so the player is slides down from the wall
         {
             rb.position += Vector2.down * CurrentWall.SpeedOfPlayerFriction * Time.deltaTime;
-        }
-        if (transform.position.y >= lastCheckpointY + stepHeight)
-        {
-            lastCheckpointY = transform.position.y;
-
-            checkPoint++;
-            GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, checkPoint);
         }
     }
 
@@ -183,6 +177,11 @@ public class Player : MonoBehaviour
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
             OnWall = true;
+            if (currentCheckPointWall != null)
+            {
+                IncreaseCheckPoint();
+                currentCheckPointWall = null;
+            }
             playerAnimator.SetBool("isJump", false);
             OnFloor = false;
 
@@ -326,5 +325,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+    }
+
+    public void IncreaseCheckPoint()
+    {
+        checkPoint++;
+        GridGenerator.Instance.CheckIfPlayerAboveOfMiddleLevel(transform.position, checkPoint);
     }
 }

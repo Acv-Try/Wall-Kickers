@@ -5,6 +5,7 @@ using System.Collections;
 public class Level : MonoBehaviour 
 {
     [SerializeField] private List<Transform> checkPointsForCamera;
+    public CheckPointWall checkPointWall;
 
     public LevelData levelData;
     public Vector3Int Origin { get; set; }

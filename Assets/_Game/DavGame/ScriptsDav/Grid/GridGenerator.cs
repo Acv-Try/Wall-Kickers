@@ -19,7 +19,7 @@ public partial class GridGenerator : MonoBehaviour
 
     [SerializeField] private GameObject grid;
     [SerializeField] private int heigthOffset;
-    private Vector3Int heightCount;
+    [SerializeField] private Vector3Int heightCount;
     private int lastLevelFailIndex;
 
     private Level currentLevel;
@@ -58,14 +58,12 @@ public partial class GridGenerator : MonoBehaviour
         }
         levelsGenerated.Clear();
 
-        heightCount = Vector3Int.zero;
-
         GenerateNextLevel(0);
         if (lastLevelFailIndex == 0)
-            GenerateNextLevel(20);
+            GenerateNextLevel(10);
         else
             GenerateLevelFromIndexOfLevel(lastLevelFailIndex);
-        GenerateNextLevel(30);
+        GenerateNextLevel(20);
     }
 
     public void GenerateNextLevel(int checkPoint)
@@ -84,8 +82,6 @@ public partial class GridGenerator : MonoBehaviour
     public void GenerateLevel(Level level)
     {
         (Vector3Int minH, Vector3Int maxH) edges = GenerateBackground(level);
-
-        heightCount = new Vector3Int(heightCount.x, heightCount.y, 0);
 
         var levelInstance = Instantiate(level, heightCount, Quaternion.identity, grid.transform);
 
@@ -113,6 +109,7 @@ public partial class GridGenerator : MonoBehaviour
         var level = levels[index];
         if (checkPoint < 100)
             lastLevelFailIndex = index;
+        level.checkPointWall.SetCheckPointText(Mathf.CeilToInt((checkPoint+10) / 10f) * 10);
         return level;
     }
 
@@ -147,13 +144,13 @@ public partial class GridGenerator : MonoBehaviour
 
         currentLevel = levelsGenerated[2];
         //Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
-        float middleY = currentLevel.Origin.y +
-                (currentLevel.MaxHeight.y - currentLevel.MinHeight.y) / 2f;
+        float middleY = currentLevel.Origin.y + 15;
 
         if (playerPosition.y > middleY)
         {
             Debug.Log("Pos" + playerPosition.y + " Mid " + middleY);
             RemoveLevel();
+            Debug.Log(currentCheckPoint);
             GenerateNextLevel(currentCheckPoint);
         }
     }
