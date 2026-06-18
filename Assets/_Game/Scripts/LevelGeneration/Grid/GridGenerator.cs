@@ -18,7 +18,7 @@ public partial class GridGenerator : MonoBehaviour
     private List<Level> levelsGenerated = new();
 
     [SerializeField] private GameObject grid;
-    [SerializeField] private int heightOffset;
+    [SerializeField] private int heigthOffset;
     private Vector3Int heightCount;
     private int lastLevelFailIndex;
 
@@ -83,25 +83,25 @@ public partial class GridGenerator : MonoBehaviour
 
     public void GenerateLevel(Level level)
     {
-        (int minH, int maxH) edges = GenerateBackground(level);
+        (Vector3Int minH, Vector3Int maxH) edges = GenerateBackground(level);
 
-        heightCount = new Vector3Int(heightCount.x, heightCount.y - level.MinHeightY, 0);
+        heightCount = new Vector3Int(heightCount.x, heightCount.y, 0);
 
         var levelInstance = Instantiate(level, heightCount, Quaternion.identity, grid.transform);
 
-        levelInstance.MaxHeightY = edges.Item2;
-        levelInstance.MinHeightY = edges.Item1;
+        levelInstance.MaxHeight = edges.Item2;
+        levelInstance.MinHeight = edges.Item1;
         levelInstance.Origin = heightCount;
 
         levelsGenerated.Add(levelInstance);
-        heightCount += new Vector3Int(0, levelInstance.MaxHeightY - levelInstance.MinHeightY, 0);
+        heightCount += new Vector3Int(levelInstance.MaxHeight.x-levelInstance.MinHeight.x, levelInstance.MaxHeight.y - levelInstance.MinHeight.y+1, 0);
     }
 
     public Level GetRandomLevelFromCheckPoint(int checkPoint)
     {
         int index = 0;
-        if (checkPoint < 10) index = UnityEngine.Random.Range(0, 2);
-        else if (checkPoint >= 10 && checkPoint < 50) index = UnityEngine.Random.Range(2, 6);
+        if (checkPoint < 10) index = 0;
+        else if (checkPoint >= 10 && checkPoint < 50) index = UnityEngine.Random.Range(1, 6);
         else if (checkPoint >= 50 && checkPoint < 90) index = UnityEngine.Random.Range(6, 10);
         else if (checkPoint >= 90 && checkPoint < 130) index = UnityEngine.Random.Range(10, 14);
         else if (checkPoint >= 130 && checkPoint < 170) index = UnityEngine.Random.Range(14, 18);
@@ -125,7 +125,7 @@ public partial class GridGenerator : MonoBehaviour
             level.Origin.y,
             level.Origin.z,
             level.levelData.columns,
-            level.MaxHeightY,
+            level.MaxHeight.y,
             1
         );
         Debug.Log(bounds.x + " " + bounds.y + " " + bounds.z);
@@ -146,9 +146,9 @@ public partial class GridGenerator : MonoBehaviour
         if (currentCheckPoint < 20) return;
 
         currentLevel = levelsGenerated[2];
-        Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
+        //Debug.Log(currentLevel.Origin + " " + currentCheckPoint);
         float middleY = currentLevel.Origin.y +
-                (currentLevel.MaxHeightY - currentLevel.MinHeightY) / 2f;
+                (currentLevel.MaxHeight.y - currentLevel.MinHeight.y) / 2f;
 
         if (playerPosition.y > middleY)
         {

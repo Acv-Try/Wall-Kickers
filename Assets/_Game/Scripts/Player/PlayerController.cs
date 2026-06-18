@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
 
     [Header("Jump Settings")]
@@ -31,8 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private Animator puffEffect;
     [SerializeField] private ParticleSystem burstEffect;
-
-    public PlayerController playerController { get; internal set; }
+    [SerializeField] private Vector3 puffEffectOffset;
 
     public sbyte jumpSide = 1; // a variable to determine the direction of the jump, 1 for right and -1 for left. It is set when the player collides with a wall.
     [SerializeField]
@@ -49,29 +48,28 @@ public class PlayerController : MonoBehaviour
     public Transform spawnPos;
     public Transform cameraInitPos;
     [SerializeField] private float stepHeight;
-    public SpriteRenderer playerSprite { get; set; }
+    public SpriteRenderer playerSprite {get; set;}
 
     public Action<Vector3> OnCameraCheckPointChange;
-    public event Action OnCameraShake;
+    public Action OnCameraFreeze;
+
+    public event Action OnCamerShake;
     public float lastCheckpointY { get; set; }
     public int checkPoint;
     public bool isCameraMoving;
-
+    
     public bool isDead { get; set; }
 
     float JumpTimeCounter;
     public Rigidbody2D rb;
 
-    public BaseWall CurrentWall;
-
-    private SoundData soundData;
+    public Wall CurrentWall;
     private void Awake()
     {
         OnCameraCheckPointChange(cameraInitPos.position);
     }
     void Start()
     {
-        AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
         transform.position = spawnPos.position;
         rb = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
@@ -92,7 +90,7 @@ public class PlayerController : MonoBehaviour
             if (CanDoubleJump)
             {
                 playerAnimator.SetBool("isBackFlip", true);
-                AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_JumpEffect);
+                JumpEffect(true);
                 StartJump((sbyte)-jumpSide);
                 transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
                 CanDoubleJump = false;
@@ -133,9 +131,6 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         playerAnimator.SetBool("isJump", true);
-
-        AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Jump);
-
         StartJump(jumpSide);
         CanJump = false;
         if (CurrentWall.TypeOfWall == WallType.Moving)
@@ -179,14 +174,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall") && !OnWall)
         {
-            AudioManager.Instance.Stop(EType_Gameplay_SFX.C_Monkey_JumpEffect);
-
-            AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.Land_Wall_Wood);
-
-            if (collision.contacts[0].normal.y < 0)
+            if (collision.contacts[0].normal.y < 0) 
             {
-                JumpTimeCounter = JumpTime;
-                return;
+            JumpTimeCounter = JumpTime; 
+            return;
             } // Checks if the player landed on the wall from the  bottom, if so it does nothing
 
             rb.gravityScale = 0f;
@@ -195,24 +186,24 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("isJump", false);
             OnFloor = false;
 
-            CurrentWall = collision.gameObject.GetComponent<BaseWall>();
-            float Xdifference = transform.position.x - collision.transform.position.x;
-            jumpSide = (sbyte)(Xdifference > 0 ? 1 : -1);
+            CurrentWall = collision.gameObject.GetComponent<Wall>();
+            float Xdiference = transform.position.x - collision.transform.position.x;
+            jumpSide = (sbyte)(Xdiference > 0 ? 1 : -1);
 
             ResetJump();
 
             CurrentWall.Touched(this);
 
-            if (collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
-            {
-                CheckJumpSide();
-                jumpSide *= -1;
+           if(collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop) // Checks if the player landed on top of the wall, if  so it moves the player down a bit
+           {
+               jumpSide *= -1;
 
-                if (CurrentWall.OnlyLeftWall) jumpSide = -1;
-                if (CurrentWall.OnlyRightWall) jumpSide = 1;
+                if (CurrentWall.OnlyLeftWall ) jumpSide = -1;
+               if(CurrentWall.OnlyRightWall) jumpSide = 1;
 
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), transform.position.y - 0.3f)));
-            }
+               StartCoroutine(BringPlayerOnPlatform(new Vector2(collision.transform.position.x + (jumpSide * transform.lossyScale.x * 0.5f), transform.position.y - 0.3f)));
+               CheckJumpSide();
+           }    
 
             transform.localScale = new Vector3(jumpSide, transform.localScale.y, transform.localScale.z);
         }
@@ -240,12 +231,10 @@ public class PlayerController : MonoBehaviour
         {
             jumpSide = 1;
 
-            //transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
         }
         else
         {
             jumpSide = -1;
-            // transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 
         }
     }
@@ -292,7 +281,7 @@ public class PlayerController : MonoBehaviour
             playerSprite.enabled = false;
             rb.simulated = false;
             burstEffect.Play();
-            OnCameraShake?.Invoke();
+            OnCamerShake?.Invoke();
             Die();
         }
     }
@@ -308,20 +297,19 @@ public class PlayerController : MonoBehaviour
     public void Die() // Method to reload the scene when the player dies
     {
         isDead = true;
-        AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death);
-        AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death_Explosion);
         if (checkPoint < 20)
         {
             OnCameraCheckPointChange?.Invoke(cameraInitPos.position);
             return;
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadSceneAfterCoolDown(1f));
     }
 
-    public void JumpEffect()
+    public void JumpEffect(bool isReversed=false)
     {
-        puffEffect.SetTrigger("Jump");
-        AudioManager.Instance.PlayAndTrack(soundData, EType_Gameplay_SFX.C_Monkey_Jump);
+        var puffEffectInstance = Instantiate(puffEffect, transform.position + puffEffectOffset, Quaternion.identity);
+        puffEffectInstance.transform.localScale = new Vector3(1, jumpSide * (isReversed ? -1 : 1), 1);
+        puffEffectInstance.SetTrigger("Jump");
         //Debug.Log("JumpEffect");
     }
 
@@ -330,5 +318,13 @@ public class PlayerController : MonoBehaviour
         checkPoint = 0;
         lastCheckpointY = 0;
         GridGenerator.Instance.AddScore(0);
+    }
+
+    public IEnumerator LoadSceneAfterCoolDown(float duration)
+    {
+        OnCameraFreeze?.Invoke();
+        yield return new WaitForSeconds(duration);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 }

@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class CameraFollowing1 : MonoBehaviour
 {
-    [SerializeField] private PlayerController Target;
+    [SerializeField] private Player Target;
 
     [SerializeField] private float Xoffset;
     [SerializeField] private float YOffset;
@@ -25,13 +25,16 @@ public class CameraFollowing1 : MonoBehaviour
     private void Awake()
     {
         Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
-        Target.OnCameraShake += Shake;
+        Target.OnCamerShake += Shake;
+        Target.OnCameraFreeze += FreezeCamera;
     }
 
     private void OnDestroy()
     {
         Target.OnCameraCheckPointChange -= OnCameraCheckPointChange;
-        Target.OnCameraShake -= Shake;
+        Target.OnCamerShake -= Shake;
+        Target.OnCameraFreeze -= FreezeCamera;
+
     }
 
 
@@ -89,9 +92,7 @@ public class CameraFollowing1 : MonoBehaviour
     
     private IEnumerator CameraMoveToInitPos()
     {
-        isCameraFreeze = true;
-        deadLine.SetActive(false);
-        Target.isCameraMoving = true;
+        FreezeCamera();
 
         yield return new WaitForSeconds(1f);
 
@@ -114,5 +115,12 @@ public class CameraFollowing1 : MonoBehaviour
             vibrato,      // vibrato
             randomness      // randomness
         );
+    }
+
+    public void FreezeCamera()
+    {
+        isCameraFreeze = true;
+        deadLine.SetActive(false);
+        Target.isCameraMoving = true;
     }
 }

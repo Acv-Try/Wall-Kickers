@@ -25,7 +25,7 @@ public class Cloud : MonoBehaviour
         transform.Translate(Vector3.left * speed * Time.deltaTime);
         if (transform.localPosition.x < leftEdge)
         {
-            transform.localPosition = new Vector3(rightEdge, Random.Range(downEdge, upEdge), transform.localPosition.z);
+            transform.localPosition = new Vector3(rightEdge + 300f, Random.Range(downEdge, upEdge), transform.localPosition.z);
         }
         //Debug.Log(downEdge + " " + upEdge + " " + leftEdge + " " + rightEdge);
 
