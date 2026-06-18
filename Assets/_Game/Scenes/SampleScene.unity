@@ -248,7 +248,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1511418036147991273, guid: f9d17ffd871742c44b42645b0485a5fa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -773,7 +774,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatformByCurve
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7087128411526651633, guid: 389ec6ec5ad6308418a224ed7c2420b5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -867,29 +869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1d66b2f8e98864d841018ecd186573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForceUp: 15
-  StartJumpForceUp: 7
-  JumpForceSide: 4
-  JumpTime: 0.5
-  CoolDownTimeBetweenJumps: 0.2
-  GravityForceWhileFalling: 3
-  SpeedOnFloor: 250
-  playerAnimator: {fileID: 0}
-  puffEffect: {fileID: 0}
-  burstEffect: {fileID: 0}
-  jumpSide: 1
-  CanJump: 1
-  OnWall: 0
-  OnFloor: 0
-  CanDoubleJump: 0
-  LinearVelocityX: 0
-  spawnPos: {fileID: 0}
-  cameraInitPos: {fileID: 0}
-  stepHeight: 0
-  checkPoint: 0
-  isCameraMoving: 0
-  rb: {fileID: 0}
-  CurrentWall: {fileID: 0}
 --- !u!50 &1329876968
 Rigidbody2D:
   serializedVersion: 5
@@ -1101,6 +1080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeadlyThorns (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7283170446381762770, guid: 9512ba6d1a031b94bbaf2d55859f5d2c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1234,7 +1217,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingUpWall
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7665451415661429088, guid: be23e5d60b16d8e4baee91770a987fe0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5869970247028270277, guid: be23e5d60b16d8e4baee91770a987fe0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1307,6 +1295,10 @@ PrefabInstance:
     - target: {fileID: 52826039914592693, guid: 4b3dacb73399a794da4a076c05281c45, type: 3}
       propertyPath: m_Name
       value: MovingDownWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 52826039914592693, guid: 4b3dacb73399a794da4a076c05281c45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5578670382540320414, guid: 4b3dacb73399a794da4a076c05281c45, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2113,26 +2105,13 @@ GameObject:
   - component: {fileID: 5483206220612570535}
   - component: {fileID: 1564952445961319120}
   - component: {fileID: 3048566953270081849}
-  - component: {fileID: 5715939784124696741}
   m_Layer: 7
   m_Name: DefaultWall (5)
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &5715939784124696741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5715939784124696740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 472e002d7582473408d892efc393b91b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DesapiaringWall
+  m_IsActive: 0
 --- !u!1001 &6404787577312119972
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -66,12 +66,39 @@ public class PlayerController : MonoBehaviour
     public BaseWall CurrentWall;
 
     private SoundData soundData;
+
+    #region
+    private static PlayerController _instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<PlayerController>();
+                if (_instance != null)
+                {
+                    Debug.LogWarning($"PlayerController is not found in the scene!");
+                }
+            }
+            return _instance;
+        }
+    }
+
     private void Awake()
     {
-        OnCameraCheckPointChange(cameraInitPos.position);
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
     }
-    void Start()
+    #endregion
+
+    public void Initialize()
     {
+        OnCameraCheckPointChange(cameraInitPos.position);
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
         transform.position = spawnPos.position;
         rb = GetComponent<Rigidbody2D>();

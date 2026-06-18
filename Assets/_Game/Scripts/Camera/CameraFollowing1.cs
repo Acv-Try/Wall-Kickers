@@ -22,12 +22,6 @@ public class CameraFollowing1 : MonoBehaviour
     Vector3 NewPosition;
 
     private bool isCameraFreeze;
-    private void Awake()
-    {
-        Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
-        Target.OnCamerShake += Shake;
-        Target.OnCameraFreeze += FreezeCamera;
-    }
 
     private void OnDestroy()
     {
@@ -36,10 +30,43 @@ public class CameraFollowing1 : MonoBehaviour
         Target.OnCameraFreeze -= FreezeCamera;
 
     }
+       
 
-
-    private void Start()
+    #region
+    private static CameraFollowing1 _instance;
+    public static CameraFollowing1 Instance
     {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<CameraFollowing1>();
+                if (_instance != null)
+                {
+                    Debug.LogWarning($"CameraFollowing1 is not found in the scene!");
+                }
+            }
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
+        Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
+        Target.OnCamerShake += Shake;
+        Target.OnCameraFreeze += FreezeCamera;
+    }
+    #endregion
+    public void Initialize()
+    {
+       
+        //center = initialCenter;
         transform.position = new Vector3(center.x, center.y + YOffset, -10);
     }
 
