@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class UIManager : MonoBehaviour
     public void Start()
     {
         Init();
-        Debug.Log("sad");
     }
 
     private void Init()
