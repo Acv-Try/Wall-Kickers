@@ -775,12 +775,6 @@ MonoBehaviour:
   FirePanel: {fileID: 1722094441}
   SettingsPanel: {fileID: 62119102}
   LosingPanel: {fileID: 1707387867}
-  Play: {fileID: 1836377212}
-  Shop: {fileID: 1106103360}
-  Pause: {fileID: 0}
-  Fire: {fileID: 861630241}
-  Close: {fileID: 0}
-  Settings: {fileID: 768833791}
 --- !u!114 &243753497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4254,7 +4248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -100.14072, y: 110.27192}
+  m_AnchoredPosition: {x: -100.14072, y: 110.27191}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861630241
@@ -5418,7 +5412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100.14072, y: 110.27192}
+  m_AnchoredPosition: {x: 100.14072, y: 110.27191}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1106103360
@@ -6661,8 +6655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 79, y: -146}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 114, y: -146}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341075928
 MonoBehaviour:
@@ -6686,8 +6680,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 26c0f7d76ae06e44d9566f40309ba090, type: 2}
+  m_sharedMaterial: {fileID: -6113516097478908848, guid: 26c0f7d76ae06e44d9566f40309ba090, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6961,7 +6955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -64.80647, y: -80.28137}
+  m_AnchoredPosition: {x: -64.8064, y: -80.281494}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1435094655
@@ -7390,7 +7384,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1521674631
 RectTransform:
   m_ObjectHideFlags: 0
