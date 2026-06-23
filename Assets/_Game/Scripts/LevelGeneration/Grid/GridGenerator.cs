@@ -9,7 +9,6 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] TextMeshProUGUI score;
     private static GridGenerator instance;
     public static GridGenerator Instance => instance;
-
     [Header("Rule Tiles")]
     [SerializeField] private RuleTile NormalWallRuleTile;
 
