@@ -11,6 +11,21 @@ TextureImporter:
   - first:
       213: 1546455182917150152
     second: monkey_rotate_clockwise_2
+  - first:
+      213: -3712791709331695993
+    second: monkey_rotate_clockwise_3
+  - first:
+      213: -4129235055769528915
+    second: monkey_rotate_clockwise_4
+  - first:
+      213: -3726772625851313427
+    second: monkey_rotate_clockwise_5
+  - first:
+      213: -3857532159370312991
+    second: monkey_rotate_clockwise_6
+  - first:
+      213: 5583903654925054868
+    second: monkey_rotate_clockwise_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,11 +131,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WindowsStoreApps
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -135,12 +150,12 @@ TextureImporter:
       name: monkey_rotate_clockwise_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 30
-        height: 30
+        x: 1
+        y: 2
+        width: 28
+        height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,10 +174,10 @@ TextureImporter:
         serializedVersion: 2
         x: 30
         y: 0
-        width: 30
+        width: 31
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -179,12 +194,12 @@ TextureImporter:
       name: monkey_rotate_clockwise_2
       rect:
         serializedVersion: 2
-        x: 60
-        y: 0
-        width: 30
-        height: 30
+        x: 62
+        y: 1
+        width: 26
+        height: 28
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,20 +216,108 @@ TextureImporter:
       name: monkey_rotate_clockwise_3
       rect:
         serializedVersion: 2
-        x: 90
+        x: 89
         y: 0
-        width: 30
+        width: 32
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c5e009045e739ed459d5e04325eb5cce
-      internalID: 660780914
+      spriteID: 786d4409c93897cc0800000000000000
+      internalID: -3712791709331695993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_clockwise_4
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 2
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da554ca289202b6c0800000000000000
+      internalID: -4129235055769528915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_clockwise_5
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de29b75ca08d74cc0800000000000000
+      internalID: -3726772625851313427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_clockwise_6
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e2461b60fa477ac0800000000000000
+      internalID: -3857532159370312991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_clockwise_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49330d31ac20e7d40800000000000000
+      internalID: 5583903654925054868
       vertices: []
       indices: 
       edges: []
@@ -223,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3dbfebcff430e584f989c22d3cd2d977
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -231,14 +334,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":30.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       monkey_rotate_clockwise_0: -4715011120362312806
       monkey_rotate_clockwise_1: 8401004345884690966
       monkey_rotate_clockwise_2: 1546455182917150152
-      monkey_rotate_clockwise_3: 660780914
+      monkey_rotate_clockwise_3: -3712791709331695993
+      monkey_rotate_clockwise_4: -4129235055769528915
+      monkey_rotate_clockwise_5: -3726772625851313427
+      monkey_rotate_clockwise_6: -3857532159370312991
+      monkey_rotate_clockwise_7: 5583903654925054868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
