@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
     {
         if (OnFloor)
         {
-            rb.linearVelocity = new Vector2(SpeedOnFloor * jumpSide * Time.deltaTime, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(SpeedOnFloor * jumpSide, rb.linearVelocity.y);
         }
     }
 
@@ -241,8 +241,13 @@ public class PlayerController : MonoBehaviour
 
             transform.localScale = new Vector3(jumpSide, transform.localScale.y, transform.localScale.z);
         }
-        else if (collision.gameObject.CompareTag("Floor") && (!OnWall || (OnWall && CurrentWall.TypeOfWall == WallType.Lift)))
+        else if (collision.gameObject.CompareTag("Floor") && !OnWall) // || (OnWall && CurrentWall.TypeOfWall == WallType.Lift)))
         {
+            if(transform.position.y - collision.transform.position.y < 0) 
+            {
+            JumpTimeCounter = JumpTime;
+            return;
+            }
             if (transform.position.y - collision.transform.position.y > 0) // Checks if player landed on floor from the top
             {
                 OnFloor = true;
