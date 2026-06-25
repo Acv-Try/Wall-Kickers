@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.STP;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameConfig gameConfig;
+
+    private int lastFailIndex;
     #region
     private static GameManager instance;
     public static GameManager Instance => instance;
@@ -17,20 +22,63 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     #endregion
-    private void Start()
+    private void OnDestroy()
     {
-        PlayerController.Instance.Initialize();
-        CameraFollowing1.Instance.Initialize();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    public void SetCheckPoint(int checkPoint)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        currentCheckPoint = checkPoint;
+        LevelManager.Instance.OnLevelsReady += OnLevelsReady;
+        LevelManager.Instance.Initialize(lastFailIndex);
+    }
+    private void OnLevelsReady()
+    {
+        LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
+
+        PlayerManager.Instance.Initialize(
+            LevelManager.Instance.FirstLevelSpawnPos,
+        gameConfig.progressSaveCheckpoint,
+            gameConfig.maxDeathsBeforeFullRestart
+        );
+
+        CameraController.Instance.Initialize(
+            LevelManager.Instance.FirstLevelCenter,
+            PlayerManager.Instance.Status.transform
+        );
+    }
+    public void OnPlayerDied(int score)
+    {
+        var status = PlayerManager.Instance.Status;
+
+        bool beforeProgress = status.CheckPoint < gameConfig.progressSaveCheckpoint;
+        bool tooManyDeaths = status.DeathCount >= gameConfig.maxDeathsBeforeFullRestart;
+
+        if (beforeProgress && tooManyDeaths)
+        {
+            lastFailIndex = 0;
+            RestartGame();
+            return;
+        }
+
+        if (status.CheckPoint >= gameConfig.progressSaveCheckpoint)
+        {
+            lastFailIndex = LevelManager.Instance.GetLastFailIndex();
+            //UIManager.Instance.ShowLosingPanel(score);
+            return;
+        }
     }
 
-    public int GetCurrentCheckpoint()
+    public void RestartGame()
     {
-        return currentCheckPoint;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

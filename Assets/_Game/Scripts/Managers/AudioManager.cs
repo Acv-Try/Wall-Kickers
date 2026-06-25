@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindFirstObjectByType<AudioManager>();
-                if (_instance != null)
+                if (_instance == null)
                 {
                     Debug.LogWarning($"Audio Manager is not found in the scene!");
                 }
