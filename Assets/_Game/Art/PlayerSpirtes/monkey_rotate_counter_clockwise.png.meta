@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: 9f9b4be3023667744a1b0db91e9a09a0
+guid: 421fc0e6d9af21b4eb97ea7220417ed3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4248794660159317440
-    second: mokey_idle_right_0
+      213: 592772854554075710
+    second: monkey_rotate_counter_clockwise_0
   - first:
-      213: 8834005719823024757
-    second: mokey_idle_right_1
+      213: -7215116084519670160
+    second: monkey_rotate_counter_clockwise_1
   - first:
-      213: -30691124758807708
-    second: mokey_idle_right_2
+      213: 6335261732882877857
+    second: monkey_rotate_counter_clockwise_2
+  - first:
+      213: -8022540692937745956
+    second: monkey_rotate_counter_clockwise_3
+  - first:
+      213: -3078882163308414987
+    second: monkey_rotate_counter_clockwise_4
+  - first:
+      213: 1371244781342538685
+    second: monkey_rotate_counter_clockwise_5
+  - first:
+      213: 3296100638255604377
+    second: monkey_rotate_counter_clockwise_6
+  - first:
+      213: 7549489412985751086
+    second: monkey_rotate_counter_clockwise_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,13 +147,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mokey_idle_right_0
+      name: monkey_rotate_counter_clockwise_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 108
-        height: 30
+        x: 1
+        y: 2
+        width: 28
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,19 +162,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c56f5a7b30c6fa30800000000000000
-      internalID: 4248794660159317440
+      spriteID: e32a03445c3f93800800000000000000
+      internalID: 592772854554075710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mokey_idle_right_1
+      name: monkey_rotate_counter_clockwise_1
       rect:
         serializedVersion: 2
-        x: 107
+        x: 29
         y: 0
-        width: 28
+        width: 31
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -169,19 +184,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57202d9c561b89a70800000000000000
-      internalID: 8834005719823024757
+      spriteID: 07e6ff00622cedb90800000000000000
+      internalID: -7215116084519670160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mokey_idle_right_2
+      name: monkey_rotate_counter_clockwise_2
       rect:
         serializedVersion: 2
-        x: 134
+        x: 62
+        y: 1
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ad0c9bfafe5be750800000000000000
+      internalID: 6335261732882877857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_counter_clockwise_3
+      rect:
+        serializedVersion: 2
+        x: 89
         y: 0
-        width: 28
+        width: 32
         height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -191,8 +228,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46b7efaa596f29ff0800000000000000
-      internalID: -30691124758807708
+      spriteID: cd95459beb53aa090800000000000000
+      internalID: -8022540692937745956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_counter_clockwise_4
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 2
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f737be2cfc9545d0800000000000000
+      internalID: -3078882163308414987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_counter_clockwise_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbbb70c0dd3a70310800000000000000
+      internalID: 1371244781342538685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_counter_clockwise_6
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 992e927211a1ebd20800000000000000
+      internalID: 3296100638255604377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: monkey_rotate_counter_clockwise_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 31
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2686984f9c25c860800000000000000
+      internalID: 7549489412985751086
       vertices: []
       indices: 
       edges: []
@@ -211,9 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mokey_idle_right_0: 4248794660159317440
-      mokey_idle_right_1: 8834005719823024757
-      mokey_idle_right_2: -30691124758807708
+      monkey_rotate_counter_clockwise_0: 592772854554075710
+      monkey_rotate_counter_clockwise_1: -7215116084519670160
+      monkey_rotate_counter_clockwise_2: 6335261732882877857
+      monkey_rotate_counter_clockwise_3: -8022540692937745956
+      monkey_rotate_counter_clockwise_4: -3078882163308414987
+      monkey_rotate_counter_clockwise_5: 1371244781342538685
+      monkey_rotate_counter_clockwise_6: 3296100638255604377
+      monkey_rotate_counter_clockwise_7: 7549489412985751086
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

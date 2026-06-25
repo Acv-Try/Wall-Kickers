@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 9f9b4be3023667744a1b0db91e9a09a0
+guid: f46ba61775f682c4bb6e8138cb525d77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4248794660159317440
-    second: mokey_idle_right_0
-  - first:
-      213: 8834005719823024757
-    second: mokey_idle_right_1
-  - first:
-      213: -30691124758807708
-    second: mokey_idle_right_2
+      213: -3358933203163112000
+    second: settings_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mokey_idle_right_0
+      name: settings_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 108
-        height: 30
+        width: 71
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,52 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c56f5a7b30c6fa30800000000000000
-      internalID: 4248794660159317440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mokey_idle_right_1
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 57202d9c561b89a70800000000000000
-      internalID: 8834005719823024757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mokey_idle_right_2
-      rect:
-        serializedVersion: 2
-        x: 134
-        y: 0
-        width: 28
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 46b7efaa596f29ff0800000000000000
-      internalID: -30691124758807708
+      spriteID: 0cd92315c0ca261d0800000000000000
+      internalID: -3358933203163112000
       vertices: []
       indices: 
       edges: []
@@ -211,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mokey_idle_right_0: 4248794660159317440
-      mokey_idle_right_1: 8834005719823024757
-      mokey_idle_right_2: -30691124758807708
+      settings_0: -3358933203163112000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
