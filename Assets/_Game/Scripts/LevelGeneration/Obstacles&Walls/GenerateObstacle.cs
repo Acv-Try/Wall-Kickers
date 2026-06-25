@@ -1,10 +1,18 @@
 using NUnit.Framework;
+using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GenerateObstacle : MonoBehaviour
 {
+    private enum ObstacleType
+    {
+        Default,
+        Bounce
+    }
+    [SerializeField] private ObstacleType obstacleType;
     [SerializeField] private ObstaclePiece bottomPrefab;
     [SerializeField] private ObstaclePiece topPrefab;
     [SerializeField] private ObstaclePiece[] bodyPrefabs;
@@ -14,10 +22,10 @@ public class GenerateObstacle : MonoBehaviour
     [SerializeField] private string prefabName;
 
     private GameObject generatedRoot;
-
     string prefabFormat = ".prefab";
     float topPoint, half;
     int i = 0;
+    
     public void Generate()
     {
         Clear();
@@ -62,12 +70,25 @@ public class GenerateObstacle : MonoBehaviour
             DestroyImmediate(generatedRoot);
         }
     }
-    public void SaveAsPrefab()
+    private void SaveAsPrefab()
     {
-        string originalPath = savePath;
-        originalPath += prefabName + i.ToString() + prefabFormat;
-        PrefabUtility.SaveAsPrefabAsset(generatedRoot, originalPath).AddComponent<BoxCollider2D>();
+        string path = savePath + prefabName + i + prefabFormat;
+
+        generatedRoot.AddComponent<BoxCollider2D>();
+        generatedRoot.AddComponent(GetWallType(obstacleType));
+
+        PrefabUtility.SaveAsPrefabAsset(generatedRoot, path);
+
         i++;
+    }
+    private Type GetWallType(ObstacleType type)
+    {
+        return type switch
+        {
+            ObstacleType.Default => typeof(BaseWall),
+            ObstacleType.Bounce => typeof(BounceWall),
+            _ => throw new ArgumentOutOfRangeException(nameof(type))
+        };
     }
     [CustomEditor(typeof(GenerateObstacle))]
     public class PNGToTileMapEditor : Editor
