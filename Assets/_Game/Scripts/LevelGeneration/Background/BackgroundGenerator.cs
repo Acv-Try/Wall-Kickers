@@ -3,8 +3,8 @@ using UnityEngine.Tilemaps;
 
 public class BackgroundGenerator : MonoBehaviour
 {
-    [SerializeField] private Tilemap background;
     [SerializeField] private RuleTile grassRuleTile;
+    private Tilemap background;
 
     #region
     private static BackgroundGenerator _instance;
@@ -32,6 +32,7 @@ public class BackgroundGenerator : MonoBehaviour
             return;
         }
         _instance = this;
+        background = GetComponent<Tilemap>();
     }
     #endregion
 

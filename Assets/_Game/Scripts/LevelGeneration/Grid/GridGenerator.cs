@@ -100,8 +100,9 @@ public partial class GridGenerator : MonoBehaviour
     {
         (Vector3Int minH, Vector3Int maxH) edges = GenerateBackground(level);
 
-        Vector3Int spawnPos = heightCount - edges.Item1;
-        var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, background.transform);
+        //Vector3Int spawnPos = heightCount - edges.Item1;
+        //var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, transform);
+        var levelInstance = Instantiate(level, (Vector3Int)heightCount, Quaternion.identity, transform);
 
         levelInstance.MaxHeight = edges.Item2;
         levelInstance.MinHeight = edges.Item1;

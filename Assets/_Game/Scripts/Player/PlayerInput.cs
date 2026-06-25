@@ -17,5 +17,10 @@ public class PlayerInput : MonoBehaviour
 
         if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             OnTouchHeld?.Invoke();
+
+        if (Input.GetMouseButtonDown(0))
+            OnTouchBegan?.Invoke();
+        if (Input.GetMouseButton(0))
+            OnTouchHeld?.Invoke();
     }
 }

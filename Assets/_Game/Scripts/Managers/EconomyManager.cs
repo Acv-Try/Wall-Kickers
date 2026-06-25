@@ -13,7 +13,7 @@ public class EconomyManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindFirstObjectByType<EconomyManager>();
-                if (_instance != null)
+                if (_instance == null)
                 {
                     Debug.LogWarning($"Economy Manager is not found in the scene!");
                 }

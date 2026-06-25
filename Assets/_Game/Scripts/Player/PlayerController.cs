@@ -47,9 +47,9 @@ public class PlayerController : MonoBehaviour
 
     public void Initialize()
     {
-        CanJump = false;
+        CanJump = true;
         CanDoubleJump = false;
-        IsOnWall = false;
+        IsOnWall = true;
         IsOnFloor = false;
         JumpSide = 1;
         jumpTimeCounter = 0f;
@@ -85,10 +85,11 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         CanJump = false;
+        IsOnWall = false;
         StartCoroutine(CoolDown());
         ApplyJumpForce(JumpSide);
 
-        if (CurrentWall != null && CurrentWall.TypeOfWall == WallType.Moving)
+        if (CurrentWall != null)// && CurrentWall.TypeOfWall == WallType.Moving)
         {
             CurrentWall.Left(this);
             Rb.gravityScale = 2f;
@@ -143,8 +144,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Wall") && !IsOnWall)
         {
+            Debug.Log("Enter");
             if (collision.contacts[0].normal.y < 0)
             {
                 jumpTimeCounter = JumpTime;

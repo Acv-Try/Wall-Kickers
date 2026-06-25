@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.STP;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameConfig gameConfig;
 
-    int progress, maxDeaths;
+    private int lastFailIndex;
     #region
     private static GameManager instance;
     public static GameManager Instance => instance;
@@ -20,44 +22,51 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     #endregion
     private void OnDestroy()
     {
-        LevelManager.Instance.OnFirstLevelReady -= OnFirstLevelReady;
-        PlayerManager.Instance.OnDied -= OnPlayerDied;
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
-    private void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        progress = gameConfig.progressSaveCheckpoint;
-        maxDeaths = gameConfig.maxDeathsBeforeFullRestart;
-
-        LevelManager.Instance.OnFirstLevelReady += OnFirstLevelReady;
-        PlayerManager.Instance.OnDied += OnPlayerDied;
+        LevelManager.Instance.OnLevelsReady += OnLevelsReady;
+        LevelManager.Instance.Initialize(lastFailIndex);
     }
-
-    private void OnFirstLevelReady(Vector3 center, Vector3 spawnPosition)
+    private void OnLevelsReady()
     {
-        PlayerManager.Instance.Initialize(spawnPosition, progress, maxDeaths);
-        CameraController.Instance.Initialize(center, PlayerManager.Instance.Status.transform);
-    }
+        LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
 
-    private void OnPlayerDied(int score)
+        PlayerManager.Instance.Initialize(
+            LevelManager.Instance.FirstLevelSpawnPos,
+        gameConfig.progressSaveCheckpoint,
+            gameConfig.maxDeathsBeforeFullRestart
+        );
+
+        CameraController.Instance.Initialize(
+            LevelManager.Instance.FirstLevelCenter,
+            PlayerManager.Instance.Status.transform
+        );
+    }
+    public void OnPlayerDied(int score)
     {
         var status = PlayerManager.Instance.Status;
 
-        bool beforeProgress = status.CheckPoint < progress;
-        bool tooManyDeaths = status.DeathCount >= maxDeaths;
+        bool beforeProgress = status.CheckPoint < gameConfig.progressSaveCheckpoint;
+        bool tooManyDeaths = status.DeathCount >= gameConfig.maxDeathsBeforeFullRestart;
 
         if (beforeProgress && tooManyDeaths)
         {
+            lastFailIndex = 0;
             RestartGame();
             return;
         }
 
-        if (status.CheckPoint >= progress)
+        if (status.CheckPoint >= gameConfig.progressSaveCheckpoint)
         {
+            lastFailIndex = LevelManager.Instance.GetLastFailIndex();
             //UIManager.Instance.ShowLosingPanel(score);
             return;
         }
@@ -65,11 +74,11 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void GoToMenu()
     {
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 }

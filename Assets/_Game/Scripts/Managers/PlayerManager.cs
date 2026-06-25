@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private PlayerController controller;
     [SerializeField] private PlayerAnimator playerAnimator;
 
-    public event Action<int> OnDied;
     public event Action OnRespawned;
     public event Action<int, int> OnCheckpointReached;
     public event Action<Vector3> OnCameraCheckpointReached;
@@ -17,6 +16,8 @@ public class PlayerManager : MonoBehaviour
 
     private int _progress, _maxDeaths;
     public PlayerStatus Status => status;
+
+
     #region
     private static PlayerManager _instance;
     public static PlayerManager Instance
@@ -26,7 +27,7 @@ public class PlayerManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindFirstObjectByType<PlayerManager>();
-                if (_instance != null)
+                if (_instance == null)
                 {
                     Debug.LogWarning($"PlayerManager is not found in the scene!");
                 }
@@ -65,6 +66,7 @@ public class PlayerManager : MonoBehaviour
     {
         _progress = progress;
         _maxDeaths = maxDeaths;
+        controller.Initialize();
         characterSoundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
         status.Initialize(spawnPosition);
     }
@@ -95,20 +97,34 @@ public class PlayerManager : MonoBehaviour
         playerAnimator.SetVisible(false);
         playerAnimator.PlayBurstEffect();
         PlayDeathAudio();
+        CameraController.Instance.OnPlayerDied();
         OnCameraShake?.Invoke();
-        OnDied?.Invoke(status.CheckPoint);
+        
 
         bool tooManyDeaths = status.DeathCount >= _maxDeaths;
         bool beforeProgress = status.CheckPoint < _progress;
 
-        if (beforeProgress && tooManyDeaths) return; // GameManager handles full restart
-        if (status.CheckPoint >= _progress) return; // GameManager shows losing panel
+        if (beforeProgress && tooManyDeaths)
+        {
+            GameManager.Instance.OnPlayerDied(status.CheckPoint);
+            return;
+        }
 
+        if (status.CheckPoint >= _progress)
+        {
+            GameManager.Instance.OnPlayerDied(status.CheckPoint);
+            return;
+        }
         StartCoroutine(RespawnSequence());
     }
 
     private void HandleRespawned()
     {
+        controller.Rb.simulated = true;
+        //controller.Initialize();
+        playerAnimator.SetVisible(true);
+        playerAnimator.ResetAnimations();
+        CameraController.Instance.OnPlayerRespawned();
         OnRespawned?.Invoke();
     }
 

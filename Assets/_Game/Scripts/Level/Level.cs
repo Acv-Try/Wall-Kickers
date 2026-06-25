@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Tilemaps;
 
 public class Level : MonoBehaviour 
 {
+    [SerializeField] public Tilemap backgroundTilemap;
     [SerializeField] private List<Transform> checkPointsForCamera;
     [SerializeField] private Transform levelCenter;
     [SerializeField] private Transform spawnPosition;

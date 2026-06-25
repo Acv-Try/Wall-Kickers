@@ -48,7 +48,6 @@ public class CameraController : MonoBehaviour
     #endregion
     private void OnDestroy()
     {
-        PlayerManager.Instance.OnDied -= OnPlayerDied;
         PlayerManager.Instance.OnRespawned -= OnPlayerRespawned;
         PlayerManager.Instance.OnCameraCheckpointReached -= OnCheckpointReached;
         PlayerManager.Instance.OnCameraShake -= Shake;
@@ -58,7 +57,6 @@ public class CameraController : MonoBehaviour
     {
         playerTransform = player;
 
-        PlayerManager.Instance.OnDied += OnPlayerDied;
         PlayerManager.Instance.OnRespawned += OnPlayerRespawned;
         PlayerManager.Instance.OnCameraCheckpointReached += OnCheckpointReached;
         PlayerManager.Instance.OnCameraShake += Shake;
@@ -70,6 +68,7 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         if (isFrozen) return;
+        if (playerTransform == null) return;
 
         if (isMovingToCenter)
         {
@@ -103,14 +102,14 @@ public class CameraController : MonoBehaviour
         center = newCenter;
     }
 
-    private void OnPlayerDied(int score)
+    public void OnPlayerDied()
     {
         isFrozen = true;
         isMovingToCenter = true;
         deadLine.SetActive(false);
     }
 
-    private void OnPlayerRespawned()
+    public void OnPlayerRespawned()
     {
         isFrozen = false;
     }

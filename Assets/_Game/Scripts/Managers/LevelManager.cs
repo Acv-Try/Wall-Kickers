@@ -7,13 +7,15 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private List<Level> levels;
     [SerializeField] private Vector3Int initHeightCount;
+    [SerializeField] private Transform levelS;
+    public event Action OnLevelsReady;
 
-    public event Action<Vector3, Vector3> OnFirstLevelReady;
+    public Vector3 FirstLevelCenter { get; private set; }
+    public Vector3 FirstLevelSpawnPos { get; private set; }
 
     private List<Level> levelsGenerated = new();
     private Vector3Int heightCount;
     private int lastLevelFailIndex;
-    private Level firstLevel;
 
     #region
     private static LevelManager _instance;
@@ -24,7 +26,7 @@ public class LevelManager : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindFirstObjectByType<LevelManager>();
-                if (_instance != null)
+                if (_instance == null)
                 {
                     Debug.LogWarning($"LevelManager is not found in the scene!");
                 }
@@ -41,26 +43,14 @@ public class LevelManager : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        PlayerManager.Instance.OnCheckpointReached += OnCheckpointReached;
     }
     #endregion
 
-    private void OnEnable()
+    public void Initialize(int lastFailIndex)
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-        PlayerManager.Instance.OnCheckpointReached -= OnCheckpointReached;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+        lastLevelFailIndex = lastFailIndex;
         heightCount = initHeightCount;
+
         BackgroundGenerator.Instance.ClearAll();
 
         for (int i = 0; i < levelsGenerated.Count; i++)
@@ -68,29 +58,22 @@ public class LevelManager : MonoBehaviour
         levelsGenerated.Clear();
 
         GenerateNextLevel(0);
-        firstLevel = levelsGenerated[0];
+
+        FirstLevelCenter = levelsGenerated[0].LevelCenter.position;
+        FirstLevelSpawnPos = levelsGenerated[0].SpawnPosition.position;
 
         if (lastLevelFailIndex == 0)
             GenerateNextLevel(10);
         else
             GenerateLevelFromIndex(lastLevelFailIndex);
 
-
-        OnFirstLevelReady?.Invoke(
-            firstLevel.LevelCenter.position,
-            firstLevel.SpawnPosition.position
-        );
+        OnLevelsReady?.Invoke();
     }
 
-    private void OnCheckpointReached(int total, int countInLevel)
-    {
-        //UIManager.Instance.UpdateGameplayScore(total);
-        CheckIfPlayerAboveMiddle(PlayerManager.Instance.Status.transform.position, total);
-    }
-
-    private void CheckIfPlayerAboveMiddle(Vector3 playerPosition, int currentCheckPoint)
+    public void CheckIfPlayerAboveMiddle(Vector3 playerPosition, int currentCheckPoint)
     {
         if (currentCheckPoint < 20) return;
+        if (levelsGenerated.Count < 3) return;
 
         var currentLevel = levelsGenerated[2];
         float middleY = currentLevel.Origin.y + 15;
@@ -118,12 +101,12 @@ public class LevelManager : MonoBehaviour
     {
         var edges = BackgroundGenerator.Instance.Generate(level, heightCount);
 
-        Vector3Int spawnPos = heightCount - edges.min;
+        Vector3Int spawnPos = (heightCount - edges.min)/2;
         var instance = Instantiate(
             level,
             (Vector3)spawnPos,
             Quaternion.identity,
-            BackgroundGenerator.Instance.transform
+            levelS
         );
 
         instance.MinHeight = edges.min;
@@ -172,4 +155,6 @@ public class LevelManager : MonoBehaviour
 
         return level;
     }
+
+    public int GetLastFailIndex() => lastLevelFailIndex;
 }
