@@ -40,14 +40,14 @@ public class PlayerAnimator : MonoBehaviour
     private void OnWallLeft(BaseWall wall)
     {
         playerAnimator.SetBool("isJump", true);
-        PlayPuffEffect(false);
+        //PlayPuffEffect(false);
     }
 
     private void OnDoubleJump()
     {
         playerAnimator.SetBool("isBackFlip", true);
         PlayPuffEffect(true);
-        PlayJumpAudio();
+        //PlayJumpAudio();
     }
 
     public void PlayPuffEffect(bool isReversed)
