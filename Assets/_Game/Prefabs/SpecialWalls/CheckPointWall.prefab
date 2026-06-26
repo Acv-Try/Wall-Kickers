@@ -47,7 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62130534b43b4b04cad352b953e78467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  SpeedOfPlayerFriction: 0.5
+  OnlyRightWall: 0
+  OnlyLeftWall: 0
+  FixIfOnTop: 1
+  TypeOfWall: 0
   checkPointText: {fileID: 5435641565288659991}
+  WallAnimator: {fileID: 3210654482659709784}
 --- !u!1 &3604753034053190121
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +385,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8409948904253902085}
     m_Modifications:
+    - target: {fileID: 1636940298866111912, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -650608650957912767, guid: 456b361d469fd8d479324f274455f7b1, type: 3}
+    - target: {fileID: 3424110802201294613, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.082
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424110802201294613, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.421
+      objectReference: {fileID: 0}
     - target: {fileID: 4984447976209640847, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
@@ -421,15 +439,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6622747765028556213, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
       propertyPath: m_Name
-      value: WoodWall (1)
+      value: CheckPointWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2544996295506952747, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+    - {fileID: 6987013717993601377, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 365618145224648060, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3210654482659709784}
   m_SourcePrefab: {fileID: 100100000, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
 --- !u!4 &231888956231196578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4984447976209640847, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
   m_PrefabInstance: {fileID: 5051777368807240237}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4830509742228084561 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 365618145224648060, guid: 9f8daef575bc92e40a94e406334f842f, type: 3}
+  m_PrefabInstance: {fileID: 5051777368807240237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3210654482659709784
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830509742228084561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bcbe7aed20cc4044e806559d0bce790b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

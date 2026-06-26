@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (OnFloor)
+        if(OnFloor && CanJump)
         {
             rb.linearVelocity = new Vector2(SpeedOnFloor * jumpSide, rb.linearVelocity.y);
         }
