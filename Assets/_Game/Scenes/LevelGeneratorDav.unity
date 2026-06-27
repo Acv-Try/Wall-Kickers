@@ -2448,6 +2448,7 @@ MonoBehaviour:
   NormalWallRuleTile: {fileID: 11400000, guid: 842f4b1202f6e6d459a5249a87c72416, type: 2}
   levels:
   - {fileID: 3489720385391476509, guid: b158ed3a308380e4a93602576d8a4b05, type: 3}
+  - {fileID: 3489720385391476509, guid: 9825bd85c82747f4d89e1f065a0378fe, type: 3}
   grid: {fileID: 1085408662}
   heigthOffset: 25
   InitHeightCount: {x: 0, y: 0, z: 0}
