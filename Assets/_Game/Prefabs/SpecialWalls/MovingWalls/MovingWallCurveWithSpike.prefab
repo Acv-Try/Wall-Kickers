@@ -187,8 +187,8 @@ GameObject:
   - component: {fileID: 5661663490260090288}
   - component: {fileID: 1189882281184884100}
   - component: {fileID: 4244388056781397794}
-  - component: {fileID: 2856701143918048708}
-  - component: {fileID: 5654317665236229686}
+  - component: {fileID: 5202487514666160512}
+  - component: {fileID: 4616841171804436664}
   m_Layer: 0
   m_Name: WoodWall (2)
   m_TagString: Wall
@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 4895294374480030314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.382, y: -0.638, z: 0}
+  m_LocalPosition: {x: -0.41, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -301,7 +301,7 @@ MonoBehaviour:
   OnlyLeftWall: 0
   FixIfOnTop: 1
   TypeOfWall: 3
---- !u!212 &2856701143918048708
+--- !u!212 &5202487514666160512
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5654317665236229686
+--- !u!114 &4616841171804436664
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3506807683333400480}
   m_Layer: 0
-  m_Name: MovingWallCurve
+  m_Name: MovingWallCurveWithSpike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,6 +407,7 @@ Transform:
   m_Children:
   - {fileID: 8137658646262772598}
   - {fileID: 2443424555993937975}
+  - {fileID: 5116186486465695054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6749829031977189791
@@ -776,3 +777,65 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &6316357206218076038
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3506807683333400480}
+    m_Modifications:
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.26731348
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5466652
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283170446381762770, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_Name
+      value: DeadlyThornsMiddle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+--- !u!4 &5116186486465695054 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1200330150024733384, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+  m_PrefabInstance: {fileID: 6316357206218076038}
+  m_PrefabAsset: {fileID: 0}
