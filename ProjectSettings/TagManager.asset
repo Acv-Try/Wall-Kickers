@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Floor
   - Dead
+  - Branch
+  - Default Log
   layers:
   - Default
   - TransparentFX

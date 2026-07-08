@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 7097979978794473577}
   m_Layer: 0
   m_Name: Body Type C
-  m_TagString: Untagged
+  m_TagString: Default Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

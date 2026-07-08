@@ -150,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14be828ef6398b44bab7b80b7d3e2d2f
-      internalID: -1721646326
+      spriteID: 0926c4d0b2af2ef4d84f6fb15715a69f
+      internalID: 1205296127
       vertices: []
       indices: 
       edges: []
@@ -173,7 +173,7 @@ TextureImporter:
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":10.0,"y":9.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Wood_top_bottom_0: -4738324896442659358
-      Wood_top_bottom_1: -1721646326
+      Wood_top_bottom_1: 1205296127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -9,8 +9,8 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] TextMeshProUGUI score;
     private static GridGenerator instance;
     public static GridGenerator Instance => instance;
-    [Header("Rule Tiles")]
-    [SerializeField] private RuleTile NormalWallRuleTile;
+    //[Header("Rule Tiles")]
+    //[SerializeField] private RuleTile NormalWallRuleTile;
 
     [Header("Lists")]
     [SerializeField] private List<Level> levels;
@@ -18,6 +18,7 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] private GameObject grid;
     [SerializeField] private int heightOffset;
     [SerializeField] private Vector3Int InitHeightCount;
+    [SerializeField] private Transform initSpawnPos;
     
     private List<Level> levelsGenerated = new();
     private Vector3Int heightCount;
@@ -52,7 +53,7 @@ public partial class GridGenerator : MonoBehaviour
     }
     public Vector3 GetSpawnPosition()
     {
-        return currentLevel.SpawnPosition.position;
+        return currentLevel.PlayerSpawnPosition.position;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -102,14 +103,17 @@ public partial class GridGenerator : MonoBehaviour
 
         //Vector3Int spawnPos = heightCount - edges.Item1;
         //var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, transform);
-        var levelInstance = Instantiate(level, (Vector3Int)heightCount, Quaternion.identity, transform);
+        Vector3 spawnPos = edges.Item1 / 2;
+        var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, transform);
 
         levelInstance.MaxHeight = edges.Item2;
         levelInstance.MinHeight = edges.Item1;
         levelInstance.Origin = heightCount;
 
         levelsGenerated.Add(levelInstance);
-        heightCount += new Vector3Int(levelInstance.MaxHeight.x - levelInstance.MinHeight.x, levelInstance.MaxHeight.y - levelInstance.MinHeight.y + 1, 0);
+        heightCount += new Vector3Int(
+            levelInstance.MaxHeight.x - levelInstance.MinHeight.x, 
+            levelInstance.MaxHeight.y - levelInstance.MinHeight.y + 1, 0);
     }
 
     public Level GetRandomLevelFromCheckPoint(int checkPoint)
@@ -130,7 +134,7 @@ public partial class GridGenerator : MonoBehaviour
             lastLevelFailIndex = index;
         else
             lastLevelFailIndex = 0;
-        level.checkPointWall.SetCheckPointText(Mathf.CeilToInt((checkPoint + 10) / 10f) * 10);
+        level.LevelCheckpoint.SetCheckPointText(Mathf.CeilToInt((checkPoint + 10) / 10f) * 10);
         return level;
     }
 

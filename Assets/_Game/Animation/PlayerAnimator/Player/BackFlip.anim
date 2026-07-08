@@ -22,17 +22,17 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -4715011120362312806, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
-    - time: 0.06666667
+    - time: 0.05
       value: {fileID: 8401004345884690966, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
-    - time: 0.15
+    - time: 0.16666667
       value: {fileID: 1546455182917150152, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
     - time: 0.21666667
       value: {fileID: -3712791709331695993, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
     - time: 0.28333333
       value: {fileID: -4129235055769528915, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
-    - time: 0.35
+    - time: 0.33333334
       value: {fileID: -3726772625851313427, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
-    - time: 0.43333334
+    - time: 0.45
       value: {fileID: -3857532159370312991, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
     - time: 0.5
       value: {fileID: 5583903654925054868, guid: 9cbcdb128d92e9b4dbdc20c7157815f2, type: 3}
@@ -90,18 +90,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []

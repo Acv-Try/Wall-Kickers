@@ -1,8 +1,18 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-public class PlayerController : MonoBehaviour
+//using UnityEngine.SceneManagement;
+public interface IPlayerController
+{
+    public sbyte JumpSide { get; }
+    public event Action OnJump;
+    public event Action<sbyte> OnDoubleJump;
+    public event Action OnWallTouched;
+    public event Action OnFloorTouched;
+    public event Action OnFloorLeft;
+    public void Initialize();
+}
+public class PlayerController : MonoBehaviour, IPlayerController
 {
 
     [Header("Jump Settings")]
@@ -10,246 +20,296 @@ public class PlayerController : MonoBehaviour
     public float StartJumpForceUp = 7f;
     public float JumpForceSide = 3f;
     public float JumpTime = 0.5f;
-    public float CoolDownTimeBetweenJumps = 0.2f;
+    public float CoolDownTimeBetweenJumps = 0.05f;
     public float GravityForceWhileFalling = 3f;
     public float SpeedOnFloor = 5f;
 
-    public event Action<BaseWall> OnWallTouched;
-    public event Action<BaseWall> OnWallLeft;
-    public event Action OnDoubleJumpPerformed;
+    public event Action OnJump;
+    public event Action<sbyte> OnDoubleJump;
+    public event Action OnWallTouched;
+    public event Action OnFloorTouched;
+    public event Action OnFloorLeft;
 
-    public sbyte JumpSide { get; private set; } = 1;
-    public bool IsOnWall { get; private set; }
-    public bool IsOnFloor { get; private set; }
-    public bool CanJump { get; private set; }
-    public bool CanDoubleJump { get; private set; }
-    public BaseWall CurrentWall { get; private set; }
-    public Rigidbody2D Rb { get; private set; }
+    private sbyte jumpSide = 1;
+    private bool isDead;
+    private bool isOnWall;
+    private bool isOnFloor;
+    private bool canJump;
+    private bool canDoubleJump;
+    private BaseWall currentWall;
+    private Rigidbody2D rb;
 
-    private PlayerInput input;
+    private IPlayerInput playerInput;
+    private IPlayerStatus playerStatus;
     private float jumpTimeCounter;
     private sbyte linearVelocityX;
+    //private bool isDead;
 
+    public sbyte JumpSide => jumpSide;
     private void Awake()
     {
-        Rb = GetComponent<Rigidbody2D>();
-        input = GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
+        playerStatus = GetComponent<PlayerStatus>();
+        rb = GetComponent<Rigidbody2D>();
 
-        input.OnTouchBegan += HandleTouchBegan;
-        input.OnTouchHeld += HandleTouchHeld;
+        playerInput.OnTouchBegan += HandleTouchBegan;
+        playerInput.OnTouchHeld += HandleTouchHeld;
+        playerStatus.OnDeath += HandleDeath;
+        playerStatus.OnRespawn += HandleRespawn;
     }
 
     private void OnDestroy()
     {
-        input.OnTouchBegan -= HandleTouchBegan;
-        input.OnTouchHeld -= HandleTouchHeld;
+        playerInput.OnTouchBegan -= HandleTouchBegan;
+        playerInput.OnTouchHeld -= HandleTouchHeld;
+        playerStatus.OnDeath -= HandleDeath;
+        playerStatus.OnRespawn -= HandleRespawn;
     }
 
     public void Initialize()
     {
-        CanJump = true;
-        CanDoubleJump = false;
-        IsOnWall = true;
-        IsOnFloor = false;
-        JumpSide = 1;
+        isDead = !isDead;
+
+        canJump = true;
+        canDoubleJump = false;
+
+        isOnWall = true;
+        isOnFloor = false;
+
+        jumpSide = 1;
         jumpTimeCounter = 0f;
-        Rb.gravityScale = 2f;
-        Rb.linearVelocity = Vector2.zero;
+
+        rb.gravityScale = 0f;
+        rb.linearVelocity = Vector2.zero;
+        FlipScale(jumpSide);
     }
+
+    #region Methods
+    private void ResetJump()
+    {
+        canJump = true;
+        canDoubleJump = false;
+    }
+    public void UpdateJumpSide()
+    {
+        jumpSide = (sbyte)(linearVelocityX > 0 ? 1 : -1);
+    }
+    private void FlipScale(sbyte side)
+    {
+        transform.localScale = new Vector3(side, transform.localScale.y, transform.localScale.z);
+    }
+    private void Jump()
+    {
+        canJump = false;
+        isOnWall = false;
+
+        OnJump?.Invoke();
+        StartCoroutine(CoolDown());
+        ApplyJumpForce(jumpSide);
+
+        if (currentWall != null && currentWall.TypeOfWall == WallType.Moving)
+        {
+            currentWall.Left(this);
+            rb.gravityScale = 2f;
+            isOnWall = false;
+        }
+    }
+    private void DoubleJump()
+    {
+        canDoubleJump = false;
+        UpdateJumpSide();
+        sbyte doubleSide = (sbyte)-jumpSide;
+
+        OnDoubleJump?.Invoke(doubleSide);
+        ApplyJumpForce(doubleSide);
+        FlipScale(doubleSide);
+
+    }
+    private void ApplyJumpForce(sbyte side)
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = 2f;
+
+        rb.AddForce(new Vector2(JumpForceSide * side, StartJumpForceUp), ForceMode2D.Impulse);
+        jumpTimeCounter = 0f;
+
+        linearVelocityX = (sbyte)rb.linearVelocity.x;
+    }
+    private void VerticalJump()
+    {
+        jumpTimeCounter += Time.deltaTime;
+        if (jumpTimeCounter < JumpTime)
+            rb.AddForce(Vector2.up * JumpForceUp * Time.deltaTime, ForceMode2D.Impulse);
+    }
+
     public void JumpFromBounce()
     {
-        CheckJumpSide();
-        JumpSide *= -1;
-        FlipScale(JumpSide);
+        UpdateJumpSide();
+        jumpSide *= -1;
+        FlipScale(jumpSide);
         Jump();
     }
+    #endregion
+
+    #region Event Handle
     private void HandleTouchBegan()
     {
-        if (CanJump)
+        if (canJump)
         {
             Jump();
             return;
         }
 
-        if (CanDoubleJump)
+        if (canDoubleJump)
         {
             DoubleJump();
         }
     }
-
     private void HandleTouchHeld()
     {
         VerticalJump();
     }
-
-    private void Jump()
+    private void HandleDeath()
     {
-        CanJump = false;
-        IsOnWall = false;
-        StartCoroutine(CoolDown());
-        ApplyJumpForce(JumpSide);
-
-        if (CurrentWall != null)// && CurrentWall.TypeOfWall == WallType.Moving)
-        {
-            CurrentWall.Left(this);
-            Rb.gravityScale = 2f;
-            IsOnWall = false;
-        }
+        isDead = !isDead;
+        rb.gravityScale = 0;
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
     }
-
-    private void DoubleJump()
+    private void HandleRespawn()
     {
-        CanDoubleJump = false;
-        sbyte doubleSide = (sbyte)-JumpSide;
-        ApplyJumpForce(doubleSide);
-        FlipScale(doubleSide);
-        OnDoubleJumpPerformed?.Invoke();
+        Debug.Log(rb.gravityScale);
+        Initialize();
+        rb.simulated = true;
     }
+    #endregion
 
-    private void ApplyJumpForce(sbyte side)
-    {
-        Rb.linearVelocity = Vector2.zero;
-        Rb.gravityScale = 2f;
-        Rb.AddForce(new Vector2(JumpForceSide * side, StartJumpForceUp), ForceMode2D.Impulse);
-        jumpTimeCounter = 0f;
-        linearVelocityX = (sbyte)Rb.linearVelocity.x;
-    }
-
-    private void VerticalJump()
-    {
-        jumpTimeCounter += Time.deltaTime;
-        if (jumpTimeCounter < JumpTime)
-            Rb.AddForce(Vector2.up * JumpForceUp * Time.deltaTime, ForceMode2D.Impulse);
-    }
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     private void FixedUpdate()
     {
-        if (IsOnFloor)
-            Rb.linearVelocity = new Vector2(SpeedOnFloor * JumpSide * Time.deltaTime, Rb.linearVelocity.y);
+        if (isDead) return;
+        if (isOnFloor)
+        {
+            Debug.Log("enter");
+            rb.linearVelocity =
+                new Vector2(SpeedOnFloor * jumpSide, rb.linearVelocity.y);
+        }
 
-        if (IsOnWall && CurrentWall != null)
-            Rb.position += Vector2.down * CurrentWall.SpeedOfPlayerFriction * Time.deltaTime;
+        if (isOnWall && currentWall != null)
+            rb.position +=
+                Vector2.down * currentWall.SpeedOfPlayerFriction * Time.deltaTime;
 
-        if (Rb.linearVelocity.y < -0.2f && !IsOnWall)
-            Rb.gravityScale = GravityForceWhileFalling;
+        if (rb.linearVelocity.y < -0.2f && !isOnWall)
+            rb.gravityScale = GravityForceWhileFalling;
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    private IEnumerator CoolDown()
-    {
-        yield return new WaitForSeconds(CoolDownTimeBetweenJumps);
-        if (!IsOnWall) CanDoubleJump = true;
-    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Wall") && !IsOnWall)
+        if (isDead) return;
+        if (collision.gameObject.CompareTag("Wall") && !isOnWall)
         {
-            Debug.Log("Enter");
             if (collision.contacts[0].normal.y < 0)
             {
                 jumpTimeCounter = JumpTime;
                 return;
             }
 
-            Rb.gravityScale = 0f;
-            Rb.linearVelocity = Vector2.zero;
-            IsOnWall = true;
-            IsOnFloor = false;
+            rb.gravityScale = 0f;
+            rb.linearVelocity = Vector2.zero;
+            isOnWall = true;
+            isOnFloor = false;
 
-            CurrentWall = collision.gameObject.GetComponent<BaseWall>();
+            currentWall = collision.gameObject.GetComponent<BaseWall>();
             float xDiff = transform.position.x - collision.transform.position.x;
-            JumpSide = (sbyte)(xDiff > 0 ? 1 : -1);
+            jumpSide = (sbyte)(xDiff > 0 ? 1 : -1);
 
             ResetJump();
-            CurrentWall.Touched(this);
-            OnWallTouched?.Invoke(CurrentWall);
-
-            if (collision.contacts[0].normal.y > 0 && CurrentWall.FixIfOnTop)
+            currentWall.Touched(this);
+            OnWallTouched?.Invoke();
+            if (collision.contacts[0].normal.y > 0 && currentWall.FixIfOnTop)
             {
-                JumpSide *= -1;
-                if (CurrentWall.OnlyLeftWall) JumpSide = -1;
-                if (CurrentWall.OnlyRightWall) JumpSide = 1;
+                jumpSide *= -1;
+
+                if (currentWall.OnlyLeftWall) jumpSide = -1;
+                if (currentWall.OnlyRightWall) jumpSide = 1;
+
+                UpdateJumpSide();
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
-                    collision.transform.position.x + (-JumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
+                    collision.transform.position.x +
+                    (jumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
                     transform.position.y - 0.3f
                 )));
-                CheckJumpSide();
+                //(-JumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
             }
 
-            FlipScale(JumpSide);
+            FlipScale(jumpSide);
         }
-        else if (collision.gameObject.CompareTag("Floor") &&
-                 (!IsOnWall || (IsOnWall && CurrentWall.TypeOfWall == WallType.Lift)))
+        else if (collision.gameObject.CompareTag("Floor") && !isOnWall)
+        // || (isOnWall && currentWall.TypeOfWall == WallType.Lift)))
         {
+            Debug.Log("object is floor");
             if (transform.position.y - collision.transform.position.y > 0)
             {
-                IsOnFloor = true;
-                CheckJumpSide();
+                isOnFloor = true;
+                UpdateJumpSide();
                 ResetJump();
             }
 
+            OnFloorTouched?.Invoke();
             if (collision.contacts[0].normal.y == 0)
             {
-                CheckJumpSide();
+                UpdateJumpSide();
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
-                    transform.position.x + 0.3f * JumpSide,
+                    transform.position.x + 0.3f * jumpSide,
                     collision.transform.position.y + 0.3f
                 )));
             }
         }
     }
-
     public void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") && IsOnWall)
+        if (isDead) return;
+        if (collision.gameObject.CompareTag("Wall") && isOnWall)
         {
-            if (CurrentWall != null && CurrentWall.TypeOfWall == WallType.Moving) return;
-            Rb.gravityScale = 2f;
-            IsOnWall = false;
-            CurrentWall.Left(this);
-            OnWallLeft?.Invoke(CurrentWall);
-            CurrentWall = null;
+            if (currentWall != null && currentWall.TypeOfWall == WallType.Moving) return;
+            rb.gravityScale = 2f;
+            isOnWall = false;
+            currentWall.Left(this);
+            currentWall = null;
         }
-        else if (collision.gameObject.CompareTag("Floor") && IsOnFloor)
+        else if (collision.gameObject.CompareTag("Floor") && isOnFloor)
         {
-            IsOnFloor = false;
+            rb.gravityScale = 2f;
+            isOnFloor = false;
+            OnFloorLeft?.Invoke();
         }
     }
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-        if (IsOnWall && collision.gameObject.CompareTag("Wall") && CurrentWall != null)
-            CurrentWall.Staying(this);
+        if (isDead) return;
+        if (isOnWall && collision.gameObject.CompareTag("Wall") && currentWall != null)
+            currentWall.Staying(this);
     }
 
-    public void ResetJump()
+
+    private IEnumerator CoolDown()
     {
-        CanJump = true;
-        CanDoubleJump = false;
+        yield return new WaitForSeconds(CoolDownTimeBetweenJumps);
+        if (!isOnWall) canDoubleJump = true;
     }
-
-    public void CheckJumpSide()
-    {
-        JumpSide = (sbyte)(linearVelocityX > 0 ? 1 : -1);
-    }
-
-    public void FlipScale(sbyte side)
-    {
-        transform.localScale = new Vector3(side, transform.localScale.y, transform.localScale.z);
-    }
-
     private IEnumerator BringPlayerOnPlatform(Vector2 targetPosition)
     {
-        Rb.simulated = false;
+        rb.simulated = false;
         float t = 0;
         while (t < 1)
         {
             t += Time.deltaTime * 10f;
             transform.position = Vector2.Lerp(transform.position, targetPosition, t);
-            if (t > 0.8f) Rb.simulated = true;
+            if (t > 0.8f) rb.simulated = true;
             yield return null;
         }
     }

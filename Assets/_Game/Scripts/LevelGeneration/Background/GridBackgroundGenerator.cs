@@ -25,8 +25,8 @@ public partial class GridGenerator
                     }
                     var pos = new Vector3Int(j - MinHeight.x, i - MinHeight.y, 0);
                     background.SetTile(heightCount + pos, GrassRuleTile);
-                    
-                    
+
+
                     if (MaxHeight.y < i)
                     {
                         MaxHeight = new Vector3Int(j, i, 0);

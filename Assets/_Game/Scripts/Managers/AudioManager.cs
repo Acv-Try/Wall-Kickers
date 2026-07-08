@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(_instance != null && _instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
@@ -56,16 +56,20 @@ public class AudioManager : MonoBehaviour
 
     public void Play<T>(SoundData data, T type) where T : Enum
     {
+        if (data == null) return;
+        data.clip = soundBank.GetClip(type);
         pool.CreateBuilder().WithPosition(transform.position).Play(data);
     }
     public void PlayAndTrack<T>(SoundData data, T type) where T : Enum
     {
+        if (data == null) return;
+        data.clip = soundBank.GetClip(type);
         _a_emitter = pool.CreateBuilder().WithPosition(transform.position).Play(data);
         activeEmitters[type] = _a_emitter;
     }
     public void Stop<T>(T type) where T : Enum
     {
-        if(activeEmitters.TryGetValue((Enum)(object)type, out var emitter))
+        if (activeEmitters.TryGetValue((Enum)(object)type, out var emitter))
         {
             emitter?.Stop();
         }
