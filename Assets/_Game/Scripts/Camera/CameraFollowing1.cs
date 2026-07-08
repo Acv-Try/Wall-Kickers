@@ -4,149 +4,156 @@ using DG.Tweening;
 
 public class CameraFollowing1 : MonoBehaviour
 {
-    //[SerializeField] private PlayerController Target;
+    [SerializeField] private PlayerController Target;
 
-    //[SerializeField] private float Xoffset;
-    //[SerializeField] private float YOffset;
+    [SerializeField] private float Xoffset;
+    [SerializeField] private float YOffset;
 
-    //[SerializeField] private float speed;
-    //private Vector3 center = Vector3.negativeInfinity;
-    //[SerializeField] private GameObject deadLine;
+    [SerializeField] private float speed;
+    private Vector3 center = Vector3.negativeInfinity;
+    [SerializeField] private GameObject deadLine;
 
-    //[SerializeField] private float duration;
-    //[SerializeField] private float strength;
-    //[SerializeField] private int vibrato;
-    //[SerializeField] private float randomness;
+    [SerializeField] private float duration;
+    [SerializeField] private float strength;
+    [SerializeField] private int vibrato;
+    [SerializeField] private float randomness;
 
 
-    //Vector3 NewPosition;
+    Vector3 NewPosition;
 
-    //private bool isCameraFreeze;
+    private bool isCameraFreeze;
 
-    //private void OnDestroy()
-    //{
-    //    Target.OnCameraCheckPointChange -= OnCameraCheckPointChange;
-    //    Target.OnCamerShake -= Shake;
-    //    Target.OnCameraFreeze -= FreezeCamera;
+    private void OnDestroy()
+    {
+        Target.OnCameraCheckPointChange -= OnCameraCheckPointChange;
+        Target.OnCamerShake -= Shake;
+        Target.OnCameraFreeze -= FreezeCamera;
 
-    //}
-
-    //#region
-    //private static CameraFollowing1 _instance;
-    //public static CameraFollowing1 Instance
-    //{
-    //    get
-    //    {
-    //        if (_instance == null)
-    //        {
-    //            _instance = FindFirstObjectByType<CameraFollowing1>();
-    //            if (_instance != null)
-    //            {
-    //                Debug.LogWarning($"CameraFollowing1 is not found in the scene!");
-    //            }
-    //        }
-    //        return _instance;
-    //    }
-    //}
-
-    //private void Awake()
-    //{
-    //    if (_instance != null && _instance != this)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    _instance = this;
-    //    Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
-    //    Target.OnCamerShake += Shake;
-    //    Target.OnCameraFreeze += FreezeCamera;
-    //}
-    //#endregion
-    //public void Initialize()
-    //{
+    }
        
-    //    //center = initialCenter;
-    //    transform.position = new Vector3(center.x, center.y + YOffset, -10);
-    //}
 
-    //void Update()
-    //{
-    //    if (isCameraFreeze) return;
-    //    if (Target.isCameraMoving)
-    //    {
-    //        var pos = new Vector3(center.x, center.y + YOffset, -10);
+    #region
+    private static CameraFollowing1 _instance;
+    public static CameraFollowing1 Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<CameraFollowing1>();
+                if (_instance != null)
+                {
+                    Debug.LogWarning($"CameraFollowing1 is not found in the scene!");
+                }
+            }
+            return _instance;
+        }
+    }
 
-    //        if (Vector3.Distance(transform.position, pos) < 1f)
-    //        {
-    //            Target.isCameraMoving = false;
-    //            deadLine.SetActive(true);
-    //        }
-    //        transform.position = Vector3.Lerp(
-    //            transform.position,
-    //            pos,
-    //            speed * Time.deltaTime
-    //        );
-    //        return;
-    //    }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _instance = this;
+        Target.OnCameraCheckPointChange += OnCameraCheckPointChange;
+        Target.OnCamerShake += Shake;
+        Target.OnCameraFreeze += FreezeCamera;
+    }
+    #endregion
+    public void Initialize()
+    {
+       
+        //center = initialCenter;
+        transform.position = new Vector3(center.x, center.y + YOffset, -10);
+    }
 
-    //    float y = Mathf.Max(transform.position.y, Target.transform.position.y + YOffset);
+    void Update()
+    {
+        if (isCameraFreeze) return;
+        if (Target.isCameraMoving)
+        {
+            var pos = new Vector3(center.x, center.y + YOffset, -10);
 
-    //    float x = center.x;
+            if (Vector3.Distance(transform.position, pos) < 1f)
+            {
+                Target.isCameraMoving = false;
+                deadLine.SetActive(true);
+            }
+            transform.position = Vector3.Lerp(
+                transform.position,
+                pos,
+                speed * Time.deltaTime
+            );
+            return;
+        }
 
-    //    if (Target.transform.position.x > center.x + Xoffset)
-    //        x = Target.transform.position.x - Xoffset / 3;
-    //    else if (Target.transform.position.x < center.x - Xoffset)
-    //        x = Target.transform.position.x + Xoffset / 3;
+        float y = 0;
+        float x =0;
+        if(Target != null)
+        {
+              y = Mathf.Max(transform.position.y, Target.transform.position.y + YOffset);
+            
+       
+         x = center.x;
 
-    //    NewPosition = new Vector3(x, y, -10);
+        if (Target.transform.position.x > center.x + Xoffset)
+            x = Target.transform.position.x - Xoffset / 3;
+        else if (Target.transform.position.x < center.x - Xoffset)
+            x = Target.transform.position.x + Xoffset / 3;
+        }
 
-    //    transform.position = Vector3.Lerp(
-    //        transform.position,
-    //        NewPosition,
-    //        speed * Time.deltaTime
-    //    );
-    //}
+        NewPosition = new Vector3(x, y, -10);
 
-    //public void OnCameraCheckPointChange(Vector3 newPos)
-    //{
-    //    center = newPos;
-    //    if (Target.isDead)
-    //    {
-    //        StartCoroutine(CameraMoveToInitPos());
-    //    }
-    //}
+        transform.position = Vector3.Lerp(
+            transform.position,
+            NewPosition,
+            speed * Time.deltaTime
+        );
+    }
+
+    public void OnCameraCheckPointChange(Vector3 newPos)
+    {
+        center = newPos;
+        if (Target.isDead)
+        {
+            StartCoroutine(CameraMoveToInitPos());
+        }
+    }
     
-    //private IEnumerator CameraMoveToInitPos()
-    //{
-    //    FreezeCamera();
+    private IEnumerator CameraMoveToInitPos()
+    {
+        FreezeCamera();
 
-    //    yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
 
-    //    Target.transform.position = Target.spawnPos.position;
+        Target.transform.position = Target.spawnPos.position;
         
-    //    Target.playerSprite.enabled = true;
-    //    Target.rb.simulated = true;
+        Target.playerSprite.enabled = true;
+        Target.rb.simulated = true;
 
-    //    isCameraFreeze = false;
-    //    Target.isDead = false;
+        isCameraFreeze = false;
+        Target.isDead = false;
 
-    //    Target.ResetPlayerStats();
-    //}
+        Target.ResetPlayerStats();
+    }
 
-    //public void Shake()
-    //{
-    //    transform.DOShakePosition(
-    //        duration,  // duration
-    //        strength,   // strength
-    //        vibrato,      // vibrato
-    //        randomness      // randomness
-    //    );
-    //}
+    public void Shake()
+    {
+        transform.DOShakePosition(
+            duration,  // duration
+            strength,   // strength
+            vibrato,      // vibrato
+            randomness      // randomness
+        );
+    }
 
-    //public void FreezeCamera()
-    //{
-    //    isCameraFreeze = true;
-    //    deadLine.SetActive(false);
-    //    Target.isCameraMoving = true;
-    //}
+    public void FreezeCamera()
+    {
+        isCameraFreeze = true;
+        deadLine.SetActive(false);
+        Target.isCameraMoving = true;
+    }
 }
