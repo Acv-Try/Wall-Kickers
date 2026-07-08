@@ -5,12 +5,11 @@ using static UnityEngine.Rendering.STP;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameConfig gameConfig;
-
     private int lastFailIndex;
-    #region
+    
+    #region Singleton
     private static GameManager instance;
     public static GameManager Instance => instance;
-
     private int currentCheckPoint;
 
     private void Awake()
@@ -26,28 +25,29 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
     #endregion
+    
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
     {
         LevelManager.Instance.OnLevelsReady += OnLevelsReady;
         LevelManager.Instance.Initialize(lastFailIndex);
     }
     private void OnLevelsReady()
     {
-        LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
-
+        //LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
         PlayerManager.Instance.Initialize(
             LevelManager.Instance.FirstLevelSpawnPos,
         gameConfig.progressSaveCheckpoint,
             gameConfig.maxDeathsBeforeFullRestart
         );
 
-        CameraController.Instance.Initialize(
+        CameraManager.Instance.Initialize(
             LevelManager.Instance.FirstLevelCenter,
-            PlayerManager.Instance.Status.transform
+            //gameConfig.cameraCenter,
+            PlayerManager.Instance.PlayerTransform
         );
     }
     public void OnPlayerDied(int score)

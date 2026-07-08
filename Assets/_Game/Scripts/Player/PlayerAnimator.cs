@@ -1,69 +1,121 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnimator;
-    [SerializeField] private Animator puffEffect;
+    //[SerializeField] private GameObject puffEffectOB;
+    [SerializeField] private PuffEffect puffEffect;
     [SerializeField] private ParticleSystem burstEffect;
     [SerializeField] private Vector3 puffEffectOffset;
 
-    private PlayerController controller;
+    private Animator playerAnimator;
+    private IPlayerStatus status;
+    private IPlayerController controller;
     private SpriteRenderer spriteRenderer;
     private SoundData soundData;
+    private Coroutine coroutine;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
 
     private void Awake()
     {
-        controller = GetComponent<PlayerController>();
+        playerAnimator = GetComponent<Animator>();
+        status = GetComponent<IPlayerStatus>();
+        controller = GetComponent<IPlayerController>();
+        Initialize();
+    }
+    public void Initialize()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        status.OnDeath += OnDeath;
+        status.OnRespawn += OnRespawn;
+        controller.OnJump += OnJump;
+        controller.OnDoubleJump += OnDoubleJump;
         controller.OnWallTouched += OnWallTouched;
-        controller.OnWallLeft += OnWallLeft;
-        controller.OnDoubleJumpPerformed += OnDoubleJump;
+        controller.OnFloorTouched += OnFloorTouched;
+        controller.OnFloorLeft += OnFloorLeft;
+
     }
+
 
     private void OnDestroy()
     {
+        status.OnDeath -= OnDeath;
+        status.OnRespawn -= OnRespawn;
+        controller.OnJump -= OnJump;
+        controller.OnDoubleJump -= OnDoubleJump;
         controller.OnWallTouched -= OnWallTouched;
-        controller.OnWallLeft -= OnWallLeft;
-        controller.OnDoubleJumpPerformed -= OnDoubleJump;
+        controller.OnFloorTouched -= OnFloorTouched;
+        controller.OnFloorLeft -= OnFloorLeft;
     }
     private void Start()
     {
+        //Initialize();
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
+        ResetAnimations();
     }
-    private void OnWallTouched(BaseWall wall)
+    private void OnJump()
     {
-        playerAnimator.SetBool("isJump", false);
+        playerAnimator?.SetBool("isIdle", false);
+        playerAnimator?.SetBool("isBackFlip", false);
+        playerAnimator?.SetBool("isJump", true);
+    }
+    private void OnDoubleJump(sbyte side)
+    {
+        playerAnimator?.SetBool("isJump", false);
+        playerAnimator?.SetBool("isBackFlip", true);
+        //PlayPuffEffect(side);
+    }
+    private void OnWallTouched()
+    {
+        playerAnimator?.SetBool("isBackFlip", false);
+        playerAnimator?.SetBool("isJump", false);
+        playerAnimator?.SetBool("isRunning", false);
+        playerAnimator?.SetBool("isIdle", true);
+
     }
 
-    private void OnWallLeft(BaseWall wall)
+    private void OnFloorTouched()
     {
-        playerAnimator.SetBool("isJump", true);
-        //PlayPuffEffect(false);
+        playerAnimator?.SetBool("isBackFlip", false);
+        playerAnimator?.SetBool("isJump", false);
+        playerAnimator?.SetBool("isRunning", true);
+    }
+    private void OnFloorLeft()
+    {
+        playerAnimator?.SetBool("isRunning", false);
+        playerAnimator?.SetBool("isJump", true);
+    }
+    private void OnDeath()
+    {
+        PlayBurstEffect();
+        PlayDeathAudio();
+        spriteRenderer.enabled = false;
+    }
+    private void OnRespawn()
+    {
+        spriteRenderer.enabled = true;
+        ResetAnimations();
     }
 
-    private void OnDoubleJump()
+    public void PlayPuffEffect(sbyte side)
     {
-        playerAnimator.SetBool("isBackFlip", true);
-        PlayPuffEffect(true);
-        //PlayJumpAudio();
-    }
-
-    public void PlayPuffEffect(bool isReversed)
-    {
-        var instance = Instantiate(
+        PuffEffect instance = Instantiate(
             puffEffect,
             transform.position + puffEffectOffset,
             Quaternion.identity
         );
         instance.transform.localScale = new Vector3(
-            1,
-            controller.JumpSide * (isReversed ? -1 : 1),
-            1
+            side,
+            instance.transform.localScale.y,
+            instance.transform.localScale.z
         );
-        instance.SetTrigger("Jump");
     }
+    //if(coroutine != null)
+    //{
+    //    coroutine = null;
+    //    coroutine = StartCoroutine(PuffEffectLifeCycle(puffEffect));
+    //}
 
     public void PlayBurstEffect()
     {
@@ -72,13 +124,10 @@ public class PlayerAnimator : MonoBehaviour
 
     public void ResetAnimations()
     {
-        playerAnimator.SetBool("isJump", false);
-        playerAnimator.SetBool("isBackFlip", false);
-    }
-
-    public void SetVisible(bool visible)
-    {
-        spriteRenderer.enabled = visible;
+        playerAnimator?.SetBool("isJump", false);
+        playerAnimator?.SetBool("isBackFlip", false);
+        playerAnimator?.SetBool("isRunning", false);
+        playerAnimator?.SetBool("isIdle", true);
     }
     private void PlayJumpAudio()
     {
@@ -91,4 +140,13 @@ public class PlayerAnimator : MonoBehaviour
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death);
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death_Explosion);
     }
+    //IEnumerator PuffEffectLifeCycle(GameObject puffEffect)
+    //{
+    //    Debug.Log("---- playing puff effect");
+    //    Animator animatorPuffEffect = puffEffect.GetComponent<Animator>();
+    //    animatorPuffEffect.SetTrigger("Jump");
+    //    yield return new WaitForSeconds(2f);
+    //    Destroy(animatorPuffEffect);
+    //    Destroy(puffEffectOB);
+    //}
 }

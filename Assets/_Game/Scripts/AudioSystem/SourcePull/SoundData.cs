@@ -19,7 +19,7 @@ public class SoundData : ScriptableObject
     [Range(0, 256)] public int priority = 128;
     [Range(0f, 1f)] public float volume = 1f;
     [Range(-3f, 3f)] public float pitch = 1f;
-    [Range(-1f, 1f)] public int panStereo;
+    [Range(-1f, 1f)] public float panStereo;
     [Range(0f, 1f)] public float spatialBlend;
     [Range(0f, 1.1f)] public float reverbZoneMix = 1f;
     [Range(0f, 5f)] public float dopplerLevel = 1f;

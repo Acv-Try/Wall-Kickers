@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 27
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -156,9 +156,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 0c56f5a7b30c6fa30800000000000000
       internalID: 4248794660159317440
@@ -178,9 +182,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 57202d9c561b89a70800000000000000
       internalID: 8834005719823024757
@@ -200,9 +208,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
       spriteID: 46b7efaa596f29ff0800000000000000
       internalID: -30691124758807708
@@ -222,12 +234,16 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6e71d7f8247e2347b1773e678501161
-      internalID: 56299605
+      spriteID: f0b913a7e58c6f94bae7ff3e890a19ce
+      internalID: 2032966578
       vertices: []
       indices: 
       edges: []
@@ -244,12 +260,16 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362a0a591d60bfb4591f6be4631231b3
-      internalID: -574974727
+      spriteID: ed2b6ef63d845134fbe2d8521499597b
+      internalID: -2062347881
       vertices: []
       indices: 
       edges: []
@@ -266,12 +286,16 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
+      outline:
+      - - {x: 13.5, y: 15}
+        - {x: -13.5, y: 15}
+        - {x: -13.5, y: -15}
+        - {x: 13.5, y: -15}
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 353470eab9e9f8344bfd843a59e79f06
-      internalID: -851415427
+      spriteID: 767f43a4ed8e4ce4b959f6564b469695
+      internalID: -530152378
       vertices: []
       indices: 
       edges: []
@@ -280,7 +304,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ce4efc1cb5390e443adfebded3f294c1
+    spriteID: 591b964cdc59cc84c94e7198d6c782c9
     internalID: 0
     vertices: []
     indices: 
@@ -291,13 +315,15 @@ TextureImporter:
       entries:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":27.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
       mokey_idle_right_0: 4248794660159317440
       mokey_idle_right_1: 8834005719823024757
       mokey_idle_right_2: -30691124758807708
-      mokey_idle_right_3: 56299605
-      mokey_idle_right_4: -574974727
-      mokey_idle_right_5: -851415427
+      mokey_idle_right_3: 2032966578
+      mokey_idle_right_4: -2062347881
+      mokey_idle_right_5: -530152378
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

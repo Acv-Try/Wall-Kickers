@@ -7,7 +7,6 @@ public class LevelData : ScriptableObject
     public enum WallType
     {
         E,
-        N,
         G,
     }
 
@@ -51,7 +50,14 @@ public class LevelData : ScriptableObject
 
     public int firstCellColumn = -1;
     public int lastCellColumn = -1;
+    
+    public int markerRow = -1;
+    public int markerColumn = -1;
 
+    //public int bottomMarkerRow = -1;
+    //public int bottomMarkerColumn = -1;
+    //public Vector2Int bottomMarker = new Vector2Int(-1,-1);
+    //public Vector2Int topMarker = new Vector2Int(-1,-1);
     public int columns;
     public int rows;
     public Row[] board;
@@ -90,15 +96,31 @@ public class LevelData : ScriptableObject
         {
             for (int col = columns - 1; col >= 0; col--)
             {
-                var cell = board[row].column[col];
+                var type = board[row].column[col].type;
 
-                if (cell.type != LevelData.WallType.E &&
-                    cell.type != LevelData.WallType.G)
+                if (type != LevelData.WallType.E &&
+                    type != LevelData.WallType.G)
                 {
                     if (firstCellColumn == -1)
                         firstCellColumn = col;
 
                     lastCellColumn = col;
+                }
+            }
+        }
+    }
+    public void CalculateMarker()
+    {
+        for (int i = rows - 1; i >= 0; i--)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                var type = board[i].column[j].type;
+                if(type == WallType.G)
+                {
+                    markerRow = i + 1;
+                    markerColumn = j;
+                    return;
                 }
             }
         }

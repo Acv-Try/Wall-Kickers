@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -251,8 +251,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83c3771a580875c4d9ce73e0a115e352
-      internalID: -730268338
+      spriteID: 5f88c826f37a5d34d901737f9d2bfd9a
+      internalID: 1892090294
       vertices: []
       indices: 
       edges: []
@@ -273,8 +273,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c94942af97ee1946beb8b2ad43a66d2
-      internalID: -1464215351
+      spriteID: cb09cbfee8d047442ab17798cbd17147
+      internalID: 786103012
       vertices: []
       indices: 
       edges: []
@@ -283,7 +283,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 13a4e361ed4cf94428d8eb5d093ccd8e
+    spriteID: 0a07f13b8e63992449bafd3c64a255a7
     internalID: 0
     vertices: []
     indices: 
@@ -293,14 +293,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":31.0,"y":29.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":31.0,"y":29.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       monkey_jump_right (1)_0: -6726630358730139789
       monkey_jump_right (1)_1: -1338136230182995951
       monkey_jump_right (1)_2: 3203144401131248715
       monkey_jump_right (1)_3: -3672347486266235352
-      monkey_jump_right (1)_4: -730268338
-      monkey_jump_right (1)_5: -1464215351
+      monkey_jump_right (1)_4: 1892090294
+      monkey_jump_right (1)_5: 786103012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

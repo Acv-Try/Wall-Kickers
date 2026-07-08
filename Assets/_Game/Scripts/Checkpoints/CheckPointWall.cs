@@ -74,14 +74,15 @@ public class CheckPointWall : MonoBehaviour
         if (!collision.collider.CompareTag("Player")) return;
         if (activeCheckPoint == null) return;
 
-        var status = PlayerManager.Instance.Status;
-        status.IncreaseCheckpoint();
+        PlayerManager.Instance.IncreaseCheckpoint();
         //UIManager.Instance.UpdateGameplayScore(status.CheckPoint);
         activeCheckPoint = null;
     }
 
-    public void SetCheckPointText(int checkPoint)
+    public void SetCheckPointText(int checkpoint)
     {
-        checkPointText.text = checkPoint.ToString();
+        //Debug.Log(checkpoint);
+        string text = checkpoint.ToString();
+        checkPointText.text = text;
     }
 }
