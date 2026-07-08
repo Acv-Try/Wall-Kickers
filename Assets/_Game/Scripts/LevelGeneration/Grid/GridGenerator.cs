@@ -9,20 +9,19 @@ public partial class GridGenerator : MonoBehaviour
     [SerializeField] TextMeshProUGUI score;
     private static GridGenerator instance;
     public static GridGenerator Instance => instance;
-
     [Header("Rule Tiles")]
     [SerializeField] private RuleTile NormalWallRuleTile;
 
     [Header("Lists")]
     [SerializeField] private List<Level> levels;
-    private List<Level> levelsGenerated = new();
 
     [SerializeField] private GameObject grid;
-    [SerializeField] private int heigthOffset;
-    private Vector3Int heightCount;
+    [SerializeField] private int heightOffset;
     [SerializeField] private Vector3Int InitHeightCount;
+    
+    private List<Level> levelsGenerated = new();
+    private Vector3Int heightCount;
     private int lastLevelFailIndex;
-
     private Level currentLevel;
 
     private void Awake()
@@ -47,7 +46,14 @@ public partial class GridGenerator : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
+    public Vector3 GetFirstLevelCenter()
+    {
+        return currentLevel.LevelCenter.position;
+    }
+    public Vector3 GetSpawnPosition()
+    {
+        return currentLevel.SpawnPosition.position;
+    }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         heightCount = InitHeightCount;
@@ -61,11 +67,20 @@ public partial class GridGenerator : MonoBehaviour
         levelsGenerated.Clear();
 
         GenerateNextLevel(0);
+        currentLevel = levelsGenerated[0];
         if (lastLevelFailIndex == 0)
+        {
+            Debug.Log("enter if");
             GenerateNextLevel(10);
+
+        }
         else
+        {
+            Debug.Log("enter else");
             GenerateLevelFromIndexOfLevel(lastLevelFailIndex);
-        GenerateNextLevel(20);
+        }
+        //GenerateNextLevel(20);
+
     }
 
     public void GenerateNextLevel(int checkPoint)
@@ -85,14 +100,16 @@ public partial class GridGenerator : MonoBehaviour
     {
         (Vector3Int minH, Vector3Int maxH) edges = GenerateBackground(level);
 
-        var levelInstance = Instantiate(level, heightCount, Quaternion.identity, grid.transform);
+        //Vector3Int spawnPos = heightCount - edges.Item1;
+        //var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, transform);
+        var levelInstance = Instantiate(level, (Vector3Int)heightCount, Quaternion.identity, transform);
 
         levelInstance.MaxHeight = edges.Item2;
         levelInstance.MinHeight = edges.Item1;
         levelInstance.Origin = heightCount;
 
         levelsGenerated.Add(levelInstance);
-        heightCount += new Vector3Int(levelInstance.MaxHeight.x-levelInstance.MinHeight.x, levelInstance.MaxHeight.y - levelInstance.MinHeight.y+1, 0);
+        heightCount += new Vector3Int(levelInstance.MaxHeight.x - levelInstance.MinHeight.x, levelInstance.MaxHeight.y - levelInstance.MinHeight.y + 1, 0);
     }
 
     public Level GetRandomLevelFromCheckPoint(int checkPoint)
@@ -113,7 +130,7 @@ public partial class GridGenerator : MonoBehaviour
             lastLevelFailIndex = index;
         else
             lastLevelFailIndex = 0;
-        level.checkPointWall.SetCheckPointText(Mathf.CeilToInt((checkPoint+10) / 10f) * 10);
+        level.checkPointWall.SetCheckPointText(Mathf.CeilToInt((checkPoint + 10) / 10f) * 10);
         return level;
     }
 

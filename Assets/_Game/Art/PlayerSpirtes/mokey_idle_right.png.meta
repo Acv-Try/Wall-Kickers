@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -116,11 +116,24 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -213,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41249e226fb64df40b6b84ee5d5ee533
-      internalID: 686295911
+      spriteID: d6e71d7f8247e2347b1773e678501161
+      internalID: 56299605
       vertices: []
       indices: 
       edges: []
@@ -235,8 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abf9ecdf71e4233428d8f9465f36ad7d
-      internalID: -1812714062
+      spriteID: 362a0a591d60bfb4591f6be4631231b3
+      internalID: -574974727
       vertices: []
       indices: 
       edges: []
@@ -257,8 +270,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd8ec9e5d0b885b4b883dbdc5653466a
-      internalID: -500292980
+      spriteID: 353470eab9e9f8344bfd843a59e79f06
+      internalID: -851415427
       vertices: []
       indices: 
       edges: []
@@ -267,7 +280,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1c2f3b287d1f9404b9d10d1bd4d0d0f5
+    spriteID: ce4efc1cb5390e443adfebded3f294c1
     internalID: 0
     vertices: []
     indices: 
@@ -277,14 +290,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":27.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":27.0,"y":30.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       mokey_idle_right_0: 4248794660159317440
       mokey_idle_right_1: 8834005719823024757
       mokey_idle_right_2: -30691124758807708
-      mokey_idle_right_3: 686295911
-      mokey_idle_right_4: -1812714062
-      mokey_idle_right_5: -500292980
+      mokey_idle_right_3: 56299605
+      mokey_idle_right_4: -574974727
+      mokey_idle_right_5: -851415427
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
