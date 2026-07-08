@@ -90,14 +90,20 @@ public class CameraFollowing1 : MonoBehaviour
             return;
         }
 
-        float y = Mathf.Max(transform.position.y, Target.transform.position.y + YOffset);
-
-        float x = center.x;
+        float y = 0;
+        float x =0;
+        if(Target != null)
+        {
+              y = Mathf.Max(transform.position.y, Target.transform.position.y + YOffset);
+            
+       
+         x = center.x;
 
         if (Target.transform.position.x > center.x + Xoffset)
             x = Target.transform.position.x - Xoffset / 3;
         else if (Target.transform.position.x < center.x - Xoffset)
             x = Target.transform.position.x + Xoffset / 3;
+        }
 
         NewPosition = new Vector3(x, y, -10);
 

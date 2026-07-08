@@ -222,6 +222,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: grass_and_dirt_5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5d8697d3196e344949d0144981fa7f
+      internalID: -1142850549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -243,6 +265,7 @@ TextureImporter:
       grass_and_dirt_2: 1734873331
       grass_and_dirt_3: -2010008024
       grass_and_dirt_4: 1547548720
+      grass_and_dirt_5: -1142850549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

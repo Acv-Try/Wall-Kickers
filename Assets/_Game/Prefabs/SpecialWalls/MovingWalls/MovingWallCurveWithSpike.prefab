@@ -825,6 +825,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3941046155415335077, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
+      propertyPath: m_Size.y
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 7283170446381762770, guid: bb293d7a64b85e744a08d5d566d410e2, type: 3}
       propertyPath: m_Name
       value: DeadlyThornsMiddle

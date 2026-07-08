@@ -166,6 +166,7 @@ public class PlayerController : MonoBehaviour
             rb.gravityScale = 2f;
             OnWall = false;
         }
+        
         StartCoroutine(CoolDown());
 
     }
@@ -206,6 +207,10 @@ public class PlayerController : MonoBehaviour
             if (collision.contacts[0].normal.y < 0)
             {
                 JumpTimeCounter = JumpTime;
+
+                rb.linearVelocity = Vector2.zero;
+                 CheckJumpSide();
+                rb.AddForce(new Vector2(JumpForceSide * jumpSide,0), ForceMode2D.Impulse);
                 return;
             } // Checks if the player landed on the wall from the  bottom, if so it does nothing
 

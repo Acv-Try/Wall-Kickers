@@ -2788,11 +2788,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   JumpForceUp: 15
-  StartJumpForceUp: 7
-  JumpForceSide: 3
+  StartJumpForceUp: 8
+  JumpForceSide: 4
   JumpTime: 0.5
   CoolDownTimeBetweenJumps: 0.1
-  GravityForceWhileFalling: 2
+  GravityForceWhileFalling: 3
   SpeedOnFloor: 5
   playerAnimator: {fileID: 1329876973}
   puffEffect: {fileID: 4594190458909363232, guid: 4ee1d9a6ab834fb4d829715c5fbf7f98, type: 3}
@@ -2947,7 +2947,7 @@ Transform:
   m_GameObject: {fileID: 1365750822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6144326, y: -5.004772, z: 0}
+  m_LocalPosition: {x: 1.6144326, y: -4.86, z: 0}
   m_LocalScale: {x: 24.72598, y: 13.970388, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6662,7 +6662,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.754717, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.754717, g: 0, b: 0, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
