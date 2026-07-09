@@ -111,12 +111,6 @@ public class PlayerAnimator : MonoBehaviour
             instance.transform.localScale.z
         );
     }
-    //if(coroutine != null)
-    //{
-    //    coroutine = null;
-    //    coroutine = StartCoroutine(PuffEffectLifeCycle(puffEffect));
-    //}
-
     public void PlayBurstEffect()
     {
         burstEffect.Play();
@@ -140,13 +134,4 @@ public class PlayerAnimator : MonoBehaviour
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death);
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Death_Explosion);
     }
-    //IEnumerator PuffEffectLifeCycle(GameObject puffEffect)
-    //{
-    //    Debug.Log("---- playing puff effect");
-    //    Animator animatorPuffEffect = puffEffect.GetComponent<Animator>();
-    //    animatorPuffEffect.SetTrigger("Jump");
-    //    yield return new WaitForSeconds(2f);
-    //    Destroy(animatorPuffEffect);
-    //    Destroy(puffEffectOB);
-    //}
 }
