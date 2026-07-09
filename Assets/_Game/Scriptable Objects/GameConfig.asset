@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameConfig
   progressSaveCheckpoint: 20
   maxDeathsBeforeFullRestart: 4
+  cameraCenter: {x: 1.5, y: 0, z: 0}

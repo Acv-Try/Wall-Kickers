@@ -4,15 +4,33 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject MainPanel;
+    [SerializeField] private GameObject PlayingPanel;
     [SerializeField] private GameObject PausePanel;
     [SerializeField] private GameObject ShopPanel;
     [SerializeField] private GameObject FirePanel;
     [SerializeField] private GameObject SettingsPanel;
     [SerializeField] private GameObject LosingPanel;
 
+    private bool isGameStarted = false;
+
     public void Start()
     {
         Init();
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.OnGameStart += Init;
+        GameEvents.OnGameEnd += OnGameEnd;
+        GameEvents.OnPlayButtonClick += OnClickPlayButtonAtPouse;
+        GameEvents.OnPauseButtonClick += OnClickPauseButton;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnGameStart -= Init;
+        GameEvents.OnGameEnd -= OnGameEnd;
+        GameEvents.OnPauseButtonClick -= OnClickPauseButton;
     }
 
     private void Init()
@@ -23,6 +41,7 @@ public class UIManager : MonoBehaviour
     private void HideAll()
     {
         MainPanel.SetActive(false);
+        PlayingPanel.SetActive(false);
         PausePanel.SetActive(false);
         ShopPanel.SetActive(false);
         FirePanel.SetActive(false);
@@ -39,7 +58,7 @@ public class UIManager : MonoBehaviour
     public void OnClickPlayButtonAtPouse()
     {
         PausePanel.SetActive(false);
-        MainPanel.SetActive(true);
+        PlayingPanel.SetActive(true);
     }
 
     public void OnClickCloseButton()
@@ -68,5 +87,11 @@ public class UIManager : MonoBehaviour
     {
         HideAll();
         SettingsPanel.SetActive(true);
+    }
+
+    public void OnGameEnd()
+    {
+        HideAll();
+        LosingPanel.SetActive(true);
     }
 }

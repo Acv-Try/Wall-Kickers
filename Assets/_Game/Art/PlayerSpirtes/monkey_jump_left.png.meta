@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -251,8 +251,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48512395dacaf9340901d2f47f9b1485
-      internalID: -363011290
+      spriteID: b6fb061bb7977394ba5be63cfd77a116
+      internalID: 414823484
       vertices: []
       indices: 
       edges: []
@@ -273,8 +273,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69003591e7b552b4bac536f8605fcf75
-      internalID: 686482889
+      spriteID: aab042a3c5822f64d9ebf644521d3901
+      internalID: 1292815002
       vertices: []
       indices: 
       edges: []
@@ -283,7 +283,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c0cd6ac30aad51a479e77559f81adda2
+    spriteID: fc75a669f1d1a614fa3d0020ddb3c259
     internalID: 0
     vertices: []
     indices: 
@@ -293,14 +293,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":31.0,"y":29.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":31.0,"y":29.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       monkey_jump_left_0: 8393480066679800669
       monkey_jump_left_1: -2428443298274621476
       monkey_jump_left_2: -1070306424789500019
       monkey_jump_left_3: 8453784128072087298
-      monkey_jump_left_4: -363011290
-      monkey_jump_left_5: 686482889
+      monkey_jump_left_4: 414823484
+      monkey_jump_left_5: 1292815002
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
