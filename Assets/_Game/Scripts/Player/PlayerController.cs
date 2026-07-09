@@ -178,7 +178,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     }
     private void HandleRespawn()
     {
-        Debug.Log(rb.gravityScale);
         Initialize();
         rb.simulated = true;
     }
@@ -238,7 +237,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
                 UpdateJumpSide();
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
                     collision.transform.position.x +
-                    (jumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
+                    (-jumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
                     transform.position.y - 0.3f
                 )));
                 //(-JumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),

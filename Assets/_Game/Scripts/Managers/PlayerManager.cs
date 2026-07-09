@@ -6,7 +6,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject Player;
     private IPlayerStatus status;
     private IPlayerController controller;
-
+    private IPlayerInput input;
     public event Action OnPlayerDied;
     public event Action<int, int> OnCheckpointReached;
     public event Action<Vector3> OnCameraCheckpointReached;
@@ -15,7 +15,9 @@ public class PlayerManager : MonoBehaviour
     private Vector3 _spawnPosition;
     private int _progress, _maxDeaths;
     public IPlayerStatus Status { get; private set; }
+    public IPlayerInput Input { get; private set; }
     public Transform PlayerTransform { get; private set; }
+
     #region Singleton
     private static PlayerManager _instance;
     public static PlayerManager Instance
@@ -70,7 +72,9 @@ public class PlayerManager : MonoBehaviour
         var playerGO = Instantiate(Player, spawnPosition, Quaternion.identity);
         controller = playerGO.GetComponent<IPlayerController>();
         status = playerGO.GetComponent<IPlayerStatus>();
+        input = playerGO.GetComponent<IPlayerInput>();
 
+        Input = input;
         Status = status;
         status.Initialize(_spawnPosition);
         controller.Initialize();

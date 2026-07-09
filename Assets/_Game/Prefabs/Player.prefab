@@ -23,7 +23,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1775979056962169537
 Transform:
   m_ObjectHideFlags: 0
@@ -94,8 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e736333e78ee544ca9b1f145efe0c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
-  playerAnimator: {fileID: 6559896768206501459}
-  puffEffect: {fileID: 2287006720659381085, guid: 2981e954c2cd47441ae02ff553139c52, type: 3}
+  puffEffect: {fileID: 7854320862785759739, guid: 2981e954c2cd47441ae02ff553139c52, type: 3}
   burstEffect: {fileID: 1286242985349229543, guid: a1ea503166bc461469f09933b9245eb0, type: 3}
   puffEffectOffset: {x: 0, y: -1, z: 0}
 --- !u!212 &9096414615164705887
@@ -222,7 +221,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.08, y: 0.3}
+    oldSize: {x: 1, y: 1.1111112}
     newSize: {x: 0.84375, y: 0.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

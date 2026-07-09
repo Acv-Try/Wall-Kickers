@@ -75,12 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859e77e84d4646740b1dcefb411fabb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  JumpForceUp: 15
-  StartJumpForceUp: 7
-  JumpForceSide: 3
+  JumpForceUp: 16
+  StartJumpForceUp: 8
+  JumpForceSide: 4
   JumpTime: 0.5
-  CoolDownTimeBetweenJumps: 0.2
-  GravityForceWhileFalling: 3
+  CoolDownTimeBetweenJumps: 0.05
+  GravityForceWhileFalling: 4
   SpeedOnFloor: 5
 --- !u!114 &8071261416311028406
 MonoBehaviour:

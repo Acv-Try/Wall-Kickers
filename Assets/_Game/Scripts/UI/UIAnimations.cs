@@ -13,11 +13,11 @@ public class UIAnimations : MonoBehaviour
     [SerializeField] private Sprite NotifSprite1;
     [SerializeField] private Sprite NotifSprite2;
     [SerializeField] private float switchTime = 1f;
+    [SerializeField] private UIPanelSlider topPanel, bottomPanel;
 
     private bool isFirst = true;
     private bool isMute = true;
     private bool isNotif = true;
-
 
     private void Start()
     {
@@ -30,11 +30,24 @@ public class UIAnimations : MonoBehaviour
         isMute = !isMute;
     }
 
-    public void OnCliceNotifButton()
+    public void OnClickNotifButton()
     {
         NotifImage.sprite = isFirst ? NotifSprite1 : NotifSprite2;
         isNotif = !isNotif;
     }
+    public void OnGameStart()
+    {
+        Debug.Log("Enter show");
+        topPanel.Show();
+        bottomPanel.Show();
+    }
+    public void OnPlayerClick()
+    {
+        Debug.Log("Enter hide");
+        topPanel.Hide();
+        bottomPanel.Hide();
+    }
+    
 
     IEnumerator ChangeSprite()
     {

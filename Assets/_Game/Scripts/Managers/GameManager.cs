@@ -6,21 +6,35 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameConfig gameConfig;
     private int lastFailIndex;
+    private int currentCheckPoint;
     
     #region Singleton
-    private static GameManager instance;
-    public static GameManager Instance => instance;
-    private int currentCheckPoint;
+    private static GameManager _instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindFirstObjectByType<GameManager>();
+                if (_instance == null)
+                {
+                    Debug.LogWarning($"GameManager is not found in the scene!");
+                }
+            }
+            return _instance;
+        }
+    }
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        _instance = this;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -34,10 +48,12 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.Instance.OnLevelsReady += OnLevelsReady;
         LevelManager.Instance.Initialize(lastFailIndex);
+        UIManager.Instance.Initialize();
     }
     private void OnLevelsReady()
     {
-        //LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
+        LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
+
         PlayerManager.Instance.Initialize(
             LevelManager.Instance.FirstLevelSpawnPos,
         gameConfig.progressSaveCheckpoint,
