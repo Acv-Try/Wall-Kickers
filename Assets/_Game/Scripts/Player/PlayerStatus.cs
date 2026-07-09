@@ -29,8 +29,6 @@ public class PlayerStatus : MonoBehaviour, IPlayerStatus
     public event Action OnRespawn;
     public event Action<int, int> OnCheckpointReached;
     public event Action<Vector3> OnCameraCheckpointReached;
-    float enterCount = 0;
-    float enterCount1 = 0;
     public void Initialize(Vector3 spawnPosition)
     {
         SpawnPos = spawnPosition;
@@ -41,7 +39,6 @@ public class PlayerStatus : MonoBehaviour, IPlayerStatus
 
     private void Die()
     {
-        Debug.Log(IsDead + $" died {++enterCount}");
         if (IsDead) return;
         IsDead = true;
         DeathCount++;
@@ -50,7 +47,6 @@ public class PlayerStatus : MonoBehaviour, IPlayerStatus
 
     public void Respawn()
     {
-        Debug.Log(IsDead + $" respawn {++enterCount1}");
         IsDead = false;
         ResetStats();
         transform.position = SpawnPos;

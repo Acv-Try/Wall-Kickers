@@ -191,7 +191,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (isDead) return;
         if (isOnFloor)
         {
-            Debug.Log("enter");
             rb.linearVelocity =
                 new Vector2(SpeedOnFloor * jumpSide, rb.linearVelocity.y);
         }
