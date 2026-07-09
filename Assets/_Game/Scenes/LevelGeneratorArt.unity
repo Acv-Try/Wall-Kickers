@@ -935,6 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925c0cc68ceabe149be51a3d1598d9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  currentCheckPoint: 0
 --- !u!4 &283037512
 Transform:
   m_ObjectHideFlags: 0
@@ -1402,7 +1403,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420034}
   - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
@@ -1490,9 +1490,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0015576323
+    x: 0
     y: 0
-    width: 0.9968847
+    width: 1
     height: 1
   near clip plane: 1
   far clip plane: 1000
@@ -1530,27 +1530,6 @@ Transform:
   - {fileID: 1946128936}
   m_Father: {fileID: 1696402670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23bcdbdcc744ef24f8a81d9b657d44a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollowing1
-  Target: {fileID: 1329876974}
-  Xoffset: 3
-  YOffset: 3.2
-  speed: 1.5
-  deadLine: {fileID: 1946128935}
-  duration: 0.4
-  strength: 0.5
-  vibrato: 50
-  randomness: 180
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.13
+  randomYRange: 100
 --- !u!212 &577464094
 SpriteRenderer:
   serializedVersion: 2
@@ -2353,6 +2333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.13
+  randomYRange: 100
 --- !u!212 &738111951
 SpriteRenderer:
   serializedVersion: 2
@@ -2422,7 +2403,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1085408665}
   - component: {fileID: 1085408664}
-  - component: {fileID: 1085408663}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -2430,28 +2410,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1085408663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1085408662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0219286a7640145935c76eeb1ceef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridGenerator
-  background: {fileID: 395257788}
-  GrassRuleTile: {fileID: 11400000, guid: 5076b1e5a2301544082ea89a9f89d244, type: 2}
-  score: {fileID: 133374758}
-  NormalWallRuleTile: {fileID: 11400000, guid: 842f4b1202f6e6d459a5249a87c72416, type: 2}
-  levels:
-  - {fileID: 3489720385391476509, guid: b158ed3a308380e4a93602576d8a4b05, type: 3}
-  - {fileID: 3489720385391476509, guid: 9825bd85c82747f4d89e1f065a0378fe, type: 3}
-  grid: {fileID: 1085408662}
-  heigthOffset: 25
-  InitHeightCount: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1085408664
 Grid:
   m_ObjectHideFlags: 0
@@ -2597,7 +2555,6 @@ GameObject:
   - component: {fileID: 1329876968}
   - component: {fileID: 1329876972}
   - component: {fileID: 1329876973}
-  - component: {fileID: 1329876974}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2775,43 +2732,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1329876974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329876966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859e77e84d4646740b1dcefb411fabb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  JumpForceUp: 15
-  StartJumpForceUp: 8
-  JumpForceSide: 4
-  JumpTime: 0.5
-  CoolDownTimeBetweenJumps: 0.1
-  GravityForceWhileFalling: 3
-  SpeedOnFloor: 5
-  playerAnimator: {fileID: 1329876973}
-  puffEffect: {fileID: 4594190458909363232, guid: 4ee1d9a6ab834fb4d829715c5fbf7f98, type: 3}
-  burstEffect: {fileID: 1203354395450811893}
-  puffEffectOffset: {x: 0, y: 0, z: 0}
-  jumpSide: 1
-  CanJump: 1
-  OnWall: 0
-  OnFloor: 0
-  CanDoubleJump: 0
-  LinearVelocityX: 0
-  spawnPos: {fileID: 455052577}
-  cameraInitPos: {fileID: 718579170}
-  checkPoint: 0
-  checkPointCount: 0
-  isCameraMoving: 0
-  currentCheckPointWall: {fileID: 0}
-  rb: {fileID: 1329876968}
-  CurrentWall: {fileID: 0}
 --- !u!1 &1337844086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,6 +2782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.13
+  randomYRange: 100
 --- !u!212 &1337844089
 SpriteRenderer:
   serializedVersion: 2
@@ -3049,6 +2970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 0.13
+  randomYRange: 100
 --- !u!212 &1441089782
 SpriteRenderer:
   serializedVersion: 2

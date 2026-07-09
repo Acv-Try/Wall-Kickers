@@ -9,7 +9,7 @@ public class Level : MonoBehaviour
     [SerializeField] private List<Transform> checkPointsForCamera;
     [SerializeField] private Transform levelCenter;
     [SerializeField] private Transform spawnPosition;
-    public CheckPointWall checkPointWall;
+    //public CheckPointWall checkPointWall;
     public LevelData levelData;
     public Vector3Int Origin { get; set; }
     public Vector3Int MinHeight {  get; set; }
