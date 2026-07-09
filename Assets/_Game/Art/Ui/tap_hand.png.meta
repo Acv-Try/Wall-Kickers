@@ -1,10 +1,61 @@
 fileFormatVersion: 2
-guid: 062c7acdf72f2954482f1ee8e7f73409
+guid: 3fb62084e1aa16347b8e486e224362a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8957324059118975939
-    second: images_0
+      213: 3514195861272400136
+    second: tap_hand_0
+  - first:
+      213: 8661119894583454940
+    second: tap_hand_1
+  - first:
+      213: 23032977615242241
+    second: tap_hand_2
+  - first:
+      213: -6124764589648955295
+    second: tap_hand_3
+  - first:
+      213: 2507326499697172290
+    second: tap_hand_4
+  - first:
+      213: 2041695293395837481
+    second: tap_hand_5
+  - first:
+      213: 5298621750335213371
+    second: tap_hand_6
+  - first:
+      213: 398104798944914190
+    second: tap_hand_7
+  - first:
+      213: -4872200041231999290
+    second: tap_hand_8
+  - first:
+      213: 6467410910102195188
+    second: tap_hand_9
+  - first:
+      213: -2605147853550828489
+    second: tap_hand_10
+  - first:
+      213: -3862448301535162414
+    second: tap_hand_11
+  - first:
+      213: -5258055247094531956
+    second: tap_hand_12
+  - first:
+      213: -540150977199486100
+    second: tap_hand_13
+  - first:
+      213: 7352284112235828954
+    second: tap_hand_14
+  - first:
+      213: -4813848334669220155
+    second: tap_hand_15
+  - first:
+      213: -4512328325966672405
+    second: tap_hand_16
+  - first:
+      213: 3930283044600768787
+    second: tap_hand_17
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +97,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,40 +173,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: images_0
+      name: tap_hand_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 225
-        height: 225
+        width: 46
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cbb8d916cece4c70800000000000000
-      internalID: 8957324059118975939
+      spriteID: 8011a4e448ee4c030800000000000000
+      internalID: 3514195861272400136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tap_hand_13
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6bc1fe4c8ff088f0800000000000000
+      internalID: -540150977199486100
       vertices: []
       indices: 
       edges: []
@@ -164,7 +224,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 812bedc0cbf4db34aa5757a2bdf2f85d
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +234,24 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      images_0: 8957324059118975939
+      tap_hand_0: 3514195861272400136
+      tap_hand_1: 8661119894583454940
+      tap_hand_10: -2605147853550828489
+      tap_hand_11: -3862448301535162414
+      tap_hand_12: -5258055247094531956
+      tap_hand_13: -540150977199486100
+      tap_hand_14: 7352284112235828954
+      tap_hand_15: -4813848334669220155
+      tap_hand_16: -4512328325966672405
+      tap_hand_17: 3930283044600768787
+      tap_hand_2: 23032977615242241
+      tap_hand_3: -6124764589648955295
+      tap_hand_4: 2507326499697172290
+      tap_hand_5: 2041695293395837481
+      tap_hand_6: 5298621750335213371
+      tap_hand_7: 398104798944914190
+      tap_hand_8: -4872200041231999290
+      tap_hand_9: 6467410910102195188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
