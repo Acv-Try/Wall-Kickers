@@ -173,6 +173,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -180,10 +193,10 @@ TextureImporter:
       name: tap_hand_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 46
-        height: 80
+        x: 0
+        y: 12
+        width: 47
+        height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,23 +212,111 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tap_hand_13
+      name: tap_hand_1
       rect:
         serializedVersion: 2
-        x: 141
-        y: 0
+        x: 47
+        y: 12
         width: 47
-        height: 80
+        height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c6bc1fe4c8ff088f0800000000000000
-      internalID: -540150977199486100
+      spriteID: dad124f9a508fe349a26af36475415c0
+      internalID: 8661119894583454940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tap_hand_2
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 12
+        width: 47
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a99ed15f4d0624ea64d0c1b3e46b0e
+      internalID: 23032977615242241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tap_hand_3
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 0
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f166ba4bc482f34984793cb64b65312
+      internalID: -6124764589648955295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tap_hand_4
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 0
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af35b8cc02a930e4eb9d30b1df4a59b5
+      internalID: 2507326499697172290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tap_hand_5
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 0
+        width: 47
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5584895c1d6727f459276e01003390dc
+      internalID: 2041695293395837481
       vertices: []
       indices: 
       edges: []
@@ -232,26 +333,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":47.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       tap_hand_0: 3514195861272400136
       tap_hand_1: 8661119894583454940
-      tap_hand_10: -2605147853550828489
-      tap_hand_11: -3862448301535162414
-      tap_hand_12: -5258055247094531956
-      tap_hand_13: -540150977199486100
-      tap_hand_14: 7352284112235828954
-      tap_hand_15: -4813848334669220155
-      tap_hand_16: -4512328325966672405
-      tap_hand_17: 3930283044600768787
       tap_hand_2: 23032977615242241
       tap_hand_3: -6124764589648955295
       tap_hand_4: 2507326499697172290
       tap_hand_5: 2041695293395837481
-      tap_hand_6: 5298621750335213371
-      tap_hand_7: 398104798944914190
-      tap_hand_8: -4872200041231999290
-      tap_hand_9: 6467410910102195188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameConfig gameConfig;
     private int lastFailIndex;
     private int currentCheckPoint;
-    
+    private CurrentState currentState = CurrentState.Playing;
+    public CurrentState CurrentState => currentState;
     #region Singleton
     private static GameManager _instance;
     public static GameManager Instance
@@ -37,15 +38,20 @@ public class GameManager : MonoBehaviour
         _instance = this;
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        GameEvents.OnPause -= OnPause;
+        GameEvents.OnPause += OnPause;
+        GameEvents.OnContinue -= OnContinue;
+        GameEvents.OnContinue += OnContinue;
     }
     #endregion
-    
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
         LevelManager.Instance.OnLevelsReady += OnLevelsReady;
         LevelManager.Instance.Initialize(lastFailIndex);
         UIManager.Instance.Initialize();
@@ -66,15 +72,18 @@ public class GameManager : MonoBehaviour
             PlayerManager.Instance.PlayerTransform
         );
     }
+    //absolutely need to be rewritten 
     public void OnPlayerDied(int score)
     {
         var status = PlayerManager.Instance.Status;
 
         bool beforeProgress = status.CheckPoint < gameConfig.progressSaveCheckpoint;
         bool tooManyDeaths = status.DeathCount >= gameConfig.maxDeathsBeforeFullRestart;
+        Debug.Log("Player died #" + tooManyDeaths);
 
         if (beforeProgress && tooManyDeaths)
         {
+            Debug.Log("Player died 4 " + tooManyDeaths + " times. Need a lose panel");
             lastFailIndex = 0;
             RestartGame();
             return;
@@ -84,6 +93,7 @@ public class GameManager : MonoBehaviour
         {
             lastFailIndex = LevelManager.Instance.GetLastFailIndex();
             //UIManager.Instance.ShowLosingPanel(score);
+            GameEvents.RaiseOnGameLose();
             return;
         }
     }
@@ -97,4 +107,23 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    private void OnPause()
+    {
+        currentState = CurrentState.Paused;
+        Time.timeScale = 0f;
+    }
+    private void OnContinue()
+    {
+        Debug.Log("enter onContinue, game manager");
+
+        Time.timeScale = 1f;
+        currentState = CurrentState.Playing;
+    }
+    //
+}
+public enum CurrentState
+{
+    Playing,
+    Paused,
+    End,
 }

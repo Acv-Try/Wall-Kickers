@@ -57,6 +57,7 @@ public class PlayerAnimator : MonoBehaviour
     private void OnJump()
     {
         playerAnimator?.SetBool("isIdle", false);
+        playerAnimator?.SetBool("isRunning", false);
         playerAnimator?.SetBool("isBackFlip", false);
         playerAnimator?.SetBool("isJump", true);
     }
@@ -72,7 +73,6 @@ public class PlayerAnimator : MonoBehaviour
         playerAnimator?.SetBool("isJump", false);
         playerAnimator?.SetBool("isRunning", false);
         playerAnimator?.SetBool("isIdle", true);
-
     }
 
     private void OnFloorTouched()

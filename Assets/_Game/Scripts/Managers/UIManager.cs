@@ -6,15 +6,19 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] UIAnimations UIAnimations;
-    [SerializeField] private GameObject MainPanel;
-    [SerializeField] private GameObject PlayingPanel;
-    [SerializeField] private GameObject PausePanel;
-    [SerializeField] private GameObject ShopPanel;
-    [SerializeField] private GameObject FirePanel;
-    [SerializeField] private GameObject SettingsPanel;
-    [SerializeField] private GameObject LosingPanel;
 
-    [SerializeField] private Button b_pause, b_play, b_shop;
+
+    [SerializeField]
+    private Button
+       B_Pause,
+        B_PlayPauseMenu,
+        B_PlayLoseMenu,
+        B_Settings_PauseMenu,
+        B_Settings_LoseMenu,
+        B_CloseSettings_PauseMenu,
+        B_CloseSettings_LoseMenu;  
+        //B_GameAudio_PauseMenu,
+        //B_GameAudio_SettingsMenu;
     private bool isGameStarted = false;
     private Coroutine coroutine;
     #region Singleton
@@ -50,106 +54,47 @@ public class UIManager : MonoBehaviour
 
     public void Initialize()
     {
-        //GameEvents.OnGameStart += Init;
         Init();
-        PlayerManager.Instance.Input.OnFirstTouch -= OnClick;
-        PlayerManager.Instance.Input.OnFirstTouch += OnClick;
-        GameEvents.OnGameEnd += OnGameEnd;
-        //GameEvents.OnPlayButtonClick += OnClickPlayButtonAtPause;
-        //GameEvents.OnPauseButtonClick += OnClickPauseButton;
+        //PlayerManager.Instance.Input.OnFirstTouch -= OnStart;
+        //PlayerManager.Instance.Input.OnFirstTouch += OnStart;
+        PlayerEvents.OnFirstTouch -= OnStart;
+        PlayerEvents.OnFirstTouch += OnStart;
+        GameEvents.OnGameLose -= OnGameLose;
+        GameEvents.OnGameLose += OnGameLose;
+
     }
 
-    private void OnDisable()
-    {
-        //GameEvents.OnGameStart -= Init;
-
-        GameEvents.OnGameEnd -= OnGameEnd;
-        //GameEvents.OnPlayButtonClick -= OnClickPlayButtonAtPause;
-        //GameEvents.OnPauseButtonClick -= OnClickPauseButton;
-    }
 
     private void Init()
     {
-        HideAll();
-        MainPanel.SetActive(true);
-        UIAnimations.OnGameStart();
+        UIAnimations.OnGameLaunch();
         ResetListeners();
-        b_pause.onClick.AddListener(OnClickPauseButton);
-        b_play.onClick.AddListener(OnClickPlayButtonAtPause);
+        B_Pause.onClick.AddListener(GameEvents.RaiseOnPause);
+        B_Pause.onClick.AddListener(UIAnimations.OnPause);
+        
+        B_PlayPauseMenu.onClick.AddListener(GameEvents.RaiseOnContinue);
+        B_PlayPauseMenu.onClick.AddListener(UIAnimations.OnContinue);
+        
+        B_PlayLoseMenu.onClick.AddListener(UIAnimations.OnRestart);
+        
+        B_CloseSettings_PauseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromPauseMenu);
+        
+        B_CloseSettings_LoseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromLoseMenu);
+        
     }
     private void ResetListeners()
     {
-        b_pause.onClick.RemoveAllListeners();
-        b_play.onClick.RemoveAllListeners();
+        B_Pause.onClick.RemoveAllListeners();
+        B_PlayPauseMenu.onClick.RemoveAllListeners();
     }
-    private void HideAll()
+   private void OnStart()
     {
-        MainPanel.SetActive(false);
-        PlayingPanel.SetActive(false);
-        PausePanel.SetActive(false);
-        ShopPanel.SetActive(false);
-        FirePanel.SetActive(false);
-        SettingsPanel.SetActive(false);
-        LosingPanel.SetActive(false);
+        UIAnimations.OnStart();
+        GameEvents.RaiseOnGameLaunch();
     }
-    public void OnClick()
+    public void OnGameLose()
     {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-            coroutine = null;
-        }
-        coroutine = StartCoroutine(AAA());
+        UIAnimations.OnLose();
     }
-    public void OnClickPlayButtonAtShop()
-    {
-        ShopPanel.SetActive(false);
-        MainPanel.SetActive(true);
-    }
-    public void OnClickPlayButtonAtPause()
-    {
-        PausePanel.SetActive(false);
-        PlayingPanel.SetActive(true);
-    }
-
-    public void OnClickCloseButton()
-    {
-        HideAll();
-        MainPanel.SetActive(true);
-    }
-
-    public void OnClickFireButton()
-    {
-        HideAll();
-        FirePanel.SetActive(true);
-    }
-    public void OnClickShopButton()
-    {
-        HideAll();
-        ShopPanel.SetActive(true);
-    }
-    public void OnClickPauseButton()
-    {
-        HideAll();
-        PausePanel.SetActive(true);
-    }
-
-    public void OnClickSettingButton()
-    {
-        HideAll();
-        SettingsPanel.SetActive(true);
-    }
-
-    public void OnGameEnd()
-    {
-        HideAll();
-        LosingPanel.SetActive(true);
-    }
-    private IEnumerator AAA()
-    {
-        UIAnimations.OnPlayerClick();
-        yield return new WaitForSeconds(0.5f);
-        MainPanel.SetActive(false);
-        PlayingPanel.SetActive(true);
-    }
+    //ad a logic to connect the restart button click to the restart logic.
 }

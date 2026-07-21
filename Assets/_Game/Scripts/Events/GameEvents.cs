@@ -1,30 +1,18 @@
 using System;
 using UnityEngine;
 
-public class GameEvents : MonoBehaviour
+public static class GameEvents
 {
-    public static event Action OnGameStart;
-    public static event Action OnGameEnd;
-    public static event Action OnPauseButtonClick;
-    public static event Action OnPlayButtonClick;
-
-    public static void RaiseOnGameStart()
-    {
-        OnGameStart?.Invoke();
-    }
-
-    public static void RaiseOnGameEnd()
-    {
-        OnGameEnd?.Invoke();
-    }
-
-    public static void RaiseOnPauseButtonClick()
-    {
-        OnPauseButtonClick?.Invoke();
-    }
-
-    public static void RaiseOnPlayButtonClick()
-    {
-        OnPlayButtonClick?.Invoke();
-    }
+    //UI
+    public static event Action OnGameLaunch;
+    public static event Action OnGameLose;
+    public static event Action OnContinue;
+    public static event Action OnRestart;
+    public static event Action OnPause;
+    //UI
+    public static void RaiseOnGameLaunch() => OnGameLaunch?.Invoke();
+    public static void RaiseOnGameLose() => OnGameLose?.Invoke();
+    public static void RaiseOnContinue() => OnContinue?.Invoke();
+    public static void RaiseOnRestart() => OnRestart?.Invoke(); 
+    public static void RaiseOnPause() => OnPause?.Invoke(); 
 }

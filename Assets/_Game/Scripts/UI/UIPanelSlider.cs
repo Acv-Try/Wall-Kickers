@@ -35,7 +35,7 @@ public class UIPanelSlider : MonoBehaviour
 
         while (elapsed < _duration)
         {
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
             float t = _ease.Evaluate(Mathf.Clamp01(elapsed / _duration));
             _rect.anchoredPosition = Vector2.LerpUnclamped(start, target, t);
             yield return null;

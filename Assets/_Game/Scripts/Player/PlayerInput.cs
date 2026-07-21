@@ -13,20 +13,32 @@ public class PlayerInput : MonoBehaviour, IPlayerInput
     public event Action OnTouchHeld;
     public event Action OnFirstTouch;
     bool firstClick = true;
+
+    private IPlayerController playerController;
+    private void Start()
+    {
+        playerController = gameObject.GetComponent<IPlayerController>();
+    }
     private void Update()
     {
+        if (GameManager.Instance.CurrentState == CurrentState.Paused) return;
         // For Testing
         if (Input.GetMouseButtonDown(0))
         {
             if (firstClick == true)
             {
                 firstClick = false;
-                OnFirstTouch?.Invoke();
+                //OnFirstTouch?.Invoke();
+                PlayerEvents.RaiseOnFirstTouch();
             }
-            OnTouchBegan?.Invoke();
+            //OnTouchBegan?.Invoke();
+            playerController.HandleTouchBegan();
         }
         if (Input.GetMouseButton(0))
-            OnTouchHeld?.Invoke();
+        {
+            playerController.HandleTouchHeld();
+            //OnTouchHeld?.Invoke();
+        }
         //End
 
         //if (Input.touchCount == 0) return;

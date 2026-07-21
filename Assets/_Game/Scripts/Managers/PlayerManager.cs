@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour
         Input = input;
         Status = status;
         status.Initialize(_spawnPosition);
-        controller.Initialize();
+        //controller.Initialize();
         PlayerTransform = playerGO.transform;
         SubOn();
 
@@ -125,7 +125,7 @@ public class PlayerManager : MonoBehaviour
 
     private System.Collections.IEnumerator RespawnSequence()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.8f);
         status.Initialize(_spawnPosition);
     }
 }

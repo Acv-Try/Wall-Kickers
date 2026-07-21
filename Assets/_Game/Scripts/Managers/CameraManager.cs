@@ -64,9 +64,10 @@ public class CameraManager : MonoBehaviour
     }
     private IEnumerator ReturnAndReveal()
     {
-        coroutine = null;
         yield return StartCoroutine(controller.ReturnToCenter());
-        controller.ShowDeadline();
+        if (controller.State == CameraState.Following)
+            controller.ShowDeadline();
+        coroutine = null;
     }
     private void HandleCheckpoint(Vector3 newCenter) => controller.SetCenter(newCenter);
 }
