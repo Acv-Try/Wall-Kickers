@@ -2291,7 +2291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: initialPosition.x
-      value: 1.5
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: backgroundGenerator
@@ -2300,7 +2300,7 @@ PrefabInstance:
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: 'levels.Array.data[0]'
       value: 
-      objectReference: {fileID: 940677039614952073, guid: 19f547c458d31fa4199d813e8d6fc636, type: 3}
+      objectReference: {fileID: 940677039614952073, guid: 86256974c50b47940b1a576bdd7e8d48, type: 3}
     - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -2555,6 +2555,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -5225257808422315949, guid: a3b2aa5e602ff1642a26ec240c786dd6, type: 3}
+    - target: {fileID: 793322794178839460, guid: 5c9aba837c433124483967dd70740760, type: 3}
+      propertyPath: m_Color.a
+      value: 0.3137255
+      objectReference: {fileID: 0}
     - target: {fileID: 801376423790908387, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2605,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310497313339794424, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3043833999649302824, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_SizeDelta.y
