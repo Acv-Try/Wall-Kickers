@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.84273, y: 2.84, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2686540664087998093}
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62130534b43b4b04cad352b953e78467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  checkPointText: {fileID: 0}
+  checkPointText: {fileID: 5435641565288659991}
 --- !u!1 &3604753034053190121
 GameObject:
   m_ObjectHideFlags: 0

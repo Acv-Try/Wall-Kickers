@@ -2214,11 +2214,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 708970655490230768, guid: e31cebf302547e149b2db29594bcf442, type: 3}
       propertyPath: m_Size.x
-      value: 0.15
+      value: 0.14117688
+      objectReference: {fileID: 0}
+    - target: {fileID: 708970655490230768, guid: e31cebf302547e149b2db29594bcf442, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0055884384
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968895563604551264, guid: e31cebf302547e149b2db29594bcf442, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1968895563604551264, guid: e31cebf302547e149b2db29594bcf442, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1968895563604551264, guid: e31cebf302547e149b2db29594bcf442, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2290,8 +2298,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
+      propertyPath: initHeightCount.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: initialPosition.x
-      value: 2.6
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: backgroundGenerator
@@ -2300,7 +2312,7 @@ PrefabInstance:
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: 'levels.Array.data[0]'
       value: 
-      objectReference: {fileID: 940677039614952073, guid: 86256974c50b47940b1a576bdd7e8d48, type: 3}
+      objectReference: {fileID: 940677039614952073, guid: c073f21d05fb8964c892764897a8f2a2, type: 3}
     - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_Name
       value: LevelManager
