@@ -2300,7 +2300,7 @@ PrefabInstance:
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: 'levels.Array.data[0]'
       value: 
-      objectReference: {fileID: 940677039614952073, guid: 86256974c50b47940b1a576bdd7e8d48, type: 3}
+      objectReference: {fileID: 940677039614952073, guid: 3fcc93fb43a533c41a956674e24106c2, type: 3}
     - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -2423,20 +2423,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1696402670}
     m_Modifications:
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: orthographic size
+      value: 4.821429
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.0015576323
+      value: 0.0014836795
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0003599712
+      value: 0.0018416207
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.9968847
+      value: 0.99703264
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99928004
+      value: 0.9944751
       objectReference: {fileID: 0}
     - target: {fileID: 7163229512918093688, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_Name
