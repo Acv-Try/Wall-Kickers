@@ -48,6 +48,8 @@ public class BackgroundGenerator : MonoBehaviour
     {
         background.ClearAllTiles();
     }
+
+    public Vector3 CellToWorld(Vector3Int cellPos) => background.CellToWorld(cellPos);
 }
 //bool isFirst = true;
 

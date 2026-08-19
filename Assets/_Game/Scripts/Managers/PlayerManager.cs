@@ -4,17 +4,18 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
-    private IPlayerStatus status;
     private IPlayerController controller;
     private IPlayerInput input;
-    public event Action OnPlayerDied;
-    public event Action<int, int> OnCheckpointReached;
-    public event Action<Vector3> OnCameraCheckpointReached;
 
+    public event Action OnDeath;
+    public event Action OnRespawn;
+    public event Action<Vector3> OnPlayerPositionChange;
+    
     private SoundData characterSoundData;
     private Vector3 _spawnPosition;
-    private int _progress, _maxDeaths;
-    public IPlayerStatus Status { get; private set; }
+    private int _progress, _maxDeaths, deathCount;
+    private GameObject _player;
+
     public IPlayerInput Input { get; private set; }
     public Transform PlayerTransform { get; private set; }
 
@@ -49,83 +50,53 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
-    private void SubOn()
-    {
-        status.OnDeath += HandleDied;
-        status.OnCheckpointReached += HandleCheckpointReached;
-        status.OnCameraCheckpointReached += HandleCameraCheckpointReached;
-    }
+    public void RiseOnPlayerPositionChange(Vector3 playerPos) => OnPlayerPositionChange?.Invoke(playerPos);
+    public void RiseOnDeath() => OnDeath?.Invoke();
+    public void RiseOnRespawn() => OnRespawn?.Invoke();
 
-    private void OnDestroy()
-    {
-        if (status == null) return;
-        status.OnDeath -= HandleDied;
-        status.OnCheckpointReached -= HandleCheckpointReached;
-        status.OnCameraCheckpointReached -= HandleCameraCheckpointReached;
-    }
-
-    public void Initialize(Vector3 spawnPosition, int progress, int maxDeaths)
+    public void Initialize(Vector3 spawnPosition)
     {
         _spawnPosition = spawnPosition;
-        _progress = progress;
-        _maxDeaths = maxDeaths;
-        var playerGO = Instantiate(Player, spawnPosition, Quaternion.identity);
-        controller = playerGO.GetComponent<IPlayerController>();
-        status = playerGO.GetComponent<IPlayerStatus>();
-        input = playerGO.GetComponent<IPlayerInput>();
+        
+        _player = Instantiate(Player, spawnPosition, Quaternion.identity);
+        controller = _player.GetComponent<IPlayerController>();
+        input = _player.GetComponent<IPlayerInput>();
 
         Input = input;
-        Status = status;
-        status.Initialize(_spawnPosition);
-        //controller.Initialize();
-        PlayerTransform = playerGO.transform;
-        SubOn();
-
+        PlayerTransform = _player.transform;
+        
         characterSoundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
-
     }
-
-    public void TriggerCameraCheckpoint(Vector3 position)
+    public void OnDie()
     {
-        status.TriggerCameraCheckpoint(position);
+        deathCount++;
+        Destroy(_player);
+        RiseOnDeath();
     }
-    public void IncreaseCheckpoint()
+    public void Spawn()
     {
-        status.IncreaseCheckpoint();
+        Debug.Log($"Called");
+        deathCount = 0;
+        Initialize(_spawnPosition);
+        RiseOnRespawn();
     }
-    private void HandleDied()
-    {
-        OnPlayerDied?.Invoke();
-        bool tooManyDeaths = status.DeathCount >= _maxDeaths;
-        bool beforeProgress = status.CheckPoint < _progress;
+    //private void HandleDeath()
+    //{
+        //bool tooManyDeaths = status.DeathCount >= _maxDeaths;
+        //bool beforeProgress =  < _progress;
 
-        if (beforeProgress && tooManyDeaths)
-        {
-            GameManager.Instance.OnPlayerDied(status.CheckPoint);
-            return;
-        }
+        //if (beforeProgress && tooManyDeaths)
+        //{
+        //    GameManager.Instance.OnPlayerDied(status.CheckPoint);
+        //    return;
+        //}
 
-        if (status.CheckPoint >= _progress)
-        {
-            GameManager.Instance.OnPlayerDied(status.CheckPoint);
-            return;
-        }
-        StartCoroutine(RespawnSequence());
-    }
+        //if (status.CheckPoint >= _progress)
+        //{
+        //    GameManager.Instance.OnPlayerDied(status.CheckPoint);
+        //    return;
+        //}
+        //StartCoroutine(RespawnSequence());
+    //}
 
-    private void HandleCheckpointReached(int total, int countInLevel)
-    {
-        OnCheckpointReached?.Invoke(total, countInLevel);
-    }
-
-    private void HandleCameraCheckpointReached(Vector3 position)
-    {
-        OnCameraCheckpointReached?.Invoke(position);
-    }
-
-    private System.Collections.IEnumerator RespawnSequence()
-    {
-        yield return new WaitForSeconds(0.8f);
-        status.Initialize(_spawnPosition);
-    }
 }

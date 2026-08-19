@@ -4,7 +4,7 @@ using UnityEngine;
 [CustomEditor(typeof(GenerateObstacle))]
 public class GenerateObstacleEditor : Editor
 {
-    private string savePath = "Assets/_Game/Prefabs/";
+    private string savePath = "Assets/_Game/Prefabs/Levels/Components/WoodWall/Walls";
     private string prefabName = "Obstacle";
     private int counter;
 
@@ -40,7 +40,8 @@ public class GenerateObstacleEditor : Editor
         var root = generator.GeneratedRoot;
 
         ObstaclePrefabBuilder.ApplyCollider(root);
-        ObstaclePrefabBuilder.ApplyWallTag(root, generator.Type);
+        ObstaclePrefabBuilder.ApplyWallScript(root, generator.Type);
+        ObstaclePrefabBuilder.ApplyWallTag(root, "Wall");
 
         PrefabUtility.SaveAsPrefabAsset(root, path);
 

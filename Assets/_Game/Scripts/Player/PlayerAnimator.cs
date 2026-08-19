@@ -9,7 +9,6 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] private Vector3 puffEffectOffset;
 
     private Animator playerAnimator;
-    private IPlayerStatus status;
     private IPlayerController controller;
     private SpriteRenderer spriteRenderer;
     private SoundData soundData;
@@ -19,7 +18,6 @@ public class PlayerAnimator : MonoBehaviour
     private void Awake()
     {
         playerAnimator = GetComponent<Animator>();
-        status = GetComponent<IPlayerStatus>();
         controller = GetComponent<IPlayerController>();
         Initialize();
     }
@@ -27,32 +25,35 @@ public class PlayerAnimator : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        status.OnDeath += OnDeath;
-        status.OnRespawn += OnRespawn;
+        PlayerManager.Instance.OnDeath -= OnDeath;
+        PlayerManager.Instance.OnDeath += OnDeath;
+
+        PlayerManager.Instance.OnRespawn -= OnRespawn;
+        PlayerManager.Instance.OnRespawn += OnRespawn;
+
+        controller.OnJump -= OnJump;
         controller.OnJump += OnJump;
+
+        controller.OnDoubleJump -= OnDoubleJump;
         controller.OnDoubleJump += OnDoubleJump;
+
+        controller.OnWallTouched -= OnWallTouched;
         controller.OnWallTouched += OnWallTouched;
+
+        controller.OnFloorTouched -= OnFloorTouched;
         controller.OnFloorTouched += OnFloorTouched;
+
+        controller.OnFloorLeft -= OnFloorLeft;
         controller.OnFloorLeft += OnFloorLeft;
-
     }
-
-
     private void OnDestroy()
     {
-        status.OnDeath -= OnDeath;
-        status.OnRespawn -= OnRespawn;
-        controller.OnJump -= OnJump;
-        controller.OnDoubleJump -= OnDoubleJump;
-        controller.OnWallTouched -= OnWallTouched;
-        controller.OnFloorTouched -= OnFloorTouched;
-        controller.OnFloorLeft -= OnFloorLeft;
     }
     private void Start()
     {
         //Initialize();
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
-        ResetAnimations();
+        SetAnimations();
     }
     private void OnJump()
     {
@@ -90,12 +91,12 @@ public class PlayerAnimator : MonoBehaviour
     {
         PlayBurstEffect();
         PlayDeathAudio();
-        spriteRenderer.enabled = false;
+        //spriteRenderer.enabled = false;
     }
     private void OnRespawn()
     {
-        spriteRenderer.enabled = true;
-        ResetAnimations();
+        //spriteRenderer.enabled = true;
+        //ResetAnimations();
     }
 
     public void PlayPuffEffect(sbyte side)
@@ -116,7 +117,7 @@ public class PlayerAnimator : MonoBehaviour
         burstEffect.Play();
     }
 
-    public void ResetAnimations()
+    public void SetAnimations()
     {
         playerAnimator?.SetBool("isJump", false);
         playerAnimator?.SetBool("isBackFlip", false);

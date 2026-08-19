@@ -318,7 +318,8 @@ MonoBehaviour:
   yOffset: 4
   followingSpeed: 4
   returningSpeed: 6
-  deadLine: {fileID: 6064460771384668985}
+  deathLine: {fileID: 6064460771384668985}
+  deathlineOffset: 13
   cameraMain: {fileID: 6758192382608249060}
   shakeDuration: 0.4
   shakeStrength: 0.5

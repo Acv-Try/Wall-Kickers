@@ -1208,6 +1208,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4302253393787503446, guid: 5c9aba837c433124483967dd70740760, type: 3}
   m_PrefabInstance: {fileID: 7006065268901860315}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &817456633 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6629641022115165868, guid: 5c9aba837c433124483967dd70740760, type: 3}
+  m_PrefabInstance: {fileID: 7006065268901860315}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &860242402 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4337118208516610110, guid: 5c9aba837c433124483967dd70740760, type: 3}
@@ -1436,6 +1447,10 @@ PrefabInstance:
       propertyPath: ShopPanel
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7606247200469171235, guid: 93ca17f7b4f71274b9e05bc4d9141c9b, type: 3}
+      propertyPath: TMP_Score
+      value: 
+      objectReference: {fileID: 817456633}
     - target: {fileID: 7606247200469171235, guid: 93ca17f7b4f71274b9e05bc4d9141c9b, type: 3}
       propertyPath: PausePanel
       value: 
@@ -2104,37 +2119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3c23b505f4b0f41b3e06f6bfa7794d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIAnimations
---- !u!1 &2071940923
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2071940924}
-  m_Layer: 0
-  m_Name: Levels
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2071940924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2071940923}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1565906818}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &619396413103885788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,7 +2174,7 @@ PrefabInstance:
     - target: {fileID: 5998230836787304215, guid: 8703607b9ff35fb4d9491ea062b54552, type: 3}
       propertyPath: status
       value: 
-      objectReference: {fileID: 737024332234899343, guid: a6eb21379c67b6d47b4cb8410237718a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7426575648381036437, guid: 8703607b9ff35fb4d9491ea062b54552, type: 3}
       propertyPath: m_Name
       value: PlayerManager
@@ -2230,7 +2214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1968895563604551264, guid: e31cebf302547e149b2db29594bcf442, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.8
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 1968895563604551264, guid: e31cebf302547e149b2db29594bcf442, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2290,36 +2274,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 277426836}
     m_Modifications:
     - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: levelS
-      value: 
-      objectReference: {fileID: 2071940924}
-    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: initHeightCount.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: initHeightCount.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: initialPosition.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: backgroundGenerator
       value: 
       objectReference: {fileID: 395257791}
-    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: 'levels.Array.data[0]'
-      value: 
-      objectReference: {fileID: 940677039614952073, guid: c073f21d05fb8964c892764897a8f2a2, type: 3}
     - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_Name
       value: LevelManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3410692331723475251, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2363,10 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 3410692331723475251, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2071940924}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
 --- !u!1001 &5609393982642599392
@@ -2434,21 +2391,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696402670}
     m_Modifications:
+    - target: {fileID: 2589730295579678875, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125221384384414398, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: m_CropFrame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125221384384414398, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: m_GridSnapping
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.0015576323
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0003599712
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.9968847
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99928004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7163229512918093688, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_Name
@@ -2496,7 +2465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8903924051966552660, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: xOffset
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8903924051966552660, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: deadlineOffset
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

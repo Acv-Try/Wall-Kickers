@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public static class ObstaclePrefabBuilder
@@ -14,7 +15,7 @@ public static class ObstaclePrefabBuilder
         collider.offset = root.transform.InverseTransformPoint(bounds.center);
     }
 
-    public static void ApplyWallTag(GameObject root, WallType type)
+    public static void ApplyWallScript(GameObject root, WallType type)
     {
         Type componentType = type switch
         {
@@ -25,6 +26,10 @@ public static class ObstaclePrefabBuilder
 
         if (root.GetComponent(componentType) == null)
             root.AddComponent(componentType);
+    }
+    public static void ApplyWallTag(GameObject root, string tag)
+    {
+        root.tag = tag;
     }
     
     private static Bounds CalculateBounds(GameObject root)

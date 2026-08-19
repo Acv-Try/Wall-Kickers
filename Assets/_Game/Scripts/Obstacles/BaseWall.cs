@@ -50,4 +50,8 @@ public abstract class BaseWall : MonoBehaviour
     public virtual void Touched(PlayerController player) { }
     public virtual void Left(PlayerController player) { }
     public virtual void Staying(PlayerController player) { }
+    void SetWallType(WallType type)
+    {
+        TypeOfWall = type;
+    }
 }

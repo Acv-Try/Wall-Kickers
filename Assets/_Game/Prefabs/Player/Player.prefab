@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2683391824252886551}
   - component: {fileID: 7406680863428945357}
-  - component: {fileID: 737024332234899343}
   - component: {fileID: 128276085973193811}
   - component: {fileID: 8071261416311028406}
   - component: {fileID: 1450186766938515829}
@@ -51,18 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2dd1a52744ffc4bad8d99c1d45be01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
---- !u!114 &737024332234899343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378259791875512155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc50907fe5ca4b246b69bdbfd66e0fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerStatus
 --- !u!114 &128276085973193811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,13 +62,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859e77e84d4646740b1dcefb411fabb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  JumpForceUp: 12
-  StartJumpForceUp: 8
-  JumpForceSide: 5
-  JumpTime: 0.5
+  JumpForceUp: 24
+  StartJumpForceUp: 5
+  JumpForceSide: 6
+  JumpTime: 0.4
   CoolDownTimeBetweenJumps: 0.05
-  GravityForceWhileFalling: 6
-  SpeedOnFloor: 5
+  GravityForceWhileFalling: 5
+  SpeedOnFloor: 4.5
 --- !u!114 &8071261416311028406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +204,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.07320684, y: 0.007768199}
+  m_Offset: {x: -0.052879214, y: 0.0077682137}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -227,7 +214,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8637639, y: 0.828658}
+  m_Size: {x: 0.8231087, y: 0.828658}
   m_EdgeRadius: 0
 --- !u!95 &6238021067919774775
 Animator:

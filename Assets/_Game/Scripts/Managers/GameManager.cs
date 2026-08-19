@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.STP;
@@ -7,8 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameConfig gameConfig;
     private int lastFailIndex;
     private int currentCheckPoint;
+    private Coroutine respawnCoroutine;
+
+    public event Action OnPlayerDeath; 
+    public event Action<Transform> OnReplay; 
     private CurrentState currentState = CurrentState.Playing;
     public CurrentState CurrentState => currentState;
+    
     #region Singleton
     private static GameManager _instance;
     public static GameManager Instance
@@ -42,6 +49,8 @@ public class GameManager : MonoBehaviour
         GameEvents.OnPause += OnPause;
         GameEvents.OnContinue -= OnContinue;
         GameEvents.OnContinue += OnContinue;
+        PlayerManager.Instance.OnDeath -= OnDeath;
+        PlayerManager.Instance.OnDeath += OnDeath;
     }
     #endregion
 
@@ -53,54 +62,57 @@ public class GameManager : MonoBehaviour
     {
         LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
         LevelManager.Instance.OnLevelsReady += OnLevelsReady;
-        LevelManager.Instance.Initialize(lastFailIndex);
+        LevelManager.Instance.Initialize();
         UIManager.Instance.Initialize();
     }
     private void OnLevelsReady()
     {
         LevelManager.Instance.OnLevelsReady -= OnLevelsReady;
 
-        PlayerManager.Instance.Initialize(
-            LevelManager.Instance.FirstLevelSpawnPos,
-        gameConfig.progressSaveCheckpoint,
-            gameConfig.maxDeathsBeforeFullRestart
-        );
+        PlayerManager.Instance.Initialize(LevelManager.Instance.FirstLevelSpawnPos);
 
         CameraManager.Instance.Initialize(
             LevelManager.Instance.FirstLevelCenter,
-            //gameConfig.cameraCenter,
             PlayerManager.Instance.PlayerTransform
         );
     }
     //absolutely need to be rewritten 
-    public void OnPlayerDied(int score)
+    public void OnDeath()
     {
-        var status = PlayerManager.Instance.Status;
+        OnPlayerDeath?.Invoke();
+        int totalCheckpoints = LevelManager.Instance.TotalCheckpoints;
 
-        bool beforeProgress = status.CheckPoint < gameConfig.progressSaveCheckpoint;
-        bool tooManyDeaths = status.DeathCount >= gameConfig.maxDeathsBeforeFullRestart;
-        Debug.Log("Player died #" + tooManyDeaths);
-
-        if (beforeProgress && tooManyDeaths)
+        //int deaths = PlayerManager.Instance.Status.DeathCount;
+        int deaths = 0;
+        if (totalCheckpoints >= gameConfig.progressSaveCheckpoint)
         {
-            Debug.Log("Player died 4 " + tooManyDeaths + " times. Need a lose panel");
-            lastFailIndex = 0;
-            RestartGame();
-            return;
-        }
-
-        if (status.CheckPoint >= gameConfig.progressSaveCheckpoint)
-        {
-            lastFailIndex = LevelManager.Instance.GetLastFailIndex();
-            //UIManager.Instance.ShowLosingPanel(score);
+            LevelManager.Instance.ComputeCurrentLevelIndex();
             GameEvents.RaiseOnGameLose();
             return;
         }
+        if (deaths < gameConfig.progressSaveCheckpoint)
+        {
+            ReplayGame();
+            return;
+        }
+        else
+        {
+            GameEvents.RaiseOnGameLose();
+            return;
+        }
+
     }
 
-    public void RestartGame()
+    public void ReplayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        PlayerManager.Instance.Spawn();
+        if (respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+        respawnCoroutine = StartCoroutine(RespawnDelay());
     }
 
     public void GoToMenu()
@@ -120,6 +132,11 @@ public class GameManager : MonoBehaviour
         currentState = CurrentState.Playing;
     }
     //
+    IEnumerator RespawnDelay()
+    {
+        yield return new WaitForSeconds(0.8f);
+        OnReplay?.Invoke(PlayerManager.Instance.PlayerTransform);
+    }
 }
 public enum CurrentState
 {

@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CameraController controller;
-    private IPlayerStatus status;
     private Vector3 startCenter;
     private Vector3 initialCenter;
     private Coroutine coroutine;
@@ -42,24 +41,23 @@ public class CameraManager : MonoBehaviour
         controller.SetInitial(startCenter, playerTransform);
         initialCenter = startCenter;
 
-        status = PlayerManager.Instance.Status;
-        status.OnDeath -= HandleDeath;
-        status.OnDeath += HandleDeath;
-        status.OnRespawn -= HandleRespawn;
-        status.OnRespawn += HandleRespawn;
-        status.OnCameraCheckpointReached -= HandleCheckpoint;
-        status.OnCameraCheckpointReached += HandleCheckpoint;
+        GameManager.Instance.OnPlayerDeath -= HandleDeath;
+        GameManager.Instance.OnPlayerDeath += HandleDeath;
+        GameManager.Instance.OnReplay -= HandleRespawn;
+        GameManager.Instance.OnReplay += HandleRespawn;
     }
 
     private void HandleDeath()
     {
+        Debug.Log($"-1-");
         controller.Freeze();
         controller.HideDeadline();
         controller.Shake();
     }
-    private void HandleRespawn()
+    private void HandleRespawn(Transform pos)
     {
-        controller.SetCenter(initialCenter);
+        Debug.Log($"-2-");
+        controller.SetInitial(initialCenter, pos);
         coroutine = StartCoroutine(ReturnAndReveal());
     }
     private IEnumerator ReturnAndReveal()
@@ -69,5 +67,4 @@ public class CameraManager : MonoBehaviour
             controller.ShowDeadline();
         coroutine = null;
     }
-    private void HandleCheckpoint(Vector3 newCenter) => controller.SetCenter(newCenter);
 }

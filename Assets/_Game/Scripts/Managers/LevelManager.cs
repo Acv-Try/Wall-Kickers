@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public partial class LevelManager : MonoBehaviour
 {
     //[SerializeField] private List<Level> startLevels;
+    [SerializeField] private List<Level> startLevels;
     [SerializeField] private List<Level> levels;
     [SerializeField] private Transform levelS;
     [SerializeField] private Vector3 initialPosition = Vector3.zero;
@@ -16,11 +16,17 @@ public partial class LevelManager : MonoBehaviour
 
     public Vector3 FirstLevelCenter { get; private set; }
     public Vector3 FirstLevelSpawnPos { get; private set; }
+    public int LocalLevelCheckpoints { get; set; }
+    public int TotalCheckpoints { get; set; }
 
-    private List<Level> levelsGenerated = new();
+
+    private List<Level> levelsGenerated = new List<Level>(3);
+    private List<int> unusedLevels = new();
     private Transform previousTopMarker;
     private Vector3Int heightCount;
-    private int lastLevelFailIndex;
+
+    private int currentLevelIndex;
+    private int nextCheckpointValue;
     #region
     private static LevelManager _instance;
     public static LevelManager Instance
@@ -49,80 +55,98 @@ public partial class LevelManager : MonoBehaviour
             return;
         }
         _instance = this;
+        PlayerManager.Instance.OnPlayerPositionChange -= CheckIfPlayerAboveMiddle;
+        PlayerManager.Instance.OnPlayerPositionChange += CheckIfPlayerAboveMiddle;
     }
     #endregion
 
-    public void Initialize(int lastFailIndex)
+    public void Initialize()
     {
         //Debug.Log(lastFailIndex);
-        lastLevelFailIndex = lastFailIndex;
         heightCount = initHeightCount;
         backgroundGenerator.Reset();
         for (int i = 0; i < levelsGenerated.Count; i++)
             Destroy(levelsGenerated[i].gameObject);
         levelsGenerated.Clear();
 
-        SpawnNextLevel(0);
+        RefillUnusedLevels();
+        nextCheckpointValue = 10;
 
-        FirstLevelCenter = levelsGenerated[0].LevelCenter.position;
-        //Debug.Log(FirstLevelCenter);
+        SpawnStartLevel();
+
+        //FirstLevelCenter = levelsGenerated[0].LevelCenter.position;
         FirstLevelSpawnPos = levelsGenerated[0].PlayerSpawnPosition.position;
 
         //if (lastLevelFailIndex == 0)
         //    SpawnNextLevel(10);
         //else
         //    SpawnLevel(lastLevelFailIndex);
+        for (int i = 0; i < 3; i++)
+        {
+            SpawnNextLevel();
+        }
 
         OnLevelsReady?.Invoke();
     }
 
-    public void CheckIfPlayerAboveMiddle(Vector3 playerPosition, int currentCheckPoint)
+    public void CheckIfPlayerAboveMiddle(Vector3 playerPosition)
     {
-        if (currentCheckPoint < 20) return;
+        int currentCheckpoint = TotalCheckpoints;
+
+        if (currentCheckpoint < 20) return;
         if (levelsGenerated.Count < 3) return;
 
-        var currentLevel = levelsGenerated[2];
-        float middleY = currentLevel.Origin.y + 15;
-
-        if (playerPosition.y > middleY)
+        var middleLevel = levelsGenerated[1]; // 2nd of the 3 currently drawn
+        float middleYAxis = (middleLevel.BottomMarker.position.y + middleLevel.TopMarker.position.y) * 0.5f;
+        if(playerPosition.y > middleYAxis)
         {
             RemoveLevel();
-            SpawnNextLevel(currentCheckPoint);
+            SpawnNextLevel();
         }
     }
 
-    public void SpawnNextLevel(int checkPoint)
+    public void SpawnStartLevel()
     {
-        var level = GetRandomLevelByCheckpoint(checkPoint);
+        var level = GetRandomStartLevel();
         AddLevel(level);
     }
-
-    public void SpawnLevel(int index)
+    public void SpawnNextLevel()
     {
-        var level = levels[index];
+
+        var level = GetRandomLevel();
         AddLevel(level);
     }
+    private void RefillUnusedLevels()
+    {
+        unusedLevels.Clear();
 
+        for (int i = 0; i < levels.Count; i++)
+            unusedLevels.Add(i);
+    }
     private void AddLevel(Level level)
     {
-        Vector3Int origin = heightCount;
+        Vector3Int origin = heightCount - new Vector3Int(
+            level.levelData.bottomMarkerColumn,
+            level.levelData.bottomMarkerRow,
+            0);
 
         backgroundGenerator.Paint(level, origin);
-
+        Debug.Log(backgroundGenerator.CellToWorld(origin));
+        Vector3 worldOrigin = backgroundGenerator.CellToWorld(origin) + new Vector3(1f, 0, 0);
         Level instance = Instantiate(
             level,
-            new Vector3(0, 0, 0),
+            worldOrigin,
             Quaternion.identity,
             levelS
         );
 
-        Vector3 spawnPos = CalculateSpawnPos(instance);
+        //Vector3 spawnPos = CalculateSpawnPos(instance);
 
-        instance.transform.position = spawnPos;
+        //instance.transform.position = spawnPos;
 
         heightCount = origin + new Vector3Int(
-            level.levelData.markerColumn,
-            level.levelData.markerRow,
+            level.levelData.topMarkerColumn,
+            level.levelData.topMarkerRow,
             0);
 
         levelsGenerated.Add(instance);
@@ -151,32 +175,44 @@ public partial class LevelManager : MonoBehaviour
         Destroy(level.gameObject);
     }
 
-    private Level GetRandomLevelByCheckpoint(int checkpoint)
+    private Level GetRandomLevel()
     {
-        int index;
+        if (unusedLevels.Count == 0)
+            RefillUnusedLevels();
 
-        if (checkpoint < 10) index = 0;
-        else if (checkpoint < 50) index = UnityEngine.Random.Range(1, 6);
-        else if (checkpoint < 90) index = UnityEngine.Random.Range(6, 10);
-        else if (checkpoint < 130) index = UnityEngine.Random.Range(10, 14);
-        else if (checkpoint < 170) index = UnityEngine.Random.Range(14, 18);
-        else if (checkpoint < 210) index = UnityEngine.Random.Range(18, 22);
-        else index = UnityEngine.Random.Range(3, 22);
+        int pick = Random.Range(0, unusedLevels.Count);
+        int levelIndex = unusedLevels[pick];
+        unusedLevels.RemoveAt(pick);
 
-        index = Mathf.Clamp(index, 0, levels.Count - 1);
-
-        if (checkpoint < 100)
-            lastLevelFailIndex = index;
-        else
-            lastLevelFailIndex = 0;
-
-        var level = levels[index];
-        level.LevelCheckpoint.SetCheckPointText(
-            Mathf.CeilToInt((checkpoint + 10) / 10f) * 10
-        );
-
+        var level = levels[levelIndex];
         return level;
-    }
 
-    public int GetLastFailIndex() => lastLevelFailIndex;
+        //int index = Random.Range(levelIndex, levels.Count);
+        //index = Mathf.Clamp(index, levelIndex, levels.Count - 1);
+        //level.LevelCheckpoint.SetCheckPointText(Mathf.CeilToInt(levelIndex * 10));
+    }
+    private Level GetRandomStartLevel()
+    {
+        int index = Random.Range(0, startLevels.Count);
+        index = Mathf.Clamp(index, 0, startLevels.Count - 1);
+        var level = startLevels[index];
+        level.LevelCheckpoint.SetCheckPointText(nextCheckpointValue);
+        return level;
+
+    }
+    public void ComputeCurrentLevelIndex()
+    {
+        foreach (var level in levelsGenerated)
+        {
+            if (level.IsPlayerInTheLevel == true)
+            {
+                currentLevelIndex = levels.IndexOf(level);
+            }
+        }
+
+    }
+    public void IncreaseCheckpoint()
+    {
+        TotalCheckpoints++;
+    }
 }

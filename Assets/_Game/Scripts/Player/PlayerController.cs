@@ -38,20 +38,18 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private bool isOnFloor;
     private bool canJump;
     private bool canDoubleJump;
+    private float jumpTimeCounter;
     private BaseWall currentWall;
     private Rigidbody2D rb;
 
-    private IPlayerInput playerInput;
-    private IPlayerStatus playerStatus;
-    private float jumpTimeCounter;
+    private IPlayerInput Input;
     //private sbyte linearVelocityX;
     //private bool isDead;
 
     public sbyte JumpSide => jumpSide;
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerStatus = GetComponent<PlayerStatus>();
+        Input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
 
         //playerInput.OnTouchBegan -= HandleTouchBegan;
@@ -60,11 +58,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
         //playerInput.OnTouchHeld -= HandleTouchHeld;
         //playerInput.OnTouchHeld += HandleTouchHeld;
 
-        playerStatus.OnDeath -= HandleDeath;
-        playerStatus.OnDeath += HandleDeath;
+        //PlayerManager.Instance.OnDeath -= HandleDeath;
+        //PlayerManager.Instance.OnDeath += HandleDeath;
 
-        playerStatus.OnRespawn -= HandleRespawn;
-        playerStatus.OnRespawn += HandleRespawn;
+        //PlayerManager.Instance.OnRespawn -= HandleRespawn;
+        //PlayerManager.Instance.OnRespawn += HandleRespawn;
     }
 
     //private void OnDestroy()
@@ -77,6 +75,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     public void Initialize()
     {
+
         isDead = false;
 
         canJump = true;
@@ -202,6 +201,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         if (isDead) return;
         //Debug.Log($"isOnWall = {isOnWall}, isOnFloor = {isOnFloor}.");
+        PlayerManager.Instance.RiseOnPlayerPositionChange(transform.position);
         if (isOnFloor)
         {
             rb.linearVelocity =
@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         if (rb.linearVelocity.y < -0.2f && !isOnWall)
             rb.gravityScale = GravityForceWhileFalling;
+
     }
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -303,7 +304,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
             currentWall.Staying(this);
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Dead"))
+        {
+            isDead = true;
+            PlayerManager.Instance.OnDie();
+        }
+    }
 
     private IEnumerator CoolDown()
     {

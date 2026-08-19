@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,9 +17,12 @@ public class UIManager : MonoBehaviour
         B_Settings_PauseMenu,
         B_Settings_LoseMenu,
         B_CloseSettings_PauseMenu,
-        B_CloseSettings_LoseMenu;  
-        //B_GameAudio_PauseMenu,
-        //B_GameAudio_SettingsMenu;
+        B_CloseSettings_LoseMenu;
+    //B_GameAudio_PauseMenu,
+    //B_GameAudio_SettingsMenu;
+    [SerializeField] private TextMeshProUGUI TMP_Score;
+    
+    
     private bool isGameStarted = false;
     private Coroutine coroutine;
     #region Singleton
@@ -87,7 +91,7 @@ public class UIManager : MonoBehaviour
         B_Pause.onClick.RemoveAllListeners();
         B_PlayPauseMenu.onClick.RemoveAllListeners();
     }
-   private void OnStart()
+    private void OnStart()
     {
         UIAnimations.OnStart();
         GameEvents.RaiseOnGameLaunch();
@@ -95,6 +99,10 @@ public class UIManager : MonoBehaviour
     public void OnGameLose()
     {
         UIAnimations.OnLose();
+    }
+    public void SetScore(string value)
+    {
+        TMP_Score.text = value;
     }
     //ad a logic to connect the restart button click to the restart logic.
 }

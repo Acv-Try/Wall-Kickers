@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using Unity.VisualScripting.Dependencies.NCalc;
 using TreeEditor;
+using Unity.VisualScripting;
 
 public enum CameraState
 {
@@ -16,7 +17,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float yOffset;
     [SerializeField] private float followingSpeed;
     [SerializeField] private float returningSpeed;
-    [SerializeField] private GameObject deadLine;
+    [SerializeField] private GameObject deathLine;
+    [SerializeField] private float deathlineOffset;
     public Camera cameraMain;
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeStrength;
@@ -26,31 +28,43 @@ public class CameraController : MonoBehaviour
     private Vector3 center = Vector3.zero;
     private Transform playerTransform;
     private CameraState state = CameraState.Following;
-
+    private void Start()
+    {
+        CalcDeadlinePos();
+    }
     public void SetInitial(Vector3 startCenter, Transform _playerTransform)
     {
         center = startCenter;
-        Debug.Log($"{center.x};{center.y};{center.z}");
         playerTransform = _playerTransform;
-        transform.position = new Vector3(center.x, (center.y*0) + yOffset, -10f); ;
-        Debug.Log($"{transform.position}");
+        transform.position = new Vector3(center.x, (center.y*0) + yOffset, -10f);
+        Debug.Log(deathLine.transform.localPosition);
         //SetDeadlinePosition();
     }
-    public void SetCenter(Vector3 newCenter) => center = newCenter;
+    private void CalcDeadlinePos()
+    {
+        float x = deathLine.transform.localPosition.x;
+        float y = deathLine.transform.localPosition.y * 0 - deathlineOffset;
+        float z = deathLine.transform.localPosition.z;
+        Debug.Log($"{center.y},{y}");
+        deathLine.transform.localPosition = new Vector3(x,y,z);
+        Debug.Log(deathLine.transform.localPosition);
+    }
     public void Freeze() => state = CameraState.Frozen;
-    public void HideDeadline() => deadLine.SetActive(false);
-    public void ShowDeadline() => deadLine.SetActive(true);
+    public void HideDeadline() => deathLine.SetActive(false);
+    public void ShowDeadline() => deathLine.SetActive(true);
     public void Shake() => transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
     public CameraState State => state;
     public IEnumerator ReturnToCenter()
     {
         state = CameraState.Returning;
         var target = new Vector3(center.x, (center.y*0) + yOffset, -10f);
+        Debug.Log($"1 {target}, {state}");
         while (state == CameraState.Returning && Vector3.Distance(transform.position, target) > 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, target, returningSpeed * Time.deltaTime);
             yield return null;
         }
+        Debug.Log($"2 {transform.position}, {state}");
         if (state == CameraState.Returning)
         {
             transform.position = target;
@@ -60,7 +74,11 @@ public class CameraController : MonoBehaviour
     }
     private void Update()
     {
-        if (state != CameraState.Following || playerTransform == null) return;
+        if (state != CameraState.Following || playerTransform == null)
+        {
+            //Debug.Log($"3 Update - {state}, {playerTransform}");
+            return;
+        }
 
         float y = Mathf.Max(transform.position.y, playerTransform.position.y + yOffset);
         float x = center.x;

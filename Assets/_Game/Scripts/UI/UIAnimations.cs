@@ -158,7 +158,6 @@ public class UIAnimations : MonoBehaviour
     IEnumerator ColorFade(Image background, float targetAlpha)
     {
         background.gameObject?.SetActive(true);
-        Debug.Log("Enter color fade");
         Color startColor = background.color;
         Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
         float elapsed = 0f;

@@ -73,7 +73,7 @@ MonoBehaviour:
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
-    m_PerlinScale: 0.5
+    m_PerlinScale: 0.325
     m_Output: 0
     m_ColliderType: 1
     m_RandomTransform: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   - m_Id: 3
     m_Sprites:
     - {fileID: -535735230, guid: 1f871889c7e728848ac87e0fad589b84, type: 3}
-    m_GameObject: {fileID: 0}
+    m_GameObject: {fileID: 2338316943868777816, guid: d33c78ea066ffd34eb4acb75f46fd25d, type: 3}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.5

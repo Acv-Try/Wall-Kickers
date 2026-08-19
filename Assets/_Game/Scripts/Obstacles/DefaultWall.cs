@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class DefaultWall : BaseWall
 {
+    private void Start()
+    {
+        Initialize();
+    }
     public DefaultWall()
     {
         

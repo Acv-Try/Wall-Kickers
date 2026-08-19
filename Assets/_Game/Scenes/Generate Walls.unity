@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenerateObstacle
   type: 2
-  bottomPrefab: {fileID: 474797792995889961, guid: c84a2c344a8db51478ec0e3b8bfba874, type: 3}
+  bottomPrefab: {fileID: 2189336578697813810, guid: 077c7e073a5a43e40b471bbd8e981462, type: 3}
   topPrefab: {fileID: 4403027634891177832, guid: 6da38d0b0979a254abe2911742b4080f, type: 3}
   bodyPrefabs:
   - {fileID: 3894389622559107845, guid: 748669e72c74f0a458fdc9ce06e1786b, type: 3}
@@ -185,7 +185,7 @@ MonoBehaviour:
   - {fileID: 3393388778487912291, guid: b43eb22e7b873214bac2dc911cf8e9dd, type: 3}
   - {fileID: 7097979978794473577, guid: ed811065d9b6c1a48a9a2a465a830259, type: 3}
   - {fileID: 5053221361158064528, guid: b06fa57a088dd8e4ca07a16f4fe2e581, type: 3}
-  logSize: 6
+  logSize: 8
   withBranch: 1
 --- !u!4 &196956495
 Transform:
@@ -273,7 +273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1065837446
 AudioListener:
   m_ObjectHideFlags: 0

@@ -8,6 +8,5 @@ public class CheckPointCamera : MonoBehaviour
     {
         if (!collider.CompareTag("Player")) return;
 
-        PlayerManager.Instance.TriggerCameraCheckpoint(transform.position);
     }
 }

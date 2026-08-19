@@ -34,6 +34,14 @@ public class LevelDataDrawer : Editor
 
         ClearBoard();
 
+        if (GUILayout.Button("Recalculate Markers"))
+        {
+            Undo.RecordObject(Data, "Recalculate Markers");
+            Data.CalculateSides();
+            Data.CalculateMarkers();
+            EditorUtility.SetDirty(Data);
+        }
+
         EditorGUILayout.Space();
 
         if (IsBoardValid())
@@ -141,7 +149,7 @@ public class LevelDataDrawer : Editor
         cell.wallHeight = selectedWallHeight;
 
         Data.CalculateSides();
-        Data.CalculateMarker();
+        Data.CalculateMarkers();
         EditorUtility.SetDirty(Data);
     }
 
@@ -152,7 +160,7 @@ public class LevelDataDrawer : Editor
         cell.rotation = 0;
         cell.wallHeight = 0;
         Data.CalculateSides();
-        Data.CalculateMarker();
+        Data.CalculateMarkers();
         EditorUtility.SetDirty(Data);
     }
 
