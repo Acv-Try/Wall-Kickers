@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3006447619660311645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 620526575038353453}
+  - component: {fileID: 4566772774560052497}
+  - component: {fileID: 7606247200469171235}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &620526575038353453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006447619660311645}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.73251, y: 0.30287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4566772774560052497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006447619660311645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3c23b505f4b0f41b3e06f6bfa7794d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIAnimations
+  tapImage: {fileID: 0}
+  tapSprite1: {fileID: 3514195861272400136, guid: 3fb62084e1aa16347b8e486e224362a0, type: 3}
+  tapSprite2: {fileID: -6124764589648955295, guid: 3fb62084e1aa16347b8e486e224362a0, type: 3}
+  muteImage: {fileID: 0}
+  muteSprite1: {fileID: 2103157165844276317, guid: 9280764f8f058094d8d26611fab7dd63, type: 3}
+  muteSprite2: {fileID: -8503093942092619827, guid: 063d30e8909c64049aad4355c096b63a, type: 3}
+  NotifImage: {fileID: 0}
+  NotifSprite1: {fileID: -498335648630204563, guid: 3065885bcac123d4786088bcb98840d7, type: 3}
+  NotifSprite2: {fileID: 920019140239480953, guid: 5470b26e94362414bbc61e6667633153, type: 3}
+  switchTime: 0.75
+  topPanel: {fileID: 0}
+  bottomPanel: {fileID: 0}
+--- !u!114 &7606247200469171235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3006447619660311645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48b199b2a673ac548bc1188ed950cfdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIManager
+  UIAnimations: {fileID: 0}
+  MainPanel: {fileID: 0}
+  PlayingPanel: {fileID: 0}
+  PausePanel: {fileID: 0}
+  ShopPanel: {fileID: 0}
+  FirePanel: {fileID: 0}
+  SettingsPanel: {fileID: 0}
+  LosingPanel: {fileID: 0}
+  b_pause: {fileID: 0}
+  b_play: {fileID: 0}
+  b_shop: {fileID: 0}

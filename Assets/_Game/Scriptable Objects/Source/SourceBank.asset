@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b007d024bf88e4c42a60e1d0263b7565, type: 3}
+  m_Name: SourceBank
+  m_EditorClassIdentifier: Assembly-CSharp::SourceBank
+  LibrarySource: {fileID: 11400000, guid: 15298e0b0139f0842b2240b6ea41abb1, type: 2}
