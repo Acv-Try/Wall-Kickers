@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TMP_Score;
     
     
-    private bool isGameStarted = false;
+    //private bool isGameStarted = false;
     private Coroutine coroutine;
     #region Singleton
     private static UIManager _instance;

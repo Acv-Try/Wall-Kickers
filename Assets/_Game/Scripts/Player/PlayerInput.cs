@@ -7,11 +7,8 @@ public interface IPlayerInput
     public event Action OnTouchHeld;
     public event Action OnFirstTouch;
 }
-public class PlayerInput : MonoBehaviour, IPlayerInput
+public class PlayerInput : MonoBehaviour//, IPlayerInput
 {
-    public event Action OnTouchBegan;
-    public event Action OnTouchHeld;
-    public event Action OnFirstTouch;
     bool firstClick = true;
 
     private IPlayerController playerController;

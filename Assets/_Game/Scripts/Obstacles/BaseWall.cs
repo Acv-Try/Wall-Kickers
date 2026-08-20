@@ -25,26 +25,31 @@
 //    public virtual void Staying(PlayerController player){}
 //    }
 
+using Unity.Cinemachine;
 using UnityEngine;
 public enum WallType
 {
-    Bounce, Electro, Default, Moving, Lift
+    Bounce, Electro, Default, Moving, Lift, Stone
 }
 
 public abstract class BaseWall : MonoBehaviour
 {
     [Header("Wall Settings")]
+    [TagField]
+    [SerializeField] public string playerTag;
     public float SpeedOfPlayerFriction = 0.5f;
     public bool OnlyRightWall;
     public bool OnlyLeftWall;
     public bool FixIfOnTop = true;
     public WallType TypeOfWall;
-
+    protected Animator _animator;
     protected SoundData soundData;
-
+    protected string _playerTag => playerTag;
     protected void Initialize()
     {
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Gameplay);
+        if(GetComponent<Animator>() != null)
+            _animator = GetComponent<Animator>();
     }
 
     public virtual void Touched(PlayerController player) { }

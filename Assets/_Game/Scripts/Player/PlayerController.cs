@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public sbyte JumpSide => jumpSide;
     private void Awake()
     {
-        Input = GetComponent<PlayerInput>();
+        //Input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
 
         //playerInput.OnTouchBegan -= HandleTouchBegan;

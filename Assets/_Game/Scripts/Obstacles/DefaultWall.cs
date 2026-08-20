@@ -6,11 +6,7 @@ public class DefaultWall : BaseWall
     {
         Initialize();
     }
-    public DefaultWall()
-    {
-        
-    }
-    public override void Touched(PlayerController player)
+    public override void Touched(PlayerController playe)
     {
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.Land_Wall_Wood);
         //PlayerManager.Instance.PlayLandAudio();

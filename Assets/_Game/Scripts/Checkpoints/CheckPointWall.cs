@@ -41,7 +41,6 @@ public class CheckPointWall : MonoBehaviour
         UIManager.Instance.SetScore(LevelManager.Instance.TotalCheckpoints.ToString());
         wasActivate = true;
     }
-
     public void SetCheckPointText(int value)
     {
         checkpointText.text = value.ToString();

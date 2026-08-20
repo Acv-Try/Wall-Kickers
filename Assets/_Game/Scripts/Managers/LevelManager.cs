@@ -81,7 +81,7 @@ public partial class LevelManager : MonoBehaviour
         //    SpawnNextLevel(10);
         //else
         //    SpawnLevel(lastLevelFailIndex);
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 2; i++)
         {
             SpawnNextLevel();
         }
@@ -132,7 +132,7 @@ public partial class LevelManager : MonoBehaviour
 
         backgroundGenerator.Paint(level, origin);
         Debug.Log(backgroundGenerator.CellToWorld(origin));
-        Vector3 worldOrigin = backgroundGenerator.CellToWorld(origin) + new Vector3(1f, 0, 0);
+        Vector3 worldOrigin = backgroundGenerator.CellToWorld(origin) + level.SpawnOffset;
         Level instance = Instantiate(
             level,
             worldOrigin,
