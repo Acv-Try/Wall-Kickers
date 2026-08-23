@@ -1,7 +1,5 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -20,9 +18,9 @@ public class UIManager : MonoBehaviour
         B_CloseSettings_LoseMenu;
     //B_GameAudio_PauseMenu,
     //B_GameAudio_SettingsMenu;
-    [SerializeField] private TextMeshProUGUI TMP_Score;
-    
-    
+    [SerializeField] private TextMeshProUGUI TMP_Score, TMP_HighestScore;
+
+    private int highestScore = 0;
     //private bool isGameStarted = false;
     private Coroutine coroutine;
     #region Singleton
@@ -65,26 +63,28 @@ public class UIManager : MonoBehaviour
         PlayerEvents.OnFirstTouch += OnStart;
         GameEvents.OnGameLose -= OnGameLose;
         GameEvents.OnGameLose += OnGameLose;
-
     }
 
 
     private void Init()
     {
+        highestScore = PlayerPrefs.GetInt("HighestScore", 1);
+        TMP_HighestScore.text = highestScore.ToString();
         UIAnimations.OnGameLaunch();
         ResetListeners();
         B_Pause.onClick.AddListener(GameEvents.RaiseOnPause);
         B_Pause.onClick.AddListener(UIAnimations.OnPause);
-        
+
         B_PlayPauseMenu.onClick.AddListener(GameEvents.RaiseOnContinue);
         B_PlayPauseMenu.onClick.AddListener(UIAnimations.OnContinue);
-        
+
+        B_PlayLoseMenu.onClick.AddListener(GameEvents.RaiseOnRestart);
         B_PlayLoseMenu.onClick.AddListener(UIAnimations.OnRestart);
-        
+
         B_CloseSettings_PauseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromPauseMenu);
-        
+
         B_CloseSettings_LoseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromLoseMenu);
-        
+
     }
     private void ResetListeners()
     {
@@ -93,16 +93,31 @@ public class UIManager : MonoBehaviour
     }
     private void OnStart()
     {
+        SetScore("0");
+        SetHighestScore(highestScore);
         UIAnimations.OnStart();
         GameEvents.RaiseOnGameLaunch();
     }
     public void OnGameLose()
     {
+        B_Pause.interactable = false;
         UIAnimations.OnLose();
     }
+
     public void SetScore(string value)
     {
         TMP_Score.text = value;
     }
+    public void SetHighestScore(int score)
+    {
+        if (score > highestScore)
+        {
+            PlayerPrefs.SetInt("HighestScore", score);
+            string value = score.ToString();
+            TMP_HighestScore.text = value;
+        }
+
+    }
+
     //ad a logic to connect the restart button click to the restart logic.
 }

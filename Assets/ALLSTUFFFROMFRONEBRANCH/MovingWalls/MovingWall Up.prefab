@@ -197,7 +197,6 @@ GameObject:
   - component: {fileID: 2280613216836313094}
   - component: {fileID: 3679646824044313892}
   - component: {fileID: 6622610336752754856}
-  - component: {fileID: 7603847445283778047}
   - component: {fileID: 3879140944849980671}
   - component: {fileID: 5052358154974630780}
   m_Layer: 0
@@ -295,23 +294,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7603847445283778047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5699854970137174999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 824bbd03478e98a469d3d227a4a47d7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform1
-  SpeedOfPlayerFriction: 0
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 3
 --- !u!114 &3879140944849980671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,7 +367,7 @@ SpriteRenderer:
   m_Size: {x: 0.3125, y: 1.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7112090237150639600
 GameObject:

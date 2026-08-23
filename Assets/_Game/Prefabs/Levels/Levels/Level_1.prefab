@@ -1127,7 +1127,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885373553365620728, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_Name
-      value: CheckPointWall
+      value: CheckpointWall
       objectReference: {fileID: 0}
     - target: {fileID: 1885373553365620728, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_TagString

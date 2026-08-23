@@ -7,7 +7,6 @@ public class StoneWall : BaseWall
     private void Start()
     {
         Initialize();
-        Debug.Log(_playerTag);
     }
 
     public override void Touched(PlayerController player)

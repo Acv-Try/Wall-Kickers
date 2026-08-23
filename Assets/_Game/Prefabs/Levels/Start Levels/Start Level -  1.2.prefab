@@ -417,6 +417,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor(Collider)
       objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Size.x
+      value: 1.7922388
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.06575793
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.032127917
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.51653576
+      objectReference: {fileID: 0}
     - target: {fileID: 6287064598315372082, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -556,6 +572,14 @@ PrefabInstance:
     - target: {fileID: 1281393052147760513, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
       propertyPath: m_Name
       value: Floor(Collider) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Size.y
+      value: 0.065959334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5548083135767276444, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.5166364
       objectReference: {fileID: 0}
     - target: {fileID: 6287064598315372082, guid: 398b7950384756c43ab22dc2c8c96ccc, type: 3}
       propertyPath: m_LocalScale.x
@@ -763,6 +787,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 1168233653353450533, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
+      propertyPath: m_Size.y
+      value: 4.104679
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168233653353450533, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.5523393
+      objectReference: {fileID: 0}
     - target: {fileID: 1984872361300677508, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2
@@ -773,11 +805,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1984872361300677508, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.3
+      value: 3.303
       objectReference: {fileID: 0}
     - target: {fileID: 1984872361300677508, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.454
+      value: 0.475
       objectReference: {fileID: 0}
     - target: {fileID: 1984872361300677508, guid: 6b16e3597a8fc1e4188aa627a065d948, type: 3}
       propertyPath: m_LocalPosition.z
@@ -939,17 +971,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle_21
       objectReference: {fileID: 0}
+    - target: {fileID: 5221174454591546075, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
+      propertyPath: m_Size.y
+      value: 5.0919843
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221174454591546075, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.0459921
+      objectReference: {fileID: 0}
     - target: {fileID: 7975298083976536687, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7975298083976536687, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.299
+      value: 1.298
       objectReference: {fileID: 0}
     - target: {fileID: 7975298083976536687, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.11
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 7975298083976536687, guid: 309c6acecf07397419a6726c64b14f55, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1003,7 +1043,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885373553365620728, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_Name
-      value: CheckPointWall
+      value: CheckpointWall
       objectReference: {fileID: 0}
     - target: {fileID: 3663356530665386799, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: parentLevel

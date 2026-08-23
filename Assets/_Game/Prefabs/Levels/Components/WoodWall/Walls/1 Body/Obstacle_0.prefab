@@ -580,7 +580,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.64}
+  m_Offset: {x: 0, y: 0.74263096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -590,7 +590,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3125, y: 1.56125}
+  m_Size: {x: 0.3125, y: 1.7665119}
   m_EdgeRadius: 0
 --- !u!114 &1792602249994681565
 MonoBehaviour:
@@ -604,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
+  playerTag: 
   SpeedOfPlayerFriction: 0.5
   OnlyRightWall: 0
   OnlyLeftWall: 0

@@ -43,7 +43,7 @@ public class UIAnimations : MonoBehaviour
         P_Cup.Hide();
         P_ScoreCount.Hide();
         P_PauseButton.Hide();
-        P_CollectedCoinInfo.Hide();
+        //P_CollectedCoinInfo.Hide();
 
         P_Logo.Show();
         P_MainMenu.Show();
@@ -84,6 +84,7 @@ public class UIAnimations : MonoBehaviour
     }
     public void OnLose()
     {
+        P_PauseButton.Hide();
         startBackground.SetActive(true);
         if (onLoseRoutine == null)
         {
@@ -103,7 +104,6 @@ public class UIAnimations : MonoBehaviour
     }
     public void OnPause()
     {
-        Debug.Log("enter onPause");
         startBackground.SetActive(true);
         P_PauseMenu.gameObject.SetActive(true);
         if (onColorFadeRoutine == null)
@@ -115,10 +115,8 @@ public class UIAnimations : MonoBehaviour
     }
     public void OnContinue()
     {
-        Debug.Log("enter onContinue");
         if (onColorFadeRoutine == null)
         {
-            Debug.Log($"if statement is {onColorFadeRoutine}");
             onColorFadeRoutine = StartCoroutine(ColorFade(midGameBackgroundImage, 0f));
         }
         startBackground.SetActive(false);
@@ -144,13 +142,13 @@ public class UIAnimations : MonoBehaviour
         P_PauseMenu.Hide();
         P_ScoreCount.Hide();
         P_Cup.Hide();
-        P_CollectedCoinInfo.Hide();
+        //P_CollectedCoinInfo.Hide();
         P_SettingsMenu.Show();
     }
     public void OpenLoseMenuAndCloseSettingsMenu()
     {
         P_SettingsMenu.Hide();
-        P_CollectedCoinInfo.Show();
+        //P_CollectedCoinInfo.Show();
         P_ScoreCount.Show();
         P_Cup.Show();
         P_PauseMenu.Show();
@@ -180,9 +178,10 @@ public class UIAnimations : MonoBehaviour
         onRestartRoutine = null;
         //background gradient to orange and back to invisible
         yield return StartCoroutine(ColorFade(startBackgroundImage, 1f));
+        StartCoroutine(ColorFade(midGameBackgroundImage, 0));
         yield return new WaitForSeconds(0.8f);
-        //yield return StartCoroutine(ColorFade(startBackgroundImage, 0f));
-        P_CollectedCoinInfo.Hide();
+        yield return StartCoroutine(ColorFade(startBackgroundImage, 0f));
+        //P_CollectedCoinInfo.Hide();
         P_LoseMenu.Hide();
         P_MainMenu.Show();
     }
@@ -197,7 +196,7 @@ public class UIAnimations : MonoBehaviour
     {
         onLoseRoutine = null;
         yield return StartCoroutine(ColorFade(midGameBackgroundImage, 0.3f));
-        P_CollectedCoinInfo.Show();
+        //P_CollectedCoinInfo.Show();
         yield return new WaitForSecondsRealtime(0.2f);
         P_LoseMenu.Show();
     }

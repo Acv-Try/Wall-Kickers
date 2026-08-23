@@ -1,9 +1,8 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
-using Unity.VisualScripting.Dependencies.NCalc;
-using TreeEditor;
-using Unity.VisualScripting;
+//using Unity.VisualScripting.Dependencies.NCalc;
+//using Unity.VisualScripting;
 
 public enum CameraState
 {
@@ -37,17 +36,19 @@ public class CameraController : MonoBehaviour
         center = startCenter;
         playerTransform = _playerTransform;
         transform.position = new Vector3(center.x, (center.y*0) + yOffset, -10f);
-        Debug.Log(deathLine.transform.localPosition);
-        //SetDeadlinePosition();
+        state = CameraState.Following;
+    }
+    public void SetTarget(Vector3 startCenter, Transform _playerTransform)
+    {
+        center = startCenter;
+        playerTransform = _playerTransform;
     }
     private void CalcDeadlinePos()
     {
         float x = deathLine.transform.localPosition.x;
         float y = deathLine.transform.localPosition.y * 0 - deathlineOffset;
         float z = deathLine.transform.localPosition.z;
-        Debug.Log($"{center.y},{y}");
         deathLine.transform.localPosition = new Vector3(x,y,z);
-        Debug.Log(deathLine.transform.localPosition);
     }
     public void Freeze() => state = CameraState.Frozen;
     public void HideDeadline() => deathLine.SetActive(false);
@@ -58,13 +59,11 @@ public class CameraController : MonoBehaviour
     {
         state = CameraState.Returning;
         var target = new Vector3(center.x, (center.y*0) + yOffset, -10f);
-        Debug.Log($"1 {target}, {state}");
         while (state == CameraState.Returning && Vector3.Distance(transform.position, target) > 0.05f)
         {
             transform.position = Vector3.Lerp(transform.position, target, returningSpeed * Time.deltaTime);
             yield return null;
         }
-        Debug.Log($"2 {transform.position}, {state}");
         if (state == CameraState.Returning)
         {
             transform.position = target;
@@ -76,7 +75,6 @@ public class CameraController : MonoBehaviour
     {
         if (state != CameraState.Following || playerTransform == null)
         {
-            //Debug.Log($"3 Update - {state}, {playerTransform}");
             return;
         }
 

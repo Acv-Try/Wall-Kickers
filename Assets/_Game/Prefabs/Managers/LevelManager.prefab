@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1785194512713331445}
+  - {fileID: 6276159088098373512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1232171303793201412
@@ -53,11 +53,9 @@ MonoBehaviour:
   levels:
   - {fileID: 940677039614952073, guid: f9abc67216c687d4484cb5f501027648, type: 3}
   - {fileID: 940677039614952073, guid: af1eb5066f5ee1d4f9618d70722c2949, type: 3}
-  levelS: {fileID: 1785194512713331445}
-  initialPosition: {x: 0, y: 0, z: 0}
+  - {fileID: 940677039614952073, guid: bc8b5aafe7fae674c813653d7669681e, type: 3}
   initHeightCount: {x: 0, y: 0, z: 0}
-  backgroundGenerator: {fileID: 0}
---- !u!1 &6337081604157822761
+--- !u!1 &8627356011117949677
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,21 +63,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1785194512713331445}
+  - component: {fileID: 6276159088098373512}
+  - component: {fileID: 314350156352291569}
   m_Layer: 0
-  m_Name: Levels
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1785194512713331445
+--- !u!4 &6276159088098373512
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337081604157822761}
+  m_GameObject: {fileID: 8627356011117949677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -88,3 +87,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3410692331723475251}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &314350156352291569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8627356011117949677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87e62ad7ffc9264a9a229df2e139286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
+  backgroundGenerator: {fileID: 0}

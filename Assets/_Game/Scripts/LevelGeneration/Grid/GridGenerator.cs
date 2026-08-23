@@ -106,14 +106,14 @@ public partial class GridGenerator : MonoBehaviour
         Vector3 spawnPos = edges.Item1 / 2;
         var levelInstance = Instantiate(level, spawnPos, Quaternion.identity, transform);
 
-        levelInstance.MaxHeight = edges.Item2;
-        levelInstance.MinHeight = edges.Item1;
+        //levelInstance.MaxHeight = edges.Item2;
+        //levelInstance.MinHeight = edges.Item1;
         levelInstance.Origin = heightCount;
 
         levelsGenerated.Add(levelInstance);
-        heightCount += new Vector3Int(
-            levelInstance.MaxHeight.x - levelInstance.MinHeight.x, 
-            levelInstance.MaxHeight.y - levelInstance.MinHeight.y + 1, 0);
+        //heightCount += new Vector3Int(
+            //levelInstance.MaxHeight.x - levelInstance.MinHeight.x, 
+            //levelInstance.MaxHeight.y - levelInstance.MinHeight.y + 1, 0);
     }
 
     public Level GetRandomLevelFromCheckPoint(int checkPoint)
@@ -140,23 +140,23 @@ public partial class GridGenerator : MonoBehaviour
 
     public void RemoveLevel()
     {
-        var level = levelsGenerated[0];
-        levelsGenerated.RemoveAt(0);
-        BoundsInt bounds = new BoundsInt(
-            level.Origin.x,
-            level.Origin.y,
-            level.Origin.z,
-            level.levelData.columns,
-            level.MaxHeight.y,
-            1
-        );
-        Debug.Log(bounds.x + " " + bounds.y + " " + bounds.z);
-        foreach (var pos in bounds.allPositionsWithin)
-        {
-            background.SetTile(pos, null);
-        }
+        //var level = levelsGenerated[0];
+        //levelsGenerated.RemoveAt(0);
+        //BoundsInt bounds = new BoundsInt(
+        //    level.Origin.x,
+        //    level.Origin.y,
+        //    level.Origin.z,
+        //    level.levelData.columns,
+        //    level.MaxHeight.y,
+        //    1
+        //);
+        //Debug.Log(bounds.x + " " + bounds.y + " " + bounds.z);
+        //foreach (var pos in bounds.allPositionsWithin)
+        //{
+        //    background.SetTile(pos, null);
+        //}
 
-        Destroy(level.gameObject);
+        //Destroy(level.gameObject);
     }
 
     public void CheckIfPlayerAboveOfMiddleLevel(Vector3 playerPosition, int currentCheckPoint)

@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     
     private SoundData characterSoundData;
     private Vector3 _spawnPosition;
-    private int _progress, _maxDeaths, deathCount;
+    private int _progress;
     private GameObject _player;
 
     public IPlayerInput Input { get; private set; }
@@ -69,14 +69,11 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnDie()
     {
-        deathCount++;
         Destroy(_player);
         RiseOnDeath();
     }
     public void Spawn()
     {
-        Debug.Log($"Called");
-        deathCount = 0;
         Initialize(_spawnPosition);
         RiseOnRespawn();
     }

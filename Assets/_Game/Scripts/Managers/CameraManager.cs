@@ -49,19 +49,18 @@ public class CameraManager : MonoBehaviour
 
     private void HandleDeath()
     {
-        Debug.Log($"-1-");
         controller.Freeze();
         controller.HideDeadline();
         controller.Shake();
     }
     private void HandleRespawn(Transform pos)
     {
-        Debug.Log($"-2-");
-        controller.SetInitial(initialCenter, pos);
+        controller.SetTarget(initialCenter, pos);
         coroutine = StartCoroutine(ReturnAndReveal());
     }
     private IEnumerator ReturnAndReveal()
     {
+        yield return new WaitForSeconds(0.8f);
         yield return StartCoroutine(controller.ReturnToCenter());
         if (controller.State == CameraState.Following)
             controller.ShowDeadline();

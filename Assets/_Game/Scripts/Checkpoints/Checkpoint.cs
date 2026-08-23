@@ -1,13 +1,16 @@
 
 using UnityEngine;
 
-public class CheckPoint : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private int checkPointNum;
     Level parentLevel; 
     bool wasActivate = false;
     private void Start()
     {
+        CheckpointManager.Instance.OnReplay -= OnReplay;
+        CheckpointManager.Instance.OnReplay += OnReplay;
+
         parentLevel = GetComponentInParent<Level>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
@@ -22,5 +25,9 @@ public class CheckPoint : MonoBehaviour
         //var status = PlayerManager.Instance.Status;
         //if (status.CheckPointCount >= checkPointNum) return;
         //status.IncreaseCheckpoint();
+    }
+    private void OnReplay()
+    {
+        wasActivate = false;
     }
 }

@@ -800,14 +800,68 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 1.4042293e-36
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 5.5e-44
+      e20: 0
+      e21: 0
+      e22: 1e-45
+      e23: -7.236271e+27
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 4.591e-41
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 1.4042293e-36
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 5.5e-44
+      e20: 0
+      e21: 0
+      e22: 1e-45
+      e23: -7.236271e+27
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 4.591e-41
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: 0
+      e03: 1.4042293e-36
+      e10: 0
+      e11: 0
+      e12: 0
+      e13: 5.5e-44
+      e20: 0
+      e21: 0
+      e22: 1e-45
+      e23: -7.236271e+27
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 4.591e-41
   m_TileColorArray:
   - m_RefCount: 29
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -12, y: -8, z: 0}
-  m_Size: {x: 30, y: 10, z: 1}
+  m_Origin: {x: -13, y: -8, z: 0}
+  m_Size: {x: 31, y: 18, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -861,7 +915,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3, y: 1.45}
+  m_Offset: {x: 2.4491758, y: 1.5360098}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -871,7 +925,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 30, y: 0.68}
+  m_Size: {x: 28.898352, y: 0.8520194}
   m_EdgeRadius: 0
 --- !u!1 &277426835
 GameObject:
@@ -935,7 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 925c0cc68ceabe149be51a3d1598d9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  currentCheckPoint: 0
+  gameConfig: {fileID: 0}
 --- !u!4 &283037512
 Transform:
   m_ObjectHideFlags: 0
@@ -1490,10 +1544,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.014797507
     y: 0
-    width: 1
-    height: 1
+    width: 0.24922118
+    height: 0.17026637
   near clip plane: 1
   far clip plane: 1000
   field of view: 64.3
@@ -2702,7 +2756,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.84375, y: 0.9375}
+    oldSize: {x: 1, y: 1.1111112}
     newSize: {x: 0.84375, y: 0.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

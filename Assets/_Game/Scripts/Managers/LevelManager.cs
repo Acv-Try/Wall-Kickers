@@ -1,33 +1,30 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.RenderGraphModule;
 using Random = UnityEngine.Random;
 
-public partial class LevelManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
-    //[SerializeField] private List<Level> startLevels;
     [SerializeField] private List<Level> startLevels;
     [SerializeField] private List<Level> levels;
-    [SerializeField] private Transform levelS;
-    [SerializeField] private Vector3 initialPosition = Vector3.zero;
     [SerializeField] private Vector3Int initHeightCount;
-    [SerializeField] private BackgroundGenerator backgroundGenerator;
+
+    private LevelGenerator levelGenerator;
     public event Action OnLevelsReady;
 
     public Vector3 FirstLevelCenter { get; private set; }
     public Vector3 FirstLevelSpawnPos { get; private set; }
-    public int LocalLevelCheckpoints { get; set; }
     public int TotalCheckpoints { get; set; }
 
+    private const int WindowSize = 3;
 
-    private List<Level> levelsGenerated = new List<Level>(3);
-    private List<int> unusedLevels = new();
-    private Transform previousTopMarker;
+    private List<Level> generated = new List<Level>(WindowSize);
+    private List<int> unused = new();
     private Vector3Int heightCount;
-
-    private int currentLevelIndex;
     private int nextCheckpointValue;
-    #region
+
+    #region Singleton
     private static LevelManager _instance;
     public static LevelManager Instance
     {
@@ -37,9 +34,7 @@ public partial class LevelManager : MonoBehaviour
             {
                 _instance = FindFirstObjectByType<LevelManager>();
                 if (_instance == null)
-                {
                     Debug.LogWarning($"LevelManager is not found in the scene!");
-                }
             }
             return _instance;
         }
@@ -55,35 +50,41 @@ public partial class LevelManager : MonoBehaviour
             return;
         }
         _instance = this;
+        levelGenerator = GetComponentInChildren<LevelGenerator>();
         PlayerManager.Instance.OnPlayerPositionChange -= CheckIfPlayerAboveMiddle;
         PlayerManager.Instance.OnPlayerPositionChange += CheckIfPlayerAboveMiddle;
     }
     #endregion
 
-    public void Initialize()
+    public void Initialize(int forcedLevelIndex = -1)
     {
-        //Debug.Log(lastFailIndex);
         heightCount = initHeightCount;
-        backgroundGenerator.Reset();
-        for (int i = 0; i < levelsGenerated.Count; i++)
-            Destroy(levelsGenerated[i].gameObject);
-        levelsGenerated.Clear();
+
+        for (int i = 0; i < generated.Count; i++)
+            Destroy(generated[i].gameObject);
+        generated.Clear();
 
         RefillUnusedLevels();
+        TotalCheckpoints = 0;
         nextCheckpointValue = 10;
 
         SpawnStartLevel();
 
-        //FirstLevelCenter = levelsGenerated[0].LevelCenter.position;
-        FirstLevelSpawnPos = levelsGenerated[0].PlayerSpawnPosition.position;
+        FirstLevelSpawnPos = generated[0].PlayerSpawnPosition.position;
+        FirstLevelCenter = generated[0].LevelCenter.position;
 
-        //if (lastLevelFailIndex == 0)
-        //    SpawnNextLevel(10);
-        //else
-        //    SpawnLevel(lastLevelFailIndex);
-        for (int i = 0; i < 2; i++)
+        for (int i = 1; i < WindowSize; i++)
         {
-            SpawnNextLevel();
+            if (i == 1 && forcedLevelIndex >= 0)
+            {
+                unused.Remove(forcedLevelIndex);
+                var forced = levels[forcedLevelIndex];
+                nextCheckpointValue += 10;
+                forced.LevelCheckpoint.SetCheckPointText(nextCheckpointValue);
+                AddLevel(forced, forcedLevelIndex);
+            }
+            else
+                SpawnNextLevel();
         }
 
         OnLevelsReady?.Invoke();
@@ -91,16 +92,14 @@ public partial class LevelManager : MonoBehaviour
 
     public void CheckIfPlayerAboveMiddle(Vector3 playerPosition)
     {
-        int currentCheckpoint = TotalCheckpoints;
-
-        if (currentCheckpoint < 20) return;
-        if (levelsGenerated.Count < 3) return;
-
-        var middleLevel = levelsGenerated[1]; // 2nd of the 3 currently drawn
+        if (generated.Count < WindowSize) return;
+        if (TotalCheckpoints < 20) return;
+        var middleLevel = generated[1]; // the level the player is currently on
         float middleYAxis = (middleLevel.BottomMarker.position.y + middleLevel.TopMarker.position.y) * 0.5f;
-        if(playerPosition.y > middleYAxis)
+
+        if (playerPosition.y > middleYAxis)
         {
-            RemoveLevel();
+            RemoveOldestLevel();
             SpawnNextLevel();
         }
     }
@@ -110,109 +109,79 @@ public partial class LevelManager : MonoBehaviour
         var level = GetRandomStartLevel();
         AddLevel(level);
     }
+
     public void SpawnNextLevel()
     {
+        if (unused.Count == 0)
+            RefillUnusedLevels();
 
-        var level = GetRandomLevel();
-        AddLevel(level);
-    }
-    private void RefillUnusedLevels()
-    {
-        unusedLevels.Clear();
+        int pick = Random.Range(0, unused.Count);
+        int levelIndex = unused[pick];
+        unused.RemoveAt(pick);
 
-        for (int i = 0; i < levels.Count; i++)
-            unusedLevels.Add(i);
+        var level = levels[levelIndex];
+        nextCheckpointValue += 10;
+        level.LevelCheckpoint.SetCheckPointText(nextCheckpointValue);
+
+        AddLevel(level, levelIndex);
     }
-    private void AddLevel(Level level)
+
+    private void AddLevel(Level level, int sourceIndex)
     {
         Vector3Int origin = heightCount - new Vector3Int(
             level.levelData.bottomMarkerColumn,
             level.levelData.bottomMarkerRow,
             0);
 
-        backgroundGenerator.Paint(level, origin);
-        Debug.Log(backgroundGenerator.CellToWorld(origin));
-        Vector3 worldOrigin = backgroundGenerator.CellToWorld(origin) + level.SpawnOffset;
-        Level instance = Instantiate(
-            level,
-            worldOrigin,
-            Quaternion.identity,
-            levelS
-        );
-
-        //Vector3 spawnPos = CalculateSpawnPos(instance);
-
-        //instance.transform.position = spawnPos;
+        Level instance = levelGenerator.SpawnLevel(level, origin);
+        instance.SourceIndex = sourceIndex;
 
         heightCount = origin + new Vector3Int(
             level.levelData.topMarkerColumn,
             level.levelData.topMarkerRow,
             0);
 
-        levelsGenerated.Add(instance);
+        generated.Add(instance);
     }
-    private Vector3 CalculateSpawnPos(Level level)
+    private void AddLevel(Level level) => AddLevel(level, -1);
+    private void RemoveOldestLevel()
     {
-        if (previousTopMarker == null)
-        {
-            Vector2 initPos = initialPosition - level.BottomMarker.localPosition;
-            previousTopMarker = level.TopMarker;
-            return initPos;
-        }
+        if (generated.Count == 0) return;
 
-        Vector3 nextPos = previousTopMarker.position - level.BottomMarker.localPosition;
-        previousTopMarker = level.TopMarker;
-        return nextPos;
-
+        var oldest = generated[0];
+        generated.RemoveAt(0);
+        levelGenerator.RemoveLevel(oldest);
     }
-    private void RemoveLevel()
+
+    private void RefillUnusedLevels()
     {
-        var level = levelsGenerated[0];
-        levelsGenerated.RemoveAt(0);
-
-        backgroundGenerator.Remove(level);
-
-        Destroy(level.gameObject);
+        unused.Clear();
+        for (int i = 0; i < levels.Count; i++)
+            unused.Add(i);
     }
 
     private Level GetRandomLevel()
     {
-        if (unusedLevels.Count == 0)
+        if (unused.Count == 0)
             RefillUnusedLevels();
 
-        int pick = Random.Range(0, unusedLevels.Count);
-        int levelIndex = unusedLevels[pick];
-        unusedLevels.RemoveAt(pick);
+        int pick = Random.Range(0, unused.Count);
+        int levelIndex = unused[pick];
+        unused.RemoveAt(pick);
 
         var level = levels[levelIndex];
+        nextCheckpointValue += 10;
+        level.LevelCheckpoint.SetCheckPointText(nextCheckpointValue);
         return level;
-
-        //int index = Random.Range(levelIndex, levels.Count);
-        //index = Mathf.Clamp(index, levelIndex, levels.Count - 1);
-        //level.LevelCheckpoint.SetCheckPointText(Mathf.CeilToInt(levelIndex * 10));
     }
+
     private Level GetRandomStartLevel()
     {
         int index = Random.Range(0, startLevels.Count);
-        index = Mathf.Clamp(index, 0, startLevels.Count - 1);
         var level = startLevels[index];
         level.LevelCheckpoint.SetCheckPointText(nextCheckpointValue);
         return level;
-
     }
-    public void ComputeCurrentLevelIndex()
-    {
-        foreach (var level in levelsGenerated)
-        {
-            if (level.IsPlayerInTheLevel == true)
-            {
-                currentLevelIndex = levels.IndexOf(level);
-            }
-        }
-
-    }
-    public void IncreaseCheckpoint()
-    {
-        TotalCheckpoints++;
-    }
+    public int GetCurrentLevelSourceIndex() => generated.Count >= 2 ? generated[1].SourceIndex : -1;
+    public void IncreaseCheckpoint() => TotalCheckpoints++;
 }

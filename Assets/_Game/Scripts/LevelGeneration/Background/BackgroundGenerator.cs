@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
-
-
 public class BackgroundGenerator : MonoBehaviour
 {
     [SerializeField] private RuleTile grassRuleTile;
@@ -31,17 +28,17 @@ public class BackgroundGenerator : MonoBehaviour
 
     public void Remove(Level level)
     {
-        BoundsInt bounds = new BoundsInt(
-            level.Origin.x,
-            level.Origin.y,
-            level.Origin.z,
-            level.levelData.columns,
-            level.MaxHeight.y,
-            1
-        );
+        for (int i = 0; i < level.levelData.rows; i++)
+        {
+            for (int j = 0; j < level.levelData.columns; j++)
+            {
+                if (level.levelData.board[i].column[j].type != LevelData.WallType.G)
+                    continue;
 
-        foreach (var pos in bounds.allPositionsWithin)
-            background.SetTile(pos, null);
+                Vector3Int pos = level.Origin + new Vector3Int(j, i, 0);
+                background.SetTile(pos, null);
+            }
+        }
     }
 
     public void Reset()

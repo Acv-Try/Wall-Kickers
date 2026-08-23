@@ -1,34 +1,20 @@
 using TMPro;
 using UnityEngine;
 
-public class CheckPointWall : MonoBehaviour
+public class CheckpointWall : MonoBehaviour
 {
     [SerializeField] private Level parentLevel;
     [SerializeField] private TextMeshProUGUI checkpointText;
     [SerializeField] private Animator animator;
 
-    private CheckPoint activeCheckPoint;
+    private Checkpoint activeCheckPoint;
     private static string animationName = "PlayerIsOn";
     bool wasActivate = false;
-    //private void OnTriggerEnter2D(Collider2D collider)
-    //{
-    //    if (!collider.CompareTag("Player")) return;
-
-    //    var status = PlayerManager.Instance.Status;
-    //    if (int.Parse(checkPointText.text) <= status.CheckPoint) return;
-
-    //    activeCheckPoint = GetComponent<CheckPoint>();
-
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collider)
-    //{
-    //    if (!collider.CompareTag("Player")) return;
-
-    //    var rb = collider.GetComponent<Rigidbody2D>();
-    //    if (rb.linearVelocityY < 0)
-    //        activeCheckPoint = null;
-    //}
+    private void Start()
+    {
+        CheckpointManager.Instance.OnReplay -= OnReplay;
+        CheckpointManager.Instance.OnReplay += OnReplay;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,5 +30,9 @@ public class CheckPointWall : MonoBehaviour
     public void SetCheckPointText(int value)
     {
         checkpointText.text = value.ToString();
+    }
+    private void OnReplay()
+    {
+        wasActivate = false;
     }
 }

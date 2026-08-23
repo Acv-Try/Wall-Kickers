@@ -28,23 +28,21 @@ public class PlayerStatus : MonoBehaviour, IPlayerStatus
 
     private void Die()
     {
-        Debug.Log($"--1");
         if (IsDead) return;
         IsDead = true;
         DeathCount++;
         
         OnDeath?.Invoke();
-        PlayerManager.Instance.RiseOnDeath();
+        //PlayerManager.Instance.RiseOnDeath();
     }
 
     public void Respawn()
     {
-        Debug.Log($"--2");
         IsDead = false;
         transform.position = SpawnPos;
         
         OnRespawn?.Invoke();
-        PlayerManager.Instance.RiseOnRespawn();
+        //PlayerManager.Instance.RiseOnRespawn();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

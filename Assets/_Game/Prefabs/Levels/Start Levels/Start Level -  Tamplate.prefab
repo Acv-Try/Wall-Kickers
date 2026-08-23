@@ -52,6 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level
   playerSpawnPosition: {fileID: 0}
   levelCheckpoint: {fileID: 6860002346944400979}
+  levelCenter: {fileID: 7171400096316935832}
+  topMarker: {fileID: 8308478103760527677}
+  bottomMarker: {fileID: 53075937248760171}
+  offset: {x: 0, y: 0, z: 0}
   checkPointsForCamera:
   - {fileID: 6410186266896643273}
   - {fileID: 1350246538006918352}
@@ -61,9 +65,6 @@ MonoBehaviour:
   - {fileID: 3471843546136200070}
   - {fileID: 3716998856520260637}
   - {fileID: 3463065365912180489}
-  levelCenter: {fileID: 7171400096316935832}
-  topMarker: {fileID: 8308478103760527677}
-  bottomMarker: {fileID: 53075937248760171}
   levelData: {fileID: 11400000, guid: 5ebf98ab7f944dd49adb0853c4b567ae, type: 2}
 --- !u!1 &2527928844468909405
 GameObject:
@@ -200,7 +201,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2272508396314098552, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
       propertyPath: m_Name
-      value: CheckPoints
+      value: Checkpoints
       objectReference: {fileID: 0}
     - target: {fileID: 6331116525735690666, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
       propertyPath: m_Pivot.x
@@ -408,12 +409,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1885373553365620728, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_Name
-      value: CheckPointWall
+      value: CheckpointWall
       objectReference: {fileID: 0}
-    - target: {fileID: 3663356530665386799, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
-      propertyPath: checkPointText
-      value: 
-      objectReference: {fileID: 2777036137120498027}
     - target: {fileID: 8409948904253902085, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -464,17 +461,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8409948904253902085, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
   m_PrefabInstance: {fileID: 7918810918222134652}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2777036137120498027 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5435641565288659991, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
-  m_PrefabInstance: {fileID: 7918810918222134652}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshPro
 --- !u!114 &6860002346944400979 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3663356530665386799, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}

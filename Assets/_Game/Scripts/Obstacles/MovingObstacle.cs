@@ -14,70 +14,70 @@ public class MovingObstacle : MonoBehaviour
 
     int currentWaypoint = 0;
     void Start()
-{
-    rb = GetComponent<Rigidbody2D>();
-    
-    if(MoveByCurve && waypoints.Length >= 3)
     {
-    GenerateCurvePoints();
-    }
-    else
-    {
-        foreach(Transform waypoint in waypoints)
+        rb = GetComponent<Rigidbody2D>();
+
+        if (MoveByCurve && waypoints.Length >= 3)
         {
-            Points.Add(waypoint.position);
+            GenerateCurvePoints();
+        }
+        else
+        {
+            foreach (Transform waypoint in waypoints)
+            {
+                Points.Add(waypoint.position);
+            }
         }
     }
-}
 
     void FixedUpdate()
     {
-        if (waypoints.Length == 0) return;       
-        MovePlatform();      
+        if (waypoints.Length == 0) return;
+        MovePlatform();
     }
 
     bool IsMovingForward = true;
     void MovePlatform()
     {
         Vector2 target = Points[currentWaypoint];
-        
-        if(!IsWaiting)
-        {
-        rb.MovePosition((target - rb.position).normalized * speed * Time.deltaTime + rb.position);
 
-            if(Vector2.Distance(transform.position, target) < 0.05f)
-            {     
-                 if(StopOnFirstAndOnLastPoint)
-                {             
-                  if(target == Points[Points.Count - 1] || target == Points[0])
-                  {               
-                
-                    IsWaiting = true;
-                    StartCoroutine(StopAndWait());
-      
-                    if(target == Points[Points.Count - 1])
+        if (!IsWaiting)
+        {
+            rb.MovePosition((target - rb.position).normalized * speed * Time.deltaTime + rb.position);
+
+            if (Vector2.Distance(transform.position, target) < 0.05f)
+            {
+                if (StopOnFirstAndOnLastPoint)
+                {
+                    if (target == Points[Points.Count - 1] || target == Points[0])
                     {
-                        IsMovingForward = false;
+
+                        IsWaiting = true;
+                        StartCoroutine(StopAndWait());
+
+                        if (target == Points[Points.Count - 1])
+                        {
+                            IsMovingForward = false;
+                        }
+                        else
+                        {
+                            IsMovingForward = true;
+                        }
+                    }
+
+                    if (IsMovingForward)
+                    {
+                        currentWaypoint++;
                     }
                     else
                     {
-                        IsMovingForward = true;
-                    }   
-                  }
+                        currentWaypoint--;
+                    }
 
-                     if(IsMovingForward)
-                   {
-                       currentWaypoint++;
-                   }
-                   else 
-                   {
-                       currentWaypoint--;
-                   }
-                 
                 }
                 else
                 {
-                    if(currentWaypoint == Points.Count - 1)
+                    if (currentWaypoint == Points.Count - 1)
                     {
                         currentWaypoint = 0;
                     }
@@ -87,9 +87,9 @@ public class MovingObstacle : MonoBehaviour
                     }
                 }
 
-            }      
+            }
         }
-    } 
+    }
     bool IsWaiting = false;
     IEnumerator StopAndWait()
     {
@@ -105,21 +105,21 @@ public class MovingObstacle : MonoBehaviour
     public List<Vector2> Points = new List<Vector2>();
 
     void GenerateCurvePoints()
-{
-    Points.Clear();
-
-    int resolution = 25;
-
-    for(int i = 0; i <= resolution; i++)
     {
-        float t = i / (float)resolution;
+        Points.Clear();
 
-        Vector2 pos =
-            Mathf.Pow(1 - t, 2) * (Vector2)waypoints[0].position +
-            2 * (1 - t) * t * (Vector2)waypoints[1].position +
-            Mathf.Pow(t, 2) * (Vector2)waypoints[2].position;
+        int resolution = 25;
 
-        Points.Add(pos);
+        for (int i = 0; i <= resolution; i++)
+        {
+            float t = i / (float)resolution;
+
+            Vector2 pos =
+                Mathf.Pow(1 - t, 2) * (Vector2)waypoints[0].position +
+                2 * (1 - t) * t * (Vector2)waypoints[1].position +
+                Mathf.Pow(t, 2) * (Vector2)waypoints[2].position;
+
+            Points.Add(pos);
+        }
     }
-}
 }
