@@ -1116,7 +1116,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BounceWall-Default
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6003337080448942624, guid: 2f4596c92bbda2e40b6f184e94862057, type: 3}
+      propertyPath: FixIfOnTop
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6003337080448942624, guid: 2f4596c92bbda2e40b6f184e94862057, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

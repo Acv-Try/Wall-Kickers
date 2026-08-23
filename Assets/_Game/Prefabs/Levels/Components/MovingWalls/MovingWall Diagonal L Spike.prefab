@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5609721802117600488}
   - component: {fileID: 3323508985477395884}
   - component: {fileID: 5154777417443484210}
-  - component: {fileID: 3163943420085901954}
+  - component: {fileID: 7119130734977839830}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -185,7 +185,7 @@ MonoBehaviour:
   rb_mov: {fileID: 3323508985477395884}
   coolDownTime: 1
   speed: 0.5
---- !u!114 &3163943420085901954
+--- !u!114 &7119130734977839830
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,12 +194,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 113776979818985287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
+  m_Script: {fileID: 11500000, guid: 824bbd03478e98a469d3d227a4a47d7c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
+  m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform1
   playerTag: 
   SpeedOfPlayerFriction: 0
-  OnlyRightWall: 1
+  OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
   TypeOfWall: 3

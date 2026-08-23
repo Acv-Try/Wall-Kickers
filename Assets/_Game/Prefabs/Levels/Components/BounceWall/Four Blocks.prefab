@@ -219,14 +219,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fa60a62d11bd149864254ea9449217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BounceWall
+  playerTag: 
   SpeedOfPlayerFriction: 0
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 0
   TypeOfWall: 0
-  AnimationObject: {fileID: 7935002139596937591, guid: 9d46b0b3b8659de419e16a2cd447ca53, type: 3}
-  HijhestPoint: {fileID: 6541779596085776238}
-  LoverPoint: {fileID: 7889817995546948274}
+  AnimationObject: {fileID: 1770334592825082732, guid: 3a8f0b883f533ed4ab98dbf9756d48fa, type: 3}
+  HighestPoint: {fileID: 6541779596085776238}
+  LowerPoint: {fileID: 7889817995546948274}
 --- !u!95 &22999984607732056
 Animator:
   serializedVersion: 7
