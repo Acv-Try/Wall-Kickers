@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class StoneWall : BaseWall
@@ -16,6 +17,7 @@ public class StoneWall : BaseWall
 
     public override void Left(PlayerController player)
     {
+        Debug.Log("enter");
         _animator.SetTrigger(fallApartAnimaName);
     }
     public void Destroy()

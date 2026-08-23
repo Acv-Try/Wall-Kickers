@@ -739,6 +739,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3744022873858789187, guid: aa467a6a5a9179c4398f5ed1b864d1b9, type: 3}
+      propertyPath: playerTag
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7732780329944751611, guid: aa467a6a5a9179c4398f5ed1b864d1b9, type: 3}
       propertyPath: m_Name
       value: StoneWall

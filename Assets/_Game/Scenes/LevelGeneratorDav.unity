@@ -2356,6 +2356,18 @@ PrefabInstance:
       propertyPath: backgroundGenerator
       value: 
       objectReference: {fileID: 395257791}
+    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
+      propertyPath: levels.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
+      propertyPath: 'levels.Array.data[0]'
+      value: 
+      objectReference: {fileID: 940677039614952073, guid: bc8b5aafe7fae674c813653d7669681e, type: 3}
+    - target: {fileID: 1232171303793201412, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
+      propertyPath: 'levels.Array.data[1]'
+      value: 
+      objectReference: {fileID: 940677039614952073, guid: bc8b5aafe7fae674c813653d7669681e, type: 3}
     - target: {fileID: 1777597058327348088, guid: 1a653c41e296f104bb4e94036a8a534f, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -2718,6 +2730,10 @@ PrefabInstance:
     - target: {fileID: 7273786667796168287, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749625048555489700, guid: 5c9aba837c433124483967dd70740760, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.34497
       objectReference: {fileID: 0}
     - target: {fileID: 8375600130850248888, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_AnchorMax.y
