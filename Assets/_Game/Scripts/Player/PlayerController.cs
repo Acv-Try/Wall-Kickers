@@ -224,6 +224,15 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (isDead) return;
         if (collision.gameObject.CompareTag("Wall") && !isOnWall)
         {
+              if (collision.contacts[0].normal.y < 0)
+            {
+                jumpTimeCounter = JumpTime;
+
+                rb.linearVelocity = Vector2.zero;
+                UpdateJumpSide();
+                rb.AddForce(new Vector2(JumpForceSide * jumpSide,0), ForceMode2D.Impulse);
+                return;
+            }
             if (collision.contacts[0].normal.y < 0)
             {
                 jumpTimeCounter = JumpTime;
