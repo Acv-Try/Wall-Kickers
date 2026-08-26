@@ -2500,19 +2500,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.0015576323
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0
+      value: 0.0003599712
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.9968847
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.99928004
       objectReference: {fileID: 0}
     - target: {fileID: 7163229512918093688, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_Name
@@ -2733,7 +2733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749625048555489700, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -44.34497
+      value: -44.344986
       objectReference: {fileID: 0}
     - target: {fileID: 8375600130850248888, guid: 5c9aba837c433124483967dd70740760, type: 3}
       propertyPath: m_AnchorMax.y

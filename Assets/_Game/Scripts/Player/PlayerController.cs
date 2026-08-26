@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 //using UnityEngine.SceneManagement;
 public interface IPlayerController
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private sbyte jumpSide = 1;
     private bool isDead;
-    private bool isOnWall;
+    [SerializeField] private bool isOnWall;
     private bool isOnFloor;
     private bool canJump;
     private bool canDoubleJump;
@@ -43,14 +44,22 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Rigidbody2D rb;
 
     private IPlayerInput Input;
+
+    [SerializeField] CameraController cameraController;
     //private sbyte linearVelocityX;
     //private bool isDead;
 
     public sbyte JumpSide => jumpSide;
+
+    public void Cameracontrolerincrease(Vector3 pos)
+    {
+        cameraController.OnCameraCheckPointChange(pos);
+    }
     private void Awake()
     {
         //Input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+        cameraController = FindAnyObjectByType<CameraController>();
 
         //playerInput.OnTouchBegan -= HandleTouchBegan;
         //playerInput.OnTouchBegan += HandleTouchBegan;
@@ -109,7 +118,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public void Jump()
     {
         canJump = false;
-        isOnWall = false;
         canDoubleJump = true;
 
         OnJump?.Invoke();
@@ -294,6 +302,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
             if (currentWall != null && currentWall.TypeOfWall == WallType.Moving) return;
             rb.gravityScale = 2f;
             isOnWall = false;
+            Debug.Log("PlayerLeftTheWall");
             currentWall?.Left(this);
             currentWall = null;
         }

@@ -52,8 +52,8 @@ public abstract class BaseWall : MonoBehaviour
             _animator = GetComponent<Animator>();
     }
 
-    public virtual void Touched(PlayerController player) { }
-    public virtual void Left(PlayerController player) { }
+    public virtual void Touched(PlayerController player) {}
+    public virtual void Left(PlayerController player) {}
     public virtual void Staying(PlayerController player) { }
 
 }

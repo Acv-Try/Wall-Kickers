@@ -25,6 +25,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float shakeRandomness;
 
     private Vector3 center = Vector3.zero;
+    public float CheckPointX;
     private Transform playerTransform;
     private CameraState state = CameraState.Following;
     private void Start()
@@ -50,6 +51,11 @@ public class CameraController : MonoBehaviour
         float z = deathLine.transform.localPosition.z;
         deathLine.transform.localPosition = new Vector3(x,y,z);
     }
+
+     public void OnCameraCheckPointChange(Vector3 newPos)
+     {
+       CheckPointX = newPos.x;
+     }
     public void Freeze() => state = CameraState.Frozen;
     public void HideDeadline() => deathLine.SetActive(false);
     public void ShowDeadline() => deathLine.SetActive(true);
@@ -81,10 +87,12 @@ public class CameraController : MonoBehaviour
         float y = Mathf.Max(transform.position.y, playerTransform.position.y + yOffset);
         float x = center.x;
 
-        if (playerTransform.position.x > center.x + xOffset)
-            x = playerTransform.position.x - xOffset / 3;
-        else if (playerTransform.position.x < center.x - xOffset)
-            x = playerTransform.position.x + xOffset / 3;
+        //if (playerTransform.position.x > center.x + xOffset)
+        //    x = playerTransform.position.x - xOffset / 3;
+        //else if (playerTransform.position.x < center.x - xOffset)
+        //    x = playerTransform.position.x + xOffset / 3;
+
+        x = (playerTransform.position.x + CheckPointX) / 2;
 
         transform.position = Vector3.Lerp(
             transform.position,
