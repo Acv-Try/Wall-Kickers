@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 3584940902614789371}
   - component: {fileID: 4163588347575079939}
   - component: {fileID: 6016424872130667691}
-  - component: {fileID: 22999984607732056}
   m_Layer: 0
   m_Name: Body Head
   m_TagString: Wall
@@ -228,28 +227,6 @@ MonoBehaviour:
   AnimationObject: {fileID: 1770334592825082732, guid: 3a8f0b883f533ed4ab98dbf9756d48fa, type: 3}
   HighestPoint: {fileID: 6541779596085776238}
   LowerPoint: {fileID: 7889817995546948274}
---- !u!95 &22999984607732056
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2149345554917988739}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b63ba778355ead43b79d97fbffbd1ca, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3974835233362134834
 GameObject:
   m_ObjectHideFlags: 0

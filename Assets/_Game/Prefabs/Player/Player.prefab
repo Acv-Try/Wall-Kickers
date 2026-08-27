@@ -69,6 +69,8 @@ MonoBehaviour:
   CoolDownTimeBetweenJumps: 0.05
   GravityForceWhileFalling: 4
   SpeedOnFloor: 4.5
+  isOnWall: 0
+  cameraController: {fileID: 0}
 --- !u!114 &8071261416311028406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +133,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4248794660159317440, guid: 9f9b4be3023667744a1b0db91e9a09a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

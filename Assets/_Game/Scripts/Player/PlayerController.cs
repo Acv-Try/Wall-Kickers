@@ -237,15 +237,15 @@ public class PlayerController : MonoBehaviour, IPlayerController
                 jumpTimeCounter = JumpTime;
 
                 rb.linearVelocity = Vector2.zero;
-                UpdateJumpSide();
+              //  UpdateJumpSide();
                 rb.AddForce(new Vector2(JumpForceSide * jumpSide,0), ForceMode2D.Impulse);
                 return;
             }
-            if (collision.contacts[0].normal.y < 0)
-            {
-                jumpTimeCounter = JumpTime;
-                return;
-            }
+          //  if (collision.contacts[0].normal.y < 0)
+          //  {
+          //      jumpTimeCounter = JumpTime;
+          //      return;
+          //  }
 
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
@@ -261,14 +261,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
             OnWallTouched?.Invoke();
             if (collision.contacts[0].normal.y > 0 && currentWall.FixIfOnTop)
             {
+               // UpdateJumpSide();
                 if (currentWall.OnlyLeftWall) jumpSide = -1;
                 if (currentWall.OnlyRightWall) jumpSide = 1;
 
-                UpdateJumpSide();
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
                     collision.transform.position.x +
-                    (-jumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
-                    transform.position.y - 0.3f
+                    (jumpSide * Math.Abs(transform.lossyScale.x) * 0.4f),
+                    transform.position.y - 0.5f
                 )));
                 //(-JumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
             }
