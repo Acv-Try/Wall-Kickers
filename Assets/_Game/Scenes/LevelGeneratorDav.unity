@@ -6804,7 +6804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6758192382608249060, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
