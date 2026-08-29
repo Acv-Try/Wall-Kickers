@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
   playerTag: 
-  SpeedOfPlayerFriction: 0.5
+  SpeedOfPlayerFriction: 0.3
   OnlyRightWall: 0
   OnlyLeftWall: 0
   FixIfOnTop: 1
