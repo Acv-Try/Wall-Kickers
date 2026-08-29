@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859e77e84d4646740b1dcefb411fabb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  JumpForceUp: 23
+  JumpForceUp: 20
   StartJumpForceUp: 7
   JumpForceSide: 4.5
   JumpTime: 0.4

@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     }
     private void FlipScale(sbyte side)
     {
-        transform.localScale = new Vector3(side, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(Math.Abs(transform.localScale.x) * side, transform.localScale.y, transform.localScale.z);
     }
     public void Jump()
     {

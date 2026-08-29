@@ -6874,6 +6874,10 @@ PrefabInstance:
       propertyPath: deadlineOffset
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 8903924051966552660, guid: d2b5be2c23f8ee1429348fd165994c2d, type: 3}
+      propertyPath: deathlineOffset
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     m_RemovedGameObjects: []
