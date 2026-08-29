@@ -5,7 +5,7 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private int checkPointNum;
     Level parentLevel; 
-    bool wasActivate = false;
+    bool inactive = false;
     private void Start()
     {
         CheckpointManager.Instance.OnReplay -= OnReplay;
@@ -15,19 +15,19 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(wasActivate) return;
+        if(inactive) return;
         if (!collider.CompareTag("Player")) return;
 
         LevelManager.Instance.IncreaseCheckpoint();
         UIManager.Instance.SetScore(LevelManager.Instance.TotalCheckpoints.ToString());
         parentLevel.IsPlayerInTheLevel = true;
-        wasActivate = true;
+        inactive = true;
         //var status = PlayerManager.Instance.Status;
         //if (status.CheckPointCount >= checkPointNum) return;
         //status.IncreaseCheckpoint();
     }
     private void OnReplay()
     {
-        wasActivate = false;
+        inactive = false;
     }
 }

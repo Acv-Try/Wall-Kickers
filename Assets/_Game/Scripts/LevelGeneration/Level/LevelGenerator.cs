@@ -26,4 +26,6 @@ public class LevelGenerator : MonoBehaviour
         backgroundGenerator.Remove(level);
         Destroy(level.gameObject);
     }
+
+    public void Reset() => backgroundGenerator.Reset();
 }

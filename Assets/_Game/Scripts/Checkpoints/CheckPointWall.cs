@@ -9,7 +9,7 @@ public class CheckpointWall : MonoBehaviour
 
     private Checkpoint activeCheckPoint;
     private static string animationName = "PlayerIsOn";
-    bool wasActivate = false;
+    bool inactive = false;
     private void Start()
     {
         CheckpointManager.Instance.OnReplay -= OnReplay;
@@ -18,14 +18,14 @@ public class CheckpointWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (wasActivate) return;
+        if (inactive) return;
         if (!collision.collider.CompareTag("Player")) return;
 
         LevelManager.Instance.IncreaseCheckpoint();
         parentLevel.IsPlayerInTheLevel = false;
         animator.SetTrigger(animationName);
         UIManager.Instance.SetScore(LevelManager.Instance.TotalCheckpoints.ToString());
-        wasActivate = true;
+        inactive = true;
     }
     public void SetCheckPointText(int value)
     {
@@ -33,6 +33,6 @@ public class CheckpointWall : MonoBehaviour
     }
     private void OnReplay()
     {
-        wasActivate = false;
+        inactive = false;
     }
 }

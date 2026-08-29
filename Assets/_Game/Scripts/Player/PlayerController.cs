@@ -44,44 +44,13 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private Rigidbody2D rb;
 
     private IPlayerInput Input;
-
-    [SerializeField] CameraController cameraController;
-    //private sbyte linearVelocityX;
-    //private bool isDead;
-
     public sbyte JumpSide => jumpSide;
 
-    public void Cameracontrolerincrease(Vector3 pos)
-    {
-        cameraController.OnCameraCheckPointChange(pos);
-    }
+    
     private void Awake()
     {
-        //Input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
-        cameraController = FindAnyObjectByType<CameraController>();
-
-        //playerInput.OnTouchBegan -= HandleTouchBegan;
-        //playerInput.OnTouchBegan += HandleTouchBegan;
-
-        //playerInput.OnTouchHeld -= HandleTouchHeld;
-        //playerInput.OnTouchHeld += HandleTouchHeld;
-
-        //PlayerManager.Instance.OnDeath -= HandleDeath;
-        //PlayerManager.Instance.OnDeath += HandleDeath;
-
-        //PlayerManager.Instance.OnRespawn -= HandleRespawn;
-        //PlayerManager.Instance.OnRespawn += HandleRespawn;
     }
-
-    //private void OnDestroy()
-    //{
-    //    playerInput.OnTouchBegan -= HandleTouchBegan;
-    //    playerInput.OnTouchHeld -= HandleTouchHeld;
-    //    playerStatus.OnDeath -= HandleDeath;
-    //    playerStatus.OnRespawn -= HandleRespawn;
-    //}
-
     public void Initialize()
     {
 
@@ -208,7 +177,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void FixedUpdate()
     {
         if (isDead) return;
-        //Debug.Log($"isOnWall = {isOnWall}, isOnFloor = {isOnFloor}.");
         PlayerManager.Instance.RiseOnPlayerPositionChange(transform.position);
         if (isOnFloor)
         {
@@ -232,20 +200,21 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (isDead) return;
         if (collision.gameObject.CompareTag("Wall") && !isOnWall)
         {
-              if (collision.contacts[0].normal.y < 0)
+            Debug.Log(collision.gameObject.tag);
+            if (collision.contacts[0].normal.y < 0)
             {
                 jumpTimeCounter = JumpTime;
 
                 rb.linearVelocity = Vector2.zero;
-              //  UpdateJumpSide();
-                rb.AddForce(new Vector2(JumpForceSide * jumpSide,0), ForceMode2D.Impulse);
+                //  UpdateJumpSide();
+                rb.AddForce(new Vector2(JumpForceSide * jumpSide, 0), ForceMode2D.Impulse);
                 return;
             }
-          //  if (collision.contacts[0].normal.y < 0)
-          //  {
-          //      jumpTimeCounter = JumpTime;
-          //      return;
-          //  }
+            //  if (collision.contacts[0].normal.y < 0)
+            //  {
+            //      jumpTimeCounter = JumpTime;
+            //      return;
+            //  }
 
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
@@ -261,7 +230,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
             OnWallTouched?.Invoke();
             if (collision.contacts[0].normal.y > 0 && currentWall.FixIfOnTop)
             {
-               // UpdateJumpSide();
+                // UpdateJumpSide();
                 if (currentWall.OnlyLeftWall) jumpSide = -1;
                 if (currentWall.OnlyRightWall) jumpSide = 1;
 
@@ -278,6 +247,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         if (collision.gameObject.CompareTag("Floor") && !isOnWall)
         {
+            Debug.Log(collision.gameObject.tag);
             if (transform.position.y - collision.transform.position.y > 0)
             {
                 isOnFloor = true;
@@ -302,7 +272,6 @@ public class PlayerController : MonoBehaviour, IPlayerController
             if (currentWall != null && currentWall.TypeOfWall == WallType.Moving) return;
             rb.gravityScale = 2f;
             isOnWall = false;
-            Debug.Log("PlayerLeftTheWall");
             currentWall?.Left(this);
             currentWall = null;
         }

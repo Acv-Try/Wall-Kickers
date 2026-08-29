@@ -4,16 +4,10 @@ using System.Collections;
 //using Unity.VisualScripting.Dependencies.NCalc;
 //using Unity.VisualScripting;
 
-public enum CameraState
-{
-    Frozen,
-    Following,
-    Returning
-}
+
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] private float xOffset;
-    [SerializeField] private float yOffset;
+
     [SerializeField] private float followingSpeed;
     [SerializeField] private float returningSpeed;
     [SerializeField] private GameObject deathLine;
@@ -23,77 +17,61 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float shakeStrength;
     [SerializeField] private int shakeVibrato;
     [SerializeField] private float shakeRandomness;
+    private bool canMove = true;
 
-    private Vector3 center = Vector3.zero;
-    public float CheckPointX;
-    private Transform playerTransform;
-    private CameraState state = CameraState.Following;
+    public void PauseMovement() => canMove = false;
+    public void ResumeMovement() => canMove = true;
+
     private void Start()
     {
         CalcDeadlinePos();
     }
-    public void SetInitial(Vector3 startCenter, Transform _playerTransform)
+    public void SetInitial(Vector3 startCenter)
     {
-        center = startCenter;
-        playerTransform = _playerTransform;
-        transform.position = new Vector3(center.x, (center.y*0) + yOffset, -10f);
-        state = CameraState.Following;
-    }
-    public void SetTarget(Vector3 startCenter, Transform _playerTransform)
-    {
-        center = startCenter;
-        playerTransform = _playerTransform;
+        transform.position = startCenter;
+        
     }
     private void CalcDeadlinePos()
     {
         float x = deathLine.transform.localPosition.x;
-        float y = deathLine.transform.localPosition.y * 0 - deathlineOffset;
+        float y = -deathlineOffset;
         float z = deathLine.transform.localPosition.z;
-        deathLine.transform.localPosition = new Vector3(x,y,z);
+        deathLine.transform.localPosition = new Vector3(x, y, z);
     }
 
-     public void OnCameraCheckPointChange(Vector3 newPos)
-     {
-       CheckPointX = newPos.x;
-     }
-    public void Freeze() => state = CameraState.Frozen;
     public void HideDeadline() => deathLine.SetActive(false);
     public void ShowDeadline() => deathLine.SetActive(true);
     public void Shake() => transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
-    public CameraState State => state;
-    public IEnumerator ReturnToCenter()
-    {
-        state = CameraState.Returning;
-        var target = new Vector3(center.x, (center.y*0) + yOffset, -10f);
-        while (state == CameraState.Returning && Vector3.Distance(transform.position, target) > 0.05f)
-        {
-            transform.position = Vector3.Lerp(transform.position, target, returningSpeed * Time.deltaTime);
-            yield return null;
-        }
-        if (state == CameraState.Returning)
-        {
-            transform.position = target;
-            state = CameraState.Following;
-        }
 
+    //public IEnumerator ReturnToCenter()
+    //{
+    //    CameraManager.Instance.SetState(CameraState.Returning);
+    //    var target = new Vector3(CameraBox.Instance.CenterX, CameraBox.Instance.CenterY, -10f);
+    //    while (CameraManager.Instance.State == CameraState.Returning && Vector3.Distance(transform.position, target) > 0.05f)
+    //    {
+    //        //transform.position = Vector3.Lerp(transform.position, target, returningSpeed * Time.deltaTime);
+    //        yield return null;
+    //    }
+    //    if (CameraManager.Instance.State == CameraState.Returning)
+    //    {
+    //        transform.position = target;
+    //        CameraManager.Instance.SetState(CameraState.Frozen);
+    //    }
+
+    //}
+    public bool HasReachedTarget
+    {
+        get
+        {
+            var target = new Vector3(CameraBox.Instance.CenterX, CameraBox.Instance.CenterY, -10f);
+            return Vector3.Distance(transform.position, target) < 0.05f;
+        }
     }
     private void Update()
     {
-        if (state != CameraState.Following || playerTransform == null)
-        {
-            return;
-        }
-
-        float y = Mathf.Max(transform.position.y, playerTransform.position.y + yOffset);
-        float x = center.x;
-
-        //if (playerTransform.position.x > center.x + xOffset)
-        //    x = playerTransform.position.x - xOffset / 3;
-        //else if (playerTransform.position.x < center.x - xOffset)
-        //    x = playerTransform.position.x + xOffset / 3;
-
-        x = (playerTransform.position.x + CheckPointX) / 2;
-
+        if (!canMove) return;
+        float x = CameraBox.Instance.CenterX;
+        float y = CameraBox.Instance.CenterY;
         transform.position = Vector3.Lerp(
             transform.position,
             new Vector3(x, y, -10f),

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6287064598315372082}
   - component: {fileID: 5548083135767276444}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Floor(Collider)
   m_TagString: Floor
   m_Icon: {fileID: 0}

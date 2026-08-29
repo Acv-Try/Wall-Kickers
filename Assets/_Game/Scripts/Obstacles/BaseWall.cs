@@ -35,8 +35,6 @@ public enum WallType
 public abstract class BaseWall : MonoBehaviour
 {
     [Header("Wall Settings")]
-    [TagField]
-    [SerializeField] public string playerTag;
     public float SpeedOfPlayerFriction = 0.5f;
     public bool OnlyRightWall;
     public bool OnlyLeftWall;
@@ -44,7 +42,6 @@ public abstract class BaseWall : MonoBehaviour
     public WallType TypeOfWall;
     protected Animator _animator;
     protected SoundData soundData;
-    protected string _playerTag => playerTag;
     protected void Initialize()
     {
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Gameplay);

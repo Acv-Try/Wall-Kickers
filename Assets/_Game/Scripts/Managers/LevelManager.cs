@@ -13,7 +13,9 @@ public class LevelManager : MonoBehaviour
     private LevelGenerator levelGenerator;
     public event Action OnLevelsReady;
 
-    public Vector3 FirstLevelCenter { get; private set; }
+    public Vector3 FirstLevelCameraCenter { get; private set; }
+    public float FirstLevelLeftOffset { get; private set; }
+    public float FirstLevelRightOffset { get; private set; }
     public Vector3 FirstLevelSpawnPos { get; private set; }
     public int TotalCheckpoints { get; set; }
 
@@ -58,6 +60,7 @@ public class LevelManager : MonoBehaviour
 
     public void Initialize(int forcedLevelIndex = -1)
     {
+        levelGenerator.Reset();
         heightCount = initHeightCount;
 
         for (int i = 0; i < generated.Count; i++)
@@ -71,7 +74,11 @@ public class LevelManager : MonoBehaviour
         SpawnStartLevel();
 
         FirstLevelSpawnPos = generated[0].PlayerSpawnPosition.position;
-        FirstLevelCenter = generated[0].LevelCenter.position;
+
+        FirstLevelCameraCenter = generated[0].CameraCenter.position;
+        
+        FirstLevelLeftOffset = generated[0].InitialLeftOffset;
+        FirstLevelRightOffset = generated[0].InitialRightOffset;
 
         for (int i = 1; i < WindowSize; i++)
         {

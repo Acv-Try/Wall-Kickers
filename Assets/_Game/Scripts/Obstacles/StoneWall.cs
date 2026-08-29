@@ -7,6 +7,7 @@ public class StoneWall : BaseWall
     [SerializeField] private string fallApartAnimaName;
     private void Start()
     {
+        Debug.Log("spawned");
         Initialize();
     }
 
@@ -17,7 +18,6 @@ public class StoneWall : BaseWall
 
     public override void Left(PlayerController player)
     {
-        Debug.Log("enter");
         _animator.SetTrigger(fallApartAnimaName);
     }
     public void Destroy()

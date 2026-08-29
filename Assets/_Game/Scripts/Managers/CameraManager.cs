@@ -1,13 +1,21 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
-
+public enum CameraState
+{
+    Frozen,
+    Following,
+    Returning
+}
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CameraController controller;
     private Vector3 startCenter;
     private Vector3 initialCenter;
+    private float initialLeftOffset;
+    private float initialRightOffset;
     private Coroutine coroutine;
+
+    public CameraState State { get; private set; } = CameraState.Frozen;
     #region Singleton
     private static CameraManager _instance;
     public static CameraManager Instance
@@ -36,34 +44,44 @@ public class CameraManager : MonoBehaviour
     }
     #endregion
 
-    public void Initialize(Vector3 startCenter, Transform playerTransform)
+    public void Initialize(Vector3 startCenter, float leftOffset, float rightOffset, Transform playerTransform)
     {
-        controller.SetInitial(startCenter, playerTransform);
+        CameraBox.Instance.SetPlayer(playerTransform);
+        CameraBox.Instance.SetCenter(startCenter);
+        CameraBox.Instance.SetOffsets(leftOffset, rightOffset);
+        controller.SetInitial(startCenter);
+
         initialCenter = startCenter;
+        initialLeftOffset = leftOffset;
+        initialRightOffset = rightOffset;
 
         GameManager.Instance.OnPlayerDeath -= HandleDeath;
         GameManager.Instance.OnPlayerDeath += HandleDeath;
         GameManager.Instance.OnReplay -= HandleRespawn;
         GameManager.Instance.OnReplay += HandleRespawn;
     }
-
+    public void SetState(CameraState newState) => State = newState;
     private void HandleDeath()
     {
-        controller.Freeze();
+        SetState(CameraState.Frozen);
         controller.HideDeadline();
         controller.Shake();
     }
-    private void HandleRespawn(Transform pos)
+    private void HandleRespawn(Transform player)
     {
-        controller.SetTarget(initialCenter, pos);
-        coroutine = StartCoroutine(ReturnAndReveal());
+        Debug.Log("respawn");
+        CameraBox.Instance.SetPlayer(player);
+        CameraBox.Instance.SetCenter(initialCenter);
+        CameraBox.Instance.SetOffsets(initialLeftOffset, initialRightOffset);
+        coroutine = StartCoroutine(RespawnSequence());
     }
-    private IEnumerator ReturnAndReveal()
+    private IEnumerator RespawnSequence()
     {
-        yield return new WaitForSeconds(0.8f);
-        yield return StartCoroutine(controller.ReturnToCenter());
-        if (controller.State == CameraState.Following)
-            controller.ShowDeadline();
+        yield return new WaitForSeconds(1.2f);
+        controller.ResumeMovement();
+        while (!controller.HasReachedTarget)
+            yield return null;
+        controller.ShowDeadline();
         coroutine = null;
     }
 }

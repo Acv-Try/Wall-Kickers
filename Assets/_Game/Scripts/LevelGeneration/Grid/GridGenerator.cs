@@ -49,7 +49,7 @@ public partial class GridGenerator : MonoBehaviour
     }
     public Vector3 GetFirstLevelCenter()
     {
-        return currentLevel.LevelCenter.position;
+        return currentLevel.CameraCenter.position;
     }
     public Vector3 GetSpawnPosition()
     {

@@ -10,8 +10,6 @@ public class DefaultWall : BaseWall
     {
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.Land_Wall_Wood);
         //PlayerManager.Instance.PlayLandAudio();
-        Debug.Log("Touchedd");
     }
-
-     public override void Left(PlayerController player) {Debug.Log("Lefttt"); }
+    public override void Left(PlayerController player) { }
 }

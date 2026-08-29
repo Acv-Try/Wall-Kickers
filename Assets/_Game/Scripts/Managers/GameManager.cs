@@ -52,9 +52,11 @@ public class GameManager : SingletonGame<GameManager>
         PlayerManager.Instance.Initialize(LevelManager.Instance.FirstLevelSpawnPos);
 
         CameraManager.Instance.Initialize(
-            LevelManager.Instance.FirstLevelCenter,
-            PlayerManager.Instance.PlayerTransform
-        );
+    LevelManager.Instance.FirstLevelCameraCenter,
+    LevelManager.Instance.FirstLevelLeftOffset,
+    LevelManager.Instance.FirstLevelRightOffset,
+    PlayerManager.Instance.PlayerTransform
+);
     }
     //absolutely need to be rewritten 
     public void OnDeath()
@@ -86,13 +88,6 @@ public class GameManager : SingletonGame<GameManager>
         LevelManager.Instance.TotalCheckpoints = 0;
         UIManager.Instance.SetScore("0");
         RaiseOnReplayCamera(PlayerManager.Instance.PlayerTransform);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //if (respawnCoroutine != null)
-        //{
-        //    StopCoroutine(respawnCoroutine);
-        //    respawnCoroutine = null;
-        //}
-        //respawnCoroutine = StartCoroutine(RespawnDelay());
     }
     public void RestartRun()
     {
@@ -131,47 +126,3 @@ public enum CurrentState
     Paused,
     End,
 }
-
-
-
-
-
-//#region Singleton
-//private static GameManager _instance;
-//public static GameManager Instance
-//{
-//    get
-//    {
-//        if (_instance == null)
-//        {
-//            _instance = FindFirstObjectByType<GameManager>();
-//            if (_instance == null)
-//            {
-//                Debug.LogWarning($"GameManager is not found in the scene!");
-//            }
-//        }
-//        return _instance;
-//    }
-//}
-
-//private void Awake()
-//{
-//    if (_instance != null && _instance != this)
-//    {
-//        Destroy(gameObject);
-//        return;
-//    }
-
-//    _instance = this;
-
-//    SceneManager.sceneLoaded += OnSceneLoaded;
-//    GameEvents.OnPause -= OnPause;
-//    GameEvents.OnPause += OnPause;
-//    GameEvents.OnContinue -= OnContinue;
-//    GameEvents.OnContinue += OnContinue;
-//    GameEvents.OnRestart -= RestartRun;
-//    GameEvents.OnRestart += RestartRun;
-//    PlayerManager.Instance.OnDeath -= OnDeath;
-//    PlayerManager.Instance.OnDeath += OnDeath;
-//}
-//#endregion
