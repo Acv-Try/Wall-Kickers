@@ -278,6 +278,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
         if (collision.gameObject.CompareTag("Floor") && !isOnWall)
         {
+            Debug.Log("OnFlppr");
             if (transform.position.y - collision.transform.position.y > 0)
             {
                 isOnFloor = true;
@@ -287,9 +288,10 @@ public class PlayerController : MonoBehaviour, IPlayerController
             OnFloorTouched?.Invoke();
             if (collision.contacts[0].normal.y == 0)
             {
+                Debug.Log("FixFloor");
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
-                    transform.position.x + 0.3f * jumpSide,
-                    collision.transform.position.y + 0.3f
+                    transform.position.x + 0.4f * jumpSide,
+                    collision.transform.position.y + 0.7f
                 )));
             }
         }
