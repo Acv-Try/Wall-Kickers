@@ -37,15 +37,15 @@ public class DisappearingWall : BaseWall
     public void OnDisappearing()
     {
         ChangeState(false);
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a * 0);
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
     }
     private IEnumerator Timer()
     {
         _animator.SetTrigger(fallApartAnimaName);
         col.enabled = false;
         yield return new WaitForSeconds(TimeToRespawn);
-        _animator.SetTrigger("SetIdle");
         ChangeState(true);
+        _animator.SetTrigger("SetIdle");
         yield return colorRoutine = StartCoroutine(ColorFade());
         timerRoutine = null;
     }

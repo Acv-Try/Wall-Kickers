@@ -25,7 +25,6 @@
 //    public virtual void Staying(PlayerController player){}
 //    }
 
-using Unity.Cinemachine;
 using UnityEngine;
 public enum WallType
 {
