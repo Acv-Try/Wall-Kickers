@@ -45,42 +45,15 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private IPlayerInput Input;
 
-    [SerializeField] CameraController cameraController;
-    //private sbyte linearVelocityX;
-    //private bool isDead;
 
     public sbyte JumpSide => jumpSide;
 
-    public void Cameracontrolerincrease(Vector3 pos)
-    {
-        cameraController.OnCameraCheckPointChange(pos);
-    }
+
     private void Awake()
     {
-        //Input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
-        cameraController = FindAnyObjectByType<CameraController>();
 
-        //playerInput.OnTouchBegan -= HandleTouchBegan;
-        //playerInput.OnTouchBegan += HandleTouchBegan;
-
-        //playerInput.OnTouchHeld -= HandleTouchHeld;
-        //playerInput.OnTouchHeld += HandleTouchHeld;
-
-        //PlayerManager.Instance.OnDeath -= HandleDeath;
-        //PlayerManager.Instance.OnDeath += HandleDeath;
-
-        //PlayerManager.Instance.OnRespawn -= HandleRespawn;
-        //PlayerManager.Instance.OnRespawn += HandleRespawn;
     }
-
-    //private void OnDestroy()
-    //{
-    //    playerInput.OnTouchBegan -= HandleTouchBegan;
-    //    playerInput.OnTouchHeld -= HandleTouchHeld;
-    //    playerStatus.OnDeath -= HandleDeath;
-    //    playerStatus.OnRespawn -= HandleRespawn;
-    //}
 
     public void Initialize()
     {

@@ -29,7 +29,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 public enum WallType
 {
-    Bounce, Electro, Default, Moving, Lift, Stone
+    Bounce, Electro, Default, Moving, Lift, Disappearing
 }
 
 public abstract class BaseWall : MonoBehaviour

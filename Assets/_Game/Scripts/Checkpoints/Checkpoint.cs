@@ -22,9 +22,6 @@ public class Checkpoint : MonoBehaviour
         UIManager.Instance.SetScore(LevelManager.Instance.TotalCheckpoints.ToString());
         parentLevel.IsPlayerInTheLevel = true;
         inactive = true;
-        //var status = PlayerManager.Instance.Status;
-        //if (status.CheckPointCount >= checkPointNum) return;
-        //status.IncreaseCheckpoint();
     }
     private void OnReplay()
     {
