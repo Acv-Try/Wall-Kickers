@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3419602868995044509}
   - component: {fileID: 940677039614952073}
   m_Layer: 0
-  m_Name: Level_N -  Tamplate
+  m_Name: Level_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6331116525735690666, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6331116525735690666, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -276,6 +276,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6331116525735690666, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412454193081593167, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412454193081593167, guid: b998decf222f9254a9059e9b0cd714c7, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
