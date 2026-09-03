@@ -6,10 +6,16 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private SoundBank soundBank;
     [SerializeField] private SourceBank sourceBank;
+    [SerializeField] private AudioClip aa;
     private SoundPool pool;
-
+    private sbyte volume = 1;
+    private bool isMute = false;
     SoundEmitter _a_emitter;
     private Dictionary<Enum, SoundEmitter> activeEmitters;
+    private SoundData _a_data;
+    public event Action onMute;
+    
+    public void RaiseOnMute() => onMute?.Invoke();
     #region
     private static AudioManager _instance;
     public static AudioManager Instance
@@ -43,6 +49,8 @@ public class AudioManager : MonoBehaviour
         soundBank.Initialize();
         pool = GetComponent<SoundPool>();
         activeEmitters = new Dictionary<Enum, SoundEmitter>();
+        _a_data = GetSoundData(EType_SourceDataType.Music);
+        Play(_a_data, EType_Music.Gameplay);
     }
     public SoundData GetSoundData(EType_SourceDataType type)
     {
@@ -57,14 +65,15 @@ public class AudioManager : MonoBehaviour
     public void Play<T>(SoundData data, T type) where T : Enum
     {
         if (data == null) return;
-        data.clip = soundBank.GetClip(type);
-        pool.CreateBuilder().WithPosition(transform.position).Play(data);
+        AudioClip clip = soundBank.GetClip(type);
+        pool.CreateBuilder().WithPosition(transform.position).WithClip(clip).Play(data);
+
     }
     public void PlayAndTrack<T>(SoundData data, T type) where T : Enum
     {
         if (data == null) return;
-        data.clip = soundBank.GetClip(type);
-        _a_emitter = pool.CreateBuilder().WithPosition(transform.position).Play(data);
+        AudioClip clip = soundBank.GetClip(type);
+        _a_emitter = pool.CreateBuilder().WithPosition(transform.position).WithClip(clip).Play(data);
         activeEmitters[type] = _a_emitter;
     }
     public void Stop<T>(T type) where T : Enum
@@ -73,6 +82,17 @@ public class AudioManager : MonoBehaviour
         {
             emitter?.Stop();
         }
+    }
+
+    private void MuteAll()
+    {
+        DecideVolume(volume);
+        AudioListener.volume = volume;
+    }
+    private void DecideVolume(sbyte volume)
+    {
+        isMute =  !isMute;
+        volume = (sbyte)(isMute ? 1 : 0);
     }
 }
 

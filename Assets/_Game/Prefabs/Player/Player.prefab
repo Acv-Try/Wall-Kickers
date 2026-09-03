@@ -69,8 +69,12 @@ MonoBehaviour:
   CoolDownTimeBetweenJumps: 0.05
   GravityForceWhileFalling: 4
   SpeedOnFloor: 4.5
-  isOnWall: 0
-  cameraController: {fileID: 0}
+  wallFloorMask:
+    serializedVersion: 2
+    m_Bits: 384
+  overlapPadding: 0.08
+  wallStickOverlapRatio: 0.5
+  floorEdgeNudgeRatio: 0.5
 --- !u!114 &8071261416311028406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimator
   puffEffect: {fileID: 7854320862785759739, guid: 2981e954c2cd47441ae02ff553139c52, type: 3}
   burstEffect: {fileID: 1286242985349229543, guid: a1ea503166bc461469f09933b9245eb0, type: 3}
-  puffEffectOffset: {x: 0, y: -1, z: 0}
+  puffEffectOffset: {x: 0, y: 0.15, z: 0}
 --- !u!212 &1450186766938515829
 SpriteRenderer:
   serializedVersion: 2
@@ -206,17 +210,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.052879214, y: 0.0077682137}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.1111112}
+    oldSize: {x: 1.0384616, y: 1.1538461}
     newSize: {x: 1.08, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.8231087, y: 0.828658}
+  m_Size: {x: 0.95, y: 0.85}
   m_EdgeRadius: 0
 --- !u!95 &6238021067919774775
 Animator:

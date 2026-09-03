@@ -7,7 +7,8 @@ public class UIAnimations : MonoBehaviour
     [SerializeField] private Image tapImage;
     [SerializeField] private Sprite tapSprite1;
     [SerializeField] private Sprite tapSprite2;
-    [SerializeField] private GameObject muteButton;
+    //[SerializeField] private GameObject muteButton;
+    [SerializeField] private Image muteImage;
     [SerializeField] private Sprite muteSpriteActive;
     [SerializeField] private Sprite muteSpriteDisabled;
     [SerializeField] private float switchTime = 1f;
@@ -28,7 +29,11 @@ public class UIAnimations : MonoBehaviour
     private Image startBackgroundImage, midGameBackgroundImage;
     private bool isFirst = true;
     private bool isMute = true;
-    Coroutine tapRoutine = null, onColorFadeRoutine = null, onStartRoutine = null, onLoseRoutine = null, onRestartRoutine = null;
+    Coroutine tapRoutine = null,
+        onColorFadeRoutine = null,
+        onStartRoutine = null,
+        onLoseRoutine = null,
+        onRestartRoutine = null;
 
     private void InitialConditions()
     {
@@ -50,9 +55,9 @@ public class UIAnimations : MonoBehaviour
     }
     public void OnMute()
     {
-        Sprite muteImage = muteButton.gameObject.GetComponent<Button>().spriteState.selectedSprite;
-        muteImage = isFirst ? muteSpriteActive : muteSpriteDisabled;
         isMute = !isMute;
+        Debug.Log($"is first {isFirst}");
+        muteImage.sprite = isMute ? muteSpriteActive : muteSpriteDisabled;
     }
     public void OnGameLaunch()
     {
@@ -97,6 +102,7 @@ public class UIAnimations : MonoBehaviour
         P_Logo.Show();
         P_Cup.Hide();
         P_ScoreCount.Hide();
+        P_PauseButton.Hide();
         if (onRestartRoutine == null)
         {
             onRestartRoutine = StartCoroutine(OnRestartRoutine());
@@ -179,10 +185,10 @@ public class UIAnimations : MonoBehaviour
         //background gradient to orange and back to invisible
         yield return StartCoroutine(ColorFade(startBackgroundImage, 1f));
         StartCoroutine(ColorFade(midGameBackgroundImage, 0));
+        P_LoseMenu.Hide();
         yield return new WaitForSeconds(0.8f);
         yield return StartCoroutine(ColorFade(startBackgroundImage, 0f));
         //P_CollectedCoinInfo.Hide();
-        P_LoseMenu.Hide();
         P_MainMenu.Show();
     }
     IEnumerator OnStartRoutine(Image background)

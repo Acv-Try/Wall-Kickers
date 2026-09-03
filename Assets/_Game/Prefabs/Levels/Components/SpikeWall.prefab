@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 3682580520444095597}
   - component: {fileID: 1502522923958457}
   m_Layer: 0
-  m_Name: Obstacle_1
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,12 +451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
-  playerTag: 
-  SpeedOfPlayerFriction: 0.5
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 2
+  PlayersFrictionSpeed: 0.5
+  onlyRightWall: 0
+  onlyLeftWall: 1
+  fixIfOnTop: 1
+  wallType: 0
 --- !u!1 &3574571107442413538
 GameObject:
   m_ObjectHideFlags: 0

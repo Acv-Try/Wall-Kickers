@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 2856701143918048708}
   - component: {fileID: 5654317665236229686}
   m_Layer: 0
-  m_Name: WoodWall (2)
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,7 @@ Transform:
   m_GameObject: {fileID: 4895294374480030314}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.382, y: -0.638, z: 0}
+  m_LocalPosition: {x: -0.3, y: -0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -296,11 +296,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824bbd03478e98a469d3d227a4a47d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform1
-  SpeedOfPlayerFriction: 0
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 3
+  PlayersFrictionSpeed: 0.5
+  onlyRightWall: 0
+  onlyLeftWall: 0
+  fixIfOnTop: 1
+  wallType: 0
 --- !u!212 &2856701143918048708
 SpriteRenderer:
   serializedVersion: 2
@@ -350,7 +350,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 9170877187311746876, guid: 21bd54c682a66e148b89928c6aa5905a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21bd54c682a66e148b89928c6aa5905a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

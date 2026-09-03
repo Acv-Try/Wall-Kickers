@@ -19,11 +19,14 @@ public class DisappearingWall : BaseWall
     }
     public override void Left(PlayerController player)
     {
+        base.Left(player);
         timerRoutine = StartCoroutine(Timer());
     }
 
     public override void Touched(PlayerController player)
     {
+        base.Touched(player);
+        PlayLandAudio(EType_Gameplay_SFX.Land_Wall_Crumble);
         _animator.SetTrigger(crackAnimaName);
     }
 

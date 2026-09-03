@@ -51,7 +51,7 @@ public class SoundPool : PersistentSingleton<SoundPool>
 
     public bool CanPlaySound(SoundData data)
     {
-        if (!data.frequentSound) return false;
+        if (!data.frequentSound) return true;
         if (frequentActive.Count >= data.maxInstances)
         {
             frequentActive.First.Value.Stop();

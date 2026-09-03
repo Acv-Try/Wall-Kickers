@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6888128324075132958}
   - component: {fileID: -6114539861501128330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 2 Peace Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}
@@ -133,6 +133,10 @@ PrefabInstance:
       value: Floor(Clear) (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7647439372605168605, guid: 8ed21af9604f4b24585d5e69756594b5, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647439372605168605, guid: 8ed21af9604f4b24585d5e69756594b5, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -197,6 +201,10 @@ PrefabInstance:
     - target: {fileID: 7647439372605168605, guid: 8ed21af9604f4b24585d5e69756594b5, type: 3}
       propertyPath: m_Name
       value: Floor(Clear)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647439372605168605, guid: 8ed21af9604f4b24585d5e69756594b5, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7647439372605168605, guid: 8ed21af9604f4b24585d5e69756594b5, type: 3}
       propertyPath: m_TagString

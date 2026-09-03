@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-//using UnityEngine.SceneManagement;
+
 public interface IPlayerController
 {
-    public sbyte JumpSide { get; }
     public event Action OnJump;
     public event Action<sbyte> OnDoubleJump;
     public event Action OnWallTouched;
@@ -17,15 +15,21 @@ public interface IPlayerController
 }
 public class PlayerController : MonoBehaviour, IPlayerController
 {
-
+    #region Variables
     [Header("Jump Settings")]
-    public float JumpForceUp = 15f;
-    public float StartJumpForceUp = 7f;
-    public float JumpForceSide = 3f;
-    public float JumpTime = 0.5f;
-    public float CoolDownTimeBetweenJumps = 0.05f;
-    public float GravityForceWhileFalling = 3f;
-    public float SpeedOnFloor = 4f;
+    [SerializeField] private float JumpForceUp = 20f;
+    [SerializeField] private float StartJumpForceUp = 7f;
+    [SerializeField] private float JumpForceSide = 4f;
+    [SerializeField] private float JumpTime = 0.5f;
+    [SerializeField] private float CoolDownTimeBetweenJumps = 0.05f;
+    [SerializeField] private float GravityForceWhileFalling = 5f;
+    [SerializeField] private float SpeedOnFloor = 4.5f;
+    [Header("Wall/Floor Priority")]
+    [SerializeField] private LayerMask wallFloorMask;
+    [SerializeField] private float overlapPadding = 0.08f;
+    [Header("Wall Top Landing")]
+    [SerializeField] private float wallStickOverlapRatio = 1f / 3f;
+    [SerializeField] private float floorEdgeNudgeRatio = 1f / 3f;
 
     public event Action OnJump;
     public event Action<sbyte> OnDoubleJump;
@@ -34,27 +38,36 @@ public class PlayerController : MonoBehaviour, IPlayerController
     public event Action OnFloorLeft;
 
     private sbyte jumpSide = 1;
+
     private bool isDead;
-    [SerializeField] private bool isOnWall;
+    private bool isOnWall;
     private bool isOnFloor;
     private bool canJump;
     private bool canDoubleJump;
+
     private float jumpTimeCounter;
+
     private BaseWall currentWall;
     private Rigidbody2D rb;
 
+    private const int MaxOverlapResults = 8;
+    private BoxCollider2D boxCollider;
+    private readonly Collider2D[] overlapBuffer = new Collider2D[MaxOverlapResults];
+    private ContactFilter2D contactFilter;
+
     private IPlayerInput Input;
-
-
-    public sbyte JumpSide => jumpSide;
-
+    #endregion
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        boxCollider = GetComponent<BoxCollider2D>();
+        contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(wallFloorMask);
+        contactFilter.useTriggers = false; //set true only if wall/floor colliders are triggers, not solid colliders
     }
 
+    #region Public Methods
     public void Initialize()
     {
 
@@ -73,6 +86,14 @@ public class PlayerController : MonoBehaviour, IPlayerController
         rb.linearVelocity = Vector2.zero;
         FlipScale(jumpSide);
     }
+    public void JumpFromBounce()
+    {
+        ResetJump();
+        UpdateJumpSide();
+        FlipScale(jumpSide);
+        Jump();
+    }
+    #endregion
 
     #region Methods
     private void ResetJump()
@@ -80,7 +101,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         canJump = true;
         canDoubleJump = false;
     }
-    public void UpdateJumpSide()
+    private void UpdateJumpSide()
     {
         jumpSide = (sbyte)(rb.linearVelocity.x > 0 ? 1 : -1);
     }
@@ -88,7 +109,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         transform.localScale = new Vector3(Math.Abs(transform.localScale.x) * side, transform.localScale.y, transform.localScale.z);
     }
-    public void Jump()
+    private void Jump()
     {
         canJump = false;
         canDoubleJump = true;
@@ -96,7 +117,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         OnJump?.Invoke();
         ApplyJumpForce(jumpSide);
 
-        if (currentWall != null && currentWall.TypeOfWall == WallType.Moving)
+        if (currentWall != null && currentWall.Type == WallType.Moving)
         {
             currentWall.Left(this);
             rb.gravityScale = 2f;
@@ -106,13 +127,13 @@ public class PlayerController : MonoBehaviour, IPlayerController
     private void DoubleJump()
     {
         canDoubleJump = false;
+        FlipScale(jumpSide);
         UpdateJumpSide();
         sbyte doubleSide = (sbyte)-jumpSide;
         jumpSide = doubleSide;
 
         OnDoubleJump?.Invoke(jumpSide);
         ApplyJumpForce(jumpSide);
-        FlipScale(jumpSide);
 
     }
     private void ApplyJumpForce(sbyte side)
@@ -124,7 +145,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         jumpTimeCounter = 0f;
 
     }
-    public void VerticalJump()
+    private void VerticalJump()
     {
         if (isOnWall) return;
         jumpTimeCounter += Time.deltaTime;
@@ -132,18 +153,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
             rb.AddForce(Vector2.up * JumpForceUp * Time.deltaTime, ForceMode2D.Impulse);
     }
 
-    public void JumpFromBounce()
-    {
-        UpdateJumpSide();
-        FlipScale(jumpSide);
-        Jump();
-    }
     #endregion
 
     #region Event Handle
     public void HandleTouchBegan()
     {
-        //Debug.Log($"[Tap] canJump={canJump}, canDoubleJump={canDoubleJump}, t={Time.realtimeSinceStartup:F3}");
         if (canJump)
         {
             Jump();
@@ -159,29 +173,29 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         VerticalJump();
     }
-    private void HandleDeath()
+    private void HandleFloorLanding(Collider2D floorCollider)
     {
-        isDead = true;
-        rb.gravityScale = 0;
-        rb.linearVelocity = Vector2.zero;
-        rb.simulated = false;
-    }
-    public void HandleRespawn()
-    {
-        Initialize();
-        if (rb.simulated == false)
-        {
-            rb.simulated = true;
-        }
+        Debug.Log("handle");
+        rb.gravityScale = 0f;
+        isOnFloor = true;
+        isOnWall = false;
+        currentWall = null;
+
+        ResetJump();
+        OnFloorTouched?.Invoke();
+
+        Debug.Log(boxCollider.bounds.extents.y);
+        StartCoroutine(BringPlayerOnPlatform(new Vector2(
+            transform.position.x,
+            floorCollider.bounds.max.y + boxCollider.bounds.extents.y
+        )));
     }
     #endregion
 
-
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    #region FixedUpdate
     private void FixedUpdate()
     {
         if (isDead) return;
-        //Debug.Log($"isOnWall = {isOnWall}, isOnFloor = {isOnFloor}.");
         PlayerManager.Instance.RiseOnPlayerPositionChange(transform.position);
         if (isOnFloor)
         {
@@ -190,35 +204,66 @@ public class PlayerController : MonoBehaviour, IPlayerController
         }
 
         if (isOnWall && currentWall != null)
-            rb.position +=
-                Vector2.down * currentWall.SpeedOfPlayerFriction * Time.deltaTime;
+            rb.position += Vector2.down * currentWall.PlayersFrictionSpeed * Time.deltaTime;
 
         if (rb.linearVelocity.y < -0.2f && !isOnWall)
             rb.gravityScale = GravityForceWhileFalling;
 
     }
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    #endregion
 
+    #region Player Collision Logic Handler
+    private bool TryGetLandingFloor(out Collider2D floorCollider)
+    {
+        floorCollider = null;
+        Vector2 size = boxCollider.size + new Vector2(overlapPadding, overlapPadding);
+        Vector2 center = (Vector2)transform.position + boxCollider.offset;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+        int count = Physics2D.OverlapBox(center, size, 0f, contactFilter, overlapBuffer);
+
+        for (int i = 0; i < count; i++)
+        {
+            var col = overlapBuffer[i];
+            if (col == null || !col.CompareTag("Floor")) continue;
+
+            Bounds playerBounds = boxCollider.bounds;
+            Bounds floorBounds = col.bounds;
+
+            bool horizontalOverlap =
+               playerBounds.max.x > floorBounds.min.x &&
+            playerBounds.min.x < floorBounds.max.x;
+
+            bool nearFloorTop = playerBounds.min.y >= floorBounds.max.y - overlapPadding;
+
+            if (horizontalOverlap && nearFloorTop)
+            {
+                Debug.Log(col.gameObject.tag);
+                floorCollider = col;
+                return true;
+            }
+        }
+        return false;
+    }
+    private bool IsWallNeedOnTouch(BaseWall wall)
+    {
+        if (wall.Type == WallType.Bounce) return false;
+        return true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isDead) return;
         if (collision.gameObject.CompareTag("Wall") && !isOnWall)
         {
-              if (collision.contacts[0].normal.y < 0)
+            float contactNormalY = collision.contacts[0].normal.y;
+            if (contactNormalY < 0)
             {
-                jumpTimeCounter = JumpTime;
-
-                rb.linearVelocity = Vector2.zero;
-              //  UpdateJumpSide();
-                rb.AddForce(new Vector2(JumpForceSide * jumpSide,0), ForceMode2D.Impulse);
+                if (TryGetLandingFloor(out Collider2D landingFloor))
+                {
+                    HandleFloorLanding(landingFloor);
+                }
                 return;
             }
-          //  if (collision.contacts[0].normal.y < 0)
-          //  {
-          //      jumpTimeCounter = JumpTime;
-          //      return;
-          //  }
 
             rb.gravityScale = 0f;
             rb.linearVelocity = Vector2.zero;
@@ -231,53 +276,70 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
             ResetJump();
             currentWall.Touched(this);
-            OnWallTouched?.Invoke();
-            if (collision.contacts[0].normal.y > 0 && currentWall.FixIfOnTop)
+            if (IsWallNeedOnTouch(currentWall))
+                OnWallTouched?.Invoke();
+
+            if (contactNormalY > 0 && currentWall.FixIfOnTop)
             {
-               // UpdateJumpSide();
+                Bounds wallBounds = collision.collider.bounds;
+                float wallCenterX = wallBounds.center.x;
+                float wallHalfWidth = wallBounds.extents.x;
+                float playerHalfWidth = boxCollider.bounds.extents.x;
+
+                sbyte side = (transform.position.x >= wallCenterX) ? (sbyte)1 : (sbyte)-1;
+
                 if (currentWall.OnlyLeftWall) jumpSide = -1;
                 if (currentWall.OnlyRightWall) jumpSide = 1;
 
-                StartCoroutine(BringPlayerOnPlatform(new Vector2(
-                    collision.transform.position.x +
-                    (jumpSide * Math.Abs(transform.lossyScale.x) * 0.4f),
-                    transform.position.y - 0.5f
-                )));
-                //(-JumpSide * Math.Abs(transform.lossyScale.x) * 0.5f),
-            }
+                float stickOffset = playerHalfWidth * wallStickOverlapRatio;
+                float targetX = wallCenterX + side * (wallHalfWidth - stickOffset);
 
+                StartCoroutine(BringPlayerOnPlatform(new Vector2(
+                targetX,
+                transform.position.y - 0.5f
+                )));
+            }
             FlipScale(jumpSide);
+
         }
 
         if (collision.gameObject.CompareTag("Floor") && !isOnWall)
         {
-            Debug.Log("OnFlppr");
             if (transform.position.y - collision.transform.position.y > 0)
             {
                 isOnFloor = true;
                 ResetJump();
             }
-
+            FlipScale(jumpSide);
             OnFloorTouched?.Invoke();
             if (collision.contacts[0].normal.y == 0)
             {
-                Debug.Log("FixFloor");
+                Bounds floorBounds = collision.collider.bounds;
+                float playerHalfWidth = boxCollider.bounds.extents.x;
+                float edgeMargin = playerHalfWidth * floorEdgeNudgeRatio;
+
+                float clampedX = Mathf.Clamp(
+                    transform.position.x,
+                    floorBounds.min.x + edgeMargin,
+                    floorBounds.max.x - edgeMargin
+                );
+
                 StartCoroutine(BringPlayerOnPlatform(new Vector2(
-                    transform.position.x + 0.4f * jumpSide,
-                    collision.transform.position.y + 0.7f
+                    clampedX,
+                    floorBounds.max.y + boxCollider.bounds.extents.y
                 )));
             }
         }
     }
-    public void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (isDead) return;
         if (collision.gameObject.CompareTag("Wall") && isOnWall)
         {
-            if (currentWall != null && currentWall.TypeOfWall == WallType.Moving) return;
+            if (currentWall != null && currentWall.Type == WallType.Moving) return;
             rb.gravityScale = 2f;
             isOnWall = false;
-            Debug.Log("PlayerLeftTheWall");
+            //Debug.Log("PlayerLeftTheWall");
             currentWall?.Left(this);
             currentWall = null;
         }
@@ -289,7 +351,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         }
     }
 
-    public void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (isDead) return;
         if (isOnWall && collision.gameObject.CompareTag("Wall") && currentWall != null && !isOnFloor)
@@ -297,6 +359,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
             currentWall.Staying(this);
         }
     }
+    #endregion
+
+    #region Death Trigger Handler
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Dead"))
@@ -305,7 +370,9 @@ public class PlayerController : MonoBehaviour, IPlayerController
             PlayerManager.Instance.OnDie();
         }
     }
+    #endregion
 
+    #region Coroutines
     private IEnumerator CoolDown()
     {
         yield return new WaitForSeconds(CoolDownTimeBetweenJumps);
@@ -323,5 +390,5 @@ public class PlayerController : MonoBehaviour, IPlayerController
             yield return null;
         }
     }
-
+    #endregion
 }

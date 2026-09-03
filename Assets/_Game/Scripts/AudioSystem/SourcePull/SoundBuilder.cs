@@ -6,7 +6,7 @@ namespace AudioSystem
         readonly SoundPool pool;
         Vector3 position = Vector3.zero;
         bool randomPitch;
-
+        AudioClip clip;
         public SoundBuilder(SoundPool pool) {
         this.pool = pool;
         }
@@ -20,7 +20,11 @@ namespace AudioSystem
             randomPitch = true;
             return this;
         }
-
+        public SoundBuilder WithClip(AudioClip clip)
+        {
+            this.clip = clip;
+            return this;
+        }
         public SoundEmitter Play(SoundData data)
         {
             if (data == null)
@@ -47,7 +51,7 @@ namespace AudioSystem
                 pool.TrackFrequent(emitter);
             }
 
-            emitter.Play(data);
+            emitter.Play(data, clip);
 
             return emitter;
         }

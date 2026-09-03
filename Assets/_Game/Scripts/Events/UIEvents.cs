@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public static class GameEvents
+public static class UIEvents
 {
     //UI
     public static event Action OnGameLaunch;

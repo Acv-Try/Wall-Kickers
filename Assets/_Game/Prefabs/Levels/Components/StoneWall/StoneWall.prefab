@@ -174,11 +174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472e002d7582473408d892efc393b91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisappearingWall
-  SpeedOfPlayerFriction: 0
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 5
+  PlayersFrictionSpeed: 0
+  onlyRightWall: 0
+  onlyLeftWall: 0
+  fixIfOnTop: 1
+  wallType: 5
   TimeToRespawn: 4
   crackAnimaName: PlayerLand
   fallApartAnimaName: PlayerLeft

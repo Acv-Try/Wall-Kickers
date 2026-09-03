@@ -55,9 +55,10 @@ MonoBehaviour:
   topMarker: {fileID: 8308478103760527677}
   bottomMarker: {fileID: 53075937248760171}
   offset: {x: 6.79, y: 0, z: 0}
-  camerasInitialCenter: {fileID: 0}
+  camerasInitialCenter: {fileID: 6410186266896643273}
   initialRightOffset: 0
   initialLeftOffset: 0
+  firstWall: {fileID: 2327215624800372945}
   levelData: {fileID: 11400000, guid: ef5c0e153d8036440ad9aa544bbafede, type: 2}
 --- !u!1 &2527928844468909405
 GameObject:
@@ -794,6 +795,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e244394cfa834ae43a9b51c20eab0f3f, type: 3}
+--- !u!114 &2327215624800372945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1792602249994681565, guid: e244394cfa834ae43a9b51c20eab0f3f, type: 3}
+  m_PrefabInstance: {fileID: 4083485547925386252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
 --- !u!4 &6149172637408049262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7925574032811527266, guid: e244394cfa834ae43a9b51c20eab0f3f, type: 3}
@@ -1067,6 +1079,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a155c55821b8f264f9d6db56e621f0bd, type: 3}
+--- !u!4 &6410186266896643273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 718925409474412564, guid: a155c55821b8f264f9d6db56e621f0bd, type: 3}
+  m_PrefabInstance: {fileID: 5841077094944060637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6728007632665946045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 887494863164281696, guid: a155c55821b8f264f9d6db56e621f0bd, type: 3}

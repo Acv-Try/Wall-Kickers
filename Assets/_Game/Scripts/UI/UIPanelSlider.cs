@@ -24,7 +24,7 @@ public class UIPanelSlider : MonoBehaviour
     {
         if (_activeRoutine != null)
             StopCoroutine(_activeRoutine);
-
+        
         _activeRoutine = StartCoroutine(AnimateTo(target));
     }
 

@@ -127,4 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f64847cd72ad1e54c9733708f2c63495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuffEffect
-  animator: {fileID: 2287006720659381085}
+  lifeTime: 0

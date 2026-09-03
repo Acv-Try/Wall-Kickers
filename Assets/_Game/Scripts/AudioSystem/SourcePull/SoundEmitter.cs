@@ -20,10 +20,10 @@ namespace AudioSystem
 
         }
 
-        public void Play(SoundData data)
+        public void Play(SoundData data, AudioClip clip)
         {
             Data = data;
-            ApplyData(data);
+            ApplyData(data, clip);
 
             if(playingCoroutine != null)
             {
@@ -48,7 +48,7 @@ namespace AudioSystem
 
             audioSource.Stop();
             pool.Return(this);
-            pool = null;
+            //pool = null;
         }
         public void WithRandomPitch(float min = -0.05f, float max = 0.05f)
         {
@@ -61,9 +61,9 @@ namespace AudioSystem
             Stop();
         }
 
-        void ApplyData(SoundData data)
+        void ApplyData(SoundData data, AudioClip clip)
         {
-            audioSource.clip = data.clip;
+            audioSource.clip = clip;
             audioSource.outputAudioMixerGroup = data.mixerGroup;
             audioSource.loop = data.loop;
 

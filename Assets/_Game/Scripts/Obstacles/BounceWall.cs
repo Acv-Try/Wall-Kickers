@@ -12,7 +12,8 @@ public class BounceWall : BaseWall
     }
     public override void Touched(PlayerController player)
     {
-        AudioManager.Instance.Play(soundData,EType_Gameplay_SFX.Land_Wall_Bounce);
+        base.Touched(player);
+        PlayLandAudio(EType_Gameplay_SFX.Land_Wall_Bounce);
         player.JumpFromBounce();
 
 
@@ -31,7 +32,7 @@ public class BounceWall : BaseWall
     }
     public override void Left(PlayerController player)
     {
-
+        base.Left(player);
     }
 
     void Animation(float Ypos)

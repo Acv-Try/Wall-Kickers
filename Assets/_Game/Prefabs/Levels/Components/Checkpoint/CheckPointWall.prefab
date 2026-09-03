@@ -212,11 +212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
-  SpeedOfPlayerFriction: 0
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 2
+  PlayersFrictionSpeed: 0
+  onlyRightWall: 0
+  onlyLeftWall: 0
+  fixIfOnTop: 1
+  wallType: 0
 --- !u!1 &3604753034053190121
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,4 +623,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f25b3d259e75a345bdd60e796f03a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckPoint
-  checkPointNum: 0

@@ -984,12 +984,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c4221b5384064439ab1dde8ee1bacb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultWall
-  playerTag: 
-  SpeedOfPlayerFriction: 0.3
-  OnlyRightWall: 0
-  OnlyLeftWall: 0
-  FixIfOnTop: 1
-  TypeOfWall: 2
+  PlayersFrictionSpeed: 0.3
+  onlyRightWall: 0
+  onlyLeftWall: 0
+  fixIfOnTop: 1
+  wallType: 0
 --- !u!1 &7402281813098109083
 GameObject:
   m_ObjectHideFlags: 0

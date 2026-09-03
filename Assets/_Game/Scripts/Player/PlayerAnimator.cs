@@ -28,9 +28,6 @@ public class PlayerAnimator : MonoBehaviour
         PlayerManager.Instance.OnDeath -= OnDeath;
         PlayerManager.Instance.OnDeath += OnDeath;
 
-        PlayerManager.Instance.OnRespawn -= OnRespawn;
-        PlayerManager.Instance.OnRespawn += OnRespawn;
-
         controller.OnJump -= OnJump;
         controller.OnJump += OnJump;
 
@@ -57,6 +54,7 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void OnJump()
     {
+        PlayJumpAudio();
         playerAnimator?.SetBool("isIdle", false);
         playerAnimator?.SetBool("isRunning", false);
         playerAnimator?.SetBool("isBackFlip", false);
@@ -66,13 +64,13 @@ public class PlayerAnimator : MonoBehaviour
     {
         playerAnimator?.SetBool("isJump", false);
         playerAnimator?.SetBool("isBackFlip", true);
-        //PlayPuffEffect(side);
+        PlayPuffEffect(side);
     }
     private void OnWallTouched()
     {
-        playerAnimator?.SetBool("isBackFlip", false);
         playerAnimator?.SetBool("isJump", false);
         playerAnimator?.SetBool("isRunning", false);
+        playerAnimator?.SetBool("isBackFlip", false);
         playerAnimator?.SetBool("isIdle", true);
     }
 
@@ -89,14 +87,9 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void OnDeath()
     {
+        PlayDeathAudio();
         PlayBurstEffect();
         PlayDeathAudio();
-        //spriteRenderer.enabled = false;
-    }
-    private void OnRespawn()
-    {
-        //spriteRenderer.enabled = true;
-        //ResetAnimations();
     }
 
     public void PlayPuffEffect(sbyte side)

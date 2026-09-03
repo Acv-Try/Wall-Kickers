@@ -122,4 +122,5 @@ public class MovingObstacle : MonoBehaviour
             Points.Add(pos);
         }
     }
+
 }

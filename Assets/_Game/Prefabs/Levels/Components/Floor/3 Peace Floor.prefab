@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8206518861614120406}
   - component: {fileID: 8525610745322299542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3 Peace Floor
   m_TagString: Floor
   m_Icon: {fileID: 0}

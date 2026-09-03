@@ -89,6 +89,8 @@ MonoBehaviour:
   camerasInitialCenter: {fileID: 6410186266896643273}
   initialRightOffset: 5
   initialLeftOffset: -5
+  firstWall: {fileID: 0}
+  countPointsPerLevel: 9
   levelData: {fileID: 11400000, guid: 07c670b0849a01f4e8d7af5c12ecd0ef, type: 2}
 --- !u!1 &2527928844468909405
 GameObject:

@@ -21,12 +21,12 @@ public class GameManager : SingletonGame<GameManager>
     {
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
-        GameEvents.OnPause -= OnPause;
-        GameEvents.OnPause += OnPause;
-        GameEvents.OnContinue -= OnContinue;
-        GameEvents.OnContinue += OnContinue;
-        GameEvents.OnRestart -= RestartRun;
-        GameEvents.OnRestart += RestartRun;
+        UIEvents.OnPause -= OnPause;
+        UIEvents.OnPause += OnPause;
+        UIEvents.OnContinue -= OnContinue;
+        UIEvents.OnContinue += OnContinue;
+        UIEvents.OnRestart -= RestartRun;
+        UIEvents.OnRestart += RestartRun;
         PlayerManager.Instance.OnDeath -= OnDeath;
         PlayerManager.Instance.OnDeath += OnDeath;
     }
@@ -67,13 +67,13 @@ public class GameManager : SingletonGame<GameManager>
         if (totalCheckpoints >= gameConfig.progressSaveCheckpoint)
         {
             //LevelManager.Instance.ComputeCurrentLevelIndex();
-            GameEvents.RaiseOnGameLose();
+            UIEvents.RaiseOnGameLose();
             return;
         }
         deathsAtCurrentStage++;
         if (deathsAtCurrentStage >= gameConfig.maxDeathsBeforeFullRestart)
         {
-            GameEvents.RaiseOnGameLose();
+            UIEvents.RaiseOnGameLose();
             return;
         }
         ReplayGame();

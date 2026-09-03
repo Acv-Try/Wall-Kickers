@@ -77,23 +77,5 @@ public class PlayerManager : MonoBehaviour
         Initialize(_spawnPosition);
         RiseOnRespawn();
     }
-    //private void HandleDeath()
-    //{
-        //bool tooManyDeaths = status.DeathCount >= _maxDeaths;
-        //bool beforeProgress =  < _progress;
-
-        //if (beforeProgress && tooManyDeaths)
-        //{
-        //    GameManager.Instance.OnPlayerDied(status.CheckPoint);
-        //    return;
-        //}
-
-        //if (status.CheckPoint >= _progress)
-        //{
-        //    GameManager.Instance.OnPlayerDied(status.CheckPoint);
-        //    return;
-        //}
-        //StartCoroutine(RespawnSequence());
-    //}
-
+   
 }

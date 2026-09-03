@@ -3,25 +3,25 @@ using UnityEngine;
 
 public class StoneWall : BaseWall
 {
-    [SerializeField] private string crackAnimaName;
-    [SerializeField] private string fallApartAnimaName;
-    private void Start()
-    {
-        Debug.Log("spawned");
-        Initialize();
-    }
+    //[SerializeField] private string crackAnimaName;
+    //[SerializeField] private string fallApartAnimaName;
+    //private void Start()
+    //{
+    //    Debug.Log("spawned");
+    //    Initialize();
+    //}
 
-    public override void Touched(PlayerController player)
-    {
-        _animator.SetTrigger(crackAnimaName);
-    }
+    //public override void Touched(PlayerController player)
+    //{
+    //    _animator.SetTrigger(crackAnimaName);
+    //}
 
-    public override void Left(PlayerController player)
-    {
-        _animator.SetTrigger(fallApartAnimaName);
-    }
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
+    //public override void Left(PlayerController player)
+    //{
+    //    _animator.SetTrigger(fallApartAnimaName);
+    //}
+    //public void Destroy()
+    //{
+    //    Destroy(gameObject);
+    //}
 }

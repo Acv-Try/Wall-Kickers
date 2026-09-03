@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.Rendering.Universal;
 using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Vector3Int initHeightCount;
 
     private LevelGenerator levelGenerator;
+    private readonly CheckpointSkipDetector skipDetector = new CheckpointSkipDetector();
     public event Action OnLevelsReady;
 
     public Vector3 FirstLevelCameraCenter { get; private set; }
@@ -76,7 +78,7 @@ public class LevelManager : MonoBehaviour
         FirstLevelSpawnPos = generated[0].PlayerSpawnPosition.position;
 
         FirstLevelCameraCenter = generated[0].CameraCenter.position;
-        
+
         FirstLevelLeftOffset = generated[0].InitialLeftOffset;
         FirstLevelRightOffset = generated[0].InitialRightOffset;
 
@@ -96,6 +98,13 @@ public class LevelManager : MonoBehaviour
 
         OnLevelsReady?.Invoke();
     }
+    public void OnPlayerDeath()
+    {
+        foreach (var level in generated)
+        {
+            level.ResetCheckpointsCount();
+        }
+    }
 
     public void CheckIfPlayerAboveMiddle(Vector3 playerPosition)
     {
@@ -110,14 +119,19 @@ public class LevelManager : MonoBehaviour
             SpawnNextLevel();
         }
     }
-
-    public void SpawnStartLevel()
+    private void HandleLevelFirstWallEntered(Level current)
+    {
+        int index = generated.IndexOf(current);
+        if (index <= 0) return; // no previous level to check against
+        skipDetector.Evaluate(generated[index - 1], current, PlayerManager.Instance.PlayerTransform.position);
+    }
+    private void SpawnStartLevel()
     {
         var level = GetRandomStartLevel();
         AddLevel(level);
     }
 
-    public void SpawnNextLevel()
+    private void SpawnNextLevel()
     {
         if (unused.Count == 0)
             RefillUnusedLevels();
@@ -147,15 +161,15 @@ public class LevelManager : MonoBehaviour
             level.levelData.topMarkerColumn,
             level.levelData.topMarkerRow,
             0);
-
+        instance.OnFirstWallEntered += HandleLevelFirstWallEntered;
         generated.Add(instance);
     }
     private void AddLevel(Level level) => AddLevel(level, -1);
     private void RemoveOldestLevel()
     {
         if (generated.Count == 0) return;
-
         var oldest = generated[0];
+        oldest.OnFirstWallEntered -= HandleLevelFirstWallEntered;
         generated.RemoveAt(0);
         levelGenerator.RemoveLevel(oldest);
     }
