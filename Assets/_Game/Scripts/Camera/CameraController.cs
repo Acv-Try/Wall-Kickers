@@ -10,39 +10,49 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float followingSpeed;
     [SerializeField] private float returningSpeed;
+    [SerializeField] private float lookAheadAmount;
+    [SerializeField] private float lookAheadLerpSpeed;
     [SerializeField] private GameObject deathLine;
-    [SerializeField] private float deathlineOffset;
+    [SerializeField] private float deathLineOffset;
     public Camera cameraMain;
     [SerializeField] private float shakeDuration;
     [SerializeField] private float shakeStrength;
     [SerializeField] private int shakeVibrato;
     [SerializeField] private float shakeRandomness;
     private bool canMove = true;
-
-    public void PauseMovement() => canMove = false;
-    public void ResumeMovement() => canMove = true;
+    private bool isReturning;
+    private float lastBoxCentreX;
+    private float lookAheadOffset;
 
     private void Start()
     {
         CalcDeadlinePos();
     }
+    
     public void SetInitial(Vector3 startCenter)
     {
         transform.position = startCenter;
-        
+
     }
     private void CalcDeadlinePos()
     {
         float x = deathLine.transform.localPosition.x;
-        float y = -deathlineOffset;
+        float y = -deathLineOffset;
         float z = deathLine.transform.localPosition.z;
         deathLine.transform.localPosition = new Vector3(x, y, z);
     }
-
+    public void PauseMovement() => canMove = false;
+    public void ResumeMovement() => canMove = true;
+    public void StartReturning() => isReturning = true;
     public void HideDeadline() => deathLine.SetActive(false);
     public void ShowDeadline() => deathLine.SetActive(true);
     public void Shake() => transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
 
+    public void ResetLookAhead()
+    {
+        lastBoxCentreX = CameraBox.Instance.CenterX;
+        lookAheadOffset = 0f;
+    }
     //public IEnumerator ReturnToCenter()
     //{
     //    CameraManager.Instance.SetState(CameraState.Returning);
@@ -70,12 +80,32 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         if (!canMove) return;
-        float x = CameraBox.Instance.CenterX;
-        float y = CameraBox.Instance.CenterY;
+        LookAheadOffset(CameraBox.Instance.CenterX);
+        
+        FollowBox(CameraBox.Instance.CenterX, CameraBox.Instance.CenterY);
+    }
+    private void LookAheadOffset(float centerX)
+    {
+        float currentBox = centerX;
+        float delta = currentBox - lastBoxCentreX;
+        lastBoxCentreX = currentBox;
+
+        float targetOffset = Mathf.Abs(delta) > 0.0001f
+            ? Mathf.Sign(delta) * lookAheadAmount
+            : 0f; // hold last value if box didn't move this frame
+
+        lookAheadOffset = Mathf.Lerp(lookAheadOffset, targetOffset, lookAheadLerpSpeed * Time.deltaTime);
+
+    }
+    private void FollowBox(float centerX, float centerY)
+    {
+        float speed = isReturning ? returningSpeed : followingSpeed;
+        float x = centerX + lookAheadOffset;
+        float y = centerY;
         transform.position = Vector3.Lerp(
             transform.position,
             new Vector3(x, y, -10f),
-            followingSpeed * Time.deltaTime
+            speed * Time.deltaTime
         );
     }
 }

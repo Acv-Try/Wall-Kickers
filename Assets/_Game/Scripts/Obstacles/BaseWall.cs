@@ -42,13 +42,11 @@ public abstract class BaseWall : MonoBehaviour
 
     public virtual void Touched(PlayerController player)
     {
-        Debug.Log("True");
         OnPlayerTouched?.Invoke(player);
         
     }
     public virtual void Left(PlayerController player)
     {
-        Debug.Log("False");
         OnPlayerLeft?.Invoke(player);
     }
     public virtual void Staying(PlayerController player)

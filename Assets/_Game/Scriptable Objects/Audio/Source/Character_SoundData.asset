@@ -16,7 +16,7 @@ MonoBehaviour:
   mixerGroup: {fileID: 0}
   loop: 0
   frequentSound: 0
-  maxInstances: 3
+  maxInstances: 7
   mute: 0
   bypassEffects: 0
   bypassListenerEffects: 0

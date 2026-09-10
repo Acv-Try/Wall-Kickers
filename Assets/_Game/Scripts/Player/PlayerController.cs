@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPlayerController
 {
-    public event Action OnJump;
+    public event Action<sbyte> OnJump;
     public event Action<sbyte> OnDoubleJump;
     public event Action OnWallTouched;
     public event Action OnFloorTouched;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [SerializeField] private float wallStickOverlapRatio = 1f / 3f;
     [SerializeField] private float floorEdgeNudgeRatio = 1f / 3f;
 
-    public event Action OnJump;
+    public event Action<sbyte> OnJump;
     public event Action<sbyte> OnDoubleJump;
     public event Action OnWallTouched;
     public event Action OnFloorTouched;
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
         canJump = false;
         canDoubleJump = true;
 
-        OnJump?.Invoke();
+        OnJump?.Invoke(jumpSide);
         ApplyJumpForce(jumpSide);
 
         if (currentWall != null && currentWall.Type == WallType.Moving)

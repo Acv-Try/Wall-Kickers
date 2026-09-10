@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -10,12 +11,13 @@ public class PlayerManager : MonoBehaviour
     public event Action OnDeath;
     public event Action OnRespawn;
     public event Action<Vector3> OnPlayerPositionChange;
-    
+
     private SoundData characterSoundData;
     private Vector3 _spawnPosition;
     private int _progress;
     private GameObject _player;
-
+    private Coroutine spawnRoutine;
+    private float spawnDelay = 0.8f;
     public IPlayerInput Input { get; private set; }
     public Transform PlayerTransform { get; private set; }
 
@@ -57,25 +59,25 @@ public class PlayerManager : MonoBehaviour
     public void Initialize(Vector3 spawnPosition)
     {
         _spawnPosition = spawnPosition;
-        
+
         _player = Instantiate(Player, spawnPosition, Quaternion.identity);
         controller = _player.GetComponent<IPlayerController>();
         input = _player.GetComponent<IPlayerInput>();
 
         Input = input;
         PlayerTransform = _player.transform;
-        
+
         characterSoundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
     }
     public void OnDie()
     {
-        Destroy(_player);
+        _player.SetActive(false);
         RiseOnDeath();
     }
     public void Spawn()
     {
+        Destroy(_player);
         Initialize(_spawnPosition);
         RiseOnRespawn();
     }
-   
 }

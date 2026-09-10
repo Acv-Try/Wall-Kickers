@@ -13,9 +13,7 @@ public class UIManager : MonoBehaviour
         B_PlayPauseMenu,
         B_PlayLoseMenu,
         B_Settings_PauseMenu,
-        B_Settings_LoseMenu,
         B_CloseSettings_PauseMenu,
-        B_CloseSettings_LoseMenu,
         B_Mute;
     //B_GameAudio_PauseMenu,
     //B_GameAudio_SettingsMenu;
@@ -90,7 +88,6 @@ public class UIManager : MonoBehaviour
         B_CloseSettings_PauseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromPauseMenu);
         B_CloseSettings_PauseMenu.onClick.AddListener(() => PlayUIClickSound(EType_UI_SFX.Icons));
 
-        B_CloseSettings_LoseMenu.onClick.AddListener(UIAnimations.OpenSettingsFromLoseMenu);
 
         B_Mute.onClick.AddListener(() => PlayUIClickSound(EType_UI_SFX.Audio_Button_Off));
         B_Mute.onClick.AddListener(CallMuteEvent);
@@ -111,6 +108,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnGameLose()
     {
+        Debug.Log("called on game lose");
         B_Pause.interactable = false;
         UIAnimations.OnLose();
     }

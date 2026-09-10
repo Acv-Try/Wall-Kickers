@@ -6,7 +6,7 @@ public enum CameraState
     Following,
     Returning
 }
-public class CameraManager : MonoBehaviour
+public class CameraManager : SingletonGame<CameraManager>
 {
     [SerializeField] private CameraController controller;
     private Vector3 startCenter;
@@ -14,36 +14,18 @@ public class CameraManager : MonoBehaviour
     private float initialLeftOffset;
     private float initialRightOffset;
     private Coroutine coroutine;
-
+    private float respawnWaitTime = 1.2f;
     public CameraState State { get; private set; } = CameraState.Frozen;
-    #region Singleton
-    private static CameraManager _instance;
-    public static CameraManager Instance
+    #region Singleton Override
+    protected override void Awake()
     {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindFirstObjectByType<CameraManager>();
-                if (_instance == null)
-                {
-                    Debug.LogWarning($"CameraManager is not found in the scene!");
-                }
-            }
-            return _instance;
-        }
+        base.Awake();
     }
-    private void Awake()
+    protected override void OnDestroy()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        _instance = this;
+        base.OnDestroy();
     }
     #endregion
-
     public void Initialize(Vector3 startCenter, float leftOffset, float rightOffset, Transform playerTransform)
     {
         CameraBox.Instance.SetPlayer(playerTransform);
@@ -63,9 +45,11 @@ public class CameraManager : MonoBehaviour
     public void SetState(CameraState newState) => State = newState;
     private void HandleDeath()
     {
+        Debug.Log("handle death called");
         SetState(CameraState.Frozen);
         controller.HideDeadline();
         controller.Shake();
+        controller.PauseMovement();
     }
     private void HandleRespawn(Transform player)
     {
@@ -73,11 +57,13 @@ public class CameraManager : MonoBehaviour
         CameraBox.Instance.SetPlayer(player);
         CameraBox.Instance.SetCenter(initialCenter);
         CameraBox.Instance.SetOffsets(initialLeftOffset, initialRightOffset);
+        controller.ResetLookAhead();
         coroutine = StartCoroutine(RespawnSequence());
     }
     private IEnumerator RespawnSequence()
     {
-        yield return new WaitForSeconds(1.2f);
+        //yield return new WaitForSeconds(respawnWaitTime);
+        controller.StartReturning();
         controller.ResumeMovement();
         while (!controller.HasReachedTarget)
             yield return null;

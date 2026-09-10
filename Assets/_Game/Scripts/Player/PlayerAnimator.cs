@@ -5,7 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     //[SerializeField] private GameObject puffEffectOB;
     [SerializeField] private PuffEffect puffEffect;
-    [SerializeField] private ParticleSystem burstEffect;
+    [SerializeField] private DeathParticleEffect burstEffect;
     [SerializeField] private Vector3 puffEffectOffset;
 
     private Animator playerAnimator;
@@ -45,6 +45,19 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void OnDestroy()
     {
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnDeath -= OnDeath;
+        }
+
+        if (controller != null)
+        {
+            controller.OnJump -= OnJump;
+            controller.OnDoubleJump -= OnDoubleJump;
+            controller.OnWallTouched -= OnWallTouched;
+            controller.OnFloorTouched -= OnFloorTouched;
+            controller.OnFloorLeft -= OnFloorLeft;
+        }
     }
     private void Start()
     {
@@ -52,13 +65,14 @@ public class PlayerAnimator : MonoBehaviour
         soundData = AudioManager.Instance.GetSoundData(EType_SourceDataType.Character);
         SetAnimations();
     }
-    private void OnJump()
+    private void OnJump(sbyte side)
     {
         PlayJumpAudio();
         playerAnimator?.SetBool("isIdle", false);
         playerAnimator?.SetBool("isRunning", false);
         playerAnimator?.SetBool("isBackFlip", false);
         playerAnimator?.SetBool("isJump", true);
+        PlayPuffEffect(side);
     }
     private void OnDoubleJump(sbyte side)
     {
@@ -89,7 +103,6 @@ public class PlayerAnimator : MonoBehaviour
     {
         PlayDeathAudio();
         PlayBurstEffect();
-        PlayDeathAudio();
     }
 
     public void PlayPuffEffect(sbyte side)
@@ -107,7 +120,10 @@ public class PlayerAnimator : MonoBehaviour
     }
     public void PlayBurstEffect()
     {
-        burstEffect.Play();
+        DeathParticleEffect instance = Instantiate(
+            burstEffect,
+            transform.position,
+            Quaternion.identity);
     }
 
     public void SetAnimations()
@@ -120,6 +136,10 @@ public class PlayerAnimator : MonoBehaviour
     private void PlayJumpAudio()
     {
         AudioManager.Instance.Play(soundData, EType_Gameplay_SFX.C_Monkey_Jump);
+    }
+    // Called as an animation event for double jump
+    public void PlayDoubleJumpAudio()
+    {
         AudioManager.Instance.PlayAndTrack(soundData, EType_Gameplay_SFX.C_Monkey_JumpEffect);
     }
     public void PlayDeathAudio()

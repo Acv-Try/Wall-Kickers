@@ -4,7 +4,7 @@ using UnityEngine;
 public class CheckPointCamera : MonoBehaviour
 {
     [SerializeField] private float halfWidthXPos;
-    [SerializeField] bool firstCheckpoint;
+    [SerializeField] private bool firstCheckpoint;
     private HalfWidth halfWidth;
     private bool inactive = false;
 

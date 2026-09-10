@@ -64,14 +64,18 @@ public class UIAnimations : MonoBehaviour
         startBackgroundImage = startBackground.GetComponent<Image>();
         midGameBackgroundImage = midGameBackground.GetComponent<Image>();
 
-        if (onStartRoutine == null)
+        if (onStartRoutine != null)
         {
-            onStartRoutine = StartCoroutine(OnStartRoutine(startBackgroundImage));
+            StopCoroutine(onStartRoutine);
+            onStartRoutine = null;
         }
-        if (tapRoutine == null)
+        onStartRoutine = StartCoroutine(OnStartRoutine(startBackgroundImage));
+        if (tapRoutine != null)
         {
-            tapRoutine = StartCoroutine(ChangeSprite());
+            StopCoroutine(tapRoutine);
+            tapRoutine = null;
         }
+        tapRoutine = StartCoroutine(ChangeSprite());
     }
     public void OnStart()
     {
@@ -89,12 +93,15 @@ public class UIAnimations : MonoBehaviour
     }
     public void OnLose()
     {
+        Debug.Log("start on lose ");
         P_PauseButton.Hide();
-        startBackground.SetActive(true);
-        if (onLoseRoutine == null)
+        startBackground?.SetActive(true);
+        if (onLoseRoutine != null)
         {
-            onLoseRoutine = StartCoroutine(OnLoseRoutine());
+            StopCoroutine(onLoseRoutine);
+            onLoseRoutine = null;
         }
+        onLoseRoutine = StartCoroutine(OnLoseRoutine());
     }
     public void OnRestart()
     {
@@ -103,10 +110,12 @@ public class UIAnimations : MonoBehaviour
         P_Cup.Hide();
         P_ScoreCount.Hide();
         P_PauseButton.Hide();
-        if (onRestartRoutine == null)
+        if (onRestartRoutine != null)
         {
-            onRestartRoutine = StartCoroutine(OnRestartRoutine());
+            StopCoroutine(onRestartRoutine);
+            onRestartRoutine = null;
         }
+        onRestartRoutine = StartCoroutine(OnRestartRoutine());
     }
     public void OnPause()
     {
@@ -143,22 +152,7 @@ public class UIAnimations : MonoBehaviour
         P_ScoreCount.Show();
         P_Cup.Show();
     }
-    public void OpenSettingsFromLoseMenu()
-    {
-        P_PauseMenu.Hide();
-        P_ScoreCount.Hide();
-        P_Cup.Hide();
-        //P_CollectedCoinInfo.Hide();
-        P_SettingsMenu.Show();
-    }
-    public void OpenLoseMenuAndCloseSettingsMenu()
-    {
-        P_SettingsMenu.Hide();
-        //P_CollectedCoinInfo.Show();
-        P_ScoreCount.Show();
-        P_Cup.Show();
-        P_PauseMenu.Show();
-    }
+
     IEnumerator ColorFade(Image background, float targetAlpha)
     {
         background.gameObject?.SetActive(true);
@@ -179,9 +173,14 @@ public class UIAnimations : MonoBehaviour
         onColorFadeRoutine = null;
     }
 
+    IEnumerator OnStartRoutine(Image background)
+    {
+        InitialConditions();
+        //background from start color to target condition
+        yield return StartCoroutine(ColorFade(background, 0f));
+    }
     IEnumerator OnRestartRoutine()
     {
-        onRestartRoutine = null;
         //background gradient to orange and back to invisible
         yield return StartCoroutine(ColorFade(startBackgroundImage, 1f));
         StartCoroutine(ColorFade(midGameBackgroundImage, 0));
@@ -191,16 +190,9 @@ public class UIAnimations : MonoBehaviour
         //P_CollectedCoinInfo.Hide();
         P_MainMenu.Show();
     }
-    IEnumerator OnStartRoutine(Image background)
-    {
-        onStartRoutine = null;
-        InitialConditions();
-        //background from start color to target condition
-        yield return StartCoroutine(ColorFade(background, 0f));
-    }
     IEnumerator OnLoseRoutine()
     {
-        onLoseRoutine = null;
+        Debug.Log("Enter the routine");
         yield return StartCoroutine(ColorFade(midGameBackgroundImage, 0.3f));
         //P_CollectedCoinInfo.Show();
         yield return new WaitForSecondsRealtime(0.2f);

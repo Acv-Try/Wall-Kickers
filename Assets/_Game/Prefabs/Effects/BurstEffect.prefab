@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 261946758390662900}
   - component: {fileID: 1286242985349229543}
   - component: {fileID: 4276284782683544739}
+  - component: {fileID: 3532831937741820889}
   m_Layer: 0
   m_Name: BurstEffect
   m_TagString: Untagged
@@ -4894,3 +4895,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &3532831937741820889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155782957615582876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f7cd53a76f89f49802592f936cdfef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathParticleEffect
+  particleSystem: {fileID: 1286242985349229543}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.iOS;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.STP;
 
@@ -52,21 +53,22 @@ public class GameManager : SingletonGame<GameManager>
         PlayerManager.Instance.Initialize(LevelManager.Instance.FirstLevelSpawnPos);
 
         CameraManager.Instance.Initialize(
-    LevelManager.Instance.FirstLevelCameraCenter,
-    LevelManager.Instance.FirstLevelLeftOffset,
-    LevelManager.Instance.FirstLevelRightOffset,
-    PlayerManager.Instance.PlayerTransform
-);
+        LevelManager.Instance.FirstLevelCameraCenter,
+        LevelManager.Instance.FirstLevelLeftOffset,
+        LevelManager.Instance.FirstLevelRightOffset,
+        PlayerManager.Instance.PlayerTransform
+        );
     }
     //absolutely need to be rewritten 
     public void OnDeath()
     {
         OnPlayerDeath?.Invoke();
         int totalCheckpoints = LevelManager.Instance.TotalCheckpoints;
-
+        Debug.Log("total --"+totalCheckpoints);
         if (totalCheckpoints >= gameConfig.progressSaveCheckpoint)
         {
             //LevelManager.Instance.ComputeCurrentLevelIndex();
+            Debug.Log($"total {totalCheckpoints}, raise on game lose");
             UIEvents.RaiseOnGameLose();
             return;
         }
@@ -82,12 +84,12 @@ public class GameManager : SingletonGame<GameManager>
 
     public void ReplayGame()
     {
-        UIManager.Instance.SetHighestScore(LevelManager.Instance.TotalCheckpoints);
-        CheckpointManager.Instance.RaiseOnReplay();
-        PlayerManager.Instance.Spawn();
-        LevelManager.Instance.TotalCheckpoints = 0;
-        UIManager.Instance.SetScore("0");
-        RaiseOnReplayCamera(PlayerManager.Instance.PlayerTransform);
+       if(respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+        respawnCoroutine = StartCoroutine(RespawnDelay());
     }
     public void RestartRun()
     {
@@ -114,11 +116,17 @@ public class GameManager : SingletonGame<GameManager>
         Time.timeScale = 1f;
         currentState = CurrentState.Playing;
     }
-    //IEnumerator RespawnDelay()
-    //{
-    //    yield return new WaitForSeconds(0.8f);
-    //    OnReplay?.Invoke(PlayerManager.Instance.PlayerTransform);
-    //}
+    private IEnumerator RespawnDelay()
+    {
+        UIManager.Instance.SetHighestScore(LevelManager.Instance.TotalCheckpoints);
+        UIManager.Instance.SetScore("0");
+        CheckpointManager.Instance.RaiseOnReplay();
+        LevelManager.Instance.TotalCheckpoints = 0;
+        yield return new WaitForSeconds(0.8f);
+        PlayerManager.Instance.Spawn();
+        RaiseOnReplayCamera(PlayerManager.Instance.PlayerTransform);
+        UIEvents.RaiseOnReplay();
+    }
 }
 public enum CurrentState
 {
