@@ -105,3 +105,5 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+Assets/_Game/Art/Fonts/test font for monkey SDF.asset
+Assets/_Game/Fonts/Baloo SDF.asset
