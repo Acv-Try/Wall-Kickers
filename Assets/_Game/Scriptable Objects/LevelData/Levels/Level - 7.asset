@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af11e0dfdfd15ee4ebeeac69607aeaf7, type: 3}
-  m_Name: Level - 3
+  m_Name: Level - 7
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   firstCellColumn: 14
   lastCellColumn: 0
-  topMarkerRow: 40
-  topMarkerColumn: 0
-  bottomMarkerRow: 1
-  bottomMarkerColumn: 3
+  topMarkerRow: 30
+  topMarkerColumn: 3
+  bottomMarkerRow: 0
+  bottomMarkerColumn: 4
   columns: 15
-  rows: 40
+  rows: 30
   board:
   - column:
     - type: 0
@@ -34,49 +34,6 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
     - type: 1
       rotation: 0
       wallHeight: 0
@@ -92,10 +49,7 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 0
@@ -124,558 +78,6 @@ MonoBehaviour:
       rotation: 0
       wallHeight: 0
     - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -721,7 +123,7 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 1
+    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -742,7 +144,7 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 1
+    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
@@ -767,7 +169,10 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 1
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -785,10 +190,53 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
     - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
@@ -837,6 +285,604 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
     - type: 0
       rotation: 0
       wallHeight: 0
@@ -868,7 +914,145 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
     - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+  - column:
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
+      rotation: 0
+      wallHeight: 0
+    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -914,31 +1098,31 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
   - column:
@@ -954,10 +1138,19 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
+      rotation: 0
+      wallHeight: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -975,16 +1168,7 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
   - column:
@@ -1000,286 +1184,10 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
     - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -1340,52 +1248,6 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
     - type: 0
       rotation: 0
       wallHeight: 0
@@ -1405,50 +1267,10 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
     - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -1470,150 +1292,6 @@ MonoBehaviour:
       rotation: 0
       wallHeight: 0
     - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
@@ -1653,13 +1331,13 @@ MonoBehaviour:
     - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
-    - type: 0
+    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 0
@@ -1681,50 +1359,10 @@ MonoBehaviour:
     - type: 0
       rotation: 0
       wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
     - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
       rotation: 0
       wallHeight: 0
     - type: 1
@@ -1740,104 +1378,6 @@ MonoBehaviour:
       rotation: 0
       wallHeight: 0
     - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-  - column:
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 1
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
-      rotation: 0
-      wallHeight: 0
-    - type: 0
       rotation: 0
       wallHeight: 0
     - type: 0
