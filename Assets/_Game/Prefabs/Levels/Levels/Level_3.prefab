@@ -54,7 +54,7 @@ MonoBehaviour:
   levelCheckpoint: {fileID: 6860002346944400979}
   topMarker: {fileID: 8308478103760527677}
   bottomMarker: {fileID: 53075937248760171}
-  offset: {x: 1.2, y: 0, z: 0}
+  offset: {x: 0, y: 0, z: 0}
   camerasInitialCenter: {fileID: 6410186266896643273}
   initialRightOffset: 0
   initialLeftOffset: 0
@@ -1334,7 +1334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8409948904253902085, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 40
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 8409948904253902085, guid: a751a08551ae9f94d91e4fde0566cfa6, type: 3}
       propertyPath: m_LocalPosition.z
